@@ -1,6 +1,5 @@
 @extends('body')
 @section('meta_description', $data->meta->meta_description)
-
 @section('centerbox')
 <div class="container-fluid">
     <div class="row">
@@ -9,8 +8,6 @@
                 <h1 class="page-title rowed">Категории</h1>
             </div>
             <div class="category-container">
-            
-
 			@foreach ($data->children as $subcat)
 			    <a href="{{$subcat->slug}}" class="category-section">
                     <div class="category-img">
