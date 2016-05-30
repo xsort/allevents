@@ -3,12 +3,13 @@
 <div class="container-fluid main-menu">
     <div class="row">
         <div class="col-md-9 col-sm-12">
-        	@foreach ($data as $category)
+        
+        	@foreach ($categories as $category)
         	@if ($category->children->count())
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="row">
                     <a href="{{$category->slug}}">
-                        <div class="menu block-1">
+                        <div class="menu block-{{rand(1,8)}}">
                             <div class="main-menu-image" style="background: url('uploaded/thumbs/{{isset($category->photos{0}) ? $category->photos{0}->source : 'nophoto.png'}}');"></div>
                             <div class="main-menu-filter"></div>
                             <h3 class="main-menu-title"><span>{{$category->name}}</span></h3>
@@ -153,46 +154,18 @@
     </div>
     <div class="container-fluid margin-t-50">
         <div class="recommended-slider">
-
             <button type="button" class="recommended-next prev-arrow control-slider hidden-xs"></button>
             <div id="recommended">
-
-                <a href="club.php" class="category">
-                    <img src="img/public/logo-decadance-club.png" alt="">
-                    <h3 class="main-title"><span>Ресторан</span></h3>
+				
+				@foreach ($products as $product)
+	        	<a href="{{$product->slug}}" class="category">
+                    <img src="uploaded/thumbs/{{isset($product->photos{0}) ? $product->photos{0}->source : 'nophoto.png'}}" alt="">
+                    <h3 class="main-title"><span>{{$product->name}}</span></h3>
                     <div class="divider-title"></div>
-                    <span class="main-menu-descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum iste architecto, nam fugit quam vero eos, commodi eveniet deleniti ut iusto?</span>
+                    <span class="main-menu-descripton">{{$product->description_short}}</span>
                     <div class="main-menu-button"><span>Посмотреть</span></div>
                 </a>
-                <a href="club.php" class="category">
-                    <img src="img/public/logo-krysha-club.png" alt="">
-                    <h3 class="main-title"><span>Клуб</span></h3>
-                    <div class="divider-title"></div>
-                    <span class="main-menu-descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum iste architecto, nam fugit quam vero eos, commodi eveniet deleniti ut iusto?</span>
-                    <div class="main-menu-button"><span>Посмотреть</span></div>
-                </a>
-                <a href="club.php" class="category">
-                    <img src="img/public/logo-rust-club.jpg" alt="">
-                    <h3 class="main-title"><span>Ресторан</span></h3>
-                    <div class="divider-title"></div>
-                    <span class="main-menu-descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum iste architecto, nam fugit quam vero eos, commodi eveniet deleniti ut iusto?</span>
-                    <div class="main-menu-button"><span>Посмотреть</span></div>
-                </a>
-                <a href="club.php" class="category">
-                    <img src="img/public/logo-art-club.png" alt="">
-                    <h3 class="main-title"><span>Ресторан</span></h3>
-                    <div class="divider-title"></div>
-                    <span class="main-menu-descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum iste architecto, nam fugit quam vero eos, commodi eveniet deleniti ut iusto?</span>
-                    <div class="main-menu-button"><span>Посмотреть</span></div>
-                </a>
-                <a href="club.php" class="category">
-                    <img src="img/public/logo-decadance-club.png" alt="">
-                    <h3 class="main-title"><span>Клуб</span></h3>
-                    <div class="divider-title"></div>
-                    <span class="main-menu-descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum iste architecto, nam fugit quam vero eos, commodi eveniet deleniti ut iusto?</span>
-                    <div class="main-menu-button"><span>Посмотреть</span></div>
-                </a>
-
+	            @endforeach
             </div>
             <button type="button" class="recommended-prev next-arrow control-slider hidden-xs"></button>
         </div>
