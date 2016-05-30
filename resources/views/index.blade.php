@@ -177,7 +177,6 @@
         <h2 class="c-block-title font-pink">Афиша</h2></div>
     <div class="container-fluid margin-t-30 ">
         <div class="news-slider">
-
             <div id="notice-slider">
 
                 <div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
@@ -187,7 +186,7 @@
                 </div>
 
                 <div class="col-md-10 col-xs-12" id="notice">
-
+					
                     <a href="javascript:void(0)" class="category">
                         <div class="category-img category-1"></div>
                         <div class="notice-link">Кинотеатры</div>
@@ -252,48 +251,16 @@
 
                 <div class="col-lg-10 col-md-10 col-xs-12" id="report">
 
-                    <a href="javascript:void(0)" class="item">
-                        <div class="filter"></div>
-                        <img src="images/reports-notice/concert.png" alt="">
-                        <span>Концерты</span>
-                    </a>
 
-                    <a href="javascript:void(0)" class="item">
-                        <div class="filter"></div>
-                        <img src="images/reports-notice/sport.png" alt="">
-                        <span>Спорт</span>
-                    </a>
+					@foreach ($tags as $tag)
 
-                    <a href="javascript:void(0)" class="item">
+                    <a href="{{$tag->slug}}" class="item">
                         <div class="filter"></div>
-                        <img src="images/reports-notice/theatre.png" alt="">
-                        <span>Театры</span>
+                        <img src="uploaded/thumbs/{{isset($category->photos{0}) ? $category->photos{0}->source : 'nophoto.png'}}" alt="">
+                        <span>{{$tag->name}}</span>
                     </a>
-
-                    <a href="javascript:void(0)" class="item">
-                        <div class="filter"></div>
-                        <img src="images/reports-notice/cinema.jpg" alt="">
-                        <span>Кинотеатры</span>
-                    </a>
-
-                    <a href="javascript:void(0)" class="item">
-                        <div class="filter"></div>
-                        <img src="images/reports-notice/sport.png" alt="">
-                        <span>Развлечения</span>
-                    </a>
-
-                    <a href="javascript:void(0)" class="item">
-                        <div class="filter"></div>
-                        <img src="images/reports-notice/festival.jpg" alt="">
-                        <span>Фестивали</span>
-                    </a>
-
-                    <a href="javascript:void(0)" class="item">
-                        <div class="filter"></div>
-                        <img src="images/reports-notice/club.jpg" alt="">
-                        <span>Клубы</span>
-                    </a>
-
+		            @endforeach
+		            
                 </div>
 
                 <div class="col-lg-1 col-md-1 hidden-sm hidden-xs">

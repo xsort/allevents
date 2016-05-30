@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\Categories;
 use App\Models\Products;
+use App\Models\Tags;
 
 class HomeController extends Controller
 {
@@ -31,6 +32,7 @@ class HomeController extends Controller
 //         return view('news.list')->with('news', $news);
 		$categories = Categories::with('children')->get();
 		$products = Products::where('enabled',true)->where('top',true)->get();
+		$tags = Products::where('top',true)->get();
 		return view('index')->with('categories', $categories)->with('products', $products);
 		
 
