@@ -292,13 +292,22 @@ h2.c-block-title {
 }
 
 body {
-    background: url(../images/background/bg-1.jpg);
+   /* background: url(../images/background/bg-1.jpg);*/
+
     /*
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 */
+ background: url(../images/background/main-bg.png);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 body.page-clubs {
