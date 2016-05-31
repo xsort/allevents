@@ -46,7 +46,7 @@
     
 
     <div class="container wrapper">
-        @include('partials.topbar')
+        <!-- @include('partials.topbar') -->
         @include('partials.header')
         <div class="layout-page ">
             <div class="layout-content" >
