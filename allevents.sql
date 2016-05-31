@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Май 31 2016 г., 11:29
+-- Время создания: Май 31 2016 г., 11:32
 -- Версия сервера: 5.7.12
 -- Версия PHP: 5.5.27
 
@@ -44,8 +44,8 @@ INSERT INTO `categories_xref` (`id`, `parent_id`, `child_id`) VALUES
 -- Дамп данных таблицы `content`
 --
 
-INSERT INTO `content` (`id`, `name`, `name_en`, `name_ro`, `description`, `description_en`, `description_ro`, `enabled`, `views`, `meta_description`, `meta_keywords`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'Club drive Content', 'asdas', 'ada', 'asd', 'asd', 'asd', 1, 0, 'asd', 'asdasd', 'stranitsa', NULL, NULL);
+INSERT INTO `content` (`id`, `name`, `name_en`, `name_ro`, `description`, `description_en`, `description_ro`, `enabled`, `views`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'Club drive Content', 'asdas', 'ada', 'asd', 'asd', 'asd', 1, 0, 'stranitsa', NULL, NULL);
 
 --
 -- Дамп данных таблицы `meta`
