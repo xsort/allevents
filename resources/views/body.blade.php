@@ -28,7 +28,7 @@
 </head>
 <body>
 
-	<div id="fb-root">Тест ЧернышёвLorem ipsum.</div>
+	<div id="fb-root"></div>
 
     <script>
         (function (d, s, id) {
