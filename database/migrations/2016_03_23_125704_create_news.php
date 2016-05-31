@@ -24,6 +24,7 @@ class CreateNews extends Migration
 			$t->text('description_short_ro');
 			$t->text('description_short_en');
 			$t->boolean('enabled')->default(true);
+			$t->boolean('top');
             $t->integer('views');
             $t->integer('sort');
             $t->string('slug', 200)->index('idx_slug');
