@@ -25,4 +25,11 @@ class NewsController extends Controller
 
         return view('news.list')->with('news', $news);
     }
+    
+    public function getNewsList()
+    {
+	    
+	    $news = News::get(); 
+		return view('news.newslist')->with('data',$news);
+    }
 }

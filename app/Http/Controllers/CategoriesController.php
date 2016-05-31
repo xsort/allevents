@@ -14,7 +14,7 @@ class CategoriesController extends Controller
     public function getCategoriesList()
     {
 	    
-	    $categories = Categories::find(7); 
-		return view('products.categories');
+	    $categories = Categories::get(); 
+		return view('products.categories')->with('data',$categories);
     }
 }
