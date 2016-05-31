@@ -27,7 +27,7 @@
    
 </head>
 <body>
-	<div id="fb-root"></div>
+	<div id="fb-root">Lorem ipsum.</div>
     <script>
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
