@@ -40,6 +40,17 @@ class BaseModel extends Model
         return $value;
         
     }
+    
+    public function setMetaAttribute($value) {
+        
+/*
+        $lang = "";
+        if ($lang == "ro") return "ro/".$value;
+        if ($lang == "en") return "en/".$value;
+        return $value;
+*/
+        
+    }
 
     public function setUpdatedAtAttribute($value)
     {

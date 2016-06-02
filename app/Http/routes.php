@@ -45,7 +45,7 @@ Route::group(['middleware' => ['web']], function () {
     
     Route::get('{slug}/plan', 'ProductsController@getPlan');
     
-    Route::get('{slug}', 'CommonController@getSlug');
+   // Route::get('{slug}', 'CommonController@getSlug');
 
 });
 
@@ -76,6 +76,10 @@ Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin', 'as' => 'ad
     Route::resource('content', 'Admin\ContentController', ['as' => 'content']);
 
     Route::resource('news', 'Admin\NewsController', ['as' => 'news']);
+    
+    Route::resource('categories', 'Admin\CategoriesController', ['as' => 'categories']);
+    
+    Route::resource('products', 'Admin\ProductsController', ['as' => 'products']);
 
 });
 
