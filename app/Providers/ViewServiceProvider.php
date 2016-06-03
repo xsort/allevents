@@ -15,6 +15,7 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         $latest_news = News::orderBy('created_at','desc')->limit(3)->get();
         view()->share('latest_news', $latest_news);
 
@@ -23,6 +24,7 @@ class ViewServiceProvider extends ServiceProvider
 
         $tags = Tags::all();
         view()->share('tags', $tags);
+
     }
 
     /**

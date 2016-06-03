@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Config;
 use Jenssegers\Date\Date;
 
 class BaseModel extends Model
@@ -41,15 +42,24 @@ class BaseModel extends Model
         
     }
     
-    public function setMetaAttribute($value) {
-        
-/*
-        $lang = "";
-        if ($lang == "ro") return "ro/".$value;
-        if ($lang == "en") return "en/".$value;
-        return $value;
-*/
-        
+    public function setMetaDescriptionAttribute($values) {
+        $table    = $this->getTable();
+        $table_id = $this->id;
+
+        $meta = Meta::where('table', $table)->where('table_id',$table_id)->first();
+        if (!isset($meta)){
+            $meta = new Meta();
+        }
+        foreach($values as $key=>$value){
+            if ($key == "ru"){
+                $meta->attributes['meta_description'] = $value;
+            }else{
+                $meta->attributes['meta_description_'.$key] = $value;
+            }
+        }
+        $meta->table            = $table;
+        $meta->table_id         = $table_id;
+        $meta->save();
     }
 
     public function setUpdatedAtAttribute($value)
