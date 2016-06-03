@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Май 31 2016 г., 11:32
+-- Время создания: Июн 03 2016 г., 10:29
 -- Версия сервера: 5.7.12
 -- Версия PHP: 5.5.27
 
@@ -85,7 +85,7 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 --
 
 INSERT INTO `news` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `enabled`, `views`, `sort`, `slug`, `created_at`, `updated_at`, `top`) VALUES
-(1, 'Тест новость', '', '', '', '', '', '', '', '', 1, 0, 0, 'test-novosti', NULL, NULL, 1);
+(1, 'Тест новость', '', '', '', '', '', '', '', '', 1, 5, 0, 'test-novosti', NULL, '0000-00-00 00:00:00', 1);
 
 --
 -- Дамп данных таблицы `photos`
@@ -100,7 +100,7 @@ INSERT INTO `photos` (`id`, `source`, `table_id`, `table`, `sort`) VALUES
 --
 
 INSERT INTO `products` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `price`, `map`, `enabled`, `views`, `sort`, `slug`, `created_at`, `updated_at`, `top`) VALUES
-(1, 'Клуб Drive', '', '', '', '', '', '', '', '', 100.00, '', 1, 0, 0, 'club-drive', NULL, NULL, 1);
+(1, 'Клуб Drive', '', '', '', '', '', '', '', '', 100.00, '', 1, 0, 0, 'club-drive', NULL, '2016-06-02 05:24:48', 1);
 
 --
 -- Дамп данных таблицы `tags`
@@ -108,6 +108,13 @@ INSERT INTO `products` (`id`, `name`, `name_ro`, `name_en`, `description`, `desc
 
 INSERT INTO `tags` (`id`, `created_at`, `updated_at`, `name`, `name_ro`, `name_en`, `top`, `slug`) VALUES
 (1, NULL, NULL, 'Спорт', '', '', 1, '');
+
+--
+-- Дамп данных таблицы `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `rights`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Xsort', 'support@xsort.md', '$2y$10$twmlb5YlgimkrTIwnKqeauX9JusORUAVWnjjK1jBhM0AQwJW/3RIy', 1, NULL, NULL, NULL);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
