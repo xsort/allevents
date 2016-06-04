@@ -53,9 +53,9 @@ class BaseModel extends Model
     }
 
     private function saveMeta($values, $type){
-        //save model before saving meta
-        $this->save();
         $table    = $this->getTable();
+        //save model before saving meta
+        if (!isset($this->id)) $this->save();
         $table_id = $this->id;
 
         $meta = Meta::where('table', $table)->where('table_id',$table_id)->first();

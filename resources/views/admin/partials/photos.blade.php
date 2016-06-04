@@ -1,6 +1,7 @@
 <!-- PARAMS
     photos  = array of photos
     table   = model or uniq name
+    thumbs  = array of thumbs paths (optional)
     div_id  = id of tab panel (optional)
     width   = width of final photo (optional)
     height  = height of final photo (optional)
@@ -37,7 +38,8 @@
                 'formData'         : {
                     table:	"{{ $table }}",
                     width: 	"{{ $width or '' }}",
-                    height:	"{{ $height or '' }}"
+                    height:	"{{ $height or '' }}",
+                    thumbs: ""
                 },
                 //'queueID'          : 'queue',
                 'uploadScript'     : 'photos/upload',

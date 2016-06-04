@@ -49,10 +49,14 @@ class PhotosController extends Controller
             return response()->json(['success' => 'false', 'data' => 'SELECT TABLE!']);
         }
 
-        $table_id   = Input::get('table_id');
-        $file       = Input::file('Filedata');
-        $width      = Input::get('width');
-        $height     = Input::get('height');
+        $table_id       = Input::get('table_id');
+        $file           = Input::file('Filedata');
+        $width          = Input::get('width');
+        $height         = Input::get('height');
+        $valid_thumbs   = Input::get('thumbs');
+
+        dd($valid_thumbs);
+
         if (is_numeric($width))     $this->width        = $width;
         if (is_numeric($height))    $this->height       = $height;
 

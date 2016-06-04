@@ -253,7 +253,6 @@
 
 
 					@foreach ($tags as $tag)
-
                     <a href="{{$tag->slug}}" class="item">
                         <div class="filter"></div>
                         <img src="uploaded/thumbs/{{isset($category->photos{0}) ? $category->photos{0}->source : 'nophoto.png'}}" alt="">
