@@ -40,7 +40,7 @@ class ProductsController extends Controller
         }
 
         $data->name              = $request->name;
-        $data->created_at        = $request->date;
+        //$data->created_at        = $request->date;
         $data->slug              = $request->slug;
         $data->description       = $request->description;
         $data->meta_description  = $request->meta_description;

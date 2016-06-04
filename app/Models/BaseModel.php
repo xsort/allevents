@@ -34,15 +34,27 @@ class BaseModel extends Model
     }
     
     public function getSlugAttribute($value) {
-        
         $lang = "";
         if ($lang == "ro") return "ro/".$value;
         if ($lang == "en") return "en/".$value;
         return $value;
-        
     }
     
     public function setMetaDescriptionAttribute($values) {
+        $this->saveMeta($values, "meta_description");
+    }
+
+    public function setMetaKeywordsAttribute($values) {
+        $this->saveMeta($values, "meta_keywords");
+    }
+
+    public function setTitleAttribute($values) {
+        $this->saveMeta($values, "title");
+    }
+
+    private function saveMeta($values, $type){
+        //save model before saving meta
+        $this->save();
         $table    = $this->getTable();
         $table_id = $this->id;
 
@@ -51,15 +63,35 @@ class BaseModel extends Model
             $meta = new Meta();
         }
         foreach($values as $key=>$value){
-            if ($key == "ru"){
-                $meta->attributes['meta_description'] = $value;
-            }else{
-                $meta->attributes['meta_description_'.$key] = $value;
+            if ($key == "ru") {
+                $meta->attributes[$type] = $value;
+                continue;
             }
+            $meta->attributes[$type . '_' . $key] = $value;
         }
         $meta->table            = $table;
         $meta->table_id         = $table_id;
         $meta->save();
+    }
+
+    public function setNameAttribute($values) {
+        foreach($values as $key=>$value){
+            if ($key == "ru") {
+                $this->name = $value;
+                continue;
+            }
+            $this->attributes['name_' . $key] = $value;
+        }
+    }
+
+    public function setDescriptionAttribute($values) {
+        foreach($values as $key=>$value){
+            if ($key == "ru") {
+                $this->description = $value;
+                continue;
+            }
+            $this->attributes['description_' . $key] = $value;
+        }
     }
 
     public function setUpdatedAtAttribute($value)

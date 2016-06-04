@@ -42,14 +42,13 @@ class CategoriesController extends Controller
 
         $data->name              = $request->name;
         $data->slug              = $request->slug;
-        //$data->description       = $request->description;
-        //$data->description_ro    = $request->description_ro;
-        //$data->description_en    = $request->description_en;
-
-        //$data->meta_keywords     = $request->meta_keywords;
+        $data->description       = $request->description;
+        $data->title             = $request->title;
+        $data->meta_keywords     = $request->meta_keywords;
+        $data->meta_description  = $request->meta_description;
         $data->save();
 
-        $data->meta_description  = $request->meta_description;
+
 
         // redirect
         Session::flash('message', trans('common.saved'));
