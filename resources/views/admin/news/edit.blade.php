@@ -36,7 +36,7 @@
                 <div class="col-sm-9">
                     <select multiple data-placeholder="выберите категорию" id="chosencat" name="chosencat[]" class="tag-input-style col-xs-12">
                         @foreach($tags as $tag)
-                        <option value="{{$tag['name']}}" @if (in_array($tag->id, $data->getTagsIdsArray())) selected="selected" @endif>
+                        <option value="{{$tag['id']}}" @if (isset($data) && (in_array($tag->id, $data->getTagsIdsArray()))) selected="selected" @endif>
                             {{ $tag->name }}
                         </option>
                         @endforeach
@@ -85,7 +85,7 @@
                 {{ Form::textarea('description', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => 'editor')) }}
             </div>
             @include('admin.partials.meta')
-            @include('admin.partials.photos', ['photos' => $data->photos, 'table' => 'news'])
+            @include('admin.partials.photos', ['table' => 'news', 'table_id' => isset($data->id) ? $data->id : 0])
         </div>
     </div>
 

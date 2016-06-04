@@ -4,23 +4,14 @@
     div_id  = id of tab panel (optional)
     width   = width of final photo (optional)
     height  = height of final photo (optional)
-    twidth  = width of thumb (optional)
-    theight = height of thumb (optional)
     table   = name of table (optional)
 -->
 
 <div class="tab-pane row" id="{{$div_id or 'photos'}}">
-    <form>
-        {!! csrf_field() !!}
         <div id="queue"></div>
         <input class="file_upload" name="file_upload" type="file" multiple="true"/>
-    </form>
     <ul class="ace-thumbnails clearfix photos">
-        @foreach ($photos as $photo)
 
-
-
-        @endforeach
     </ul>
 </div>
 
@@ -29,9 +20,11 @@
 
 <script>
     $(document).ready(function(){
-        var PHOTOS_DIV = "{{ $div_id or '#photos' }}";
+        var PHOTOS_DIV = "#{{ $div_id or 'photos' }}";
 
         PhotosObj = new PhotosClass(PHOTOS_DIV);
+
+        PhotosObj.GetAjaxPhotos("{{ $table }}", "{{ $table_id }}");
 
         $(function() {
             $(PHOTOS_DIV).find('.file_upload').uploadifive({
@@ -44,10 +37,7 @@
                 'formData'         : {
                     table:	"{{ $table }}",
                     width: 	"{{ $width or '' }}",
-                    height:	"{{ $height or '' }}",
-                    twidth:	"{{ $twidth or '' }}",
-                    theight:"{{ $theight or '' }}",
-                    //'X-CSRF-Token': $(PHOTOS_DIV).find('input[name="_token"]').val(),
+                    height:	"{{ $height or '' }}"
                 },
                 //'queueID'          : 'queue',
                 'uploadScript'     : 'photos/upload',
@@ -81,39 +71,36 @@
             var _bsort = b.attr("sort");
             a.attr("sort",_bsort);
             b.attr("sort",_asort);
-            $(a).swap(b);
-            that.SortingEvent();
 
-            return;
-
-            _a_id = a.children('input').get(0).value;
-            _b_id = b.children('input').get(0).value;
-            $.get("index.php?action=admin_photo",
+            _a_id = a.find('input').val();
+            _b_id = b.find('input').val();
+            $.get("photos/changesort",
                     {
-                        a:"changesort",
                         a_id:_a_id,
                         asort:_asort,
                         b_id:_b_id,
                         bsort:_bsort
                     },
                     function(){
-                        a.attr("sort",_bsort);
-                        b.attr("sort",_asort);
-                        $(a).swap(b);
+                        //toastr.success('DONE');
                     }
             );
         };
 
         this.GetAjaxPhotos = function(table, table_id){
             $.get(
-                    "index.php?action=admin_photo",
+                    "photos/getphotos",
                     {
-                        a:	"getphotos",
-                        t:	table,
-                        cid:table_id
+                        "table":	 table,
+                        "table_id":  table_id
                     },
-                    function (result) {
-                        $.each(result, function(i, item) {
+                    function (response) {
+                        if (response.success=="false"){
+                            toastr.error(response.data);
+                            return;
+                        }
+
+                        $.each(response.data, function(i, item) {
                             that.ShowPhoto(item);
                         });
                     },
@@ -126,7 +113,7 @@
             var $li             = $('<li sort="'+data.sort+'"></li>');
             var $img_href       = $('<a href="'+ data.path + data.filename + '" title="' + data.filename + '"></a>').fancybox();
             var $img            = $('<img width="150" height="150" src="'+ data.path + 'thumbs/' + data.filename + '" />');
-            var $input          = $('<input type="hidden" name="photo_id[]" value ="' + data.id + '" />');
+            var $input          = $('<input type="hidden" name="photos[]" value ="' + data.id + '" />');
             var $tools          = $('<div class="tools"></div>');
             var $double_left    = $('<a href="javascript:void(0);" title="В начало" class="double_left"><i class="ace-icon fa fa-angle-double-left"></i></a>')
                                     .click(function(){
@@ -135,10 +122,14 @@
                                         var $first = $curr.parent().children().first();
                                         $first.before($curr);
                                         $prev.after($first);
+                                        that.ChangeDBSort($curr, $first);
                                     });
             var $left           = $('<a href="javascript:void(0);" title="Левее" class="left"><i class="ace-icon fa fa-angle-left"></i></a>')
                                     .click(function(){
-                                        $($(this).closest('li').after($(this).closest('li').prev()));
+                                        var $curr = $(this).closest('li');
+                                        var $prev = $(this).closest('li').prev();
+                                        $($curr.after($prev));
+                                        that.ChangeDBSort($curr, $prev);
                                     });
             var $delete         = $('<a href="javascript:void(0);" title="Удалить" data-id="' + data.id + '"><i class="ace-icon fa fa-trash-o"></i></a>')
                                     .click(function(){
@@ -151,7 +142,10 @@
 
             var $right          = $('<a href="javascript:void(0);" title="Правее" class="right"><i class="ace-icon fa fa-angle-right"></i></a>')
                                     .click(function(){
-                                        $($(this).closest('li').before($(this).closest('li').next()));
+                                        var $curr = $(this).closest('li');
+                                        var $next = $(this).closest('li').next();
+                                        $($curr.before($next));
+                                        that.ChangeDBSort($curr, $next);
                                     });
             var $double_right   = $('<a href="javascript:void(0);" title="В конец" class="double_right"><i class="ace-icon fa fa-angle-double-right "></i></a>')
                                     .click(function(){
@@ -160,7 +154,10 @@
                                         var $last  = $curr.parent().children().last();
                                         $last.after($curr);
                                         $next.before($last);
+                                        that.ChangeDBSort($curr, $last);
                                     });
+
+            //var $rotate          = $('<a href="javascript:void();" title="Повернуть" class="rotate"><i class="ace-icon fa fa-repeat fa-1"></i></a>');
 
             $(this.PHOTOS_DIV).find('ul.photos')
                     .append($li.append($img_href.append($img))
@@ -170,7 +167,10 @@
                                     .append($left)
                                     .append($delete)
                                     .append($right)
-                                    .append($double_right)));
+                                    .append($double_right)
+                                    //.append($rotate)
+                            )
+                    );
 
         }
     };
