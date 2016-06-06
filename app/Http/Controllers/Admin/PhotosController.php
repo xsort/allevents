@@ -53,9 +53,9 @@ class PhotosController extends Controller
         $file           = Input::file('Filedata');
         $width          = Input::get('width');
         $height         = Input::get('height');
-        $valid_thumbs   = Input::get('thumbs');
-
-        //dd($valid_thumbs);
+        $thumbs_input   = Input::get('thumbs');
+        $valid_thumbs   = array();
+        if (isset($thumbs_input))   $valid_thumbs   = explode(",", $thumbs_input);
 
         if (is_numeric($width))     $this->width        = $width;
         if (is_numeric($height))    $this->height       = $height;
@@ -75,6 +75,7 @@ class PhotosController extends Controller
         $all_thumbs = Config::get('photos.thumbs');
 
         foreach($all_thumbs as $thumb) {
+            if (count($valid_thumbs) > 0 && !in_array($thumb['path'], $valid_thumbs)) continue;
             $thumbPath = $this->files_location . $thumb['path'] . "/";
             if (!File::exists($thumbPath)) {
                 File::makeDirectory($thumbPath);
@@ -152,7 +153,7 @@ class PhotosController extends Controller
                 if ($request->slug){
                     //new photo name
                     $old_name = $photo->source;
-                    $new_name = $request->slug . "_" . $photo->id . "." . Helper::getExtention($photo->source);
+                    $new_name = $request->slug . "_" . $photo->id . "." . File::extension($photo->source);
                     $photo->source = $new_name;
 
                     //rename main image
@@ -160,7 +161,7 @@ class PhotosController extends Controller
                     $newfile = $this->files_location . $new_name;
                     File::move($oldfile, $newfile);
 
-                    //reaname thumbs
+                    //reaname thumbs files
                     $all_thumbs = Config::get('photos.thumbs');
                     foreach($all_thumbs as $thumb) {
                         $thumbPath = $this->files_location . $thumb['path'] . "/";

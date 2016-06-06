@@ -36,10 +36,8 @@
                 'auto'             : true,
                 'removeCompleted'  : true,
                 'formData'         : {
-                    table:	"{{ $table }}",
-                    width: 	"{{ $width or '' }}",
-                    height:	"{{ $height or '' }}",
-                    thumbs: ""
+                    @if(isset($thumbs))thumbs: "{{ implode(",", $thumbs) }}",@endif
+                    table:	"{{ $table }}"
                 },
                 //'queueID'          : 'queue',
                 'uploadScript'     : 'photos/upload',

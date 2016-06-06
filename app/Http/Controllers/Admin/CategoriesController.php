@@ -48,7 +48,7 @@ class CategoriesController extends Controller
         //$data->meta_description  = $request->meta_description;
         $data->save();
 
-
+        $this->UpdatePhotos($request, $data->id);
 
         // redirect
         Session::flash('message', trans('common.saved'));

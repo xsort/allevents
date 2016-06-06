@@ -71,15 +71,15 @@ Route::group(['middleware' => ['web', 'admin']], function () {
 });
 
 Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
-    Route::controllers(['json'=>'Admin\JsonController']);
+    Route::controllers(['json' => 'Admin\JsonController']);
 
-    Route::resource('content', 'Admin\ContentController', ['as' => 'content']);
+    Route::resource('content',      'Admin\ContentController', ['as' => 'content']);
 
-    Route::resource('news', 'Admin\NewsController', ['as' => 'news']);
+    Route::resource('news',         'Admin\NewsController', ['as' => 'news']);
     
-    Route::resource('categories', 'Admin\CategoriesController', ['as' => 'categories']);
+    Route::resource('categories',   'Admin\CategoriesController', ['as' => 'categories']);
     
-    Route::resource('products', 'Admin\ProductsController', ['as' => 'products']);
+    Route::resource('products',     'Admin\ProductsController', ['as' => 'products']);
 
 });
 
@@ -93,9 +93,8 @@ Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin', 'as' => 'ad
 
     // upload
     Route::any('photos/upload', 'Admin\PhotosController@upload');
-
-
-
+    Route::get('photos/getphotos', 'Admin\PhotosController@getJSONPhotos');
+    Route::get('photos/changesort', 'Admin\PhotosController@changesort');
 
 //URL get content
 //Route::get('{slug}', ['as' => 'getURL', 'uses' => 'ContentController@getBySlug', 'middleware'  => ['web']]);

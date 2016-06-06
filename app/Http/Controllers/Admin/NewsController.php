@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Content;
 use App\Models\News;
-use App\Models\Photos;
 use App\Models\Tags;
 use Illuminate\Http\Request;
 
@@ -60,9 +59,7 @@ class NewsController extends Controller
             $data->tags()->sync($request->chosencat);
         }
 
-
-        $pc = new PhotosController;
-        $pc->UpdatePhotos($request, $data->id);
+        $this->UpdatePhotos($request, $data->id);
 
         // redirect
         Session::flash('message', trans('common.saved'));
