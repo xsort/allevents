@@ -55,7 +55,7 @@ class PhotosController extends Controller
         $height         = Input::get('height');
         $valid_thumbs   = Input::get('thumbs');
 
-        dd($valid_thumbs);
+        //dd($valid_thumbs);
 
         if (is_numeric($width))     $this->width        = $width;
         if (is_numeric($height))    $this->height       = $height;

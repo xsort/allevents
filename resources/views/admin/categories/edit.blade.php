@@ -20,7 +20,7 @@
             <div class="form-group">
                 {{ Form::label('name', 'Заголовок', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-9">
-                    {{ Form::text('name', (isset($data->name) ? $data->name : old('name')), array('class' => 'col-sm-11 col-xs-12')) }}
+                    {{ Form::text('name[ru]', (isset($data->name) ? $data->name : old('name')), array('class' => 'col-sm-11 col-xs-12')) }}
                 </div>
             </div>
             <div class="form-group">
@@ -68,10 +68,10 @@
 
         <div class="tab-content">
             <div class="tab-pane active" id="ru">
-                {{-- {{ Form::textarea('description', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => 'editor')) }} --}}
+                {{ Form::textarea('description[ru]', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => 'editor')) }}
              </div>
              @include('admin.partials.meta')
-             {{--@include('admin.partials.photos', ['photos' => $data->photos, 'table' => 'news']) --}}
+            @include('admin.partials.photos', ['table' => 'categories', 'table_id' => isset($data->id) ? $data->id : 0, 'thumbs' => ['thumbs2', 'thumbs3']])
 </div>
 
 </div>

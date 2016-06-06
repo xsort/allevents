@@ -42,10 +42,10 @@ class CategoriesController extends Controller
 
         $data->name              = $request->name;
         $data->slug              = $request->slug;
-        $data->description       = $request->description;
-        $data->title             = $request->title;
-        $data->meta_keywords     = $request->meta_keywords;
-        $data->meta_description  = $request->meta_description;
+        //$data->description       = $request->description;
+        //$data->title             = $request->title;
+        //$data->meta_keywords     = $request->meta_keywords;
+        //$data->meta_description  = $request->meta_description;
         $data->save();
 
 

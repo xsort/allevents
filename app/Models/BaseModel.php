@@ -77,7 +77,7 @@ class BaseModel extends Model
     public function setNameAttribute($values) {
         foreach($values as $key=>$value){
             if ($key == "ru") {
-                $this->name = $value;
+                $this->attributes['name'] = $value;
                 continue;
             }
             $this->attributes['name_' . $key] = $value;
@@ -87,7 +87,7 @@ class BaseModel extends Model
     public function setDescriptionAttribute($values) {
         foreach($values as $key=>$value){
             if ($key == "ru") {
-                $this->description = $value;
+                $this->attributes['description'] = $value;
                 continue;
             }
             $this->attributes['description_' . $key] = $value;
