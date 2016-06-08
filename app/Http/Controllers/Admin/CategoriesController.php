@@ -17,7 +17,9 @@ class CategoriesController extends Controller
     }
 
     public function create(){
-        return view('admin.categories.edit');
+	    $categories = Categories::has('children')->lists('name','id');
+        return view('admin.categories.edit')->with('categories', $categories);
+        
     }
 
     public function store(Request $request)
@@ -42,13 +44,20 @@ class CategoriesController extends Controller
 
         $data->name              = $request->name;
         $data->slug              = $request->slug;
-        //$data->description       = $request->description;
-        //$data->title             = $request->title;
-        //$data->meta_keywords     = $request->meta_keywords;
-        //$data->meta_description  = $request->meta_description;
+        $data->description       = $request->description;
+        $data->title             = $request->title;
+        $data->meta_keywords     = $request->meta_keywords;
+
+        $data->meta_description  = $request->meta_description;
         $data->save();
 
         $this->UpdatePhotos($request, $data->id);
+        
+        
+        //categories
+        if ($request->parent) {
+            $data->parents()->sync($request->parent);
+        }
 
         // redirect
         Session::flash('message', trans('common.saved'));
@@ -73,8 +82,11 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
+	    
+	    $categories = Categories::has('children')->lists('name','id')->toArray();
         $data = Categories::find($id);
-        return view('admin.categories.edit')->with(compact('data'));
+        $parents = $data->parents->pluck('id')->toArray();
+        return view('admin.categories.edit')->with('data', $data)->with('categories', $categories)->with('parents',$parents);
     }
 
     /**
