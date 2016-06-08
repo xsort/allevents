@@ -9,16 +9,16 @@
         <b class="arrow"></b>
     </li>
     <li class="">
-        <a href="index.php?action=admin_products&a=categories">
+        <a href="admin/categories">
             <i class="menu-icon fa fa-book"></i>
             <span class="menu-text"> Категории</span>
         </a>
         <b class="arrow"></b>
     </li>
     <li class="">
-        <a href="index.php?action=admin_products&a=products">
+        <a href="admin/products">
             <i class="menu-icon fa fa-film"></i>
-            <span class="menu-text"> Фильмы</span>
+            <span class="menu-text"> Номенклатура</span>
         </a>
 
         <b class="arrow"></b>
