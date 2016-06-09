@@ -18,7 +18,7 @@
     <li class="">
         <a href="admin/products">
             <i class="menu-icon fa fa-film"></i>
-            <span class="menu-text"> Номенклатура</span>
+            <span class="menu-text"> Объекты </span>
         </a>
 
         <b class="arrow"></b>
