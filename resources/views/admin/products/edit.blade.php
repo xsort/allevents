@@ -4,15 +4,15 @@
 
 @section('centerbox')
     <div class="page-header">
-        <h1> <a href="{{ URL::to('admin/news') }}">Новости</a> <small><i class="ace-icon fa fa-angle-double-right"></i> Редактирование новости </small> </h1>
+        <h1> <a href="{{ URL::to('admin/products') }}">Объекты</a> <small><i class="ace-icon fa fa-angle-double-right"></i> Клубы, салоны, фотографы и пр. </small> </h1>
     </div>
 
     @include('admin.partials.errors')
 
     @if(!isset($data))
-    {{ Form::open(['url' => 'admin/news', 'class' => 'form-horizontal']) }}
+    {{ Form::open(['url' => 'admin/products', 'class' => 'form-horizontal']) }}
     @else
-    {{ Form::open(['url' => 'admin/news/' . $data->id, 'method' => 'put', 'class' => 'form-horizontal']) }}
+    {{ Form::open(['url' => 'admin/products/' . $data->id, 'method' => 'put', 'class' => 'form-horizontal']) }}
     @endif
             <!--<div class="form-group col-xs-12">
         <button id="submit_button1" type="submit" class="btn  btn-success" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить </button>
@@ -22,7 +22,19 @@
             <div class="form-group">
                 {{ Form::label('name', 'Заголовок', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-9">
-                    {{ Form::text('name', (isset($data->name) ? $data->name : old('name')), array('class' => 'col-sm-11 col-xs-12')) }}
+                    {{ Form::text('name[ru]', (isset($data->name) ? $data->name : old('name')), array('class' => 'col-sm-11 col-xs-12')) }}
+                </div>
+            </div>
+             <div class="form-group">
+                {{ Form::label('name', 'Заголовок рум', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-9">
+                    {{ Form::text('name[ro]', (isset($data->name_ro) ? $data->name_ro : old('name_ro')), array('class' => 'col-sm-11 col-xs-12')) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ Form::label('name', 'Заголовок англ', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-9">
+                    {{ Form::text('name[en]', (isset($data->name_en) ? $data->name_en : old('name_en')), array('class' => 'col-sm-11 col-xs-12')) }}
                 </div>
             </div>
             <div class="form-group">
