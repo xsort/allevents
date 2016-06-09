@@ -38,13 +38,14 @@ class ProductsController extends Controller
         }else{
             $data = Products::find($id);
         }
+		//dd($request);
 
         $data->name              = $request->name;
         //$data->created_at        = $request->date;
-        $data->slug              = $request->slug;
-        $data->description       = $request->description;
-        $data->meta_description  = $request->meta_description;
-        $data->meta_keywords     = $request->meta_keywords;
+        //$data->slug              = $request->slug;
+        //$data->description       = $request->description;
+        //$data->meta_description  = $request->meta_description;
+        //$data->meta_keywords     = $request->meta_keywords;
         $data->save();
 
         // redirect
@@ -70,10 +71,9 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $data = News::find($id);
-        $tags = Tags::all();
-        return view('admin.news.edit')->with(compact('data'))
-                                      ->with(compact('tags'));
+        $data = Products::find($id);
+        //$tags = Tags::all();
+        return view('admin.products.edit')->with(compact('data'));
     }
 
     /**
