@@ -17,7 +17,7 @@ class CategoriesController extends Controller
     }
 
     public function create(){
-	    $categories = Categories::has('children')->lists('name','id');
+	    $categories = Categories::lists('name','id')->toArray();
         return view('admin.categories.edit')->with('categories', $categories);
         
     }
@@ -83,7 +83,7 @@ class CategoriesController extends Controller
     public function edit($id)
     {
 	    
-	    $categories = Categories::has('children')->lists('name','id')->toArray();
+	    $categories = Categories::lists('name','id')->toArray();
         $data = Categories::find($id);
         $parents = $data->parents->pluck('id')->toArray();
         return view('admin.categories.edit')->with('data', $data)->with('categories', $categories)->with('parents',$parents);

@@ -9,12 +9,12 @@
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="row">
                     <a href="{{$category->slug}}">
-                        <div class="menu block-{{rand(1,8)}}">
+                        <div class="menu block-{{rand(1,9)}}">
                             <div class="main-menu-image" style="background: url('uploaded/thumbs/{{isset($category->photos{0}) ? $category->photos{0}->source : 'nophoto.png'}}');"></div>
                             <div class="main-menu-filter"></div>
                             <h3 class="main-menu-title"><span>{{$category->name}}</span></h3>
                             <div class="divider-title"></div>
-                            <span class="main-menu-descripton">{{$category->description_short}}</span>
+                            <span class="main-menu-descripton">{{$category->description}}</span>
                             <a href="{{$category->slug}}" class="main-menu-button"><span>Посмотреть все</span></a>
                         </div>
                     </a>
