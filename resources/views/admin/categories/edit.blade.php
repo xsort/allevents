@@ -6,7 +6,46 @@
     <div class="page-header">
         <h1> <a href="{{ URL::to('admin/categories') }}">Категории</a> <small><i class="ace-icon fa fa-angle-double-right"></i> Редактирование категории </small> </h1>
     </div>
+    
+     <form action="index.php?action=admin_products&a=save" method="POST" enctype="multipart/form-data" name='MainForm' id="editForm" class="form-horizontal"> 
+    <input type="hidden" name="id" value="{$product.products_id}" /> 
 
+    <div class="form-actions">
+        <div class="row center">
+            <div class="col-sm-2">
+                <button id="submit_button1" type="submit" class="btn  btn-success btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить </button>
+            </div>
+            <!--
+            <div class="col-sm-2">
+                <button id="submit_button1" type="submit" class="btn  btn-yellow btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить и закрыть</button>
+            </div>-->
+            <div class="col-sm-2 ">
+                <label>
+                    <input class="ace" type="checkbox" name="visibility" {if !isset($product) || $product.visibility==1}checked{/if}> 
+                    <span class="lbl"> На главную </span>
+                </label>
+            </div>
+            <div class="col-sm-4">
+                <div class="profile-contact-info">
+                    <div class="profile-links align-left">
+                        
+                        
+                        <div class="btn btn-link">
+                            <i class="ace-icon fa fa- bigger-120 green"></i>
+                            ID: {{ $data->id }}
+                        </div>
+                        @if (isset($data->updated_at))
+                        <div class="btn btn-link">
+                            <i class="ace-icon fa fa-calendar bigger-120 green"></i>
+                             {{ $data->updated_at }}
+                        </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.row -->
+    </div><!-- /.form-actions -->
 
     @include('admin.partials.errors')
 
@@ -21,7 +60,7 @@
             <div class="form-group">
                 {{ Form::label('name', 'Заголовок', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-9">
-                    {{ Form::text('name[ru]', (isset($data->name) ? $data->name : old('name')), array('class' => 'col-sm-11 col-xs-12')) }}
+                    {{ Form::text('name[ru]', (isset($data->name) ? $data->name : old('name')), array('class' => 'col-sm-11 col-xs-12 name_ru')) }}
                 </div>
             </div>
             <div class="form-group">
@@ -37,21 +76,17 @@
                 </div>
             </div>
             <div class="form-group">
-                {{ Form::label('slug', 'URL', ['class'=>'col-sm-3 control-label no-padding-right']) }}
-                <div class="col-sm-9">
-                    {{ Form::text('slug', (isset($data->slug) ? $data->slug : old('slug')), array('class' => 'col-sm-11 col-xs-12')) }}
+           
+                <div class="col-sm-6 col-sm-offset-6">
+                    <label> 
+                    <input type="checkbox" class="ace" name="stock" checked="">
+                    <span class="lbl"> на главную </span> 
+                </label>
                 </div>
             </div>
             
-            <div class="form-group">
-				{{ Form::label('parent', 'родитель', ['class'=>'col-sm-3 control-label no-padding-right']) }}
 				
-				<div class="col-sm-5">
-					{{ Form::select('parent[]', $categories, $parents, ['multiple'=>'multiple','id'=>'chosencat','class'=>'col-sm-11 control-label no-padding-right']) }}
-				</div>
-			</div>
-				
-			</div>
+			
             
         </div><!-- /.col-sm-6 -->
 
@@ -70,11 +105,30 @@
                 </div>
             </div>
             <div class="form-group">
+                {{ Form::label('slug', 'URL', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-9">
+                    {{ Form::text('slug', (isset($data->slug) ? $data->slug : old('slug')), array('class' => 'col-sm-11 col-xs-12')) }}
+                </div>
+            </div>
+            
+            <div class="form-group">
+                {{ Form::label('parent', 'родитель', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                
+                <div class="col-sm-9">
+                    @if(isset($parents))
+                    {{ Form::select('parent[]', array('null' => 'Выберите категорию') + $categories, $parents, ['multiple'=>'multiple','id'=>'chosencat','class'=>'col-sm-11 control-label no-padding-right']) }}
+                     @else
+                     {{ Form::select('parent[]', array('null' => 'Please select one option') + $categories, ['multiple'=>'multiple','id'=>'chosencat','class'=>'col-sm-11 control-label no-padding-right']) }}
+                     @endif
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="col-sm-6 control-label no-padding-right"> Изменен: {{ $data->updated_at or ''}}</label>
             </div>
 
         </div><!-- /.col-sm-6 -->
     </div><!-- /.row -->
+    <hr>
     <div class="space"></div>
     <div class="tabbable">
         <ul id="myTab4" class="nav nav-tabs padding-12 tab-color-blue background-blue">
@@ -91,16 +145,40 @@
 
         <div class="tab-content">
             <div class="tab-pane active" id="ru">
-                {{ Form::textarea('description[ru]', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => 'editor')) }}
-                {{ Form::textarea('description[ro]', (isset($data->description_ro) ? $data->description_ro : old('description_ro')), array('class' => 'ckeditor', 'id' => 'editor')) }}
-                {{ Form::textarea('description[en]', (isset($data->description_en) ? $data->description_en : old('description_en')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+
+                <div class="tabbable  tabs-left">
+
+                 <ul id="myTab" class="nav nav-tabs">
+                   <li class="active">
+                      <a href="#descRu" data-toggle="tab">Описание на русском</a>
+                   </li>
+                   <li>
+                      <a href="#descRo" data-toggle="tab">Описание на румынском</a>
+                   </li>
+                   <li>
+                      <a href="#descEn" data-toggle="tab">Описание на английском</a>
+                   </li>
+                 </ul>
+
+                 <div class="tab-content">
+                   <div class="tab-pane in active" id="descRu">
+                     {{ Form::textarea('description[ru]', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+                   </div>
+                   <div class="tab-pane" id="descRo">
+                     {{ Form::textarea('description[ro]', (isset($data->description_ro) ? $data->description_ro : old('description_ro')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+                   </div>
+                   <div class="tab-pane" id="descEn">
+                     {{ Form::textarea('description[en]', (isset($data->description_en) ? $data->description_en : old('description_en')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+                   </div>
+
+                 </div>
+
+                </div>
              </div>
-             
-              
-             
+
              @include('admin.partials.meta')
             @include('admin.partials.photos', ['table' => 'categories', 'table_id' => isset($data->id) ? $data->id : 0])
-</div>
+        </div>
 
 </div>
 
@@ -136,8 +214,49 @@ jQuery(function($) {
 })
 </script>
 
+<script>
+if($(window).width() < 640){
+    $('.tabbable').removeClass('tabs-left');
+}
+</script>
+
+
 {!! HTML::script('ace/assets/js/chosen.jquery.min.js') !!}
 <script>
 $("#chosencat").chosen();
 </script>
+
+    <script>
+
+        $(document).ready(function(){
+         initSEFonEnter();   
+        });
+
+        transliterate = (
+        function() {
+            var
+                rus = "щ   ш  ч  ц  ю  я  ё  ж  ъ  ы  э  а б в г д е з и й к л м н о п р с т у ф х ь".split(/ +/g),
+                eng = "shh sh ch cz yu ya yo zh i  y  e  a b v g d e z i j k l m n o p r s t u f x i".split(/ +/g)
+            ;
+            return function(text, engToRus) {
+                var x;
+                for(x = 0; x < rus.length; x++) {
+                    text = text.split(engToRus ? eng[x] : rus[x]).join(engToRus ? rus[x] : eng[x]);
+                    text = text.split(engToRus ? eng[x].toUpperCase() : rus[x].toUpperCase()).join(engToRus ? rus[x].toUpperCase() : eng[x].toUpperCase());
+                }
+                text = text.toLowerCase().replace(/[^a-zA-Z ]/g, "").split(' ').join('-');
+                return text;
+            }
+        }
+    )();
+
+    function initSEFonEnter(){
+        $("input.name_ru").keyup(function() {
+            var a = $(this).val();
+            var b = transliterate(a);
+            $("input[name=slug]").val(b);
+        });
+    }
+
+    </script>
 @endsection
