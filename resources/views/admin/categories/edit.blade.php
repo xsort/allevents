@@ -7,7 +7,45 @@
         <h1> <a href="{{ URL::to('admin/categories') }}">Категории</a> <small><i class="ace-icon fa fa-angle-double-right"></i> Редактирование категории </small> </h1>
     </div>
     
-    
+     <form action="index.php?action=admin_products&a=save" method="POST" enctype="multipart/form-data" name='MainForm' id="editForm" class="form-horizontal"> 
+    <input type="hidden" name="id" value="{$product.products_id}" /> 
+
+    <div class="form-actions">
+        <div class="row center">
+            <div class="col-sm-2">
+                <button id="submit_button1" type="submit" class="btn  btn-success btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить </button>
+            </div>
+            <!--
+            <div class="col-sm-2">
+                <button id="submit_button1" type="submit" class="btn  btn-yellow btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить и закрыть</button>
+            </div>-->
+            <div class="col-sm-2 ">
+                <label>
+                    <input class="ace" type="checkbox" name="visibility" {if !isset($product) || $product.visibility==1}checked{/if}> 
+                    <span class="lbl"> На главную </span>
+                </label>
+            </div>
+            <div class="col-sm-4">
+                <div class="profile-contact-info">
+                    <div class="profile-links align-left">
+                        
+                        
+                        <div class="btn btn-link">
+                            <i class="ace-icon fa fa- bigger-120 green"></i>
+                            ID: {{ $data->id }}
+                        </div>
+                        @if (isset($data->updated_at))
+                        <div class="btn btn-link">
+                            <i class="ace-icon fa fa-calendar bigger-120 green"></i>
+                             {{ $data->updated_at }}
+                        </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.row -->
+    </div><!-- /.form-actions -->
 
     @include('admin.partials.errors')
 
