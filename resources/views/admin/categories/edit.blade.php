@@ -6,7 +6,8 @@
     <div class="page-header">
         <h1> <a href="{{ URL::to('admin/categories') }}">Категории</a> <small><i class="ace-icon fa fa-angle-double-right"></i> Редактирование категории </small> </h1>
     </div>
-
+    
+    
 
     @include('admin.partials.errors')
 
@@ -21,7 +22,7 @@
             <div class="form-group">
                 {{ Form::label('name', 'Заголовок', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-9">
-                    {{ Form::text('name[ru]', (isset($data->name) ? $data->name : old('name')), array('class' => 'col-sm-11 col-xs-12')) }}
+                    {{ Form::text('name[ru]', (isset($data->name) ? $data->name : old('name')), array('class' => 'col-sm-11 col-xs-12 name_ru')) }}
                 </div>
             </div>
             <div class="form-group">
@@ -34,6 +35,15 @@
                 {{ Form::label('name', 'Заголовок англ', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-9">
                     {{ Form::text('name[en]', (isset($data->name_en) ? $data->name_en : old('name_en')), array('class' => 'col-sm-11 col-xs-12')) }}
+                </div>
+            </div>
+            <div class="form-group">
+           
+                <div class="col-sm-6 col-sm-offset-6">
+                    <label> 
+                    <input type="checkbox" class="ace" name="stock" checked="">
+                    <span class="lbl"> на главную </span> 
+                </label>
                 </div>
             </div>
             
@@ -68,7 +78,7 @@
                 
                 <div class="col-sm-9">
                     @if(isset($parents))
-                    {{ Form::select('parent[]', array('null' => 'Please select one option') + $categories, $parents, ['multiple'=>'multiple','id'=>'chosencat','class'=>'col-sm-11 control-label no-padding-right']) }}
+                    {{ Form::select('parent[]', array('null' => 'Выберите категорию') + $categories, $parents, ['multiple'=>'multiple','id'=>'chosencat','class'=>'col-sm-11 control-label no-padding-right']) }}
                      @else
                      {{ Form::select('parent[]', array('null' => 'Please select one option') + $categories, ['multiple'=>'multiple','id'=>'chosencat','class'=>'col-sm-11 control-label no-padding-right']) }}
                      @endif
@@ -80,6 +90,7 @@
 
         </div><!-- /.col-sm-6 -->
     </div><!-- /.row -->
+    <hr>
     <div class="space"></div>
     <div class="tabbable">
         <ul id="myTab4" class="nav nav-tabs padding-12 tab-color-blue background-blue">
@@ -165,8 +176,49 @@ jQuery(function($) {
 })
 </script>
 
+<script>
+if($(window).width() < 640){
+    $('.tabbable').removeClass('tabs-left');
+}
+</script>
+
+
 {!! HTML::script('ace/assets/js/chosen.jquery.min.js') !!}
 <script>
 $("#chosencat").chosen();
 </script>
+
+    <script>
+
+        $(document).ready(function(){
+         initSEFonEnter();   
+        });
+
+        transliterate = (
+        function() {
+            var
+                rus = "щ   ш  ч  ц  ю  я  ё  ж  ъ  ы  э  а б в г д е з и й к л м н о п р с т у ф х ь".split(/ +/g),
+                eng = "shh sh ch cz yu ya yo zh i  y  e  a b v g d e z i j k l m n o p r s t u f x i".split(/ +/g)
+            ;
+            return function(text, engToRus) {
+                var x;
+                for(x = 0; x < rus.length; x++) {
+                    text = text.split(engToRus ? eng[x] : rus[x]).join(engToRus ? rus[x] : eng[x]);
+                    text = text.split(engToRus ? eng[x].toUpperCase() : rus[x].toUpperCase()).join(engToRus ? rus[x].toUpperCase() : eng[x].toUpperCase());
+                }
+                text = text.toLowerCase().replace(/[^a-zA-Z ]/g, "").split(' ').join('-');
+                return text;
+            }
+        }
+    )();
+
+    function initSEFonEnter(){
+        $("input.name_ru").keyup(function() {
+            var a = $(this).val();
+            var b = transliterate(a);
+            $("input[name=slug]").val(b);
+        });
+    }
+
+    </script>
 @endsection
