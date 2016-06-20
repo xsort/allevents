@@ -7,9 +7,18 @@
         <h1> <a href="{{ URL::to('admin/categories') }}">Категории</a> <small><i class="ace-icon fa fa-angle-double-right"></i> Редактирование категории </small> </h1>
     </div>
     
-     <form action="index.php?action=admin_products&a=save" method="POST" enctype="multipart/form-data" name='MainForm' id="editForm" class="form-horizontal"> 
-    <input type="hidden" name="id" value="{$product.products_id}" /> 
 
+
+    
+
+    @include('admin.partials.errors')
+
+    @if(!isset($data))
+    {{ Form::open(['url' => 'admin/categories', 'class' => 'form-horizontal']) }}
+    @else
+    {{ Form::open(['url' => 'admin/categories/' . $data->id, 'method' => 'put', 'class' => 'form-horizontal']) }}
+    @endif
+    
     <div class="form-actions">
         <div class="row center">
             <div class="col-sm-2">
@@ -29,12 +38,12 @@
                 <div class="profile-contact-info">
                     <div class="profile-links align-left">
                         
-                        
+                        @if (isset($data))
                         <div class="btn btn-link">
                             <i class="ace-icon fa fa- bigger-120 green"></i>
                             ID: {{ $data->id }}
                         </div>
-                        @if (isset($data->updated_at))
+                        
                         <div class="btn btn-link">
                             <i class="ace-icon fa fa-calendar bigger-120 green"></i>
                              {{ $data->updated_at }}
@@ -46,14 +55,6 @@
 
         </div><!-- /.row -->
     </div><!-- /.form-actions -->
-
-    @include('admin.partials.errors')
-
-    @if(!isset($data))
-    {{ Form::open(['url' => 'admin/categories', 'class' => 'form-horizontal']) }}
-    @else
-    {{ Form::open(['url' => 'admin/categories/' . $data->id, 'method' => 'put', 'class' => 'form-horizontal']) }}
-    @endif
 
     <div class="row">
         <div class="col-sm-6">
@@ -75,15 +76,7 @@
                     {{ Form::text('name[en]', (isset($data->name_en) ? $data->name_en : old('name_en')), array('class' => 'col-sm-11 col-xs-12')) }}
                 </div>
             </div>
-            <div class="form-group">
-           
-                <div class="col-sm-6 col-sm-offset-6">
-                    <label> 
-                    <input type="checkbox" class="ace" name="stock" checked="">
-                    <span class="lbl"> на главную </span> 
-                </label>
-                </div>
-            </div>
+            
             
 				
 			
@@ -116,9 +109,9 @@
                 
                 <div class="col-sm-9">
                     @if(isset($parents))
-                    {{ Form::select('parent[]', array('null' => 'Выберите категорию') + $categories, $parents, ['multiple'=>'multiple','id'=>'chosencat','class'=>'col-sm-11 control-label no-padding-right']) }}
+                    {{ Form::select('parent[]',  $categories, $parents, ['multiple'=>'multiple','id'=>'chosencat','class'=>'col-sm-11 control-label no-padding-right']) }}
                      @else
-                     {{ Form::select('parent[]', array('null' => 'Please select one option') + $categories, ['multiple'=>'multiple','id'=>'chosencat','class'=>'col-sm-11 control-label no-padding-right']) }}
+                     {{ Form::select('parent[]', $categories, '', ['multiple'=>'multiple','id'=>'chosencat','class'=>'col-sm-11 control-label no-padding-right']) }}
                      @endif
                 </div>
             </div>
