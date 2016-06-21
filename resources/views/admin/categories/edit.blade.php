@@ -46,7 +46,7 @@
                         
                         <div class="btn btn-link">
                             <i class="ace-icon fa fa-calendar bigger-120 green"></i>
-                             {{ $data->updated_at }}
+                             Изменен: {{ $data->updated_at }}
                         </div>
                         @endif
                     </div>
@@ -109,16 +109,12 @@
                 
                 <div class="col-sm-9">
                     @if(isset($parents))
-                    {{ Form::select('parent[]',  $categories, $parents, ['multiple'=>'multiple','id'=>'chosencat','class'=>'col-sm-11 control-label no-padding-right']) }}
+                    {{ Form::select('parent[]',  $categories, $parents, ['multiple'=>'multiple','id'=>'chosencat','class'=>'tag-input-style col-sm-11 control-label no-padding-right']) }}
                      @else
-                     {{ Form::select('parent[]', $categories, '', ['multiple'=>'multiple','id'=>'chosencat','class'=>'col-sm-11 control-label no-padding-right']) }}
+                     {{ Form::select('parent[]', $categories, '', ['multiple'=>'multiple','id'=>'chosencat','class'=>'tag-input-style col-sm-11 control-label no-padding-right']) }}
                      @endif
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-sm-6 control-label no-padding-right"> Изменен: {{ $data->updated_at or ''}}</label>
-            </div>
-
         </div><!-- /.col-sm-6 -->
     </div><!-- /.row -->
     <hr>
