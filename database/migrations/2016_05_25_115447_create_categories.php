@@ -25,6 +25,7 @@ class CreateCategories extends Migration
 			$t->text('description_short_en');
 			$t->tinyInteger('menu_type_id');
 			$t->boolean('enabled')->default(true);
+			$t->boolean('top');
             $t->integer('views');
             $t->integer('sort');
             $t->string('slug', 200)->index('idx_slug');

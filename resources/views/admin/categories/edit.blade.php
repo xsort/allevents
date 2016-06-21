@@ -30,7 +30,7 @@
             </div>-->
             <div class="col-sm-2 ">
                 <label>
-                    <input class="ace" type="checkbox" name="visibility" {if !isset($product) || $product.visibility==1}checked{/if}> 
+                	{{ Form::checkbox('top',  1, ($data->top == 1 ? true : false), ['class' => 'ace']) }}
                     <span class="lbl"> На главную </span>
                 </label>
             </div>

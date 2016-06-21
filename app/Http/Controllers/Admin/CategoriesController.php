@@ -49,6 +49,9 @@ class CategoriesController extends Controller
         $data->meta_keywords     = $request->meta_keywords;
 
         $data->meta_description  = $request->meta_description;
+        
+        $data->top              = $request->top;
+        
         $data->save();
 
         $this->UpdatePhotos($request, $data->id);
