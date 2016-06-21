@@ -4,8 +4,10 @@
     <div class="row">
         <div class="col-md-9 col-sm-12">
         
+
+        
         	@foreach ($categories as $category)
-        	@if ($category->children->count())
+        	
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="row">
                     <a href="{{$category->slug}}">
@@ -20,7 +22,7 @@
                     </a>
                 </div>
             </div>
-            @endif
+            
             @endforeach
 
 <!-- test 1-->
