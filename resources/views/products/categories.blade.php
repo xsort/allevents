@@ -11,13 +11,10 @@
 			@foreach ($data->children as $subcat)
 			    <a href="{{$subcat->slug}}" class="category-section">
                     <div class="category-img">
-                        <img src="/uploaded/thumbs/{{isset($subcat->photos{0}) ? $subcat->photos{0}->source : 'nophoto.png'}}" alt="">
+                        <img src="/uploaded/{{isset($subcat->photos{0}) ? $subcat->photos{0}->source : 'nophoto.png'}}" alt="">
                     </div>
                     <div class="category-title">
                         {{ $subcat->name }}
-                        @if (isset($subcat->photos{0}))
-                         {{$subcat->photos{0}->source }} 
-                        @endif
                     </div>
                 </a>
 			@endforeach
