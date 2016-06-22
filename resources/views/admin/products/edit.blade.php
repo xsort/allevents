@@ -16,9 +16,44 @@
     @else
     {{ Form::open(['url' => 'admin/products/' . $data->id, 'method' => 'put', 'class' => 'form-horizontal']) }}
     @endif
-            <!--<div class="form-group col-xs-12">
-        <button id="submit_button1" type="submit" class="btn  btn-success" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить </button>
-    </div>-->
+    
+        <div class="form-actions">
+        <div class="row center">
+            <div class="col-sm-2">
+                <button id="submit_button1" type="submit" class="btn  btn-success btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить </button>
+            </div>
+            <!--
+            <div class="col-sm-2">
+                <button id="submit_button1" type="submit" class="btn  btn-yellow btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить и закрыть</button>
+            </div>-->
+            <div class="col-sm-2 ">
+                <label>
+                    {{ Form::checkbox('top',  1, ($data->top == 1 ? true : false), ['class' => 'ace']) }}
+                    <span class="lbl"> На главную </span>
+                </label>
+            </div>
+            <div class="col-sm-4">
+                <div class="profile-contact-info">
+                    <div class="profile-links align-left">
+                        
+                        @if (isset($data))
+                        <div class="btn btn-link">
+                            <i class="ace-icon fa fa- bigger-120 green"></i>
+                            ID: {{ $data->id }}
+                        </div>
+                        
+                        <div class="btn btn-link">
+                            <i class="ace-icon fa fa-calendar bigger-120 green"></i>
+                             Изменен: {{ $data->updated_at }}
+                        </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.row -->
+    </div><!-- /.form-actions -->
+    
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
@@ -78,11 +113,7 @@
             
 
 
-            @if (isset($data->updated_at))
-                <div class="form-group">
-                    <label class="col-sm-6 control-label no-padding-right"> Изменен: {{ $data->updated_at }}</label>
-                </div>
-            @endif
+            
         </div><!-- /.col-sm-6 -->
         
     </div><!-- /.row -->
@@ -185,9 +216,7 @@
             <li class="active">
                 <a href="#ru" data-toggle="tab">Описание</a>
             </li>
-            <li>
-                <a href="#slides" data-toggle="tab">Слайдшоу</a>
-            </li>
+
             <li>
                 <a href="#plan" data-toggle="tab">План зала</a>
             </li>
@@ -239,7 +268,7 @@
                 </div>
              </div>
 
-            <div class="tab-pane" id="photos">
+            <div class="tab-pane" id="photo-galleries">
                  <textarea class="form-control" name="photootchet" rows="2">Тут будет фотоотчет</textarea>
             </div>
 
