@@ -45,7 +45,7 @@ Route::group(['middleware' => ['web']], function () {
     
     Route::get('{slug}/plan', 'ProductsController@getPlan');
     
-   // Route::get('{slug}', 'CommonController@getSlug');
+    Route::get('{slug}', 'CommonController@getSlug');
 
 });
 
