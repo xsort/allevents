@@ -8,13 +8,14 @@
     table   = name of table (optional)
 -->
 
-<div class="tab-pane " id="{{$div_id or 'photos'}}">
+<div class="tab-pane {{isset($class) ? $class : 0}}" id="{{$div_id or 'photos'}}">
         <div id="queue"></div>
         <input class="file_upload" name="file_upload" type="file" multiple="true"/>
     <ul class="ace-thumbnails clearfix photos">
 
     </ul>
 </div>
+
 
 {{ HTML::script('ace/assets/js/uploadifive/jquery.uploadifive.min.js') }}
 {{ HTML::style('ace/assets/js/uploadifive/uploadifive.css') }}

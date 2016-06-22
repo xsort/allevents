@@ -1,5 +1,5 @@
 @extends('admin.body')
-@section('title', 'Новости')
+@section('title', 'Объекты')
 
 
 @section('centerbox')
@@ -7,45 +7,7 @@
         <h1> <a href="{{ URL::to('admin/products') }}">Объекты</a> <small><i class="ace-icon fa fa-angle-double-right"></i> Клубы, салоны, фотографы и пр. </small> </h1>
     </div>
 
-    <form action="index.php?action=admin_products&a=save" method="POST" enctype="multipart/form-data" name='MainForm' id="editForm" class="form-horizontal"> 
-    <input type="hidden" name="id" value="{$product.products_id}" /> 
 
-    <div class="form-actions">
-        <div class="row center">
-            <div class="col-sm-2">
-                <button id="submit_button1" type="submit" class="btn  btn-success btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить </button>
-            </div>
-            <!--
-            <div class="col-sm-2">
-                <button id="submit_button1" type="submit" class="btn  btn-yellow btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить и закрыть</button>
-            </div>-->
-            <div class="col-sm-2 ">
-                <label>
-                    <input class="ace" type="checkbox" name="visibility" {if !isset($product) || $product.visibility==1}checked{/if}> 
-                    <span class="lbl"> На главную </span>
-                </label>
-            </div>
-            <div class="col-sm-4">
-                <div class="profile-contact-info">
-                    <div class="profile-links align-left">
-                        
-                        
-                        <div class="btn btn-link">
-                            <i class="ace-icon fa fa- bigger-120 green"></i>
-                            ID: {{ $data->id }}
-                        </div>
-                        @if (isset($data->updated_at))
-                        <div class="btn btn-link">
-                            <i class="ace-icon fa fa-calendar bigger-120 green"></i>
-                             {{ $data->updated_at }}
-                        </div>
-                        @endif
-                    </div>
-                </div>
-            </div>
-
-        </div><!-- /.row -->
-    </div><!-- /.form-actions -->
 
     @include('admin.partials.errors')
 
@@ -65,7 +27,7 @@
                     {{ Form::text('name[ru]', (isset($data->name) ? $data->name : old('name')), array('class' => 'col-sm-11 col-xs-12 name_ru')) }}
                 </div>
             </div>
-             <div class="form-group">
+            <div class="form-group">
                 {{ Form::label('name', 'Заголовок рум', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-9">
                     {{ Form::text('name[ro]', (isset($data->name_ro) ? $data->name_ro : old('name_ro')), array('class' => 'col-sm-11 col-xs-12')) }}
@@ -117,20 +79,21 @@
 
 
             @if (isset($data->updated_at))
-                <!--<div class="form-group">
+                <div class="form-group">
                     <label class="col-sm-6 control-label no-padding-right"> Изменен: {{ $data->updated_at }}</label>
-                </div>-->
+                </div>
             @endif
         </div><!-- /.col-sm-6 -->
+        
     </div><!-- /.row -->
 
     <hr>
 
-    <div class="row">
+   <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
                 {{ Form::label('parent', 'Тип заведения', ['class'=>'col-sm-3 control-label no-padding-right']) }}
-                
+           
                 <div class="col-sm-9">
                     <select multiple data-placeholder="выберите категорию" id="chosencat" name="chosencat[]"  multiple="multiple" class="chosen-select tag-input-style col-sm-11 col-xs-12">
                         <option value="{$c.id}" {if $c.level<0}disabled{/if} {if in_array($c.id,$chosencat)}selected="selected"{/if}>Бар
@@ -168,11 +131,13 @@
                             <li class="active">
                                 <a href="#photos"  data-toggle="tab">Лого</a>
                             </li>
+                           
 
                             <div class="center"> <span class="label label-xlg label-purple">Логотип заведения</span></div>
                         </ul>
                     
                         <div class="tab-content">
+                        @include('admin.partials.photos', ['table' => 'products', 'class' => 'active', 'table_id' => isset($data->id) ? $data->id : 0] )
                            
                         </div>
 
@@ -203,7 +168,7 @@
                     
                         <div class="tab-content">
                             <div class="tab-pane form-group no-margin active" id="short_ru">
-                                <textarea class="form-control" name="description_short_ru" rows="2">Lorem ipsum dolor sit amet, consectetur adipisicing.</textarea>
+                                <textarea class="form-control" name="description_short" rows="2">Lorem ipsum dolor sit amet, consectetur adipisicing.</textarea>
                             </div>
                             <div class="tab-pane form-group no-margin" id="short_ro">
                                 <textarea class="form-control" name="description_short_ro" rows="2"></textarea>
@@ -227,13 +192,13 @@
                 <a href="#ru" data-toggle="tab">Описание</a>
             </li>
             <li>
-                <a href="#photos" data-toggle="tab">Слайдшоу</a>
+                <a href="#slides" data-toggle="tab">Слайдшоу</a>
             </li>
             <li>
                 <a href="#plan" data-toggle="tab">План зала</a>
             </li>
             <li>
-                <a href="#photor" data-toggle="tab">Фотоотчет</a>
+                <a href="#photo-galleries" data-toggle="tab">Фотоотчет</a>
             </li>
             <li>
                 <a href="#videor" data-toggle="tab">Видеоотчет</a>
@@ -280,7 +245,7 @@
                 </div>
              </div>
 
-            <div class="tab-pane" id="photor">
+            <div class="tab-pane" id="photos">
                  <textarea class="form-control" name="photootchet" rows="2">Тут будет фотоотчет</textarea>
             </div>
 
@@ -294,7 +259,7 @@
 
 
             @include('admin.partials.meta')
-            @include('admin.partials.photos', ['table' => 'products', 'table_id' => isset($data->id) ? $data->id : 0])
+            
         </div>
 
     <div class="form-actions">

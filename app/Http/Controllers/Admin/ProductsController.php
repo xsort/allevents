@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Products;
+use Illuminate\Support\Facades\Session;
 
 class ProductsController extends Controller
 {
@@ -41,12 +42,14 @@ class ProductsController extends Controller
 		//dd($request);
 
         $data->name              = $request->name;
-        //$data->created_at        = $request->date;
-        //$data->slug              = $request->slug;
-        //$data->description       = $request->description;
-        //$data->meta_description  = $request->meta_description;
-        //$data->meta_keywords     = $request->meta_keywords;
+        $data->created_at        = $request->date;
+        $data->slug              = $request->slug;
+        $data->description       = $request->description;
+        $data->meta_description  = $request->meta_description;
+        $data->meta_keywords     = $request->meta_keywords;
         $data->save();
+        
+        $this->UpdatePhotos($request, $data->id);
 
         // redirect
         Session::flash('message', trans('common.saved'));

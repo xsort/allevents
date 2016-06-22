@@ -45,6 +45,8 @@ Route::group(['middleware' => ['web']], function () {
     
     Route::get('{slug}/plan', 'ProductsController@getPlan');
     
+    Route::get('admin', 'Admin\AdminController@index');
+    
     Route::get('{slug}', 'CommonController@getSlug');
 
 });
@@ -56,6 +58,8 @@ Route::group(['middleware' => ['web']], function () {
  *  admin panel
  *
  */
+ 
+ 
 Route::get('admin/login', [
     'uses'          => 'Admin\AdminController@getLogin',
     'middleware'    => ['web']
