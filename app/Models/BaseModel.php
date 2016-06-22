@@ -93,6 +93,16 @@ class BaseModel extends Model
             $this->attributes['description_' . $key] = $value;
         }
     }
+    
+    public function setDescriptionShortAttribute($values) {
+        foreach($values as $key=>$value){
+            if ($key == "ru") {
+                $this->attributes['description_short'] = $value;
+                continue;
+            }
+            $this->attributes['description_short_' . $key] = $value;
+        }
+    }
 
     public function setUpdatedAtAttribute($value)
     {

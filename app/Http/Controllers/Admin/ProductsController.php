@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Products;
 use Illuminate\Support\Facades\Session;
+use App\Models\Categories;
+
 
 class ProductsController extends Controller
 {
@@ -45,6 +47,7 @@ class ProductsController extends Controller
         $data->created_at        = $request->date;
         $data->slug              = $request->slug;
         $data->description       = $request->description;
+        $data->description_short = $request->description_short;
         $data->meta_description  = $request->meta_description;
         $data->meta_keywords     = $request->meta_keywords;
         $data->save();
@@ -76,7 +79,13 @@ class ProductsController extends Controller
     {
         $data = Products::find($id);
         //$tags = Tags::all();
-        return view('admin.products.edit')->with(compact('data'));
+        $categories = Categories::lists('name','id')->toArray();
+        return view('admin.products.edit')->with('data', $data)->with('categories', $categories);
+        
+        
+ 
+        //$parents = $data->parents->pluck('id')->toArray();
+        //return view('admin.categories.edit')->with('data', $data)->with('categories', $categories)->with('parents',$parents);
     }
 
     /**

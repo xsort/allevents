@@ -92,21 +92,15 @@
    <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                {{ Form::label('parent', 'Тип заведения', ['class'=>'col-sm-3 control-label no-padding-right']) }}
-           
+                {{ Form::label('parent', 'родитель', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                
                 <div class="col-sm-9">
-                    <select multiple data-placeholder="выберите категорию" id="chosencat" name="chosencat[]"  multiple="multiple" class="chosen-select tag-input-style col-sm-11 col-xs-12">
-                        <option value="{$c.id}" {if $c.level<0}disabled{/if} {if in_array($c.id,$chosencat)}selected="selected"{/if}>Бар
-                        </option>
-                        <option value="{$c.id}" {if $c.level<0}disabled{/if} {if in_array($c.id,$chosencat)}selected="selected"{/if}>Клуб
-                        </option>
-                        <option value="{$c.id}" {if $c.level<0}disabled{/if} {if in_array($c.id,$chosencat)}selected="selected"{/if}>Ресторан
-                        </option>
-                        <option value="{$c.id}" {if $c.level<0}disabled{/if} {if in_array($c.id,$chosencat)}selected="selected"{/if}>Кафе
-                        </option>
-                    </select>
+                    @if(isset($parents))
+                    {{ Form::select('parent[]', array("null" => "Нет родителя") + $categories, $parents, ['multiple'=>'multiple','id'=>'chosencat','class'=>'tag-input-style col-sm-11 control-label no-padding-right']) }}
+	                @else
+	                {{ Form::select('parent[]', $categories, '', ['multiple'=>'multiple','id'=>'chosencat','class'=>'tag-input-style col-sm-11 control-label no-padding-right']) }}
+	                @endif
                 </div>
-
             </div>
         </div><!-- /.col-sm-6 -->
 
@@ -167,15 +161,15 @@
                         </ul>
                     
                         <div class="tab-content">
-                            <div class="tab-pane form-group no-margin active" id="short_ru">
-                                <textarea class="form-control" name="description_short" rows="2">Lorem ipsum dolor sit amet, consectetur adipisicing.</textarea>
-                            </div>
-                            <div class="tab-pane form-group no-margin" id="short_ro">
-                                <textarea class="form-control" name="description_short_ro" rows="2"></textarea>
-                            </div>
-                            <div class="tab-pane form-group no-margin" id="short_en">
-                                <textarea class="form-control" name="description_short_ro" rows="2"></textarea>
-                            </div>
+                            <div class="tab-pane in active" id="short_ru">
+		                     {{ Form::textarea('description_short[ru]', (isset($data->description_short) ? $data->description_short : old('description_short')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+		                   </div>
+		                   <div class="tab-pane" id="short_ro">
+		                     {{ Form::textarea('description_short[ro]', (isset($data->description_short_ro) ? $data->description_short_ro : old('description_short_ro')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+		                   </div>
+		                   <div class="tab-pane" id="short_en">
+		                     {{ Form::textarea('description_short[en]', (isset($data->description_short_en) ? $data->description_short_en : old('description_short_en')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+		                   </div>
                         </div>
 
                     </div>
