@@ -54,6 +54,11 @@ class ProductsController extends Controller
         $data->save();
         
         $this->UpdatePhotos($request, $data->id);
+        
+        //categories
+        if ($request->parent) {
+            $data->parents()->sync($request->parent);
+        }
 
         // redirect
         Session::flash('message', trans('common.saved'));
@@ -81,7 +86,8 @@ class ProductsController extends Controller
         $data = Products::find($id);
         //$tags = Tags::all();
         $categories = Categories::lists('name','id')->toArray();
-        return view('admin.products.edit')->with('data', $data)->with('categories', $categories);
+        $parents = $data->parents->pluck('id')->toArray();
+        return view('admin.products.edit')->with('data', $data)->with('categories', $categories)->with('parents',$parents);
         
         
  

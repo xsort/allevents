@@ -21,12 +21,13 @@ class CommonController extends Controller
 	    if (isset($content)) return view('content.content')->with('data', $content);
 	    
 	    $category = Categories::where('slug',$slug)->where('enabled',true)->first();
+	    $products = Products::where('enabled',true)->first();
 	    if (isset($category)) {
 		    
 		    if ($category->children->count() > 0) {
 			    return view('products.categories')->with('data', $category);
 			} else { 
-				return view('products.products');
+				return view('products.products')->with('data', $products);
 			}
 	    }
 	    

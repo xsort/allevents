@@ -1,5 +1,7 @@
 @extends('body')
 @section('centerbox')
+
+{{dd($data)}}
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-9">

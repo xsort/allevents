@@ -61,6 +61,8 @@ class CategoriesController extends Controller
         if ($request->parent) {
             $data->parents()->sync($request->parent);
         }
+        
+        
 
         // redirect
         Session::flash('message', trans('common.saved'));
