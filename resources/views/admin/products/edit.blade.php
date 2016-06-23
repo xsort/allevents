@@ -28,7 +28,7 @@
             </div>-->
             <div class="col-sm-2 ">
                 <label>
-                    {{ Form::checkbox('top',  1, ($data->top == 1 ? true : false), ['class' => 'ace']) }}
+                    
                     <span class="lbl"> На главную </span>
                 </label>
             </div>
@@ -126,11 +126,15 @@
                 {{ Form::label('parent', 'родитель', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 
                 <div class="col-sm-9">
+                    @if(isset($categories))
                     @if(isset($parents))
+                    
                     {{ Form::select('parent[]', array("null" => "Нет родителя") + $categories, $parents, ['multiple'=>'multiple','id'=>'chosencat','class'=>'tag-input-style col-sm-11 control-label no-padding-right']) }}
-	                @else
-	                {{ Form::select('parent[]', $categories, '', ['multiple'=>'multiple','id'=>'chosencat','class'=>'tag-input-style col-sm-11 control-label no-padding-right']) }}
-	                @endif
+                    @else
+                    {{ Form::select('parent[]', $categories, '', ['multiple'=>'multiple','id'=>'chosencat','class'=>'tag-input-style col-sm-11 control-label no-padding-right']) }}
+                    @endif
+                    @endif
+
                 </div>
             </div>
         </div><!-- /.col-sm-6 -->
@@ -156,6 +160,9 @@
                             <li class="active">
                                 <a href="#photos"  data-toggle="tab">Лого</a>
                             </li>
+                            <li>
+                                <a href="#img-slide"  data-toggle="tab">Слайдшоу</a>
+                            </li>
                            
 
                             <div class="center"> <span class="label label-xlg label-purple">Логотип заведения</span></div>
@@ -163,7 +170,9 @@
                     
                         <div class="tab-content">
                         @include('admin.partials.photos', ['table' => 'products', 'class' => 'active', 'table_id' => isset($data->id) ? $data->id : 0] )
-                           
+                            <div class="tab-pane" id="img-slide">
+                                 <textarea class="form-control" name="description_short_ro" rows="2">Тут будет слайдшоу</textarea>
+                            </div>
                         </div>
 
                     </div>
@@ -193,14 +202,14 @@
                     
                         <div class="tab-content">
                             <div class="tab-pane in active" id="short_ru">
-		                     {{ Form::textarea('description_short[ru]', (isset($data->description_short) ? $data->description_short : old('description_short')), array('class' => 'ckeditor', 'id' => 'editor')) }}
-		                   </div>
-		                   <div class="tab-pane" id="short_ro">
-		                     {{ Form::textarea('description_short[ro]', (isset($data->description_short_ro) ? $data->description_short_ro : old('description_short_ro')), array('class' => 'ckeditor', 'id' => 'editor')) }}
-		                   </div>
-		                   <div class="tab-pane" id="short_en">
-		                     {{ Form::textarea('description_short[en]', (isset($data->description_short_en) ? $data->description_short_en : old('description_short_en')), array('class' => 'ckeditor', 'id' => 'editor')) }}
-		                   </div>
+                             {{ Form::textarea('description_short[ru]', (isset($data->description_short) ? $data->description_short : old('description_short')), array('style'=>'width:100%', 'rows'=>'3')) }}
+                           </div>
+                           <div class="tab-pane" id="short_ro">
+                             {{ Form::textarea('description_short[ro]', (isset($data->description_short_ro) ? $data->description_short_ro : old('description_short_ro')), array('style'=>'width:100%', 'rows'=>'3')) }}
+                           </div>
+                           <div class="tab-pane" id="short_en">
+                             {{ Form::textarea('description_short[en]', (isset($data->description_short_en) ? $data->description_short_en : old('description_short_en')), array('style'=>'width:100%', 'rows'=>'3')) }}
+                           </div>
                         </div>
 
                     </div>
