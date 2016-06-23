@@ -44,6 +44,7 @@ class ProductsController extends Controller
 		//dd($request);
 
         $data->name              = $request->name;
+        $data->top               = $request->top;
         $data->created_at        = $request->date;
         $data->slug              = $request->slug;
         $data->description       = $request->description;

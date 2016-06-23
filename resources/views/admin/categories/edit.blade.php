@@ -30,7 +30,7 @@
             </div>-->
             <div class="col-sm-2 ">
                 <label>
-                	{{ Form::checkbox('top',  1, ($data->top == 1 ? true : false), ['class' => 'ace']) }}
+                	{{ Form::checkbox('top',  1, (isset($data) && $data->top == 1 ? true : false), ['class' => 'ace']) }}
                     <span class="lbl"> На главную </span>
                 </label>
             </div>
