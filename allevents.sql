@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2016 at 08:41 AM
+-- Generation Time: Jun 24, 2016 at 09:00 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.4
 
@@ -20,11 +20,34 @@ SET time_zone = "+00:00";
 -- Database: `allevents`
 --
 
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `categories`
+-- Table structure for table `categories`
 --
 
-TRUNCATE TABLE `categories`;
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE `categories` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `menu_type_id` tinyint(4) NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `top` tinyint(1) NOT NULL,
+  `views` int(11) NOT NULL,
+  `sort` int(11) NOT NULL,
+  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Dumping data for table `categories`
 --
@@ -66,11 +89,19 @@ INSERT INTO `categories` (`id`, `name`, `name_ro`, `name_en`, `description`, `de
 (38, 'Организация предложения руки и сердца', 'Organizația oferă mâini și inimi', 'The organization offers hands and hearts', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'organizacziya-predlozheniya-ruki-i-serdcza', '2016-06-21 05:33:19', '2016-06-21 06:54:28'),
 (39, 'Фитнес центр', 'Centru de fitness', 'Fitness center', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'fitnes-czentr', '2016-06-21 05:34:12', '2016-06-21 06:55:07');
 
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `categories_xref`
+-- Table structure for table `categories_xref`
 --
 
-TRUNCATE TABLE `categories_xref`;
+DROP TABLE IF EXISTS `categories_xref`;
+CREATE TABLE `categories_xref` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `parent_id` int(11) NOT NULL,
+  `child_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Dumping data for table `categories_xref`
 --
@@ -170,16 +201,41 @@ INSERT INTO `categories_xref` (`id`, `parent_id`, `child_id`) VALUES
 (112, 0, 9),
 (113, 0, 8);
 
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `constants`
+-- Table structure for table `constants`
 --
 
-TRUNCATE TABLE `constants`;
+DROP TABLE IF EXISTS `constants`;
+CREATE TABLE `constants` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `key` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `value` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `content`
+-- Table structure for table `content`
 --
 
-TRUNCATE TABLE `content`;
+DROP TABLE IF EXISTS `content`;
+CREATE TABLE `content` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `views` int(11) NOT NULL,
+  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Dumping data for table `content`
 --
@@ -187,31 +243,123 @@ TRUNCATE TABLE `content`;
 INSERT INTO `content` (`id`, `name`, `name_en`, `name_ro`, `description`, `description_en`, `description_ro`, `enabled`, `views`, `slug`, `created_at`, `updated_at`) VALUES
 (1, 'Club drive Content', 'asdas', 'ada', 'asd', 'asd', 'asd', 1, 0, 'stranitsa', NULL, NULL);
 
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `galleries`
+-- Table structure for table `galleries`
 --
 
-TRUNCATE TABLE `galleries`;
+DROP TABLE IF EXISTS `galleries`;
+CREATE TABLE `galleries` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `views` int(11) NOT NULL,
+  `sort` int(11) NOT NULL,
+  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `galleries_xref`
+-- Table structure for table `galleries_xref`
 --
 
-TRUNCATE TABLE `galleries_xref`;
+DROP TABLE IF EXISTS `galleries_xref`;
+CREATE TABLE `galleries_xref` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `galleries_id` int(10) UNSIGNED NOT NULL,
+  `table_id` int(11) NOT NULL,
+  `table` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `menu_categories`
+-- Table structure for table `menu_categories`
 --
 
-TRUNCATE TABLE `menu_categories`;
+DROP TABLE IF EXISTS `menu_categories`;
+CREATE TABLE `menu_categories` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `parent_id` tinyint(4) NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `views` int(11) NOT NULL,
+  `sort` int(11) NOT NULL,
+  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `menu_products`
+-- Table structure for table `menu_products`
 --
 
-TRUNCATE TABLE `menu_products`;
+DROP TABLE IF EXISTS `menu_products`;
+CREATE TABLE `menu_products` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `category_id` tinyint(4) NOT NULL,
+  `price` double(15,2) NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `views` int(11) NOT NULL,
+  `sort` int(11) NOT NULL,
+  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `meta`
+-- Table structure for table `meta`
 --
 
-TRUNCATE TABLE `meta`;
+DROP TABLE IF EXISTS `meta`;
+CREATE TABLE `meta` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `meta_description` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `meta_description_ro` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `meta_description_en` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `meta_keywords` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `meta_keywords_ro` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `meta_keywords_en` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `title_ro` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `title_en` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `table_id` int(11) NOT NULL,
+  `table` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Dumping data for table `meta`
 --
@@ -271,11 +419,18 @@ INSERT INTO `meta` (`id`, `meta_description`, `meta_description_ro`, `meta_descr
 (52, '', '', '', '', '', '', '', '', '', 17, 'products'),
 (53, '', '', '', '', '', '', '', '', '', 18, 'products');
 
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `migrations`
+-- Table structure for table `migrations`
 --
 
-TRUNCATE TABLE `migrations`;
+DROP TABLE IF EXISTS `migrations`;
+CREATE TABLE `migrations` (
+  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Dumping data for table `migrations`
 --
@@ -366,11 +521,33 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2016_05_25_122425_menu_categories', 1),
 ('2016_06_23_074721_products_categories', 2);
 
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `news`
+-- Table structure for table `news`
 --
 
-TRUNCATE TABLE `news`;
+DROP TABLE IF EXISTS `news`;
+CREATE TABLE `news` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `top` tinyint(1) NOT NULL,
+  `views` int(11) NOT NULL,
+  `sort` int(11) NOT NULL,
+  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Dumping data for table `news`
 --
@@ -378,26 +555,61 @@ TRUNCATE TABLE `news`;
 INSERT INTO `news` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `enabled`, `top`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
 (1, 'Тест новость', '', '', 'First test full description', '', '', 'First test description', '', '', 1, 1, 8, 0, 'test-novosti', NULL, '0000-00-00 00:00:00');
 
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `news_tags`
+-- Table structure for table `news_tags`
 --
 
-TRUNCATE TABLE `news_tags`;
+DROP TABLE IF EXISTS `news_tags`;
+CREATE TABLE `news_tags` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `news_id` int(10) UNSIGNED NOT NULL,
+  `tags_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `news_types`
+-- Table structure for table `news_types`
 --
 
-TRUNCATE TABLE `news_types`;
+DROP TABLE IF EXISTS `news_types`;
+CREATE TABLE `news_types` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `news_id` int(10) UNSIGNED NOT NULL,
+  `types_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `password_resets`
+-- Table structure for table `password_resets`
 --
 
-TRUNCATE TABLE `password_resets`;
+DROP TABLE IF EXISTS `password_resets`;
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `photos`
+-- Table structure for table `photos`
 --
 
-TRUNCATE TABLE `photos`;
+DROP TABLE IF EXISTS `photos`;
+CREATE TABLE `photos` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `source` text COLLATE utf8_unicode_ci NOT NULL,
+  `table_id` int(11) NOT NULL,
+  `table` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `sort` int(11) NOT NULL,
+  `token` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Dumping data for table `photos`
 --
@@ -472,11 +684,35 @@ INSERT INTO `photos` (`id`, `source`, `table_id`, `table`, `sort`, `token`) VALU
 (69, 'drive_69.jpg', 17, 'products', 69, ''),
 (70, 'cocos-prive_70.jpg', 18, 'products', 70, '');
 
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `products`
+-- Table structure for table `products`
 --
 
-TRUNCATE TABLE `products`;
+DROP TABLE IF EXISTS `products`;
+CREATE TABLE `products` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `price` double(15,2) NOT NULL,
+  `map` text COLLATE utf8_unicode_ci NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `top` tinyint(1) NOT NULL,
+  `views` int(11) NOT NULL,
+  `sort` int(11) NOT NULL,
+  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Dumping data for table `products`
 --
@@ -493,21 +729,50 @@ INSERT INTO `products` (`id`, `name`, `name_ro`, `name_en`, `description`, `desc
 (17, 'Drive', 'Drive', 'Drive', '', '', '', '', '', '', 0.00, '', 1, 1, 0, 0, 'drive', '2016-06-23 10:02:21', '2016-06-23 10:02:21'),
 (18, 'Cocos Prive', 'Cocos Prive', 'Cocos Prive', '', '', '', '', '', '', 0.00, '', 1, 1, 0, 0, 'cocos-prive', '2016-06-23 10:03:04', '2016-06-23 10:03:04');
 
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `products_categories`
+-- Table structure for table `products_categories`
 --
 
-TRUNCATE TABLE `products_categories`;
+DROP TABLE IF EXISTS `products_categories`;
+CREATE TABLE `products_categories` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `products_id` int(10) UNSIGNED NOT NULL,
+  `categories_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `products_news`
+-- Table structure for table `products_news`
 --
 
-TRUNCATE TABLE `products_news`;
+DROP TABLE IF EXISTS `products_news`;
+CREATE TABLE `products_news` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `products_id` int(10) UNSIGNED NOT NULL,
+  `news_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `tags`
+-- Table structure for table `tags`
 --
 
-TRUNCATE TABLE `tags`;
+DROP TABLE IF EXISTS `tags`;
+CREATE TABLE `tags` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `top` tinyint(1) NOT NULL,
+  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Dumping data for table `tags`
 --
@@ -515,16 +780,38 @@ TRUNCATE TABLE `tags`;
 INSERT INTO `tags` (`id`, `created_at`, `updated_at`, `name`, `name_ro`, `name_en`, `top`, `slug`) VALUES
 (1, NULL, NULL, 'Спорт', '', '', 1, '');
 
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `types`
+-- Table structure for table `types`
 --
 
-TRUNCATE TABLE `types`;
+DROP TABLE IF EXISTS `types`;
+CREATE TABLE `types` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `users`
+-- Table structure for table `users`
 --
 
-TRUNCATE TABLE `users`;
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `rights` tinyint(4) NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Dumping data for table `users`
 --
@@ -532,11 +819,330 @@ TRUNCATE TABLE `users`;
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `rights`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Xsort', 'support@xsort.md', '$2y$10$twmlb5YlgimkrTIwnKqeauX9JusORUAVWnjjK1jBhM0AQwJW/3RIy', 1, NULL, NULL, NULL);
 
+-- --------------------------------------------------------
+
 --
--- Truncate table before insert `videos`
+-- Table structure for table `videos`
 --
 
-TRUNCATE TABLE `videos`;
+DROP TABLE IF EXISTS `videos`;
+CREATE TABLE `videos` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `source` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `views` int(11) NOT NULL,
+  `sort` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_slug` (`slug`);
+
+--
+-- Indexes for table `categories_xref`
+--
+ALTER TABLE `categories_xref`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_parent_id` (`parent_id`),
+  ADD KEY `idx_child_id` (`child_id`);
+
+--
+-- Indexes for table `constants`
+--
+ALTER TABLE `constants`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `constants_key_unique` (`key`);
+
+--
+-- Indexes for table `content`
+--
+ALTER TABLE `content`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_slug` (`slug`);
+
+--
+-- Indexes for table `galleries`
+--
+ALTER TABLE `galleries`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_slug` (`slug`);
+
+--
+-- Indexes for table `galleries_xref`
+--
+ALTER TABLE `galleries_xref`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_table_id` (`table_id`),
+  ADD KEY `idx_table` (`table`);
+
+--
+-- Indexes for table `menu_categories`
+--
+ALTER TABLE `menu_categories`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_slug` (`slug`);
+
+--
+-- Indexes for table `menu_products`
+--
+ALTER TABLE `menu_products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_slug` (`slug`);
+
+--
+-- Indexes for table `meta`
+--
+ALTER TABLE `meta`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_table_id` (`table_id`),
+  ADD KEY `idx_table` (`table`);
+
+--
+-- Indexes for table `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_slug` (`slug`);
+
+--
+-- Indexes for table `news_tags`
+--
+ALTER TABLE `news_tags`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `news_tags_news_id_foreign` (`news_id`),
+  ADD KEY `news_tags_tags_id_foreign` (`tags_id`);
+
+--
+-- Indexes for table `news_types`
+--
+ALTER TABLE `news_types`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `news_types_news_id_foreign` (`news_id`),
+  ADD KEY `news_types_types_id_foreign` (`types_id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`),
+  ADD KEY `password_resets_token_index` (`token`);
+
+--
+-- Indexes for table `photos`
+--
+ALTER TABLE `photos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_table_id` (`table_id`),
+  ADD KEY `idx_table` (`table`),
+  ADD KEY `idx_sort` (`sort`),
+  ADD KEY `photos_token_index` (`token`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_slug` (`slug`);
+
+--
+-- Indexes for table `products_categories`
+--
+ALTER TABLE `products_categories`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `products_categories_products_id_foreign` (`products_id`),
+  ADD KEY `products_categories_categories_id_foreign` (`categories_id`);
+
+--
+-- Indexes for table `products_news`
+--
+ALTER TABLE `products_news`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `products_news_products_id_foreign` (`products_id`),
+  ADD KEY `products_news_news_id_foreign` (`news_id`);
+
+--
+-- Indexes for table `tags`
+--
+ALTER TABLE `tags`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `tags_name_unique` (`name`),
+  ADD UNIQUE KEY `tags_name_ro_unique` (`name_ro`),
+  ADD UNIQUE KEY `tags_name_en_unique` (`name_en`),
+  ADD KEY `idx_slug` (`slug`);
+
+--
+-- Indexes for table `types`
+--
+ALTER TABLE `types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indexes for table `videos`
+--
+ALTER TABLE `videos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+--
+-- AUTO_INCREMENT for table `categories_xref`
+--
+ALTER TABLE `categories_xref`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+--
+-- AUTO_INCREMENT for table `constants`
+--
+ALTER TABLE `constants`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `content`
+--
+ALTER TABLE `content`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `galleries`
+--
+ALTER TABLE `galleries`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `galleries_xref`
+--
+ALTER TABLE `galleries_xref`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `menu_categories`
+--
+ALTER TABLE `menu_categories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `menu_products`
+--
+ALTER TABLE `menu_products`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `meta`
+--
+ALTER TABLE `meta`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+--
+-- AUTO_INCREMENT for table `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `news_tags`
+--
+ALTER TABLE `news_tags`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `news_types`
+--
+ALTER TABLE `news_types`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `photos`
+--
+ALTER TABLE `photos`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT for table `products_categories`
+--
+ALTER TABLE `products_categories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `products_news`
+--
+ALTER TABLE `products_news`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tags`
+--
+ALTER TABLE `tags`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `types`
+--
+ALTER TABLE `types`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `videos`
+--
+ALTER TABLE `videos`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `news_tags`
+--
+ALTER TABLE `news_tags`
+  ADD CONSTRAINT `news_tags_news_id_foreign` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
+  ADD CONSTRAINT `news_tags_tags_id_foreign` FOREIGN KEY (`tags_id`) REFERENCES `tags` (`id`);
+
+--
+-- Constraints for table `news_types`
+--
+ALTER TABLE `news_types`
+  ADD CONSTRAINT `news_types_news_id_foreign` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
+  ADD CONSTRAINT `news_types_types_id_foreign` FOREIGN KEY (`types_id`) REFERENCES `types` (`id`);
+
+--
+-- Constraints for table `products_categories`
+--
+ALTER TABLE `products_categories`
+  ADD CONSTRAINT `products_categories_categories_id_foreign` FOREIGN KEY (`categories_id`) REFERENCES `categories` (`id`),
+  ADD CONSTRAINT `products_categories_products_id_foreign` FOREIGN KEY (`products_id`) REFERENCES `products` (`id`);
+
+--
+-- Constraints for table `products_news`
+--
+ALTER TABLE `products_news`
+  ADD CONSTRAINT `products_news_news_id_foreign` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
+  ADD CONSTRAINT `products_news_products_id_foreign` FOREIGN KEY (`products_id`) REFERENCES `products` (`id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
