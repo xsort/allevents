@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2016 at 08:29 AM
+-- Generation Time: Jun 24, 2016 at 08:41 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.4
 
@@ -20,6 +20,11 @@ SET time_zone = "+00:00";
 -- Database: `allevents`
 --
 
+--
+-- Truncate table before insert `categories`
+--
+
+TRUNCATE TABLE `categories`;
 --
 -- Dumping data for table `categories`
 --
@@ -61,6 +66,11 @@ INSERT INTO `categories` (`id`, `name`, `name_ro`, `name_en`, `description`, `de
 (38, 'Организация предложения руки и сердца', 'Organizația oferă mâini și inimi', 'The organization offers hands and hearts', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'organizacziya-predlozheniya-ruki-i-serdcza', '2016-06-21 05:33:19', '2016-06-21 06:54:28'),
 (39, 'Фитнес центр', 'Centru de fitness', 'Fitness center', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'fitnes-czentr', '2016-06-21 05:34:12', '2016-06-21 06:55:07');
 
+--
+-- Truncate table before insert `categories_xref`
+--
+
+TRUNCATE TABLE `categories_xref`;
 --
 -- Dumping data for table `categories_xref`
 --
@@ -161,12 +171,47 @@ INSERT INTO `categories_xref` (`id`, `parent_id`, `child_id`) VALUES
 (113, 0, 8);
 
 --
+-- Truncate table before insert `constants`
+--
+
+TRUNCATE TABLE `constants`;
+--
+-- Truncate table before insert `content`
+--
+
+TRUNCATE TABLE `content`;
+--
 -- Dumping data for table `content`
 --
 
 INSERT INTO `content` (`id`, `name`, `name_en`, `name_ro`, `description`, `description_en`, `description_ro`, `enabled`, `views`, `slug`, `created_at`, `updated_at`) VALUES
 (1, 'Club drive Content', 'asdas', 'ada', 'asd', 'asd', 'asd', 1, 0, 'stranitsa', NULL, NULL);
 
+--
+-- Truncate table before insert `galleries`
+--
+
+TRUNCATE TABLE `galleries`;
+--
+-- Truncate table before insert `galleries_xref`
+--
+
+TRUNCATE TABLE `galleries_xref`;
+--
+-- Truncate table before insert `menu_categories`
+--
+
+TRUNCATE TABLE `menu_categories`;
+--
+-- Truncate table before insert `menu_products`
+--
+
+TRUNCATE TABLE `menu_products`;
+--
+-- Truncate table before insert `meta`
+--
+
+TRUNCATE TABLE `meta`;
 --
 -- Dumping data for table `meta`
 --
@@ -226,6 +271,11 @@ INSERT INTO `meta` (`id`, `meta_description`, `meta_description_ro`, `meta_descr
 (52, '', '', '', '', '', '', '', '', '', 17, 'products'),
 (53, '', '', '', '', '', '', '', '', '', 18, 'products');
 
+--
+-- Truncate table before insert `migrations`
+--
+
+TRUNCATE TABLE `migrations`;
 --
 -- Dumping data for table `migrations`
 --
@@ -317,12 +367,37 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2016_06_23_074721_products_categories', 2);
 
 --
+-- Truncate table before insert `news`
+--
+
+TRUNCATE TABLE `news`;
+--
 -- Dumping data for table `news`
 --
 
 INSERT INTO `news` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `enabled`, `top`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
 (1, 'Тест новость', '', '', 'First test full description', '', '', 'First test description', '', '', 1, 1, 8, 0, 'test-novosti', NULL, '0000-00-00 00:00:00');
 
+--
+-- Truncate table before insert `news_tags`
+--
+
+TRUNCATE TABLE `news_tags`;
+--
+-- Truncate table before insert `news_types`
+--
+
+TRUNCATE TABLE `news_types`;
+--
+-- Truncate table before insert `password_resets`
+--
+
+TRUNCATE TABLE `password_resets`;
+--
+-- Truncate table before insert `photos`
+--
+
+TRUNCATE TABLE `photos`;
 --
 -- Dumping data for table `photos`
 --
@@ -398,6 +473,11 @@ INSERT INTO `photos` (`id`, `source`, `table_id`, `table`, `sort`, `token`) VALU
 (70, 'cocos-prive_70.jpg', 18, 'products', 70, '');
 
 --
+-- Truncate table before insert `products`
+--
+
+TRUNCATE TABLE `products`;
+--
 -- Dumping data for table `products`
 --
 
@@ -414,6 +494,21 @@ INSERT INTO `products` (`id`, `name`, `name_ro`, `name_en`, `description`, `desc
 (18, 'Cocos Prive', 'Cocos Prive', 'Cocos Prive', '', '', '', '', '', '', 0.00, '', 1, 1, 0, 0, 'cocos-prive', '2016-06-23 10:03:04', '2016-06-23 10:03:04');
 
 --
+-- Truncate table before insert `products_categories`
+--
+
+TRUNCATE TABLE `products_categories`;
+--
+-- Truncate table before insert `products_news`
+--
+
+TRUNCATE TABLE `products_news`;
+--
+-- Truncate table before insert `tags`
+--
+
+TRUNCATE TABLE `tags`;
+--
 -- Dumping data for table `tags`
 --
 
@@ -421,12 +516,27 @@ INSERT INTO `tags` (`id`, `created_at`, `updated_at`, `name`, `name_ro`, `name_e
 (1, NULL, NULL, 'Спорт', '', '', 1, '');
 
 --
+-- Truncate table before insert `types`
+--
+
+TRUNCATE TABLE `types`;
+--
+-- Truncate table before insert `users`
+--
+
+TRUNCATE TABLE `users`;
+--
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `rights`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Xsort', 'support@xsort.md', '$2y$10$twmlb5YlgimkrTIwnKqeauX9JusORUAVWnjjK1jBhM0AQwJW/3RIy', 1, NULL, NULL, NULL);
 
+--
+-- Truncate table before insert `videos`
+--
+
+TRUNCATE TABLE `videos`;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
