@@ -1,1 +1,1 @@
-@extends('body')@section('centerbox'){{$data->name}}@stop
+@extends('body')@section('centerbox')11111{{$data->name}}@stop

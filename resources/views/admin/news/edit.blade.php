@@ -20,9 +20,21 @@
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                {{ Form::label('name', 'Заголовок', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                {{ Form::label('name[ru]', 'Заголовок', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-9">
-                    {{ Form::text('name', (isset($data->name) ? $data->name : old('name')), array('class' => 'col-sm-11 col-xs-12')) }}
+                    {{ Form::text('name[ru]', (isset($data->name) ? $data->name : old('name')), array('class' => 'col-sm-11 col-xs-12 name_ru')) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ Form::label('name[ro]', 'Заголовок рум', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-9">
+                    {{ Form::text('name[ro]', (isset($data->name_ro) ? $data->name_ro : old('name_ro')), array('class' => 'col-sm-11 col-xs-12')) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ Form::label('name[en]', 'Заголовок англ', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-9">
+                    {{ Form::text('name[en]', (isset($data->name_en) ? $data->name_en : old('name_en')), array('class' => 'col-sm-11 col-xs-12')) }}
                 </div>
             </div>
             <div class="form-group">
@@ -82,12 +94,42 @@
 
         <div class="tab-content">
             <div class="tab-pane active" id="ru">
-                {{ Form::textarea('description', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => 'editor')) }}
-            </div>
+
+                <div class="tabbable  tabs-left">
+
+                 <ul id="myTab" class="nav nav-tabs">
+                   <li class="active">
+                      <a href="#descRu" data-toggle="tab">Описание на русском</a>
+                   </li>
+                   <li>
+                      <a href="#descRo" data-toggle="tab">Описание на румынском</a>
+                   </li>
+                   <li>
+                      <a href="#descEn" data-toggle="tab">Описание на английском</a>
+                   </li>
+                 </ul>
+
+                 <div class="tab-content">
+                   <div class="tab-pane in active" id="descRu">
+                     {{ Form::textarea('description[ru]', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+                   </div>
+                   <div class="tab-pane" id="descRo">
+                     {{ Form::textarea('description[ro]', (isset($data->description_ro) ? $data->description_ro : old('description_ro')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+                   </div>
+                   <div class="tab-pane" id="descEn">
+                     {{ Form::textarea('description[en]', (isset($data->description_en) ? $data->description_en : old('description_en')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+                   </div>
+
+                 </div>
+
+                </div>
+             </div>
+
             @include('admin.partials.meta')
-            @include('admin.partials.photos', ['table' => 'news', 'table_id' => isset($data->id) ? $data->id : 0, 'thumbs' => ['thumbs2']])
+            @include('admin.partials.photos', ['table' => 'categories', 'table_id' => isset($data->id) ? $data->id : 0])
         </div>
-    </div>
+
+</div>
 
     <div class="form-actions">
         {{ Form::submit('Сохранить', array('class' => 'btn btn-success')) }}

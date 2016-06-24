@@ -14,7 +14,7 @@ class CategoriesController extends Controller
     public function getCategoriesList()
     {
 	    
-	    $categories = Categories::get(); 
+	    $categories = Categories::where('top',false)->get(); 
 		return view('products.categories')->with('data',$categories);
     }
 }

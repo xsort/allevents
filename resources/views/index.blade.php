@@ -1,5 +1,6 @@
 @extends('body')
 @section('centerbox')
+
 <div class="layout-page ">
 <div class="layout-content" >
 <div class="container-fluid main-menu">
@@ -8,12 +9,12 @@
         
 
         
-        	@foreach ($categories as $category)
+        	@foreach ($categories as $key=>$category)
         	
             <div class="col-md-4 col-sm-4 col-xs-12">
                 <div class="row">
                     <a href="{{$category->slug}}">
-                        <div class="menu block-{{rand(1,9)}}">
+                        <div class="menu block-{{$key}}">
                             <div class="main-menu-image" style="background: url('uploaded/thumbs/{{isset($category->photos{0}) ? $category->photos{0}->source : 'nophoto.png'}}');"></div>
                             <div class="main-menu-filter"></div>
                             <h3 class="main-menu-title"><span>{{$category->name}}</span></h3>

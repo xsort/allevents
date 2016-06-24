@@ -1,5 +1,5 @@
 @extends('body')
-@section('meta_description', $data->meta->meta_description)
+
 @section('centerbox')
 <div class="layout-page ">
 <div class="layout-content" >
@@ -10,7 +10,7 @@
                 <h1 class="page-title rowed">Категории</h1>
             </div>
             <div class="category-container">
-			@foreach ($data->children as $subcat)
+			@foreach ($data as $subcat)
 			    <a href="{{$subcat->slug}}" class="category-section">
                     <div class="category-img">
                         <img src="/uploaded/{{isset($subcat->photos{0}) ? $subcat->photos{0}->source : 'nophoto.png'}}" alt="">
