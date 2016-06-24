@@ -26,11 +26,13 @@ var LayoutHeader = function () {
 
         if ($(window).scrollTop() > $(".topbar").height() + $(".top-navbar").height() + $(".layout-breadcrumbs").height() + $(".club-main-photo").height()) {
             $("body").addClass("page-on-scroll");
+            $("body").removeClass("remove-bg");
             $(".top-sm-logo").css({
                 "display": "none",
             });
         } else {
             $("body").removeClass("page-on-scroll");
+            $("body").addClass("remove-bg");
             $(".top-sm-logo").css({
                 "display": "block",
             });

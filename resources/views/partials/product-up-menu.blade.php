@@ -4,7 +4,7 @@
             <div class="hidden-xs">
                
                 <table class="sticky sticky-left">
-                <tr><th><a href="{{$data->slug}}/photo">Фото</a></th><th><a href="{{$data->slug}}/video">Видео</a></th><th><a href="">Акции</a></th><th><a href="{{$data->slug}}/plan">План зала</a></th></tr>
+                <tr><th><a href="{{$data->slug}}/photo">Фото</a></th><th><a href="{{$data->slug}}/video">Видео</a></th><th><a href="{{$data->slug}}/promo">Акции</a></th><th><a href="{{$data->slug}}/plan">План зала</a></th></tr>
                 </table>
                 <a href="{{$data->slug}}" class="menu-logo hidden-sm hidden-xs">
                     <span>
@@ -13,7 +13,7 @@
                 </a>
              
                 <table class="sticky sticky-right">
-                <tr><th ><a href="{{$data->slug}}/menu">Меню</a></th><th><a href="">Интерьер</a></th><th ><a href="">Резервирование</a></th></tr>
+                <tr><th ><a href="{{$data->slug}}/menu">Меню</a></th><th><a href="{{$data->slug}}/interier">Интерьер</a></th><th ><a href="{{$data->slug}}/reservation">Резервирование</a></th></tr>
                 </table>
             </div>
              
@@ -22,11 +22,11 @@
                 <ul class="nav xs-menu-second">
                     <li><a href="{{$data->slug}}/photo">Фото</a></li>
                     <li><a href="{{$data->slug}}/video">Видео</a></li>
-                    <li><a href="javascript:void(0)">Акции</a></li>
-                    <li><a href="../allevents/plan.php">План зала</a></li>
-                    <li><a href="../allevents/menu.php">Меню</a></li>
-                    <li><a href="javascript:void(0)">Интерьер</a></li>
-                    <li><a href="javascript:void(0)">Резервирование</a></li>
+                    <li><a href="{{$data->slug}}/promo">Акции</a></li>
+                    <li><a href="{{$data->slug}}/plan">План зала</a></li>
+                    <li><a href="{{$data->slug}}/menu">Меню</a></li>
+                    <li><a href="{{$data->slug}}/interier">Интерьер</a></li>
+                    <li><a href="{{$data->slug}}/reservation">Резервирование</a></li>
                 </ul>
             </div>
 

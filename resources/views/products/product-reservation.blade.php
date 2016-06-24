@@ -9,7 +9,7 @@
                 <li><a href="">Главная</a></li>
                 <li><a href="/kluby">Клубы</a></li>
                 <li><a href="/{{$data->slug}}">{{$data->name}}</a></li>
-                <li>План зала</li>
+                <li>Резервирование</li>
             </ul>
         </div>
     </div>

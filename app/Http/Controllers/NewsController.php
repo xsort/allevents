@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Models\Products;
+
 class NewsController extends Controller
 {
     public function getNews($slug){
@@ -31,5 +33,11 @@ class NewsController extends Controller
 	    
 	    $news = News::get(); 
 		return view('news.newslist')->with('data',$news);
+    }
+
+    public function getPromo($slug)
+    {
+        $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
+        return view('products.product-promo')->with('data',$product);
     }
 }

@@ -26,7 +26,7 @@
     
    
 </head>
-<body>
+<body class="remove-bg @yield('productClass')" style="background-image: url('../images/background/main-bg.jpg');">
 
 	<div id="fb-root"></div>
 
@@ -76,7 +76,6 @@
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.nicescroll.js"></script>
     <script src="js/jquery.jscroll.min.js"></script>
-    <script src="js/jquery.viewportchecker.min.js"></script>
     <script src="js/masonry.pkgd.min.js"></script>
     <script src="js/salvattore.min.js"></script>
     <script src="js/lightbox.min.js"></script>
@@ -84,6 +83,7 @@
     <script src="js/angular.min.js"></script>
     <!-- <script src="js/combined.js"></script> -->
     <script src="js/components.js"></script>
+
     <script>
 		// Skroll-page
 		$(document).ready(function() {
@@ -99,21 +99,8 @@
 		});
 	</script>
 
-    <script>
-        $(window).load(
-        function(){
-           $('#ytplayer').viewportChecker({ 
-           offset : 500,
-           callbackFunction: function(){
-                setTimeout(function(){
-                    player.playVideo();
-                    player.mute();            
-                })
-          }
-          });
-        }
-      );
-    </script>
+
+    @yield('productPageScripts')
 
 </body>
 </html>

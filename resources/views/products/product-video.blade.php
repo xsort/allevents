@@ -2,7 +2,18 @@
 @section('centerbox')
 <div class="layout-page ">
 @include('partials.product-up-menu')
-@include('partials.breadcrumbs')
+<div class="layout-breadcrumbs">
+    <div class="container-fluid">
+        <div class="container-breadcrumbs">
+            <ul class="breadcrumbs">
+                <li><a href="">Главная</a></li>
+                <li><a href="/kluby">Клубы</a></li>
+                <li><a href="/{{$data->slug}}">{{$data->name}}</a></li>
+                <li>Видео</li>
+            </ul>
+        </div>
+    </div>
+</div>
     <div class="layout-content" >
 
 <div class="container-fluid">

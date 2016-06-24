@@ -1,5 +1,8 @@
 @extends('body')
+@section('bgImage','background-image: url(../images/background/main-bg.jpg)')
+@section('productClass','products-page')
 @section('centerbox')
+
 <div class="layout-page ">
     @include('partials.product-top-gallery')
     @include('partials.product-up-menu')
@@ -15,14 +18,14 @@
                 <div class="row">
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="row">
-                            <a href="../allevents/categories-gallery.php">
+                            <a href="{{$data->slug}}/photo">
                                 <div class="menu block-1">
                                     <div class="main-menu-image" style="background: url(images/inst-menu-photo/photo.png);"></div>
                                     <div class="main-menu-filter"></div>
                                     <h3 class="main-menu-title"><span>Фото</span></h3>
                                     <div class="divider-title"></div>
                                     <span class="main-menu-descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
-                                    <a href="../allevents/categories-gallery.php" class="main-menu-button"><span>Подробнее</span></a>
+                                    <a href="{{$data->slug}}/photo" class="main-menu-button"><span>Подробнее</span></a>
                                 </div>
                             </a>
                         </div>
@@ -30,14 +33,14 @@
 
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="row">
-                            <a href="../allevents/video.php">
+                            <a href="{{$data->slug}}/video">
                                 <div class="menu block-2 xs-margin-menu">
                                     <div class="main-menu-image" style="background: url(images/inst-menu-photo/video.png);"></div>
                                     <div class="main-menu-filter"></div>
                                     <h3 class="main-menu-title"><span>Видео</span></h3>
                                     <div class="divider-title"></div>
                                     <span class="main-menu-descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
-                                    <a href="../allevents/video.php" class="main-menu-button"><span>Подробнее</span></a>
+                                    <a href="{{$data->slug}}/video" class="main-menu-button"><span>Подробнее</span></a>
                                 </div>
                             </a>
                         </div>
@@ -45,14 +48,14 @@
 
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="row">
-                            <a href="../allevents/plan.php">
+                            <a href="{{$data->slug}}/plan">
                                 <div class="menu block-3 xs-margin-menu">
                                     <div class="main-menu-image" style="background: url(images/inst-menu-photo/plan.png);"></div>
                                     <div class="main-menu-filter"></div>
                                     <h3 class="main-menu-title"><span>План зала</span></h3>
                                     <div class="divider-title"></div>
                                     <span class="main-menu-descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
-                                    <a href="../allevents/plan.php" class="main-menu-button"><span>Подробнее</span></a>
+                                    <a href="{{$data->slug}}/plan" class="main-menu-button"><span>Подробнее</span></a>
                                 </div>
                             </a>
                         </div>
@@ -60,14 +63,14 @@
 
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="row">
-                            <a href="../allevents/menu.php">
+                            <a href="{{$data->slug}}/menu">
                                 <div class="menu block-4 xs-margin-menu">
                                     <div class="main-menu-image" style="background: url(images/inst-menu-photo/menu.png);"></div>
                                     <div class="main-menu-filter"></div>
                                     <h3 class="main-menu-title"><span>Меню</span></h3>
                                     <div class="divider-title"></div>
                                     <span class="main-menu-descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
-                                    <a href="../allevents/menu.php" class="main-menu-button"><span>Подробнее</span></a>
+                                    <a href="{{$data->slug}}/menu" class="main-menu-button"><span>Подробнее</span></a>
                                 </div>
                             </a>
                         </div>
@@ -75,14 +78,14 @@
 
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="row">
-                            <a href="javascript:void(0)">
+                            <a href="{{$data->slug}}/promo">
                                 <div class="menu block-5 xs-margin-menu">
                                     <div class="main-menu-image" style="background: url(images/inst-menu-photo/actii.png);"></div>
                                     <div class="main-menu-filter"></div>
                                     <h3 class="main-menu-title"><span>Акции</span></h3>
                                     <div class="divider-title"></div>
                                     <span class="main-menu-descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
-                                    <a href="javascript:void(0)" class="main-menu-button"><span>Подробнее</span></a>
+                                    <a href="{{$data->slug}}/promo" class="main-menu-button"><span>Подробнее</span></a>
                                 </div>
                             </a>
                         </div>
@@ -90,14 +93,14 @@
 
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="row">
-                            <a href="javascript:void(0)">
+                            <a href="{{$data->slug}}/interier">
                                 <div class="menu block-6 xs-margin-menu">
                                     <div class="main-menu-image" style="background: url(images/inst-menu-photo/interier.png);"></div>
                                     <div class="main-menu-filter"></div>
                                     <h3 class="main-menu-title"><span>Интерьер</span></h3>
                                     <div class="divider-title"></div>
                                     <span class="main-menu-descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
-                                    <a href="javascript:void(0)" class="main-menu-button"><span>Подробнее</span></a>
+                                    <a href="{{$data->slug}}/interier" class="main-menu-button"><span>Подробнее</span></a>
                                 </div>
                             </a>
                         </div>
@@ -165,4 +168,24 @@
         });
       }
 </script>
+@stop
+
+@section('productPageScripts')
+<script src="js/jquery.viewportchecker.min.js"></script>
+
+    <script>
+        $(window).load(
+        function(){
+           $('#ytplayer').viewportChecker({ 
+           offset : 500,
+           callbackFunction: function(){
+                setTimeout(function(){
+                    player.playVideo();
+                    player.mute();            
+                })
+          }
+          });
+        }
+      );
+    </script>
 @stop
