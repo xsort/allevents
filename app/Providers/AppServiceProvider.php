@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Models\Categories;
+use App\Models\News;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +19,8 @@ class AppServiceProvider extends ServiceProvider
 	    $categories = Categories::where('top',false)->get(); 
         view()->share('categoriesList', $categories);
 
+        $news = News::get(); 
+        view()->share('newsList', $news);
     }
 
     /**

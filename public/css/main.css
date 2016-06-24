@@ -2648,7 +2648,8 @@ background-size: 31px 26px;
 }
 
 .one-category {
-    
+    min-height: 37px;
+    position: relative;
     margin-left: 10%;
     float: left;
     margin-right: 3%;
@@ -2657,14 +2658,11 @@ background-size: 31px 26px;
 }
 
 .one-category a {
-    
-    width: 79%;
-    margin-left: 5%;
-
+    width: 77%;
+    margin-left: 20%;
     display: block;
     vertical-align: bottom;
-    
-    font-size: 18px;
+    font-size: 15px;
     color: rgb(149, 149, 149);
     text-transform: uppercase;
     line-height: 1.2;
@@ -2697,13 +2695,25 @@ background-size: 31px 26px;
 }
 
 .one-category .category-img {
-    height: 37px;
-        background-position: center;
+    height: 100%;
+    min-height: 37px;
+        filter: contrast(0.5);
+    -webkit-filter: contrast(0);
+    position: absolute;
+    background-position: center;
     float: left;
     width: 13%;
+    display: inline-block;
     background-repeat: no-repeat !important;
-    background-size: contain !important;
+    background-size: contain;
     cursor: pointer;
+}
+
+.one-category .category-img:before {
+    content: '';
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .sidebar-container .sidebar-menu a.button-categories:before {
@@ -2727,7 +2737,10 @@ background-size: 31px 26px;
     -webkit-border-radius: 5px;
        -moz-border-radius: 5px;
             border-radius: 5px;
-            float: left;
+}
+
+.allcat{
+    width:100%;float:left
 }
 
 .sidebar-container .sidebar-menu .button-categories span {
@@ -2768,6 +2781,7 @@ background-size: 31px 26px;
 
 .sidebar-news {
     padding-left: 30px;
+    width: 100%;
     padding-right: 30px;
     margin-top: 45px;
     float: left;
