@@ -6,7 +6,6 @@
 <div class="container-fluid main-menu">
     <div class="row">
         <div class="col-md-9 col-sm-12">
-        
 
         
         	@foreach ($categories as $key=>$category)

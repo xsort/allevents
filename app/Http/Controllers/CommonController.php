@@ -12,9 +12,14 @@ use App\Models\Categories;
 
 use App\Models\Products;
 
+use View;
+
 
 class CommonController extends Controller
 {
+	
+	  
+	  
     public function getSlug($slug)
     {
 	    $content = Content::where('slug',$slug)->where('enabled',true)->first();
@@ -34,4 +39,5 @@ class CommonController extends Controller
 	    $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
 		return view('products.product')->with('data', $product);
     }
+    
 }
