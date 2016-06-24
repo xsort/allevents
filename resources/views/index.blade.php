@@ -1,5 +1,7 @@
 @extends('body')
 @section('centerbox')
+<div class="layout-page ">
+<div class="layout-content" >
 <div class="container-fluid main-menu">
     <div class="row">
         <div class="col-md-9 col-sm-12">
@@ -161,7 +163,11 @@
 				
 				@foreach ($products as $product)
 	        	<a href="{{$product->slug}}" class="category">
-                    <img src="uploaded/thumbs/{{isset($product->photos{0}) ? $product->photos{0}->source : 'nophoto.png'}}" alt="">
+                    
+                        <span class="logo-club">
+                            <img src="uploaded/{{isset($product->photos{0}) ? $product->photos{0}->source : 'nophoto.png'}}" alt="">
+                        </span>
+                    
                     <h3 class="main-title"><span>{{$product->name}}</span></h3>
                     <div class="divider-title"></div>
                     <span class="main-menu-descripton">{{$product->description_short}}</span>
@@ -296,6 +302,8 @@
                     <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, quos?</span>
                     <a href="detail-news.php" class="read-more">Читать далее...<span class="fa fa-angle-double-right"></span></a>
                 </div>
+
+                
                 <div class="category">
                     <a href="detail-news.php" class="bg-img-center news-image" style="background:url(img/news/news2.png);"></a>
                     <h2><a href="detail-news.php" class="title-more">Lorem ipsum dolor Lorem ipsum dolor.</a></h2>
@@ -337,4 +345,5 @@
         </div>
     </div>
 </div>
+</div></div>
 @stop

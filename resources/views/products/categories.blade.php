@@ -1,6 +1,8 @@
 @extends('body')
 @section('meta_description', $data->meta->meta_description)
 @section('centerbox')
+<div class="layout-page ">
+<div class="layout-content" >
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9 col-sm-12">
@@ -22,5 +24,7 @@
         </div>
 		@include('partials.right-banners')
     </div>
+</div>
+</div>
 </div>
 @stop

@@ -18,8 +18,8 @@
 	<link rel="stylesheet" href="css/bootstrap-social.css">
 	<link rel="stylesheet" href="css/lightbox.min.css">
 	<!-- <link rel="stylesheet" href="css/combined.css"> -->
-	<!-- <link rel="stylesheet" href="css/main.css"> -->
-	<link rel="stylesheet" href="css/main.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<!-- <link rel="stylesheet" href="css/main.min.css"> -->
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=.5, user-scalable=no">
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
@@ -46,15 +46,12 @@
     
 
     <div class="container wrapper">
+    
         <!-- @include('partials.topbar') -->
         @include('partials.header')
-        <div class="layout-page ">
-            <div class="layout-content" >
-            
-            	@yield('centerbox')
-                
-            </div>
-        </div>
+        
+            @yield('centerbox') 
+
     </div>
 
     @include('partials.footer')
@@ -101,6 +98,22 @@
 			};
 		});
 	</script>
+
+    <script>
+        $(window).load(
+        function(){
+           $('#ytplayer').viewportChecker({ 
+           offset : 500,
+           callbackFunction: function(){
+                setTimeout(function(){
+                    player.playVideo();
+                    player.mute();            
+                })
+          }
+          });
+        }
+      );
+    </script>
 
 </body>
 </html>

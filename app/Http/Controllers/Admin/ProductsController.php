@@ -19,7 +19,8 @@ class ProductsController extends Controller
     }
 
     public function create(){
-        return view('admin.products.edit');
+        $categories = Categories::lists('name','id')->toArray();
+        return view('admin.products.edit')->with('categories', $categories);
     }
 
     public function store(Request $request)

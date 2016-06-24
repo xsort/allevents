@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2016 at 01:35 AM
+-- Generation Time: Jun 24, 2016 at 08:29 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.4
 
@@ -37,7 +37,7 @@ INSERT INTO `categories` (`id`, `name`, `name_ro`, `name_en`, `description`, `de
 (14, 'Event менеджер \\ Организатор', 'Event Manager \\ Organizator', 'Event Manager \\ Organizer', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'event-menedzher-organizator', '2016-06-21 05:10:43', '2016-06-21 06:41:51'),
 (15, 'ЗАГСы \\ Церкви', 'Saloane de Înregistrare \\ Bisericii', 'Registry offices \\ Church', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'zagsy-czerkvi', '2016-06-21 05:12:38', '2016-06-21 06:42:24'),
 (16, 'Свадебная обувь и аксессуары', 'Pantofi de nunta si accesorii', 'Wedding shoes and accessories', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'svadebnaya-obuvi-i-aksessuary', '2016-06-21 05:13:09', '2016-06-21 06:42:46'),
-(17, 'Свадебные и вечерние платья', 'Nunta si rochii de seara', 'Wedding & Evening Dresses', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'svadebnye-i-vechernie-platiya', '2016-06-21 05:14:53', '2016-06-21 06:43:43'),
+(17, 'Свадебные и вечерние платья', 'Nunta si rochii de seara', 'Wedding & Evening Dresses', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'svadebnye-i-vechernie-platiya', '2016-06-21 05:14:53', '2016-06-22 03:43:58'),
 (18, 'Мужские костюмы', 'Costume pentru bărbați', 'Men''s suits', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'muzhskie-kostyumy', '2016-06-21 05:15:45', '2016-06-21 06:40:46'),
 (19, 'Свадебный танец', 'Dans de nunta', 'A wedding dance', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'svadebnyj-tanecz', '2016-06-21 05:17:21', '2016-06-21 06:44:14'),
 (20, 'Фото \\ Видео', 'Fotografie \\ Video', 'Photo \\ Video', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'foto-video', '2016-06-21 05:18:01', '2016-06-21 06:44:34'),
@@ -206,7 +206,25 @@ INSERT INTO `meta` (`id`, `meta_description`, `meta_description_ro`, `meta_descr
 (32, '', '', '', '', '', '', '', '', '', 36, 'categories'),
 (33, '', '', '', '', '', '', '', '', '', 37, 'categories'),
 (34, '', '', '', '', '', '', '', '', '', 38, 'categories'),
-(35, '', '', '', '', '', '', '', '', '', 39, 'categories');
+(35, '', '', '', '', '', '', '', '', '', 39, 'categories'),
+(36, '123', '', '', '245', '', '', '', '', '', 1, 'products'),
+(37, '', '', '', '', '', '', '', '', '', 2, 'products'),
+(38, '', '', '', '', '', '', '', '', '', 3, 'products'),
+(39, '', '', '', '', '', '', '', '', '', 4, 'products'),
+(40, '', '', '', '', '', '', '', '', '', 5, 'products'),
+(41, '', '', '', '', '', '', '', '', '', 6, 'products'),
+(42, '', '', '', '', '', '', '', '', '', 7, 'products'),
+(43, '', '', '', '', '', '', '', '', '', 8, 'products'),
+(44, '', '', '', '', '', '', '', '', '', 9, 'products'),
+(45, '', '', '', '', '', '', '', '', '', 10, 'products'),
+(46, '', '', '', '', '', '', '', '', '', 11, 'products'),
+(47, '', '', '', '', '', '', '', '', '', 12, 'products'),
+(48, '', '', '', '', '', '', '', '', '', 13, 'products'),
+(49, '', '', '', '', '', '', '', '', '', 14, 'products'),
+(50, '', '', '', '', '', '', '', '', '', 15, 'products'),
+(51, '', '', '', '', '', '', '', '', '', 16, 'products'),
+(52, '', '', '', '', '', '', '', '', '', 17, 'products'),
+(53, '', '', '', '', '', '', '', '', '', 18, 'products');
 
 --
 -- Dumping data for table `migrations`
@@ -295,14 +313,15 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2016_05_25_120511_create_categories_xref', 1),
 ('2016_05_25_121927_create_videos', 1),
 ('2016_05_25_122240_menu_products', 1),
-('2016_05_25_122425_menu_categories', 1);
+('2016_05_25_122425_menu_categories', 1),
+('2016_06_23_074721_products_categories', 2);
 
 --
 -- Dumping data for table `news`
 --
 
 INSERT INTO `news` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `enabled`, `top`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'Тест новость', '', '', '', '', '', '', '', '', 1, 1, 5, 0, 'test-novosti', NULL, '0000-00-00 00:00:00');
+(1, 'Тест новость', '', '', 'First test full description', '', '', 'First test description', '', '', 1, 1, 8, 0, 'test-novosti', NULL, '0000-00-00 00:00:00');
 
 --
 -- Dumping data for table `photos`
@@ -344,14 +363,55 @@ INSERT INTO `photos` (`id`, `source`, `table_id`, `table`, `sort`, `token`) VALU
 (35, 'barmeny--oficzianty--shef-povar_35.png', 36, 'categories', 35, ''),
 (36, 'kejtering--shatry_36.png', 37, 'categories', 36, ''),
 (37, 'organizacziya-predlozheniya-ruki-i-serdcza_37.png', 38, 'categories', 37, ''),
-(38, 'fitnes-czentr_38.png', 39, 'categories', 38, '');
+(38, 'fitnes-czentr_38.png', 39, 'categories', 38, ''),
+(39, 'svadebnye-i-vechernie-platiya_39.png', 17, 'categories', 41, ''),
+(40, 'svadebnye-i-vechernie-platiya_40.png', 17, 'categories', 40, ''),
+(41, 'svadebnye-i-vechernie-platiya_41.png', 17, 'categories', 39, ''),
+(42, 'drive_42.png', 1, 'products', 0, ''),
+(43, 'krysha_43.png', 2, 'products', 43, ''),
+(44, '576bb1ed13fc3.jpg', 0, 'products', 44, '2a917165591994c2cfb202d624f9f1ee604c6f9c'),
+(45, 's_45.jpg', 4, 'products', 45, ''),
+(46, '576bc2ab70a4a.jpg', 0, 'products', 46, '478e1d866ec79da71f664f5e9c74ab6ae87e14b4'),
+(47, '576bc2ba4ea7a.jpg', 0, 'products', 47, 'f5f857c8c7a5f6ac6e960d6d53abe3931ad2620a'),
+(48, '576bc2caf15ba.jpg', 0, 'products', 48, 'b53c7c24e8e260a42d9b50fb88928fe36daa53f7'),
+(49, 'driveeddd_49.jpg', 5, 'products', 49, ''),
+(50, 'the--club_50.png', 6, 'products', 50, ''),
+(51, 'krysha_51.jpg', 2, 'products', 51, ''),
+(52, 'krysha_52.jpg', 2, 'products', 52, ''),
+(53, 's_53.jpg', 4, 'products', 53, ''),
+(54, 's_54.jpg', 4, 'products', 54, ''),
+(55, 'driveeddd_55.jpg', 5, 'products', 55, ''),
+(56, 'drivee_56.png', 3, 'products', 56, ''),
+(57, 'andys-pizza_57.png', 7, 'products', 57, ''),
+(58, 'krysha_58.png', 8, 'products', 58, ''),
+(59, '576bd8676fd77.jpg', 0, 'products', 59, '8555b7254a762dbb9a615f252508adeb9812af02'),
+(60, 'mojito_60.jpg', 9, 'products', 60, ''),
+(61, 'mojito-terasarestaurant_61.png', 10, 'products', 61, ''),
+(62, 'caffe-graffiti_62.jpg', 11, 'products', 62, ''),
+(63, 'club-luxor_63.png', 12, 'products', 63, ''),
+(64, 'la-plcinte_64.png', 13, 'products', 64, ''),
+(65, 'paradyse-club_65.jpg', 14, 'products', 65, ''),
+(66, '576bdca04ed00.jpg', 0, 'products', 66, 'c45d721d94d8fa994b09a012b3f4ea77682dbbab'),
+(67, 'cocos-priv_67.jpg', 15, 'products', 67, ''),
+(68, 'chocolate-karaoke-club_68.jpg', 16, 'products', 68, ''),
+(69, 'drive_69.jpg', 17, 'products', 69, ''),
+(70, 'cocos-prive_70.jpg', 18, 'products', 70, '');
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `price`, `map`, `enabled`, `top`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'Array', '', '', '', '', '', '', '', '', 100.00, '', 1, 1, 0, 0, 'club-drive', NULL, '2016-06-17 05:56:57');
+(7, 'Andy''s Pizza', 'Andy''s Pizza', 'Andy''s Pizza', '<p>В меню&nbsp;Andys Pizza&nbsp;самые вкусные блюда! Закажите еду в офис, на дом или оформите предварительный заказ. Приятного аппетита!</p>\r\n', '', '', 'Andy''s Pizza - самый вкусный заказ еды онлайн! Быстрая доставка днем и ночью!', 'Andys Pizza - comanda online cele mai delicioase bucate! Livrarea rapidă ziua și noaptea!', 'Andys Pizza - the most delicious food order online! Fast delivery day and night!', 0.00, '', 1, 1, 0, 0, 'andys-pizza', '2016-06-23 10:18:04', '2016-06-23 10:18:04'),
+(8, 'Krysha', 'Krysha', 'Krysha', '<p>Отдельного внимания заслуживает наша терраса под открытым небом. Уникальная терраса&nbsp;<strong>LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo;</strong>, которая располагается на пятом этаже коммерческого центра&nbsp;<strong>&laquo;Sun City&raquo;</strong>, позволит Вам полюбоваться уникальными пейзажами городского центрального парка и ночными огнями столицы. Уютные диванные зоны, легкая музыка, стильный интерьер и свежий воздух &ndash; поистине отдых &laquo;НА ВЫСОТЕ&raquo;.<br />\r\n<br />\r\nК организации праздничного вечера в&nbsp;<strong>LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo;</strong>&nbsp;подойдут профессионально: разработают план мероприятия, подберут ведущего, составят шоу-программу, пригласят артистов, оформят зал, продумают и разработают меню для фуршета и подарят массу приятных впечатлений.</p>\r\n', '<p>O atenție specială merită terasa noastră &icirc;n aer liber. Unice Terasa LOUNGE-CAF&Eacute; &laquo;Krysha&raquo;, care este situat la etajul cinci al &laquo;Sun City&raquo; centru comercial vă va permite să se bucure de peisajul unic al parcului central de oraș și luminile de noapte ale capitalei. zonă confortabilă canapea, muzica usoara, aer curat interior si elegant - cu adevărat o vacanță de &quot;sus&quot;.</p>\r\n\r\n<p>Prin organizarea unei seri festive &icirc;n LOUNGE-CAF&Eacute; &laquo;Krysha&raquo; profesionale adecvate: artiștii să elaboreze un plan de acțiune, se va ridica la conducere, face un program de spectacol, invitați vor desena o cameră, cred că peste și de a lucra din meniul pentru bufet și va da o mulțime de experiențe plăcute.</p>\r\n', '<p>Special attention deserves our terrace in the open air. Unique terrace LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo;, which is located on the fifth floor of &laquo;Sun City&raquo; shopping center, will allow you to enjoy the unique scenery of the city central park and the night lights of the capital. Cozy sofa area, light music, stylish interior and fresh air - truly a vacation &quot;on high&quot;.</p>\r\n\r\n<p>By organizing a festive evening in the LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo; suitable professional: develop an action plan, will pick up the lead, make a show program, invited artists will draw room, think over and work out the menu for the buffet and will give a lot of pleasant experiences.</p>\r\n', 'Атмосфера в стиле LOUNGE-CAFÉ «KRYSHA» не отвлекает от повседневности, а скорее украшает её.', 'Atmosfera din stilul LOUNGE-CAFÉ «Krysha» nu distrage de la viața de zi cu zi, ci mai degrabă o împodobește.', 'The atmosphere in the style LOUNGE-CAFÉ «KRYSHA» does not distract from everyday life, but rather adorns it.', 0.00, '', 1, 1, 0, 0, 'krysha', '2016-06-23 09:37:21', '2016-06-23 09:37:21'),
+(10, 'Mojito', 'Mojito', 'Mojito', '<p>Если вы в поиске места для романтического ужина при свете фонарей, или пре-пати с друзьями, вы его найдете здесь, в&nbsp;<strong>MOJITO</strong>, около Театра Оперы и Балета.<br />\r\n<br />\r\n<strong>Мы очень ценим наших клиентов, поэтому всегда предлагаем только самое лучшее:</strong></p>\r\n\r\n<ul>\r\n	<li>Рабочее время&nbsp;<strong>24/24</strong></li>\r\n	<li>Аргентинская и Японская кухня</li>\r\n	<li>Самый большой выбор коктейлей Мохито:&nbsp; алкогольных и безалкогольных</li>\r\n	<li>Терраса в тени для курящих и некурящих</li>\r\n	<li>Живая музыка каждую пятницу и воскресенье</li>\r\n	<li>Комфортабельный ресторан&nbsp; с расслабляющей атмосферой</li>\r\n	<li>Быстрое и&nbsp; качественное обслуживание</li>\r\n</ul>\r\n\r\n<p><br />\r\nЗайдите к нам, чтобы расслабиться&nbsp; на мягких креслах с чашечкой кофе или чая на завтрак, отведав&nbsp; мисо-суп или стейк на обед, либо коктейль на ужин.<br />\r\n<br />\r\nШагните на территорию, где сочетаются вкусное с&nbsp; приятным, прохлада с удовольствием &ndash; на территорию</p>\r\n', '', '', 'Если вы в поиске места для романтического ужина при свете фонарей, или пре-пати с друзьями, вы его найдете здесь.', '', '', 0.00, '', 1, 1, 0, 0, 'mojito', '2016-06-23 09:47:27', '2016-06-23 09:47:27'),
+(11, 'Caffe Graffiti', 'Caffe Graffiti', 'Caffe Graffiti', '', '', '', 'Caffe Graffiti ждет "Филе форели на пару с овощами и соусом из Tartaro" и желаем Вам приятного аппетита!', 'Caffe Graffiti va asteapta cu "Fileu de păstrăv la abur cu legume și sos tartaro" si va ureaza POFTA BUNA!', 'Caffe Graffiti awaits "Trout fillet steamed with vegetables and sauce Tartaro" and wish you bon appétit!', 0.00, '', 1, 1, 0, 0, 'caffe-graffiti', '2016-06-23 09:46:56', '2016-06-23 09:46:56'),
+(12, 'CLUB LUXOR', 'CLUB LUXOR', 'CLUB LUXOR', '', '', '', '', '', '', 0.00, '', 1, 1, 0, 0, 'club-luxor', '2016-06-23 09:49:42', '2016-06-23 09:49:42'),
+(13, 'La Plăcinte', 'La Plăcinte', 'La Plăcinte', '', '', '', '', '', '', 0.00, '', 1, 1, 0, 0, 'la-plcinte', '2016-06-23 09:51:18', '2016-06-23 09:51:18'),
+(14, 'PARADYSE CLUB', 'PARADYSE CLUB', 'PARADYSE CLUB', '', '', '', '', '', '', 0.00, '', 1, 1, 0, 0, 'paradyse-club', '2016-06-23 09:52:36', '2016-06-23 09:52:36'),
+(16, 'Chocolate Karaoke Club', 'Chocolate Karaoke Club', 'Chocolate Karaoke Club', '', '', '', '', '', '', 0.00, '', 1, 1, 0, 0, 'chocolate-karaoke-club', '2016-06-23 10:01:44', '2016-06-23 10:01:44'),
+(17, 'Drive', 'Drive', 'Drive', '', '', '', '', '', '', 0.00, '', 1, 1, 0, 0, 'drive', '2016-06-23 10:02:21', '2016-06-23 10:02:21'),
+(18, 'Cocos Prive', 'Cocos Prive', 'Cocos Prive', '', '', '', '', '', '', 0.00, '', 1, 1, 0, 0, 'cocos-prive', '2016-06-23 10:03:04', '2016-06-23 10:03:04');
 
 --
 -- Dumping data for table `tags`

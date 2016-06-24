@@ -1,6 +1,8 @@
 @extends('body')
 @section('centerbox')
 
+<div class="layout-page ">
+<div class="layout-content" >
 
 <div class="container-fluid">
     <div class="row">
@@ -23,7 +25,7 @@
                         <div class="post-content">
                             <h3 class="post-title"><a href="news/{{$news->slug}}">{{$news->name}}</a></h3>
 
-                            <p class="post-inner-content mrg-vertical-15">{{$news->description_short}}.</p>
+                            <p class="post-inner-content mrg-vertical-15">{{$news->description_short}}</p>
 
                             <div class="post-bottom">
                                 <span class="read-more"><a class="btn no-padding " href="news/{{$news->slug}}">Читать далее</a></span>
@@ -50,7 +52,8 @@
        
     </div>
 </div>
-
+</div>
+</div>
 
 
 @stop

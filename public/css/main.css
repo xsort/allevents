@@ -292,15 +292,7 @@ h2.c-block-title {
 }
 
 body {
-   /* background: url(../images/background/bg-1.jpg);*/
-
-    /*
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-*/
- background: url(../images/background/main-bg.png);
+    background: url(../images/background/main-bg.jpg);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -309,6 +301,7 @@ body {
     background-position: center;
     background-attachment: fixed;
 }
+
 
 body.page-clubs {
     background: url(../images/background/club-bg.jpg);
@@ -819,7 +812,7 @@ body.page-clubs {
 
 #recommended .category img {
     display: inline-block;
-    max-width: 100%;
+    max-width: 98%;
     max-height: 100%;
     -webkit-transition: all 0.2s ease;
     -moz-transition: all 0.2s ease;
@@ -1481,6 +1474,7 @@ body.page-clubs {
 }
 
 .banner.banner-right {
+        display: block;
     height: 400px;
     width: 100%;
     background-repeat: no-repeat !important;
@@ -3649,6 +3643,7 @@ background-size: 31px 26px;
 
 .menu-logo {
     width: 160px;
+    overflow: hidden;
     height: 95px;
     margin-top: 0px;
     background-color: white;
@@ -3678,11 +3673,31 @@ background-size: 31px 26px;
     margin-top: 0px;
 }
 
+.menu-logo{
+    text-align: center;
+}
+
 .menu-logo img {
-    display: block;
-    margin: 6px auto 0;
-    width: 120px;
-    height: 70px;
+    
+    margin: 0 auto;
+    width: auto;
+    max-width: 120px;
+    max-height: 70px;
+}
+
+
+.menu-logo span{
+    display: inline-block;
+    vertical-align: middle;
+    height:  100%;
+   
+}
+
+.menu-logo span:before{
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 }
 
 .inst-square-menu .menu {
@@ -4163,6 +4178,19 @@ background-size: 31px 26px;
     transition: all 0.35s ease;
     font-size: 12px;
     line-height: 1.2;
+}
+
+#recommended .category .logo-club {
+    height:100%;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#recommended .category .logo-club:before {
+    content: '';
+        height:100%;
+    vertical-align: middle;
+    display: inline-block;
 }
 
 .allpage .category .main-menu-button {

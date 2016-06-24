@@ -1,6 +1,8 @@
 @extends('body')
 
 @section('centerbox')
+<div class="layout-page ">
+<div class="layout-content" >
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-9">
@@ -71,6 +73,7 @@
         </div>
     </div>
 </div>
-
+</div>
+</div>
 
 @stop

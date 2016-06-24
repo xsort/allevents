@@ -1,7 +1,8 @@
 @extends('body')
 @section('centerbox')
 
-{{dd($data)}}
+<div class="layout-page ">
+<div class="layout-content" >
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-9">
@@ -159,7 +160,8 @@
             <div onclick="location.href='http://google.ru';" class="banner banner-right second" style="background:url(img/public/second-pub.png)"></div>
 
         </div>
-         
     </div>
+</div>
+</div>
 </div>
 @stop
