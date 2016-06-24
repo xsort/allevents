@@ -126,7 +126,7 @@
              </div>
 
             @include('admin.partials.meta')
-            @include('admin.partials.photos', ['table' => 'categories', 'table_id' => isset($data->id) ? $data->id : 0])
+            @include('admin.partials.photos', ['table' => 'news', 'table_id' => isset($data->id) ? $data->id : 0])
         </div>
 
 </div>
