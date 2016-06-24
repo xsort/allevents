@@ -2,7 +2,7 @@
 @section('centerbox')
 <div class="layout-page ">
     @include('partials.product-top-gallery')
-    @include('partials.product-menu')
+    @include('partials.product-up-menu')
 
     <div class="layout-content" >
 

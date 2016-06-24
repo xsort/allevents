@@ -1,7 +1,8 @@
 @extends('body')
 @section('centerbox')
 <div class="layout-page ">
-
+@include('partials.product-up-menu')
+@include('partials.breadcrumbs')
 
     <div class="layout-content" >
 <div class="container-fluid">
