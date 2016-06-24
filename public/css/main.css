@@ -2554,9 +2554,8 @@ background-size: 31px 26px;
     border-right: 3px solid #dd5954;
     height: 100%;
     position: fixed;
-    /*    border-left: 3px solid #dd5954;*/
+    float: left;
     top: 0px;
-    /*    display: none;*/
     left: -330px;
     z-index: 110000;
     background: #e8e8e8;
@@ -2598,6 +2597,7 @@ background-size: 31px 26px;
     width: 100%;
     text-align: center;
     position: relative;
+    float: left;
 }
 
 .sidebar-container .auth span {
@@ -2632,6 +2632,7 @@ background-size: 31px 26px;
 .sidebar-container .sidebar-menu {
     padding-top: 35px;
     padding-bottom: 45px;
+    float: left;
 }
 
 .sidebar-container .sidebar-menu > span {
@@ -2643,30 +2644,47 @@ background-size: 31px 26px;
     width: 100%;
     display: block;
     margin-bottom: 30px;
+    float: left;
 }
 
 .one-category {
-    height: 37px;
-    margin-left: 50px;
+    
+    margin-left: 10%;
+    float: left;
+    margin-right: 3%;
+    width: 87%;
+    margin-bottom: 10px;
 }
 
 .one-category a {
-    height: 100%;
-    display: inline-block;
+    
+    width: 79%;
+    margin-left: 5%;
+
+    display: block;
     vertical-align: bottom;
-    margin-left: 10px;
+    
     font-size: 18px;
     color: rgb(149, 149, 149);
     text-transform: uppercase;
     line-height: 1.2;
     outline: none;
+    float: left;
 }
 
 .one-category a:before {
-    content: '';
-    height: 100%;
+    
+    
     display: inline-block;
     vertical-align: bottom;
+}
+
+.one-category:after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 0px;
+    visibility: hidden;
 }
 
 .one-category a:hover {
@@ -2680,67 +2698,12 @@ background-size: 31px 26px;
 
 .one-category .category-img {
     height: 37px;
+        background-position: center;
     float: left;
-    width: 40px;
+    width: 13%;
     background-repeat: no-repeat !important;
-    -webkit-background-size: 35px 470px !important;
-       -moz-background-size: 35px 470px !important;
-         -o-background-size: 35px 470px !important;
-            background-size: 35px 470px !important;
+    background-size: contain !important;
     cursor: pointer;
-    background: url(../images/sidebar/icons-sprite.png);
-}
-
-.one-category .category-img.category-1 {
-    background-position: 6px 0px;
-}
-
-.one-category .category-img.category-2 {
-    background-position: 6px -38px;
-}
-
-.one-category .category-img.category-3 {
-    background-position: 6px -73px;
-}
-
-.one-category .category-img.category-4 {
-    background-position: 6px -107px;
-}
-
-.one-category .category-img.category-5 {
-    background-position: 6px -143px;
-}
-
-.one-category .category-img.category-6 {
-    background-position: 6px -178px;
-}
-
-.one-category .category-img.category-7 {
-    background-position: 6px -215px;
-}
-
-.one-category .category-img.category-8 {
-    background-position: 6px -249px;
-}
-
-.one-category .category-img.category-9 {
-    background-position: 6px -285px;
-}
-
-.one-category .category-img.category-10 {
-    background-position: 6px -324px;
-}
-
-.one-category .category-img.category-11 {
-    background-position: 6px -360px;
-}
-
-.one-category .category-img.category-12 {
-    background-position: 6px -400px;
-}
-
-.one-category .category-img.category-13 {
-    background-position: 6px -436px;
 }
 
 .sidebar-container .sidebar-menu a.button-categories:before {
@@ -2764,6 +2727,7 @@ background-size: 31px 26px;
     -webkit-border-radius: 5px;
        -moz-border-radius: 5px;
             border-radius: 5px;
+            float: left;
 }
 
 .sidebar-container .sidebar-menu .button-categories span {
@@ -2795,6 +2759,7 @@ background-size: 31px 26px;
        -moz-border-radius: 4px;
             border-radius: 4px;
     padding: 35px;
+    float: left;
 }
 
 .share-plugin {
@@ -2805,6 +2770,7 @@ background-size: 31px 26px;
     padding-left: 30px;
     padding-right: 30px;
     margin-top: 45px;
+    float: left;
 }
 
 .sidebar-news-title {

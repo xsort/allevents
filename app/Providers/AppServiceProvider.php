@@ -17,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
 	    	
 	    $categories = Categories::where('top',false)->get(); 
         view()->share('categoriesList', $categories);
+
     }
 
     /**

@@ -14,7 +14,7 @@
                 <div class="row">
                     <a href="{{$category->slug}}">
                         <div class="menu block-{{$key}}">
-                            <div class="main-menu-image" style="background: url('uploaded/thumbs/{{isset($category->photos{0}) ? $category->photos{0}->source : 'nophoto.png'}}');"></div>
+                            <div class="main-menu-image" style="background: url('uploaded/{{isset($category->photos{0}) ? $category->photos{0}->source : 'nophoto.png'}}');"></div>
                             <div class="main-menu-filter"></div>
                             <h3 class="main-menu-title"><span>{{$category->name}}</span></h3>
                             <div class="divider-title"></div>
