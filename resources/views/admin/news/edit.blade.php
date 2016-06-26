@@ -105,14 +105,18 @@
         <div class="col-sm-6">
             <div class="form-group">
                 {{ Form::label('categories', 'Теги', ['class'=>'col-sm-3 control-label no-padding-right']) }}
-                <div class="col-sm-9">
+                <div class="col-sm-8">
                     <select multiple data-placeholder="выберите категорию" id="chosencat" name="chosencat[]" class="tag-input-style col-sm-11 col-xs-12">
                         @foreach($tags as $tag)
-                        <option value="{{$tag['id']}}" @if (isset($data) && (in_array($tag->id, $data->getTagsIdsArray()))) selected="selected" @endif>
+                        <option value="{{$tag->id}}" @if (in_array($tag->id, isset($data) ? $data->getTagsIdsArray() : array())) selected="selected" @endif>
                             {{ $tag->name }}
                         </option>
                         @endforeach
                     </select>
+                    
+                </div>
+                <div class="col-sm-1">
+                     <a href="javascript:AddTag();" class="btn btn-sm btn-primary"><i class="ace-icon fa fa-plus-circle"></i></a>
                 </div>
             </div>
         </div>
@@ -214,6 +218,35 @@
     </div>
 
     {{ Form::close() }}
+    <!--! popup tag insert -->
+    <div aria-hidden="true" aria-labelledby="mySmallModalLabel" role="dialog" tabindex="-1" data-show="true" data-backdrop="true" data-keyboard="true" class="modal fade" id="add-tag-modal" >
+         <div class="modal-dialog modal-sm">
+             <div class="modal-content">
+                 <div class="modal-body">
+                     <div class="row">
+                         <div class="col-sm-12">
+                             <label>Введите новый тег</label>
+                         </div>
+                     </div>
+                     <div class="row">
+                         <div class="col-sm-12">
+                             <input class="form-control" type="text" name="tag_name" />
+                         </div>
+                     </div>
+                     <br/>
+                     <div class="row">
+                         <div class="col-sm-12">
+                             <button class="btn btn-default" >Сохранить</button>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div><!-- /popup tag insert-->
+    
+    
+    
+   
 @endsection
 
 @section('styles')
@@ -238,7 +271,32 @@
                     language: 'ru'
                 })
             }
-        })
+           });
+ 
+         function AddTag(){
+             var modal = $('#add-tag-modal');
+             modal.modal();
+             modal.find('button.btn-default').click(function(){
+                 var value = modal.find('input[name=tag_name]').val();
+                 $.get("admin/json/addtag",
+                         {
+                             'value': value
+                         },
+                         function(response){
+                             if (response.success=="false"){
+                                 toastr.error(response.data);
+                                 return;
+                             }
+ 
+                             var id = response.data;
+                             $('#chosencat').append('<option value="'+id+'" selected="selected">'+value+'</option>');
+                             $("#chosencat").trigger("chosen:updated");
+                             toastr.success("Тег добавлен");
+                             modal.modal('toggle');
+                         }
+                 ), "json";
+             });
+         }
     </script>
 
     {!! HTML::script('ace/assets/js/chosen.jquery.min.js') !!}

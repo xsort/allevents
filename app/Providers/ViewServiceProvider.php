@@ -27,6 +27,7 @@ class ViewServiceProvider extends ServiceProvider
         view()->share('popular_news', $popular_news);
 
         $tags = Tags::all();
+        $tags = Tags::has('news')->limit(config('site.num_tags'))->get();
         view()->share('tags', $tags);
 
     }
