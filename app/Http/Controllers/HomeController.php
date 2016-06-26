@@ -23,9 +23,7 @@ class HomeController extends Controller
 		$categories = Categories::where('top',true)->get();
 		$products = Products::where('enabled',true)->where('top',true)->get();
 		$tags = Products::where('top',true)->get();
-		$news = News::get();
+		$news = News::where('top',true)->get();
 		return view('index')->with('categories', $categories)->with('products', $products)->with('newslist',$news);
-		
-
     }
 }

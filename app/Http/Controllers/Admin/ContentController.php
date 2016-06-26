@@ -51,6 +51,7 @@ class ContentController extends Controller
         $content->description       = $request->description;
         $content->meta_description  = $request->meta_description;
         $content->meta_keywords     = $request->meta_keywords;
+        $data->title                = $request->title;
         $content->save();
 
         // redirect

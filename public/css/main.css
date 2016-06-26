@@ -553,43 +553,43 @@ body.page-clubs {
 
 /*-------------CATEGORY STYLES---------------*/
 
-.menu.block-1 {
+.menu.block-0 {
     background-color: red;
 }
 
-.menu.block-2 {
+.menu.block-1 {
     background-color: #83c550;
 }
 
-.menu.block-3 {
+.menu.block-2 {
     background-color: slateblue;
 }
 
-.menu.block-4 {
+.menu.block-3 {
     background-color: cadetblue;
 }
 
-.menu.block-5 {
+.menu.block-4 {
     background-color: orangered;
 }
 
-.menu.block-6 {
+.menu.block-5 {
     background-color: yellowgreen;
 }
 
-.menu.block-7 {
+.menu.block-6 {
     background-color: darkgoldenrod;
 }
 
-.menu.block-8 {
+.menu.block-7 {
     background-color: limegreen;
 }
 
-.menu.block-9 {
+.menu.block-8 {
     background-color: cornflowerblue;
 }
 
-.menu.block-1 .main-menu-filter {
+.menu.block-0 .main-menu-filter {
     background: url(../images/main-menu/filter1.png) !important;
     -webkit-background-size: cover !important;
        -moz-background-size: cover !important;
@@ -598,7 +598,7 @@ body.page-clubs {
     background-repeat: no-repeat !important;
 }
 
-.menu.block-2 .main-menu-filter {
+.menu.block-1 .main-menu-filter {
     background: url(../images/main-menu/filter2.png) !important;
     -webkit-background-size: cover !important;
        -moz-background-size: cover !important;
@@ -607,7 +607,7 @@ body.page-clubs {
     background-repeat: no-repeat !important;
 }
 
-.menu.block-3 .main-menu-filter {
+.menu.block-2 .main-menu-filter {
     background: url(../images/main-menu/filter3.png) !important;
     -webkit-background-size: cover !important;
        -moz-background-size: cover !important;
@@ -616,7 +616,7 @@ body.page-clubs {
     background-repeat: no-repeat !important;
 }
 
-.menu.block-4 .main-menu-filter {
+.menu.block-3 .main-menu-filter {
     background: url(../images/main-menu/filter4.png) !important;
     -webkit-background-size: cover !important;
        -moz-background-size: cover !important;
@@ -625,7 +625,7 @@ body.page-clubs {
     background-repeat: no-repeat !important;
 }
 
-.menu.block-5 .main-menu-filter {
+.menu.block-4 .main-menu-filter {
     background: url(../images/main-menu/filter5.png) !important;
     background-position: center !important;
     -webkit-background-size: cover !important;
@@ -635,7 +635,7 @@ body.page-clubs {
     background-repeat: no-repeat !important;
 }
 
-.menu.block-6 .main-menu-filter {
+.menu.block-5 .main-menu-filter {
     background: url(../images/main-menu/filter6.png) !important;
     -webkit-background-size: cover !important;
        -moz-background-size: cover !important;
@@ -644,7 +644,7 @@ body.page-clubs {
     background-repeat: no-repeat !important;
 }
 
-.menu.block-7 .main-menu-filter {
+.menu.block-6 .main-menu-filter {
     background: url(../images/main-menu/filter7.png) !important;
     -webkit-background-size: cover !important;
        -moz-background-size: cover !important;
@@ -653,7 +653,7 @@ body.page-clubs {
     background-repeat: no-repeat !important;
 }
 
-.menu.block-8 .main-menu-filter {
+.menu.block-7 .main-menu-filter {
     background: url(../images/main-menu/filter8.png) !important;
     -webkit-background-size: cover !important;
        -moz-background-size: cover !important;
@@ -662,7 +662,7 @@ body.page-clubs {
     background-repeat: no-repeat !important;
 }
 
-.menu.block-9 .main-menu-filter {
+.menu.block-8 .main-menu-filter {
     background: url(../images/main-menu/filter9.png) !important;
     -webkit-background-size: cover !important;
        -moz-background-size: cover !important;
@@ -671,39 +671,39 @@ body.page-clubs {
     background-repeat: no-repeat !important;
 }
 
-.menu.block-1 .main-menu-button {
+.menu.block-0 .main-menu-button {
     color: red;
 }
 
-.menu.block-2 .main-menu-button {
+.menu.block-1 .main-menu-button {
     color: #83c550;
 }
 
-.menu.block-3 .main-menu-button {
+.menu.block-2 .main-menu-button {
     color: slateblue;
 }
 
-.menu.block-4 .main-menu-button {
+.menu.block-3 .main-menu-button {
     color: cadetblue;
 }
 
-.menu.block-5 .main-menu-button {
+.menu.block-4 .main-menu-button {
     color: orangered;
 }
 
-.menu.block-6 .main-menu-button {
+.menu.block-5 .main-menu-button {
     color: yellowgreen;
 }
 
-.menu.block-7 .main-menu-button {
+.menu.block-6 .main-menu-button {
     color: darkgoldenrod;
 }
 
-.menu.block-8 .main-menu-button {
+.menu.block-7 .main-menu-button {
     color: limegreen;
 }
 
-.menu.block-9 .main-menu-button {
+.menu.block-8 .main-menu-button {
     color: cornflowerblue;
 }
 

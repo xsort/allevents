@@ -14,9 +14,45 @@
     @else
     {{ Form::open(['url' => 'admin/news/' . $data->id, 'method' => 'put', 'class' => 'form-horizontal']) }}
     @endif
-            <!--<div class="form-group col-xs-12">
-        <button id="submit_button1" type="submit" class="btn  btn-success" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить </button>
-    </div>-->
+    
+
+    <div class="form-actions">
+        <div class="row center">
+            <div class="col-sm-2">
+                <button id="submit_button1" type="submit" class="btn  btn-success btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить </button>
+            </div>
+            <!--
+            <div class="col-sm-2">
+                <button id="submit_button1" type="submit" class="btn  btn-yellow btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить и закрыть</button>
+            </div>-->
+            <div class="col-sm-2 ">
+                <label>
+                    {{ Form::checkbox('top',  1, (isset($data) && $data->top == 1 ? true : false), ['class' => 'ace']) }}
+                    <span class="lbl"> На главную </span>
+                </label>
+            </div>
+            <div class="col-sm-4">
+                <div class="profile-contact-info">
+                    <div class="profile-links align-left">
+                        
+                        @if (isset($data))
+                        <div class="btn btn-link">
+                            <i class="ace-icon fa fa- bigger-120 green"></i>
+                            ID: {{ $data->id }}
+                        </div>
+                        
+                        <div class="btn btn-link">
+                            <i class="ace-icon fa fa-calendar bigger-120 green"></i>
+                             Изменен: {{ $data->updated_at }}
+                        </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.row -->
+    </div><!-- /.form-actions -->
+
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
@@ -37,24 +73,8 @@
                     {{ Form::text('name[en]', (isset($data->name_en) ? $data->name_en : old('name_en')), array('class' => 'col-sm-11 col-xs-12')) }}
                 </div>
             </div>
-            <div class="form-group">
-                {{ Form::label('slug', 'URL', ['class'=>'col-sm-3 control-label no-padding-right']) }}
-                <div class="col-sm-9">
-                    {{ Form::text('slug', (isset($data->slug) ? $data->slug : old('slug')), array('class' => 'col-sm-11 col-xs-12')) }}
-                </div>
-            </div>
-            <div class="form-group">
-                {{ Form::label('categories', 'Теги', ['class'=>'col-sm-3 control-label no-padding-right']) }}
-                <div class="col-sm-9">
-                    <select multiple data-placeholder="выберите категорию" id="chosencat" name="chosencat[]" class="tag-input-style col-xs-12">
-                        @foreach($tags as $tag)
-                        <option value="{{$tag['id']}}" @if (isset($data) && (in_array($tag->id, $data->getTagsIdsArray()))) selected="selected" @endif>
-                            {{ $tag->name }}
-                        </option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
+            
+            
         </div><!-- /.col-sm-6 -->
 
         <div class="col-sm-6">
@@ -71,13 +91,71 @@
                     </div>
                 </div>
             </div>
-            @if (isset($data->updated_at))
-                <div class="form-group">
-                    <label class="col-sm-6 control-label no-padding-right"> Изменен: {{ $data->updated_at }}</label>
+            <div class="form-group">
+                {{ Form::label('slug', 'URL', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-9">
+                    {{ Form::text('slug', (isset($data->slug) ? $data->slug : old('slug')), array('class' => 'col-sm-11 col-xs-12')) }}
                 </div>
-            @endif
+            </div>
         </div><!-- /.col-sm-6 -->
     </div><!-- /.row -->
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                {{ Form::label('categories', 'Теги', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-9">
+                    <select multiple data-placeholder="выберите категорию" id="chosencat" name="chosencat[]" class="tag-input-style col-sm-11 col-xs-12">
+                        @foreach($tags as $tag)
+                        <option value="{{$tag['id']}}" @if (isset($data) && (in_array($tag->id, $data->getTagsIdsArray()))) selected="selected" @endif>
+                            {{ $tag->name }}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <div class="tabbable">
+                        <ul id="myTab1" class="nav nav-tabs padding-12 tab-color-blue background-blue">
+                            <li class="active">
+                                <a href="#short_ru" data-toggle="tab" aria-expanded="true">Русс. яз.</a>
+                            </li>
+                    
+                            <li class="">
+                                <a href="#short_ro" data-toggle="tab" aria-expanded="false">Рум. яз.</a>
+                            </li>
+
+                            <li class="">
+                                <a href="#short_en" data-toggle="tab" aria-expanded="false">Англ. яз.</a>
+                            </li>
+
+                            <div class="center"> <span class="label label-xlg label-purple">Краткое описание</span></div>
+                        </ul>
+                    
+                        <div class="tab-content">
+                            <div class="tab-pane in active" id="short_ru">
+                             {{ Form::textarea('description_short[ru]', (isset($data->description_short) ? $data->description_short : old('description_short')), array('style'=>'width:100%', 'rows'=>'3')) }}
+                           </div>
+                           <div class="tab-pane" id="short_ro">
+                             {{ Form::textarea('description_short[ro]', (isset($data->description_short_ro) ? $data->description_short_ro : old('description_short_ro')), array('style'=>'width:100%', 'rows'=>'3')) }}
+                           </div>
+                           <div class="tab-pane" id="short_en">
+                             {{ Form::textarea('description_short[en]', (isset($data->description_short_en) ? $data->description_short_en : old('description_short_en')), array('style'=>'width:100%', 'rows'=>'3')) }}
+                           </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
     <div class="space"></div>
     <div class="tabbable">
         <ul id="myTab4" class="nav nav-tabs padding-12 tab-color-blue background-blue">

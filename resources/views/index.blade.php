@@ -289,57 +289,21 @@
         <div class="news-slider">
             <button type="button" class="news-next prev-arrow control-slider hidden-xs"></button>
             <div id="news">
-
+@foreach ($newslist as $news)
                 <div class="category">
 
-                    <a href="detail-news.php" class="bg-img-center news-image" style="background:url(img/news/news.jpg);">
+                    <a href="/news/{{$news->slug}}" class="bg-img-center news-image" style="background:url('uploaded/{{isset($news->photos{0}) ? $news->photos{0}->source : 'nophoto.png'}}');">
 
                     </a>
-                    <h2><a href="detail-news.php" class="title-more">Lorem ipsum dolor Lorem ipsum dolor.</a></h2>
+                    <h2><a href="/news/{{$news->slug}}" class="title-more">{{$news->name}}</a></h2>
                     <figure>
-                        <span class="text-left">18 февраля 2016</span><span class="pull-right">12:06</span>
+                        <span class="text-left">{{$news->created_at}}<!-- 18 февраля 2016 --></span><span class="pull-right">12:06</span>
                     </figure>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, quos?</span>
-                    <a href="detail-news.php" class="read-more">Читать далее...<span class="fa fa-angle-double-right"></span></a>
+                    <span>{{ str_limit($news->description_short, $limit = 100, $end = '...') }}</span>
+                    <a href="/news/{{$news->slug}}" class="read-more">Читать далее...<span class="fa fa-angle-double-right"></span></a>
                 </div>
-
+@endforeach
                 
-                <div class="category">
-                    <a href="detail-news.php" class="bg-img-center news-image" style="background:url(img/news/news2.png);"></a>
-                    <h2><a href="detail-news.php" class="title-more">Lorem ipsum dolor Lorem ipsum dolor.</a></h2>
-                    <figure>
-                        <span class="text-left">18 февраля 2016</span><span class="pull-right">12:06</span>
-                    </figure>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, quos?</span>
-                    <a href="detail-news.php" class="read-more">Читать далее...<span class="fa fa-angle-double-right"></span></a>
-                </div>
-                <div class="category">
-                    <a href="detail-news.php" class="bg-img-center news-image" style="background:url(img/news/news3.png);"></a>
-                    <h2><a href="detail-news.php" class="title-more">Lorem ipsum dolor Lorem ipsum dolor.</a></h2>
-                    <figure>
-                        <span class="text-left">18 февраля 2016</span><span class="pull-right">12:06</span>
-                    </figure>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, quos?</span>
-                    <a href="detail-news.php" class="read-more">Читать далее...<span class="fa fa-angle-double-right"></span></a>
-                </div>
-                <div class="category">
-                    <a href="detail-news.php" class="bg-img-center news-image" style="background:url(img/news/news4.png);"></a>
-                    <h2><a href="detail-news.php" class="title-more">Lorem ipsum dolor Lorem ipsum dolor.</a></h2>
-                    <figure>
-                        <span class="text-left">18 февраля 2016</span><span class="pull-right">12:06</span>
-                    </figure>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, quos?</span>
-                    <a href="detail-news.php" class="read-more">Читать далее...<span class="fa fa-angle-double-right"></span></a>
-                </div>
-                <div class="category">
-                    <a href="detail-news.php" class="bg-img-center news-image" style="background:url(img/news/news2.png);"></a>
-                    <h2><a href="detail-news.php" class="title-more">Lorem ipsum dolor Lorem ipsum dolor.</a></h2>
-                    <figure>
-                        <span class="text-left">18 февраля 2016</span><span class="pull-right">12:06</span>
-                    </figure>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, quos?</span>
-                    <a href="detail-news.php" class="read-more">Читать далее...<span class="fa fa-angle-double-right"></span></a>
-                </div>
             </div>
             <button type="button" class="news-prev next-arrow control-slider hidden-xs"></button>
         </div>

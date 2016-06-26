@@ -47,11 +47,14 @@ class NewsController extends Controller
         }
 
         $data->name              = $request->name;
+        $data->top               = $request->top;
         $data->created_at        = $request->date;
         $data->slug              = $request->slug;
         $data->description       = $request->description;
+        $data->description_short = $request->description_short;
         $data->meta_description  = $request->meta_description;
         $data->meta_keywords     = $request->meta_keywords;
+        $data->title             = $request->title;
         $data->save();
 
         //tags

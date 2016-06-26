@@ -2,6 +2,17 @@
 @section('centerbox')
 
 <div class="layout-page ">
+<div class="layout-breadcrumbs">
+    <div class="container-fluid">
+        <div class="container-breadcrumbs">
+            <ul class="breadcrumbs">
+                <li><a href="">Главная</a></li>
+                <li>Новости</li>                
+            </ul>
+        </div>
+    </div>
+</div>
+
 <div class="layout-content" >
 
 <div class="container-fluid">
@@ -15,7 +26,7 @@
                 <div class="item">
                     <div class="blog-wrapper">
                         <div class="blog-img">
-                            <img class="img-responsive" src="img/news/news-page-1.jpg" alt="">
+                            <img class="img-responsive" src="uploaded/{{isset($news->photos{0}) ? $news->photos{0}->source : 'nophoto.png'}}" alt="">
                             <div class="post-date ">
                                 <p class="">Дек
                                     <br class="hide-mobile"><span>02</span></p>
@@ -25,7 +36,7 @@
                         <div class="post-content">
                             <h3 class="post-title"><a href="news/{{$news->slug}}">{{$news->name}}</a></h3>
 
-                            <p class="post-inner-content mrg-vertical-15">{{$news->description_short}}</p>
+                            <p class="post-inner-content mrg-vertical-15">{{ str_limit($news->description_short, $limit = 150, $end = '...') }}</p>
 
                             <div class="post-bottom">
                                 <span class="read-more"><a class="btn no-padding " href="news/{{$news->slug}}">Читать далее</a></span>
@@ -39,11 +50,7 @@
 
             </div>
         </div>
-        <div class="col-md-3 hidden-xs hidden-sm ">
-            <div onclick="location.href='http://google.ru';" class="banner banner-right first" style="background:url(img/public/first-pub.png)"></div>
-
-            <div onclick="location.href='http://google.ru';" class="banner banner-right second" style="background:url(img/public/second-pub.png)"></div>
-        </div>
+        @include('partials.right-banners')
         <!--
         <div class="news-items">
                 <a href="layout/pages/news-page-2.php">next page</a>

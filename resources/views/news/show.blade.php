@@ -2,6 +2,19 @@
 
 @section('centerbox')
 <div class="layout-page ">
+<div class="layout-breadcrumbs">
+    <div class="container-fluid">
+        <div class="container-breadcrumbs">
+            <ul class="breadcrumbs">
+                <li><a href="">Главная</a></li>
+                <li><a href="/news">Новости</a></li>
+                <li>{{ str_limit($data->name, $limit = 25, $end = '...') }}</li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
 <div class="layout-content" >
 <div class="container-fluid">
     <div class="row">
@@ -10,7 +23,7 @@
             <div class="blog-post single-post">
                 <div class="blog-wrapper no-margin no-scale">
                     <div class="blog-img">
-                        <img class="img-responsive" src="img/news/news-page-4.jpg" alt="">
+                        <img class="img-responsive" src="uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" alt="">
                     </div>
 
 
@@ -66,11 +79,7 @@
 
             </div>
         </div>
-        <div class="col-md-3 hidden-xs hidden-sm ">
-            <div onclick="location.href='http://google.ru';" class="banner banner-right first" style="background:url(img/public/first-pub.png)"></div>
-
-            <div onclick="location.href='http://google.ru';" class="banner banner-right second" style="background:url(img/public/second-pub.png)"></div>
-        </div>
+        @include('partials.right-banners')
     </div>
 </div>
 </div>
