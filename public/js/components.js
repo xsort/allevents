@@ -568,6 +568,19 @@ $('.order-event').click(function () {
     $("#mask").css('display', 'none');
 });
 
+$('.tell-event').click(function () {
+    $('.modal-fade-fourth').slideToggle("fast", function () {});
+    $('.modal-tell-event').slideToggle("fast", function () {})
+    $("body").toggleClass('overflow-h');
+    $("#mask").css('display', 'none');
+});
+
+$('.modal-fade-fourth').click(function () {
+    $('.modal-fade-fourth').slideToggle("fast", function () {})
+    $('.modal-tell-event').slideToggle("fast", function () {})
+    $("body").removeClass('overflow-h');
+})
+
 $('.modal-fade-second').click(function () {
     $('.modal-fade-second').slideToggle("fast", function () {})
     $('.modal-event').slideToggle("fast", function () {})

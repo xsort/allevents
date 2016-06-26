@@ -1,1 +1,1 @@
-@extends('body')@section('centerbox')<div class="layout-page ">	<div class="layout-content" >		<div class="container-fluid ">			{{$data->name}}		</div>	</div></div>@stop
+@extends('body')@section('centerbox')<div class="layout-page ">	<div class="layout-content" >		<div class="container-fluid ">			{{$data->description}}		</div>	</div></div>@stop

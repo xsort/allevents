@@ -105,15 +105,16 @@
         <div class="col-sm-6">
             <div class="form-group">
                 {{ Form::label('categories', 'Теги', ['class'=>'col-sm-3 control-label no-padding-right']) }}
-                <div class="col-sm-8">
-                    <select multiple data-placeholder="выберите категорию" id="chosencat" name="chosencat[]" class="tag-input-style col-sm-11 col-xs-12">
+                <div class="col-sm-7">
+                    <select multiple data-placeholder="выберите категорию" id="chosencat" name="chosencat[]" class="tag-input-style col-xs-12">
                         @foreach($tags as $tag)
                         <option value="{{$tag->id}}" @if (in_array($tag->id, isset($data) ? $data->getTagsIdsArray() : array())) selected="selected" @endif>
                             {{ $tag->name }}
                         </option>
                         @endforeach
                     </select>
-                    
+
+                  
                 </div>
                 <div class="col-sm-1">
                      <a href="javascript:AddTag();" class="btn btn-sm btn-primary"><i class="ace-icon fa fa-plus-circle"></i></a>

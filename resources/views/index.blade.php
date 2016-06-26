@@ -260,13 +260,48 @@
                 <div class="col-lg-10 col-md-10 col-xs-12" id="report">
 
 
-					@foreach ($tags as $tag)
+					<!-- @foreach ($tags as $tag)
                     <a href="{{$tag->slug}}" class="item">
                         <div class="filter"></div>
                         <img src="uploaded/thumbs/{{isset($category->photos{0}) ? $category->photos{0}->source : 'nophoto.png'}}" alt="">
                         <span>{{$tag->name}}</span>
                     </a>
-		            @endforeach
+		            @endforeach -->
+                    <a href="javascript:void(0)" class="item">
+                        <div class="filter"></div>
+                        <img src="images/reports-notice/concert.png" alt="">
+                        <span>Концерты</span>
+                    </a>
+
+                    <a href="javascript:void(0)" class="item">
+                        <div class="filter"></div>
+                        <img src="images/reports-notice/sport.png" alt="">
+                        <span>Спорт</span>
+                    </a>
+
+                    <a href="javascript:void(0)" class="item">
+                        <div class="filter"></div>
+                        <img src="images/reports-notice/theatre.png" alt="">
+                        <span>Театры</span>
+                    </a>
+
+                    <a href="javascript:void(0)" class="item">
+                        <div class="filter"></div>
+                        <img src="images/reports-notice/cinema.jpg" alt="">
+                        <span>Кинотеатры</span>
+                    </a>
+
+                    <a href="javascript:void(0)" class="item">
+                        <div class="filter"></div>
+                        <img src="images/reports-notice/sport.png" alt="">
+                        <span>Развлечения</span>
+                    </a>
+
+                    <a href="javascript:void(0)" class="item">
+                        <div class="filter"></div>
+                        <img src="images/reports-notice/festival.jpg" alt="">
+                        <span>Фестивали</span>
+                    </a>
 		            
                 </div>
 
@@ -297,7 +332,7 @@
                     </a>
                     <h2><a href="/news/{{$news->slug}}" class="title-more">{{$news->name}}</a></h2>
                     <figure>
-                        <span class="text-left">{{$news->created_at}}<!-- 18 февраля 2016 --></span><span class="pull-right">12:06</span>
+                        <span class="text-left">{{ date('d F, Y', strtotime($news->created_at)) }}<!-- 18 февраля 2016 --></span><span class="pull-right"><!-- 12:06 -->{{ date('H:i', strtotime($news->created_at)) }}</span>
                     </figure>
                     <span>{{ str_limit($news->description_short, $limit = 100, $end = '...') }}</span>
                     <a href="/news/{{$news->slug}}" class="read-more">Читать далее...<span class="fa fa-angle-double-right"></span></a>

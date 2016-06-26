@@ -14,23 +14,66 @@
 @else
 {{ Form::open(['url' => 'admin/content/' . $data->id, 'method' => 'put', 'class' => 'form-horizontal']) }}
 @endif
-    <!--<div class="form-group col-xs-12">
-        <button id="submit_button1" type="submit" class="btn  btn-success" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить </button>
-    </div>-->
+
+    <div class="form-actions">
+        <div class="row center">
+            <div class="col-sm-2">
+                <button id="submit_button1" type="submit" class="btn  btn-success btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить </button>
+            </div>
+            <!--
+            <div class="col-sm-2">
+                <button id="submit_button1" type="submit" class="btn  btn-yellow btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить и закрыть</button>
+            </div>-->
+            <div class="col-sm-2 ">
+                <label>
+                    {{ Form::checkbox('enabled',  1, (isset($data) && $data->enabled == 1 ? true : false), ['class' => 'ace']) }}
+                    <span class="lbl"> Включить </span>
+                </label>
+            </div>
+            <div class="col-sm-4">
+                <div class="profile-contact-info">
+                    <div class="profile-links align-left">
+                        
+                        @if (isset($data))
+                        <div class="btn btn-link">
+                            <i class="ace-icon fa fa- bigger-120 green"></i>
+                            ID: {{ $data->id }}
+                        </div>
+                        
+                        <div class="btn btn-link">
+                            <i class="ace-icon fa fa-calendar bigger-120 green"></i>
+                             Изменен: {{ $data->updated_at }}
+                        </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.row -->
+    </div><!-- /.form-actions -->
+
+
     <div class="row">
         <div class="col-sm-6">
-            <div class="form-group">
-                {{ Form::label('name', 'Заголовок', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="form-group">
+                {{ Form::label('name[ru]', 'Заголовок', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-9">
-                    {{ Form::text('name', (isset($data->name) ? $data->name : old('name')), array('class' => 'col-sm-11 col-xs-12')) }}
+                    {{ Form::text('name[ru]', (isset($data->name) ? $data->name : old('name')), array('class' => 'col-sm-11 col-xs-12 name_ru')) }}
                 </div>
             </div>
             <div class="form-group">
-                 {{ Form::label('slug', 'URL', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                {{ Form::label('name[ro]', 'Заголовок рум', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-9">
-                    {{ Form::text('slug', (isset($data->slug) ? $data->slug : old('slug')), array('class' => 'col-sm-11 col-xs-12')) }}
+                    {{ Form::text('name[ro]', (isset($data->name_ro) ? $data->name_ro : old('name_ro')), array('class' => 'col-sm-11 col-xs-12')) }}
                 </div>
             </div>
+            <div class="form-group">
+                {{ Form::label('name[en]', 'Заголовок англ', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-9">
+                    {{ Form::text('name[en]', (isset($data->name_en) ? $data->name_en : old('name_en')), array('class' => 'col-sm-11 col-xs-12')) }}
+                </div>
+            </div>
+
         </div><!-- /.col-sm-6 -->
 
         <div class="col-sm-6">
@@ -47,11 +90,13 @@
                     </div>
                 </div>
             </div>
-            @if (isset($data->updated_at))
             <div class="form-group">
-                <label class="col-sm-6 control-label no-padding-right"> Изменен: {{ $data->updated_at }}</label>
+                 {{ Form::label('slug', 'URL', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-9">
+                    {{ Form::text('slug', (isset($data->slug) ? $data->slug : old('slug')), array('class' => 'col-sm-11 col-xs-12')) }}
+                </div>
             </div>
-            @endif
+
         </div><!-- /.col-sm-6 -->
     </div><!-- /.row -->
     <div class="space"></div>
@@ -66,9 +111,37 @@
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane active" id="ru">
-                {{ Form::textarea('description', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => 'editor')) }}
-            </div>
+             <div class="tab-pane active" id="ru">
+
+                <div class="tabbable  tabs-left">
+
+                 <ul id="myTab" class="nav nav-tabs">
+                   <li class="active">
+                      <a href="#descRu" data-toggle="tab">Описание на русском</a>
+                   </li>
+                   <li>
+                      <a href="#descRo" data-toggle="tab">Описание на румынском</a>
+                   </li>
+                   <li>
+                      <a href="#descEn" data-toggle="tab">Описание на английском</a>
+                   </li>
+                 </ul>
+
+                 <div class="tab-content">
+                   <div class="tab-pane in active" id="descRu">
+                     {{ Form::textarea('description[ru]', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+                   </div>
+                   <div class="tab-pane" id="descRo">
+                     {{ Form::textarea('description[ro]', (isset($data->description_ro) ? $data->description_ro : old('description_ro')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+                   </div>
+                   <div class="tab-pane" id="descEn">
+                     {{ Form::textarea('description[en]', (isset($data->description_en) ? $data->description_en : old('description_en')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+                   </div>
+
+                 </div>
+
+                </div>
+             </div>
             @include('admin.partials.meta')
         </div>
     </div>
@@ -104,5 +177,38 @@
                 })
             }
         })
+    </script>
+    <script>
+
+        $(document).ready(function(){
+         initSEFonEnter();   
+        });
+
+        transliterate = (
+        function() {
+            var
+                rus = "щ   ш  ч  ц  ю  я  ё  ж  ъ  ы  э  а б в г д е з и й к л м н о п р с т у ф х ь".split(/ +/g),
+                eng = "shh sh ch cz yu ya yo zh i  y  e  a b v g d e z i j k l m n o p r s t u f x i".split(/ +/g)
+            ;
+            return function(text, engToRus) {
+                var x;
+                for(x = 0; x < rus.length; x++) {
+                    text = text.split(engToRus ? eng[x] : rus[x]).join(engToRus ? rus[x] : eng[x]);
+                    text = text.split(engToRus ? eng[x].toUpperCase() : rus[x].toUpperCase()).join(engToRus ? rus[x].toUpperCase() : eng[x].toUpperCase());
+                }
+                text = text.toLowerCase().replace(/[^a-zA-Z ]/g, "").split(' ').join('-');
+                return text;
+            }
+        }
+    )();
+
+    function initSEFonEnter(){
+        $("input.name_ru").keyup(function() {
+            var a = $(this).val();
+            var b = transliterate(a);
+            $("input[name=slug]").val(b);
+        });
+    }
+
     </script>
 @endsection

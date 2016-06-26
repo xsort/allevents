@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2016 at 09:00 AM
+-- Generation Time: Jun 26, 2016 at 03:32 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.4
 
@@ -19,34 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `allevents`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `categories`
---
-
-DROP TABLE IF EXISTS `categories`;
-CREATE TABLE `categories` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
-  `menu_type_id` tinyint(4) NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT '1',
-  `top` tinyint(1) NOT NULL,
-  `views` int(11) NOT NULL,
-  `sort` int(11) NOT NULL,
-  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `categories`
@@ -88,19 +60,6 @@ INSERT INTO `categories` (`id`, `name`, `name_ro`, `name_en`, `description`, `de
 (37, 'Кейтеринг \\ Шатры', 'Catering \\ Corturi', 'Catering \\ Tents', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'kejtering-shatry', '2016-06-21 05:32:43', '2016-06-21 06:57:41'),
 (38, 'Организация предложения руки и сердца', 'Organizația oferă mâini și inimi', 'The organization offers hands and hearts', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'organizacziya-predlozheniya-ruki-i-serdcza', '2016-06-21 05:33:19', '2016-06-21 06:54:28'),
 (39, 'Фитнес центр', 'Centru de fitness', 'Fitness center', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'fitnes-czentr', '2016-06-21 05:34:12', '2016-06-21 06:55:07');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `categories_xref`
---
-
-DROP TABLE IF EXISTS `categories_xref`;
-CREATE TABLE `categories_xref` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `parent_id` int(11) NOT NULL,
-  `child_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `categories_xref`
@@ -201,164 +160,19 @@ INSERT INTO `categories_xref` (`id`, `parent_id`, `child_id`) VALUES
 (112, 0, 9),
 (113, 0, 8);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `constants`
---
-
-DROP TABLE IF EXISTS `constants`;
-CREATE TABLE `constants` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `key` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `value` text COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `content`
---
-
-DROP TABLE IF EXISTS `content`;
-CREATE TABLE `content` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT '1',
-  `views` int(11) NOT NULL,
-  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 --
 -- Dumping data for table `content`
 --
 
 INSERT INTO `content` (`id`, `name`, `name_en`, `name_ro`, `description`, `description_en`, `description_ro`, `enabled`, `views`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'Club drive Content', 'asdas', 'ada', 'asd', 'asd', 'asd', 1, 0, 'stranitsa', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `galleries`
---
-
-DROP TABLE IF EXISTS `galleries`;
-CREATE TABLE `galleries` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT '1',
-  `views` int(11) NOT NULL,
-  `sort` int(11) NOT NULL,
-  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `galleries_xref`
---
-
-DROP TABLE IF EXISTS `galleries_xref`;
-CREATE TABLE `galleries_xref` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `galleries_id` int(10) UNSIGNED NOT NULL,
-  `table_id` int(11) NOT NULL,
-  `table` varchar(20) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `menu_categories`
---
-
-DROP TABLE IF EXISTS `menu_categories`;
-CREATE TABLE `menu_categories` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
-  `parent_id` tinyint(4) NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT '1',
-  `views` int(11) NOT NULL,
-  `sort` int(11) NOT NULL,
-  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `menu_products`
---
-
-DROP TABLE IF EXISTS `menu_products`;
-CREATE TABLE `menu_products` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
-  `category_id` tinyint(4) NOT NULL,
-  `price` double(15,2) NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT '1',
-  `views` int(11) NOT NULL,
-  `sort` int(11) NOT NULL,
-  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `meta`
---
-
-DROP TABLE IF EXISTS `meta`;
-CREATE TABLE `meta` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `meta_description` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `meta_description_ro` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `meta_description_en` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `meta_keywords` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `meta_keywords_ro` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `meta_keywords_en` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `title` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `title_ro` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `title_en` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `table_id` int(11) NOT NULL,
-  `table` varchar(20) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+(3, 'Об Allevents', 'Об Allevents', 'Об Allevents', '<p>Здесь будет описание о сайте Allevents</p>\r\n', '<p>Здесь будет описание о сайте Allevents</p>\r\n', '<p>Здесь будет описание о сайте Allevents</p>\r\n', 1, 0, 'about', '2016-06-26 09:56:14', '2016-06-26 09:56:14'),
+(4, 'Отчеты', '', '', '<p>Здесь будут отчеты</p>\r\n', '<p>Здесь будут отчеты</p>\r\n', '<p>Здесь будут отчеты</p>\r\n', 1, 0, 'reports', '2016-06-26 09:59:26', '2016-06-26 09:59:26'),
+(5, 'Акции', '', '', '<p>Здесь будут акции</p>\r\n', '<p>Здесь будут акции</p>\r\n', '<p>Здесь будут акции</p>\r\n', 1, 0, 'promo', '2016-06-26 10:00:07', '2016-06-26 10:00:07'),
+(6, 'Экслюзив', 'Экслюзив', 'Экслюзив', '<p>Здесь будет выводиться экслюзив</p>\r\n', '<p>Здесь будет выводиться экслюзив</p>\r\n', '<p>Здесь будет выводиться экслюзив</p>\r\n', 1, 0, 'exclusive', '2016-06-26 10:00:55', '2016-06-26 10:00:55'),
+(7, 'Контакты', 'Контакты', 'Контакты', '<p>Здесь будет информация наши&nbsp;контакты</p>\r\n', '<p>Здесь будет информация наши&nbsp;контакты</p>\r\n', '<p>Здесь будет информация наши&nbsp;контакты</p>\r\n', 1, 0, 'contacts', '2016-06-26 10:04:29', '2016-06-26 10:04:29'),
+(8, 'Реклама', 'Реклама', 'Реклама', '<p>Сдесь будет реклама</p>\r\n', '<p>Сдесь будет реклама</p>\r\n', '<p>Сдесь будет реклама</p>\r\n', 1, 0, 'advert', '2016-06-26 10:04:56', '2016-06-26 10:04:56'),
+(9, 'Права', 'Права', 'Права', '<p>здесь будут права</p>\r\n', '<p>здесь будут права</p>\r\n', '<p>здесь будут права</p>\r\n', 1, 0, 'copyright', '2016-06-26 10:06:19', '2016-06-26 10:06:19'),
+(10, 'Карта сайта', 'Карта сайта', 'Карта сайта', '<p>Сдесь будет карта сайта</p>\r\n', '<p>Сдесь будет карта сайта</p>\r\n', '<p>Сдесь будет карта сайта</p>\r\n', 1, 0, 'sitemap', '2016-06-26 10:07:09', '2016-06-26 10:07:09');
 
 --
 -- Dumping data for table `meta`
@@ -417,19 +231,23 @@ INSERT INTO `meta` (`id`, `meta_description`, `meta_description_ro`, `meta_descr
 (50, '', '', '', '', '', '', '', '', '', 15, 'products'),
 (51, '', '', '', '', '', '', '', '', '', 16, 'products'),
 (52, '', '', '', '', '', '', '', '', '', 17, 'products'),
-(53, '', '', '', '', '', '', '', '', '', 18, 'products');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `migrations`
---
-
-DROP TABLE IF EXISTS `migrations`;
-CREATE TABLE `migrations` (
-  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `batch` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+(53, '', '', '', '', '', '', '', '', '', 18, 'products'),
+(54, '123', '123', '789', '456', '456', '346', '890', '678', '789', 1, 'news'),
+(55, '', '', '', '', '', '', '', '', '', 2, 'news'),
+(56, '', '', '', '', '', '', '', '', '', 3, 'news'),
+(57, '', '', '', '', '', '', '', '', '', 4, 'news'),
+(58, '', '', '', '', '', '', '', '', '', 5, 'news'),
+(59, '', '', '', '', '', '', '', '', '', 6, 'news'),
+(60, '', '', '', '', '', '', '', '', '', 7, 'news'),
+(61, '', '', '', '', '', '', '', '', '', 2, 'content'),
+(62, '123', '', '', '', '245', '', '', '', '234', 3, 'content'),
+(63, '', '', '', '', '', '', '', '', '', 4, 'content'),
+(64, '', '', '', '', '', '', '', '', '', 5, 'content'),
+(65, '', '', '', '', '', '', '', '', '', 6, 'content'),
+(66, '', '', '', '', '', '', '', '', '', 7, 'content'),
+(67, '', '', '', '', '', '', '', '', '', 8, 'content'),
+(68, '', '', '', '', '', '', '', '', '', 9, 'content'),
+(69, '', '', '', '', '', '', '', '', '', 10, 'content');
 
 --
 -- Dumping data for table `migrations`
@@ -521,94 +339,26 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2016_05_25_122425_menu_categories', 1),
 ('2016_06_23_074721_products_categories', 2);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `news`
---
-
-DROP TABLE IF EXISTS `news`;
-CREATE TABLE `news` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT '1',
-  `top` tinyint(1) NOT NULL,
-  `views` int(11) NOT NULL,
-  `sort` int(11) NOT NULL,
-  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 --
 -- Dumping data for table `news`
 --
 
 INSERT INTO `news` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `enabled`, `top`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'Тест новость', '', '', 'First test full description', '', '', 'First test description', '', '', 1, 1, 8, 0, 'test-novosti', NULL, '0000-00-00 00:00:00');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `news_tags`
---
-
-DROP TABLE IF EXISTS `news_tags`;
-CREATE TABLE `news_tags` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `news_id` int(10) UNSIGNED NOT NULL,
-  `tags_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
+(1, 'Voice Vocal Club Karaoke приглашает принять участие в проекте AntiProfy', '123', '123', '<p><strong>Каждый четверг в Voice Vocal Club Karaoke вас ждут звездные гости, а самые активные любители караоке могут проявить свой талант и артистичность, приняв участие в проекте AntiProfy. Правила просты: для участия в конкурсе приглашаются 3 гостя из зала, которые исполнят по 2 песни, а остальные посетители отдают свои голоса понравившемуся исполнителю. Звездный гость выбирает своего фаворита и отдает ему 5 баллов. Победитель с максимальным количеством баллов получает главный приз вечера &mdash; трофей конкурса AntiProfy .</strong></p>\r\n\r\n<p><strong><img alt="" src="http://cdn.allfun.md/2016/06/23/10/576b94a5c41e9.jpg" style="height:289px; width:620px" /></strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>На этот раз, 23 июня, специальным гостем проекта станет молодая исполнительница&nbsp; Stela Botez. Все участники получат приятные призы от партнеров проекта.</p>\r\n\r\n<p>Voice Vocal Club ждет вас каждый четверг!</p>\r\n\r\n<p>Sing Different - be Anti Profy!</p>\r\n\r\n<p>Начало в 22:00.</p>\r\n\r\n<p>Московский пр-т 15/4, 022 43 93 93, 79409266<br />\r\n<a href="http://www.facebook.com/VVCK.MD/" target="_blank">www.facebook.com/VVCK.MD/</a>,<a href="http://www.voiceclub.md/" target="_blank">www.voiceclub.md</a></p>\r\n', '<p>123</p>\r\n', '<p>456</p>\r\n', 'Каждый четверг в Voice Vocal Club Karaoke вас ждут звездные гости, а самые активные любители караоке могут проявить свой талант и артистичность, приняв участие в проекте AntiProfy.', 'Рум описание', 'Англ описание', 1, 1, 26, 0, 'voice-vocal-club-karaoke-priglashaet-prinyati-uchastie-v-proekte-antiprofy', '2016-06-26 09:14:43', '0000-00-00 00:00:00'),
+(4, 'Несколько учебных заведений будут реорганизованы или ликвидированы', '', '', '<h3>По предложению Министерства просвещения, несколько профессионально-технических учебных заведений будут ликвидированы, реорганизованы или переименованы.</h3>\r\n\r\n<p><br />\r\nСоответствующее решение было утверждено сегодня на заседании правительства, сообщает NOI.md.<br />\r\n<br />\r\nТак, путем реорганизации Кишиневского политехнического колледжа и Кишиневского колледжа микроэлектроники и вычислительной техники будет создан Центр передового опыта в области энергетики и электроники. На базе Финансово-банковского колледжа будет создан Центр передового опыта в области экономики и финансов.<br />\r\n<br />\r\nВ соответствии с другим решением кабмина, Каларашский педагогический колледж имени Александру чел Бун будет ликвидирован. Из названия шести учебных заведений будет исключено название &laquo;педагогический&raquo;. Это Кишиневский колледж имени Алексея Матеевича, Липканского колледжа имени Георгия Асаки, Оргеевский колледж имени Василия Лупу и т.д.<br />\r\n<br />\r\nПо словам руководства Министерства просвещения, реорганизация данных учебных заведений осуществляется в рамках реформы профессионально-технического образования. По словам властей, создание 10 центров передового опыта является обязательством правительства по модернизации профессионально-технического образования. В 2015 году было создано пять центров передового опыта в строительстве, транспорте, информатике, легкой промышленности и пищевой промышленности.</p>\r\n', '', '', 'По предложению Министерства просвещения, несколько профессионально-технических учебных заведений будут ликвидированы, реорганизованы или переименованы.', '', '', 1, 1, 7, 0, 'neskoliko-uchebnyx-zavedenij-budut-reorganizovany-ili-likvidirovany', '2016-06-26 09:15:06', '0000-00-00 00:00:00'),
+(5, 'Black & White Party @ Versenz Cafe', 'Black & White Party @ Versenz Cafe', 'Black & White Party @ Versenz Cafe', '<p>Правильный субботний вечер - это отдых, большая компания друзей, любимые напитки и отличная атмосфера. Если вам это по душе, то Versenz Cafe ждет вас в 21:00.</p>\r\n\r\n<p>Для вас и ваших друзей в эту субботу зажжет DJ DEN DI.<br />\r\nБронируем столики по телефону 060 224422.</p>\r\n\r\n<p>Подробности на страничке Versenz в&nbsp;<a href="http://www.facebook.com/versenzcafe" target="_blank">www.facebook.com</a></p>\r\n', '', '', 'Правильный субботний вечер - это отдых, большая компания друзей, любимые напитки и отличная атмосфера. Если вам это по душе, то Versenz Cafe ждет вас в 21:00.', '', '', 1, 1, 10, 0, 'black-white-party-versenz-cafe', '2016-06-26 09:30:16', '0000-00-00 00:00:00'),
+(6, 'С песней по жизни: Voice Vocal Club - 8 лет', 'С песней по жизни: Voice Vocal Club - 8 лет', 'С песней по жизни: Voice Vocal Club - 8 лет', '<p><strong>В воскресенье, 29 мая, Voice Vocal Club отмечает свой VIII день рождения. К знаменательной дате клуб подошел, основательно подготовившись. За это время он обзавелся широким кругом постоянных гостей, в числе которых много звездных персонажей, для которых пение - не просто хобби.&nbsp;</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&quot;Voice Vocal Club&quot; славится своей душевной атмосферой и настроением, ну а зрелища здесь всегда на высоком уровне.&nbsp;<br />\r\nДень своего рождения&nbsp; Voice Vocal Club решил отметить с друзьями.</p>\r\n\r\n<p>Приглашенные гости : Max Zavidia и Broono SB.</p>\r\n\r\n<p>В программе вечера: &laquo;Танец персонала&raquo; и исполнение всем коллективом гимна &quot;Voice Vocal Club&quot;, клубный фотограф, бесплатное шампанское и, конечно же, праздничный торт для всех гостей клуба!</p>\r\n\r\n<p>8 лет мы работаем для вас: тысячи караокеров, сотни звездных гостей, десятки победителей в караоке чемпионатах и МИЛЛИОН исполненных песен.&nbsp;</p>\r\n\r\n<p>Начало в 21.00.</p>\r\n\r\n<p>&quot;Voice Vocal Club&quot;: с песней по жизни!</p>\r\n', '', '', '"Voice Vocal Club" славится своей душевной атмосферой и настроением, ну а зрелища здесь всегда на высоком уровне. \r\nДень своего рождения  Voice Vocal Club решил отметить с друзьями.', '', '', 1, 1, 1, 0, 's-pesnej-po-zhizni-voice-vocal-club-let', '2016-06-26 06:52:35', '0000-00-00 00:00:00'),
+(7, 'Самир Логин в проекте AntiProfy в Voice Vocal Club Karaoke', '', '', '<p>Проект AntiProfy с бессменной ведущей Алиной Дабижа в Voice Vocal Club Karaoke набирает обороты. Каждый четверг здесь вас ждут звездные гости, а самые активные любители караоке могут проявить свой талант и артистичность, приняв участие в проекте.&nbsp;</p>\r\n\r\n<p>На этот раз, 26 мая, специальным гостем проекта станет талантливый исполнитель Самир Логин.&nbsp;&nbsp; Все участники получат приятные призы от партнеров проекта.</p>\r\n\r\n<p>Voice Vocal Club ждет вас каждый четверг!</p>\r\n\r\n<p>Sing Different - be Anti Profy!</p>\r\n\r\n<p>Начало в 22:00.</p>\r\n\r\n<p>Московский пр-т 15/4, 022 43 93 93, 79409266</p>\r\n', '', '', 'На этот раз, 26 мая, специальным гостем проекта станет талантливый исполнитель Самир Логин.   Все участники получат приятные призы от партнеров проекта.', '', '', 1, 1, 4, 0, 'samir-login-v-proekte-antiprofy-v-voice-vocal-club-karaoke', '2016-06-26 06:54:09', '0000-00-00 00:00:00');
 
 --
--- Table structure for table `news_types`
+-- Dumping data for table `news_tags`
 --
 
-DROP TABLE IF EXISTS `news_types`;
-CREATE TABLE `news_types` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `news_id` int(10) UNSIGNED NOT NULL,
-  `types_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `password_resets`
---
-
-DROP TABLE IF EXISTS `password_resets`;
-CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `photos`
---
-
-DROP TABLE IF EXISTS `photos`;
-CREATE TABLE `photos` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `source` text COLLATE utf8_unicode_ci NOT NULL,
-  `table_id` int(11) NOT NULL,
-  `table` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `sort` int(11) NOT NULL,
-  `token` varchar(200) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+INSERT INTO `news_tags` (`id`, `news_id`, `tags_id`) VALUES
+(2, 1, 2),
+(4, 4, 1),
+(5, 4, 2),
+(6, 5, 2);
 
 --
 -- Dumping data for table `photos`
@@ -682,43 +432,23 @@ INSERT INTO `photos` (`id`, `source`, `table_id`, `table`, `sort`, `token`) VALU
 (67, 'cocos-priv_67.jpg', 15, 'products', 67, ''),
 (68, 'chocolate-karaoke-club_68.jpg', 16, 'products', 68, ''),
 (69, 'drive_69.jpg', 17, 'products', 69, ''),
-(70, 'cocos-prive_70.jpg', 18, 'products', 70, '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `products`
---
-
-DROP TABLE IF EXISTS `products`;
-CREATE TABLE `products` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
-  `price` double(15,2) NOT NULL,
-  `map` text COLLATE utf8_unicode_ci NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT '1',
-  `top` tinyint(1) NOT NULL,
-  `views` int(11) NOT NULL,
-  `sort` int(11) NOT NULL,
-  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+(70, 'cocos-prive_70.jpg', 18, 'products', 70, ''),
+(71, 'test-novosti_71.png', 1, 'categories', 71, ''),
+(72, '576d6dfeed8de.png', 0, 'categories', 72, '45fc5bb8fc72c0fed947891c17086c52ea4bde64'),
+(73, '123_73.png', 2, 'news', 73, ''),
+(74, 'test-novosti_74.jpg', 1, 'news', 74, ''),
+(75, 'neskoliko-uchebnyx-zavedenij-budut-reorganizovany-ili-likvidirovany_75.jpg', 4, 'news', 75, ''),
+(76, '576fa3238d7d2.jpg', 0, 'news', 76, 'fceb471460d21c2999d8fce09cb7932774b02e2c'),
+(77, 'black--white-party--versenz-cafe_77.jpg', 5, 'news', 77, ''),
+(78, 's-pesnej-po-zhizni-voice-vocal-club---let_78.jpg', 6, 'news', 78, ''),
+(79, 'samir-login-v-proekte-antiprofy-v-voice-vocal-club-karaoke_79.jpg', 7, 'news', 79, '');
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `price`, `map`, `enabled`, `top`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
-(7, 'Andy''s Pizza', 'Andy''s Pizza', 'Andy''s Pizza', '<p>В меню&nbsp;Andys Pizza&nbsp;самые вкусные блюда! Закажите еду в офис, на дом или оформите предварительный заказ. Приятного аппетита!</p>\r\n', '', '', 'Andy''s Pizza - самый вкусный заказ еды онлайн! Быстрая доставка днем и ночью!', 'Andys Pizza - comanda online cele mai delicioase bucate! Livrarea rapidă ziua și noaptea!', 'Andys Pizza - the most delicious food order online! Fast delivery day and night!', 0.00, '', 1, 1, 0, 0, 'andys-pizza', '2016-06-23 10:18:04', '2016-06-23 10:18:04'),
+(7, 'Andy''s Pizza', 'Andy''s Pizza', 'Andy''s Pizza', '<p>В меню&nbsp;Andys Pizza&nbsp;самые вкусные блюда! Закажите еду в офис, на дом или оформите предварительный заказ. Приятного аппетита!</p>\r\n', '', '', 'Andy''s Pizza - самый вкусный заказ еды онлайн! Быстрая доставка днем и ночью!', 'Andys Pizza - comanda online cele mai delicioase bucate! Livrarea rapidă ziua și noaptea!', 'Andys Pizza - the most delicious food order online! Fast delivery day and night!', 0.00, '', 1, 1, 0, 0, 'andys-pizza', '2016-06-23 10:18:04', '2016-06-24 04:33:33'),
 (8, 'Krysha', 'Krysha', 'Krysha', '<p>Отдельного внимания заслуживает наша терраса под открытым небом. Уникальная терраса&nbsp;<strong>LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo;</strong>, которая располагается на пятом этаже коммерческого центра&nbsp;<strong>&laquo;Sun City&raquo;</strong>, позволит Вам полюбоваться уникальными пейзажами городского центрального парка и ночными огнями столицы. Уютные диванные зоны, легкая музыка, стильный интерьер и свежий воздух &ndash; поистине отдых &laquo;НА ВЫСОТЕ&raquo;.<br />\r\n<br />\r\nК организации праздничного вечера в&nbsp;<strong>LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo;</strong>&nbsp;подойдут профессионально: разработают план мероприятия, подберут ведущего, составят шоу-программу, пригласят артистов, оформят зал, продумают и разработают меню для фуршета и подарят массу приятных впечатлений.</p>\r\n', '<p>O atenție specială merită terasa noastră &icirc;n aer liber. Unice Terasa LOUNGE-CAF&Eacute; &laquo;Krysha&raquo;, care este situat la etajul cinci al &laquo;Sun City&raquo; centru comercial vă va permite să se bucure de peisajul unic al parcului central de oraș și luminile de noapte ale capitalei. zonă confortabilă canapea, muzica usoara, aer curat interior si elegant - cu adevărat o vacanță de &quot;sus&quot;.</p>\r\n\r\n<p>Prin organizarea unei seri festive &icirc;n LOUNGE-CAF&Eacute; &laquo;Krysha&raquo; profesionale adecvate: artiștii să elaboreze un plan de acțiune, se va ridica la conducere, face un program de spectacol, invitați vor desena o cameră, cred că peste și de a lucra din meniul pentru bufet și va da o mulțime de experiențe plăcute.</p>\r\n', '<p>Special attention deserves our terrace in the open air. Unique terrace LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo;, which is located on the fifth floor of &laquo;Sun City&raquo; shopping center, will allow you to enjoy the unique scenery of the city central park and the night lights of the capital. Cozy sofa area, light music, stylish interior and fresh air - truly a vacation &quot;on high&quot;.</p>\r\n\r\n<p>By organizing a festive evening in the LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo; suitable professional: develop an action plan, will pick up the lead, make a show program, invited artists will draw room, think over and work out the menu for the buffet and will give a lot of pleasant experiences.</p>\r\n', 'Атмосфера в стиле LOUNGE-CAFÉ «KRYSHA» не отвлекает от повседневности, а скорее украшает её.', 'Atmosfera din stilul LOUNGE-CAFÉ «Krysha» nu distrage de la viața de zi cu zi, ci mai degrabă o împodobește.', 'The atmosphere in the style LOUNGE-CAFÉ «KRYSHA» does not distract from everyday life, but rather adorns it.', 0.00, '', 1, 1, 0, 0, 'krysha', '2016-06-23 09:37:21', '2016-06-23 09:37:21'),
 (10, 'Mojito', 'Mojito', 'Mojito', '<p>Если вы в поиске места для романтического ужина при свете фонарей, или пре-пати с друзьями, вы его найдете здесь, в&nbsp;<strong>MOJITO</strong>, около Театра Оперы и Балета.<br />\r\n<br />\r\n<strong>Мы очень ценим наших клиентов, поэтому всегда предлагаем только самое лучшее:</strong></p>\r\n\r\n<ul>\r\n	<li>Рабочее время&nbsp;<strong>24/24</strong></li>\r\n	<li>Аргентинская и Японская кухня</li>\r\n	<li>Самый большой выбор коктейлей Мохито:&nbsp; алкогольных и безалкогольных</li>\r\n	<li>Терраса в тени для курящих и некурящих</li>\r\n	<li>Живая музыка каждую пятницу и воскресенье</li>\r\n	<li>Комфортабельный ресторан&nbsp; с расслабляющей атмосферой</li>\r\n	<li>Быстрое и&nbsp; качественное обслуживание</li>\r\n</ul>\r\n\r\n<p><br />\r\nЗайдите к нам, чтобы расслабиться&nbsp; на мягких креслах с чашечкой кофе или чая на завтрак, отведав&nbsp; мисо-суп или стейк на обед, либо коктейль на ужин.<br />\r\n<br />\r\nШагните на территорию, где сочетаются вкусное с&nbsp; приятным, прохлада с удовольствием &ndash; на территорию</p>\r\n', '', '', 'Если вы в поиске места для романтического ужина при свете фонарей, или пре-пати с друзьями, вы его найдете здесь.', '', '', 0.00, '', 1, 1, 0, 0, 'mojito', '2016-06-23 09:47:27', '2016-06-23 09:47:27'),
 (11, 'Caffe Graffiti', 'Caffe Graffiti', 'Caffe Graffiti', '', '', '', 'Caffe Graffiti ждет "Филе форели на пару с овощами и соусом из Tartaro" и желаем Вам приятного аппетита!', 'Caffe Graffiti va asteapta cu "Fileu de păstrăv la abur cu legume și sos tartaro" si va ureaza POFTA BUNA!', 'Caffe Graffiti awaits "Trout fillet steamed with vegetables and sauce Tartaro" and wish you bon appétit!', 0.00, '', 1, 1, 0, 0, 'caffe-graffiti', '2016-06-23 09:46:56', '2016-06-23 09:46:56'),
@@ -729,88 +459,13 @@ INSERT INTO `products` (`id`, `name`, `name_ro`, `name_en`, `description`, `desc
 (17, 'Drive', 'Drive', 'Drive', '', '', '', '', '', '', 0.00, '', 1, 1, 0, 0, 'drive', '2016-06-23 10:02:21', '2016-06-23 10:02:21'),
 (18, 'Cocos Prive', 'Cocos Prive', 'Cocos Prive', '', '', '', '', '', '', 0.00, '', 1, 1, 0, 0, 'cocos-prive', '2016-06-23 10:03:04', '2016-06-23 10:03:04');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `products_categories`
---
-
-DROP TABLE IF EXISTS `products_categories`;
-CREATE TABLE `products_categories` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `products_id` int(10) UNSIGNED NOT NULL,
-  `categories_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `products_news`
---
-
-DROP TABLE IF EXISTS `products_news`;
-CREATE TABLE `products_news` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `products_id` int(10) UNSIGNED NOT NULL,
-  `news_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tags`
---
-
-DROP TABLE IF EXISTS `tags`;
-CREATE TABLE `tags` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `name_ro` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `name_en` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  `top` tinyint(1) NOT NULL,
-  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 --
 -- Dumping data for table `tags`
 --
 
-INSERT INTO `tags` (`id`, `created_at`, `updated_at`, `name`, `name_ro`, `name_en`, `top`, `slug`) VALUES
-(1, NULL, NULL, 'Спорт', '', '', 1, '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `types`
---
-
-DROP TABLE IF EXISTS `types`;
-CREATE TABLE `types` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `rights` tinyint(4) NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+INSERT INTO `tags` (`id`, `created_at`, `updated_at`, `name`, `top`, `slug`) VALUES
+(1, NULL, NULL, 'Спорт', 1, ''),
+(2, '2016-06-26 09:08:16', '2016-06-26 09:08:16', 'Музыка', 0, '');
 
 --
 -- Dumping data for table `users`
@@ -818,330 +473,6 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `rights`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Xsort', 'support@xsort.md', '$2y$10$twmlb5YlgimkrTIwnKqeauX9JusORUAVWnjjK1jBhM0AQwJW/3RIy', 1, NULL, NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `videos`
---
-
-DROP TABLE IF EXISTS `videos`;
-CREATE TABLE `videos` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
-  `description` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
-  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
-  `source` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
-  `enabled` tinyint(1) NOT NULL DEFAULT '1',
-  `views` int(11) NOT NULL,
-  `sort` int(11) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `categories`
---
-ALTER TABLE `categories`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_slug` (`slug`);
-
---
--- Indexes for table `categories_xref`
---
-ALTER TABLE `categories_xref`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_parent_id` (`parent_id`),
-  ADD KEY `idx_child_id` (`child_id`);
-
---
--- Indexes for table `constants`
---
-ALTER TABLE `constants`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `constants_key_unique` (`key`);
-
---
--- Indexes for table `content`
---
-ALTER TABLE `content`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_slug` (`slug`);
-
---
--- Indexes for table `galleries`
---
-ALTER TABLE `galleries`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_slug` (`slug`);
-
---
--- Indexes for table `galleries_xref`
---
-ALTER TABLE `galleries_xref`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_table_id` (`table_id`),
-  ADD KEY `idx_table` (`table`);
-
---
--- Indexes for table `menu_categories`
---
-ALTER TABLE `menu_categories`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_slug` (`slug`);
-
---
--- Indexes for table `menu_products`
---
-ALTER TABLE `menu_products`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_slug` (`slug`);
-
---
--- Indexes for table `meta`
---
-ALTER TABLE `meta`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_table_id` (`table_id`),
-  ADD KEY `idx_table` (`table`);
-
---
--- Indexes for table `news`
---
-ALTER TABLE `news`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_slug` (`slug`);
-
---
--- Indexes for table `news_tags`
---
-ALTER TABLE `news_tags`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `news_tags_news_id_foreign` (`news_id`),
-  ADD KEY `news_tags_tags_id_foreign` (`tags_id`);
-
---
--- Indexes for table `news_types`
---
-ALTER TABLE `news_types`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `news_types_news_id_foreign` (`news_id`),
-  ADD KEY `news_types_types_id_foreign` (`types_id`);
-
---
--- Indexes for table `password_resets`
---
-ALTER TABLE `password_resets`
-  ADD KEY `password_resets_email_index` (`email`),
-  ADD KEY `password_resets_token_index` (`token`);
-
---
--- Indexes for table `photos`
---
-ALTER TABLE `photos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_table_id` (`table_id`),
-  ADD KEY `idx_table` (`table`),
-  ADD KEY `idx_sort` (`sort`),
-  ADD KEY `photos_token_index` (`token`);
-
---
--- Indexes for table `products`
---
-ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_slug` (`slug`);
-
---
--- Indexes for table `products_categories`
---
-ALTER TABLE `products_categories`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `products_categories_products_id_foreign` (`products_id`),
-  ADD KEY `products_categories_categories_id_foreign` (`categories_id`);
-
---
--- Indexes for table `products_news`
---
-ALTER TABLE `products_news`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `products_news_products_id_foreign` (`products_id`),
-  ADD KEY `products_news_news_id_foreign` (`news_id`);
-
---
--- Indexes for table `tags`
---
-ALTER TABLE `tags`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `tags_name_unique` (`name`),
-  ADD UNIQUE KEY `tags_name_ro_unique` (`name_ro`),
-  ADD UNIQUE KEY `tags_name_en_unique` (`name_en`),
-  ADD KEY `idx_slug` (`slug`);
-
---
--- Indexes for table `types`
---
-ALTER TABLE `types`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
-
---
--- Indexes for table `videos`
---
-ALTER TABLE `videos`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `categories`
---
-ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
---
--- AUTO_INCREMENT for table `categories_xref`
---
-ALTER TABLE `categories_xref`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
---
--- AUTO_INCREMENT for table `constants`
---
-ALTER TABLE `constants`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `content`
---
-ALTER TABLE `content`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `galleries`
---
-ALTER TABLE `galleries`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `galleries_xref`
---
-ALTER TABLE `galleries_xref`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `menu_categories`
---
-ALTER TABLE `menu_categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `menu_products`
---
-ALTER TABLE `menu_products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `meta`
---
-ALTER TABLE `meta`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
---
--- AUTO_INCREMENT for table `news`
---
-ALTER TABLE `news`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `news_tags`
---
-ALTER TABLE `news_tags`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `news_types`
---
-ALTER TABLE `news_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `photos`
---
-ALTER TABLE `photos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
---
--- AUTO_INCREMENT for table `products`
---
-ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT for table `products_categories`
---
-ALTER TABLE `products_categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `products_news`
---
-ALTER TABLE `products_news`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `tags`
---
-ALTER TABLE `tags`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `types`
---
-ALTER TABLE `types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `videos`
---
-ALTER TABLE `videos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `news_tags`
---
-ALTER TABLE `news_tags`
-  ADD CONSTRAINT `news_tags_news_id_foreign` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
-  ADD CONSTRAINT `news_tags_tags_id_foreign` FOREIGN KEY (`tags_id`) REFERENCES `tags` (`id`);
-
---
--- Constraints for table `news_types`
---
-ALTER TABLE `news_types`
-  ADD CONSTRAINT `news_types_news_id_foreign` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
-  ADD CONSTRAINT `news_types_types_id_foreign` FOREIGN KEY (`types_id`) REFERENCES `types` (`id`);
-
---
--- Constraints for table `products_categories`
---
-ALTER TABLE `products_categories`
-  ADD CONSTRAINT `products_categories_categories_id_foreign` FOREIGN KEY (`categories_id`) REFERENCES `categories` (`id`),
-  ADD CONSTRAINT `products_categories_products_id_foreign` FOREIGN KEY (`products_id`) REFERENCES `products` (`id`);
-
---
--- Constraints for table `products_news`
---
-ALTER TABLE `products_news`
-  ADD CONSTRAINT `products_news_news_id_foreign` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
-  ADD CONSTRAINT `products_news_products_id_foreign` FOREIGN KEY (`products_id`) REFERENCES `products` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

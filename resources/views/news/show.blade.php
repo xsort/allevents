@@ -32,7 +32,7 @@
 
                         <div class="post-meta">
                             <p class="date-news">
-                                <span class="date">02 Декабря 2016</span> <span class="time">12:06</span>
+                                <span class="date">{{ date('d F, Y', strtotime($data->created_at)) }}</span> <span class="time">{{ date('H:i', strtotime($data->created_at)) }}</span>
                             </p>
                         </div>
 
@@ -51,22 +51,18 @@
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="col-sm-6 col-xs-12">
                                 <div class="tag-news-b">
                                     <h5 class="margin-b-15 tag-news">Теги :</h5>
                                     <ul class="tag">
-                                        <li><a href="#">Музыка</a></li>
-
-                                        <li><a href="#">Мероприятие</a></li>
-                                        <li><a href="#">Фест</a></li>
-
+                                    @foreach ($tags as $tag)
+                                        <li><a href="#">{{$tag->name}}</a></li>
+                                    @endforeach
                                     </ul>
                                 </div>
                             </div>
-
-
-
-
+                            
                         </div>
                     </div>
 

@@ -15,7 +15,7 @@
 
 <div class="layout-content" >
 
-<div class="container-fluid">
+
     <div class="row">
         <div class="col-md-9">
             <div class="text-center margin-b-50 margin-t-15">
@@ -28,8 +28,8 @@
                         <div class="blog-img">
                             <img class="img-responsive" src="uploaded/{{isset($news->photos{0}) ? $news->photos{0}->source : 'nophoto.png'}}" alt="">
                             <div class="post-date ">
-                                <p class="">Дек
-                                    <br class="hide-mobile"><span>02</span></p>
+                                <p class="">{{ date('M', strtotime($news->created_at)) }}
+                                    <br class="hide-mobile"><span>{{ date('d', strtotime($news->created_at)) }}</span></p>
                             </div>
 
                         </div>
@@ -57,7 +57,7 @@
         </div>
 -->
        
-    </div>
+    
 </div>
 </div>
 </div>

@@ -3895,7 +3895,8 @@ background-size: 31px 26px;
 
 .modal-fade,
 .modal-fade-second,
-.modal-fade-third {
+.modal-fade-third,
+.modal-fade-fourth {
     z-index: 1001;
     height: 100%;
     width: 100%;
@@ -3908,7 +3909,8 @@ background-size: 31px 26px;
 }
 
 .modal.modal-auth,
-.modal.modal-event {
+.modal.modal-event,
+.modal.modal-tell-event {
     max-width: 580px;
     background: white;
     width: 100%;
@@ -3946,7 +3948,8 @@ background-size: 31px 26px;
 
 .auth-input input,
 .auth-input .enter,
-.modal-event textarea {
+.modal-event textarea,
+.modal.modal-tell-event textarea {
     display: block;
     width: 100%;
     border: 1px solid #b8b8b8;
@@ -3962,27 +3965,28 @@ background-size: 31px 26px;
     transition: all 0.2s ease;
 }
 
-.modal-event {
+.modal-event, .modal.modal-tell-event {
     padding: 15px 0 30px !important;
 }
 
-.modal-event .auth-title {
+.modal-event .auth-title, .modal.modal-tell-event .auth-title {
     width: 66%;
     margin-left: 17%;
+        box-sizing: border-box;
 }
 
-.modal-event textarea {
+.modal-event textarea, .modal.modal-tell-event textarea {
     resize: none;
     height: 150px;
 }
 
-.modal-event input.email {
+.modal-event input.email, .modal.modal-tell-event input.email {
     width: 49% !important;
     float: left;
     margin-right: 1%;
 }
 
-.modal-event input.password {
+.modal-event input.password, .modal.modal-tell-event input.password {
     width: 49% !important;
     margin-left: 1%;
     float: right;
