@@ -53,6 +53,8 @@ Route::group(['middleware' => ['web']], function () {
     
     Route::get('{slug}', 'CommonController@getSlug');
 
+    Route::get('tag/{id}', 'NewsController@getNewsByTagID');
+
 });
 
 

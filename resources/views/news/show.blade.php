@@ -32,7 +32,7 @@
 
                         <div class="post-meta">
                             <p class="date-news">
-                                <span class="date">{{ date('d F, Y', strtotime($data->created_at)) }}</span> <span class="time">{{ date('H:i', strtotime($data->created_at)) }}</span>
+                                <span class="date">{{ date('d F, Y, H:i ', strtotime($data->created_at)) }}</span> <span class="time">{{ date('H:i', strtotime($data->created_at)) }}</span>
                             </p>
                         </div>
 
@@ -57,7 +57,7 @@
                                     <h5 class="margin-b-15 tag-news">Теги :</h5>
                                     <ul class="tag">
                                     @foreach ($tags as $tag)
-                                        <li><a href="#">{{$tag->name}}</a></li>
+                                        <li><a href="/tag/{{$tag->id}}">{{$tag->name}}</a></li>
                                     @endforeach
                                     </ul>
                                 </div>
@@ -81,4 +81,12 @@
 </div>
 </div>
 
+@stop
+
+
+@section('metaNewsSharing')
+<meta property="og:title" content="{{$data->name}}" />
+<meta property="og:url" content="http://www.imdb.com/title/tt0117500/" />
+<meta property="og:image" content="uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" />
+<meta property="og:description" content="{{$data->description_short}}" />
 @stop

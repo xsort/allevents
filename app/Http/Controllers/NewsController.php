@@ -21,8 +21,8 @@ class NewsController extends Controller
     
     public function getNewsByTagID($id){
         $tag    = Tags::findOrFail($id);
-        $news   = $tag->news()->paginate(config('site.news_per_page'));
-        return view('news.list')->with(compact('news', 'tag'));
+        $data   = $tag->news()->paginate(config('site.news_per_page'));
+        return view('news.newslist')->with(compact('data', 'tag'));
       }
     
     public function getNewsList()

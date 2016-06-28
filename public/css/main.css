@@ -2650,19 +2650,24 @@ background-size: 31px 26px;
 .one-category {
     min-height: 37px;
     position: relative;
-    margin-left: 10%;
+    margin-left: 17%;
+    justify-content: center;
     float: left;
     margin-right: 3%;
-    width: 87%;
-    margin-bottom: 10px;
+    flex-wrap: nowrap;
+    display: flex;
+    width: 75%;
+    margin-bottom: 8px;
+    align-items: center;
 }
 
 .one-category a {
-    width: 77%;
-    margin-left: 20%;
+width: 77%;
+    margin-left: 6%;
     display: block;
     vertical-align: bottom;
-    font-size: 15px;
+        font-size: 14px;
+    letter-spacing: 0.2px;
     color: rgb(149, 149, 149);
     text-transform: uppercase;
     line-height: 1.2;
@@ -2696,10 +2701,9 @@ background-size: 31px 26px;
 
 .one-category .category-img {
     height: 100%;
-    min-height: 37px;
-        filter: contrast(0.5);
-    -webkit-filter: contrast(0);
-    position: absolute;
+    min-height: 30px;
+    -webkit-filter: invert(100%);
+    filter: invert(100%)
     background-position: center;
     float: left;
     width: 13%;
@@ -3273,9 +3277,10 @@ background-size: 31px 26px;
 }
 
 .category-section .category-img img {
-    height: 100%;
+    max-height: 100%;
     width: auto;
     max-width: 90%;
+        transition: all 0.2s ease;
 }
 
 .category-container .category-section {
@@ -3289,6 +3294,7 @@ background-size: 31px 26px;
     float: left;
     padding: 10px 10px 5px;
     height: 162px;
+        transition: all 0.2s ease;
 }
 
 @media (min-width:768px) and (max-width:991px) {
@@ -3326,19 +3332,24 @@ background-size: 31px 26px;
 .category-container .category-section .category-img {
     height: 50%;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.category-container .category-section .category-title {
-    height: 50%;
-    text-align: center;
-    margin-top: 14px;
-}
 
 .category-container .category-section .category-title {
     text-align: center;
+        height: 45%;
+    text-align: center;
+    margin-top: 5%;
     font-size: 14px;
     color: rgb(181, 181, 181);
     line-height: 1.3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        transition: all 0.2s ease;
 }
 
 
