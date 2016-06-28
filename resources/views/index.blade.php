@@ -18,7 +18,7 @@
                             <div class="main-menu-filter"></div>
                             <h3 class="main-menu-title"><span>{{$category->name}}</span></h3>
                             <div class="divider-title"></div>
-                            <span class="main-menu-descripton">{{$category->description}}</span>
+                            <span class="main-menu-descripton">{!!$category->description!!}</span>
                             <a href="{{$category->slug}}" class="main-menu-button"><span>Посмотреть все</span></a>
                         </div>
                     </a>
