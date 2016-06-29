@@ -137,7 +137,7 @@
                                         var id = $(this).data('id');
                                         if (confirm('Вы уверены?')) {
                                             $(this).parent().parent().remove();
-                                            $.get("photos/delete", {'id': id});
+                                            $.get("photos/delete/" + id  /* ,  {'id': id} */);
                                         }
                                     });
 
