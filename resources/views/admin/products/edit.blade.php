@@ -92,8 +92,8 @@
                 <div class="col-sm-5">
                     <div class="input-group">
                         <input type="date" name="date" id="mydate" class="form-control date-picker"
-                               data-date-format="dd-mm-yyyy"
-                               value="{{ (isset($data->created_at) ? $data->created_at : old('date', Date::now()->format('d-m-Y'))) }}" />
+                               data-date-format="yyyy-mm-dd"
+                               value="{{ (isset($data->created_at) ? date('Y-m-d', strtotime($data->created_at)) : old('date', Date::now()->format('Y-m-d'))) }}" />
                         <span class="input-group-addon">
                             <i class="fa fa-calendar bigger-110"></i>
                         </span>
