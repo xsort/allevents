@@ -11,7 +11,6 @@
                         <img src="uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" alt="">
                     </span>
                 </a>
-             
                 <table class="sticky sticky-right">
                 <tr><th ><a href="{{$data->slug}}/menu">Меню</a></th><th><a href="{{$data->slug}}/interier">Интерьер</a></th><th ><a href="{{$data->slug}}/reservation">Резервирование</a></th></tr>
                 </table>

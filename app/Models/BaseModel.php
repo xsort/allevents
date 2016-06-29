@@ -115,7 +115,7 @@ class BaseModel extends Model
     }
 
     public function photos(){
-        return $this->hasMany('App\Models\Photos','table_id')->where('table', $this->getTable());
+        return $this->hasMany('App\Models\Photos','table_id')->where('table', $this->getTable())->orderBy('sort');
     }
     
     public function meta(){
