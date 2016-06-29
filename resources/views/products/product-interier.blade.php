@@ -1,4 +1,6 @@
 @extends('body')
+@section('bgImage','background-image: url(../images/background/main-bg.jpg)')
+@section('productClass','products-page')
 @section('centerbox')
 <div class="layout-page ">
 @include('partials.product-up-menu')
