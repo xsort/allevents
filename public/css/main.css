@@ -1159,15 +1159,18 @@ body.page-clubs {
     color: white;
     text-transform: uppercase;
     /* font-weight: bold; */
-    /* left: 0; */
     width: 86%;
-    left: 7%;
     font-size: 30px;
-    top: 40%;
+    top: 0%;
     -webkit-transition: all 0.2s ease;
     -moz-transition: all 0.2s ease;
     -o-transition: all 0.2s ease;
     transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
 @media (max-width:992px) {
@@ -2711,6 +2714,7 @@ width: 77%;
     background-repeat: no-repeat !important;
     background-size: contain;
     cursor: pointer;
+        background-position: center;
 }
 
 .one-category .category-img:before {
@@ -2781,6 +2785,8 @@ width: 77%;
 
 .share-plugin {
     padding: 40px 30px 30px;
+    float: left;
+    width: 100%;
 }
 
 .sidebar-news {
@@ -4186,9 +4192,11 @@ width: 77%;
 }
 
 #recommended .category .logo-club, .club-wrapper .category .logo-club {
-    height:100%;
+        height: 100%;
+    width: 100%;
     vertical-align: middle;
     display: inline-block;
+    text-align: center;
 }
 
 #recommended .category .logo-club:before, .club-wrapper .category .logo-club:before {

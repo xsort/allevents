@@ -32,11 +32,11 @@
 
                         <div class="post-meta">
                             <p class="date-news">
-                                <span class="date">{{ date('d F, Y, H:i ', strtotime($data->created_at)) }}</span> <span class="time">{{ date('H:i', strtotime($data->created_at)) }}</span>
+                                <span class="date">{{ date('d F, Y ', strtotime($data->created_at)) }}</span> <span class="time">{{ date('H:i', strtotime($data->created_at)) }}</span>
                             </p>
                         </div>
 
-                        <p class="post-inner-content mrg-vertical-15">{{$data->description}}</p>
+                        <p class="post-inner-content mrg-vertical-15">{!!$data->description!!}</p>
 
                         <div class="post-bottom">
 

@@ -300,7 +300,7 @@
                     <a href="javascript:void(0)" class="item">
                         <div class="filter"></div>
                         <img src="images/reports-notice/festival.jpg" alt="">
-                        <span>Фестивали</span>
+                        <span>Фестивали и выставки</span>
                     </a>
 		            
                 </div>

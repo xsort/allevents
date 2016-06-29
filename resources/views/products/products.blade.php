@@ -17,7 +17,7 @@
 
             @foreach ($data as $product)
             <div class="col-md-4 col-sm-6 club-wrapper">
-                    <a href="club.php" class="category">
+                    <a href="{{$product->slug}}" class="category">
                     <span class="logo-club">
                         <img src="uploaded/{{isset($product->photos{0}) ? $product->photos{0}->source : 'nophoto.png'}}" alt="">
                     </span>
