@@ -34,6 +34,13 @@ class PhotosController extends Controller
         $this->thumb_width      = Config::get('photos.thumb_width');
         $this->thumb_height     = Config::get('photos.thumb_height');
     }
+    
+    public function destroy($id)
+    {
+        Photos::destroy($id);
+        Session::flash('message', trans('common.deleted'));
+        //return back();
+    }
 
     public function upload()
     {
