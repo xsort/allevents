@@ -26,7 +26,7 @@ class CommonController extends Controller
 	    if (isset($content)) return view('content.content')->with('data', $content);
 	    
 	    $category = Categories::where('slug',$slug)->where('enabled',true)->first();
-	    $products = Products::where('enabled',true)->first();
+	    $products = Products::where('enabled',true)->get();
 	    if (isset($category)) {
 		    
 		    if ($category->children->count() > 0) {

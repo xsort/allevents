@@ -4185,13 +4185,13 @@ width: 77%;
     line-height: 1.2;
 }
 
-#recommended .category .logo-club {
+#recommended .category .logo-club, .club-wrapper .category .logo-club {
     height:100%;
     vertical-align: middle;
     display: inline-block;
 }
 
-#recommended .category .logo-club:before {
+#recommended .category .logo-club:before, .club-wrapper .category .logo-club:before {
     content: '';
         height:100%;
     vertical-align: middle;
@@ -6217,10 +6217,9 @@ iframe#ytplayer{
     -o-transition: all 0.1s ease;
     transition: all 0.1s ease;
     opacity: 1;
-    height: 205px;
-    width: 205px;
-    display: block;
-    margin: 0 auto;
+    display: inline-block;
+    max-width: 98%;
+    max-height: 100%;
 }
 
 .club-wrapper .menu-descripton{
