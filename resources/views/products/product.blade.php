@@ -4,10 +4,23 @@
 @section('centerbox')
 
 <div class="layout-page ">
-    @include('partials.product-top-gallery')
+    
+    <div class="container-fluid">
+        <div class="club-head-image">
+            <div class="button club-main-prev"><span class="fa fa-angle-left"></span> </div>
+            <div class="club-main-gallery">
+                @foreach ($data->photos as $key => $photo)
+                @if ($key == 0) @continue; @endif
+                <div class="club-main-photo" style="background:url('uploaded/{{$photo->source}}')"></div>
+                @endforeach
+            </div>
+            <div class="button club-main-next"><span class="fa fa-angle-right"></span></div>
+        </div>
+    </div>
+
     @include('partials.product-up-menu')
 
-    <div class="layout-content" >
+    <div class="layout-content" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
 
         <div class="container-fluid">
             <div class="inst-video" id="ytplayer">
@@ -109,11 +122,25 @@
                 </div>
             </div>
             <div class="col-lg-12 inst-description margin-t-50 text-center">
-                <h2 class="inst-title text-center rowed">{{$data->name}}</h2>
+                <h2 itemprop="name" class="inst-title text-center rowed">{{$data->name}}</h2>
+
+                <meta itemprop="image" content="http://6e6065f7.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}">
+                <meta itemprop="telephone" content="+7 xxx xxx xx xx">
+                <meta itemprop="address" content="Город">
+                <meta itemprop="email" content="test@mail.ru">
+                <meta itemprop="logo" content="http://6e6065f7.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}">
+                <meta itemprop="description" content="{{$data->description_short}}">
+
+
+                <meta itemprop="url" content="http://6e6065f7.ngrok.io/{{$data->slug}}">
+
+
+
+
             </div>
 
-            <div class="col-lg-8 col-lg-offset-2 margin-t-25 text-center inst-description-text">
-                {{$data->description}}
+            <div class="col-lg-8 col-lg-offset-2 margin-t-25 inst-description-text">
+                {!!$data->description!!}
             </div>
             
 
@@ -188,4 +215,23 @@
         }
       );
     </script>
+@stop
+
+
+@section('metaProductSharing')
+<!-- Open Graph data -->
+<meta property="og:title" content="{{$data->name}}" />
+<meta property="og:site_name" content="Allevents.md" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://6e6065f7.ngrok.io/{{$data->slug}}" />
+<meta property="og:image" content="http://6e6065f7.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" />
+<meta property="og:description" content="{{$data->description_short}}" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Allevents.md">
+<meta name="twitter:creator" content="@Allevents.md">
+<meta name="twitter:title" content="{{$data->name}}">
+<meta name="twitter:description" content="{{$data->description_short}}">
+<meta name="twitter:image" content="http://6e6065f7.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}">
 @stop

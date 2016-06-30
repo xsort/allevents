@@ -20,15 +20,15 @@
     <div class="row">
         <div class="col-md-9">
 
-            <div class="blog-post single-post">
+            <div class="blog-post single-post" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
                 <div class="blog-wrapper no-margin no-scale">
                     <div class="blog-img">
-                        <img class="img-responsive" src="uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" alt="">
+                        <img itemprop="image" class="img-responsive" src="uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" alt="">
                     </div>
 
 
                     <div class="post-content">
-                        <h3 class="post-title-detail">{{$data->name}}</h3>
+                        <h3 itemprop="name" class="post-title-detail">{{$data->name}}</h3>
 
                         <div class="post-meta">
                             <p class="date-news">
@@ -85,8 +85,28 @@
 
 
 @section('metaNewsSharing')
+<!-- Open Graph data -->
 <meta property="og:title" content="{{$data->name}}" />
-<meta property="og:url" content="http://www.imdb.com/title/tt0117500/" />
-<meta property="og:image" content="uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" />
+<meta property="og:site_name" content="Allevents" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://6e6065f7.ngrok.io/news/{{$data->slug}}" />
+<meta property="og:image" content="http://6e6065f7.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" />
 <meta property="og:description" content="{{$data->description_short}}" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@nytimes">
+<meta name="twitter:creator" content="@SarahMaslinNir">
+<meta name="twitter:title" content="{{$data->name}}">
+<meta name="twitter:description" content="{{$data->description_short}}">
+<meta name="twitter:image" content="http://6e6065f7.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}">
+
+<!-- Schema.org -->
+<!-- <meta itemscope itemtype="http://schema.org/Article" />
+<meta itemprop="headline" content="Top 10 Most Challenging Hikes in North America" />
+<meta itemprop="name" content="Allevents.md" />
+<meta itemprop="description" content="Looking for a challenging hike? We spent the
+past year spanning the continent for the most grueling trails. Check out the entire
+ranked list, and learn about our methodology..." />
+<meta itemprop="image" content="http://i.sportyfitness.com/media/tough-trail-lrg.jpg" /> -->
 @stop

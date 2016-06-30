@@ -21,8 +21,8 @@
 	<link rel="stylesheet" href="css/main.css">
 	<!-- <link rel="stylesheet" href="css/main.min.css"> -->
 
-    <!-- OG -->
     @yield('metaNewsSharing')
+    @yield('metaProductSharing')
 
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
 	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=.5, user-scalable=no">
