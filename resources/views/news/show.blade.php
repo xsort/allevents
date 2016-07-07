@@ -2,15 +2,15 @@
 
 @section('centerbox')
 <div class="layout-page ">
-<div class="layout-breadcrumbs">
+<div class="layout-breadcrumbs itemscope itemtype="http://schema.org/ItemList">
     <div class="container-fluid">
         <div class="container-breadcrumbs">
-            <ul class="breadcrumbs">
-                <li><a href="">Главная</a></li>
-                <li><a href="/news">Новости</a></li>
-                <li>{{ str_limit($data->name, $limit = 25, $end = '...') }}</li>
-                
-            </ul>
+            <ol class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                <meta itemprop="itemListOrder" content="http://schema.org/ItemListOrderDescending"/>
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/" itemprop="url">Главная</a></li>
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/news" itemprop="url">Новости</a></li>
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">{{ str_limit($data->name, $limit = 25, $end = '...') }}</li>
+            </ol>
         </div>
     </div>
 </div>
@@ -20,23 +20,48 @@
     <div class="row">
         <div class="col-md-9">
 
-            <div class="blog-post single-post" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+            <div class="blog-post single-post" itemprop="publisher" itemscope itemtype="https://schema.org/NewsArticle">
+            <meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="https://google.com/article"/>
                 <div class="blog-wrapper no-margin no-scale">
-                    <div class="blog-img">
-                        <img itemprop="image" class="img-responsive" src="uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" alt="">
+                    <div class="blog-img" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                        <img  class="img-responsive" src="uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" alt="">
+                        <meta itemprop="url" content="http://170d3237.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}">
+                        <meta itemprop="width" content="800">
+                        <meta itemprop="height" content="800">
                     </div>
 
 
                     <div class="post-content">
-                        <h3 itemprop="name" class="post-title-detail">{{$data->name}}</h3>
+                        <h3 itemprop="headline" class="post-title-detail">{{$data->name}}</h3>
 
                         <div class="post-meta">
                             <p class="date-news">
                                 <span class="date">{{ date('d F, Y ', strtotime($data->created_at)) }}</span> <span class="time">{{ date('H:i', strtotime($data->created_at)) }}</span>
+
+                                <meta itemprop="datePublished" content="{{$data->created_at}}">
+
+                                <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+
+                                    <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                                        
+                                        <meta itemprop="url" content="http://170d3237.ngrok.io/images/logo/logo-big.png">
+                                        <meta itemprop="width" content="160">
+                                        <meta itemprop="height" content="150">
+                                    </div>
+
+                                    <meta itemprop="name" content="Allevents.md">
+
+                                </div>
+
+                                                          
+                                
+                                <meta itemprop="dateModified" content="{{$data->created_at}}">
+                                <meta itemprop="author" content="Allevents.md">             
+
                             </p>
                         </div>
 
-                        <p class="post-inner-content mrg-vertical-15">{!!$data->description!!}</p>
+                        <p class="post-inner-content mrg-vertical-15" itemprop="description">{!!$data->description!!}</p>
 
                         <div class="post-bottom">
 
@@ -109,4 +134,5 @@
 past year spanning the continent for the most grueling trails. Check out the entire
 ranked list, and learn about our methodology..." />
 <meta itemprop="image" content="http://i.sportyfitness.com/media/tough-trail-lrg.jpg" /> -->
+
 @stop

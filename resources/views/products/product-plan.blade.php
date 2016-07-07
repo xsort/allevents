@@ -27,7 +27,7 @@
             <img src="img/club-page/inst-plan-3.jpg" alt="">
             <img src="img/club-page/inst-plan-4.jpg" alt="">
         </div>
-        <a href="menu.php" class="menu-label"><img src="images/plan-menu-img.png" alt="" ></a>
+        <a href="/{{$data->slug}}/menu" class="menu-label"><img src="images/plan-menu-img.png" alt="" ></a>
     </div>
     <div class="container-slider-nav ">
 

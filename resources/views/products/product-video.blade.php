@@ -4,19 +4,22 @@
 @section('centerbox')
 <div class="layout-page ">
 @include('partials.product-up-menu')
-<div class="layout-breadcrumbs">
+
+<div class="layout-breadcrumbs itemscope itemtype="http://schema.org/ItemList">
     <div class="container-fluid">
         <div class="container-breadcrumbs">
-            <ul class="breadcrumbs">
-                <li><a href="">Главная</a></li>
-                <li><a href="/kluby">Клубы</a></li>
-                <li><a href="/{{$data->slug}}">{{$data->name}}</a></li>
-                <li>Видео</li>
-            </ul>
+            <ol class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
+                <meta itemprop="itemListOrder" content="http://schema.org/ItemListOrderDescending"/>
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/" itemprop="url">Главная</a></li>
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/kluby" itemprop="url">Клубы</a></li>
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/{{$data->slug}}" itemprop="url">{{$data->name}}</a></li>
+                <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="" itemprop="url">Видео</a></li>
+            </ol>
         </div>
     </div>
 </div>
-    <div class="layout-content" >
+
+<div class="layout-content" >
 
 <div class="container-fluid">
     <div class="row">
@@ -26,14 +29,15 @@
         </div>
 -->
         <div class="masonry video-page" data-columns>
-            <div class="item">
+
+            <div class="item" itemscope itemtype="http://schema.org/VideoObject">
                 <div class=" textstyle element">
-
-                    <iframe width="100%" src="https://www.youtube.com/embed/HuAxVfZasUk?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
-
+        
+                    <iframe width="100%"  src="https://www.youtube.com/embed/HuAxVfZasUk?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+                    <link itemprop="embedUrl" href="https://www.youtube.com/embed/HuAxVfZasUk?rel=0&showinfo=03" />
                     <div class="video-info">
-                        <div class="video-title">Lorem ipsum dolor sit amet, consectetur adipisicing.</div>
-                        <div class="video-disc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident enim minima, qui sit, eaque commodi id, similique, atque voluptate quidem pariatur totam? Consectetur recusandae rerum hic adipisci.</div>
+                        <div class="video-title" itemprop="name">Lorem ipsum dolor sit amet, consectetur adipisicing.</div>
+                        <div class="video-disc" itemprop="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident enim minima, qui sit, eaque commodi id, similique, atque voluptate quidem pariatur totam? Consectetur recusandae rerum hic adipisci.</div>
                         <div class="video-date">
                             <span class="date">19 февраля 2016</span> <span class="time">12:06</span>
                             <div class="video-share">
@@ -45,7 +49,10 @@
                     </div>
 
                 </div>
+                <meta itemprop="uploadDate" content="{{$data->created_at}}">
+                <meta itemprop="thumbnailUrl" content="https://www.example.com/thumbnail1.jpg">
             </div>
+
             <div class="item">
                 <div class=" textstyle element">
                     <iframe width="100%" src="https://www.youtube.com/embed/ta7ITAYTATM?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>

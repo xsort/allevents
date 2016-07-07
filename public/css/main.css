@@ -80,7 +80,14 @@ body {
     .topbar + .layout-header {
         margin-top: -30px;
     }
+
+    .margin-xs-t-30 {
+      margin-top: 30px;
+    }
 }
+
+
+
 
 .margin-t-10 {
     margin-top: 10px;
@@ -1487,6 +1494,7 @@ body.page-clubs {
          -o-background-size: cover !important;
             background-size: cover !important;
     cursor: pointer;
+        -webkit-filter: brightness(0.7);
 }
 
 .banner.banner-right.first {
@@ -3891,6 +3899,8 @@ width: 77%;
 
 .inst-description {
     color: #c5c5c5;
+        float: left;
+    width: 100%;
 }
 
 .inst-description-text {
@@ -3900,6 +3910,41 @@ width: 77%;
     font-weight: 300;
     line-height: 21px;
     color: rgb(91, 91, 91);
+    float: left;
+}
+
+.inst-social{
+    float: left;
+    width: 100%;
+}
+
+.inst-map{
+    float: left;
+    width: 100%;
+}
+
+.inst-pub{
+    float: left;
+    width: 100%;
+}
+
+
+.inst-contacts {
+    font-size: 13px;
+    letter-spacing: 0.3px;
+    word-spacing: 2px;
+    font-weight: 300;
+    line-height: 21px;
+    color: rgb(91, 91, 91);
+        float: left;
+}
+
+.inst-contacts a{
+    color: rgb(91, 91, 91);
+}
+
+.inst-contacts a:hover{
+    color:black;
 }
 
 .modal {

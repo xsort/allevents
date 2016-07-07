@@ -103,7 +103,7 @@
 		});
 	</script>
 
-
+    @yield('jsonProductSharing')
     @yield('productPageScripts')
 
 </body>

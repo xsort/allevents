@@ -20,7 +20,7 @@
 
     @include('partials.product-up-menu')
 
-    <div class="layout-content" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+    <div class="layout-content" >
 
         <div class="container-fluid">
             <div class="inst-video" id="ytplayer">
@@ -122,36 +122,89 @@
                 </div>
             </div>
             <div class="col-lg-12 inst-description margin-t-50 text-center">
-                <h2 itemprop="name" class="inst-title text-center rowed">{{$data->name}}</h2>
-
-                <meta itemprop="image" content="http://6e6065f7.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}">
-                <meta itemprop="telephone" content="+7 xxx xxx xx xx">
-                <meta itemprop="address" content="Город">
-                <meta itemprop="email" content="test@mail.ru">
-                <meta itemprop="logo" content="http://6e6065f7.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}">
-                <meta itemprop="description" content="{{$data->description_short}}">
-
-
-                <meta itemprop="url" content="http://6e6065f7.ngrok.io/{{$data->slug}}">
-
-
-
-
+                <h1 class="inst-title text-center rowed">{{$data->name}}</h1>
             </div>
 
-            <div class="col-lg-8 col-lg-offset-2 margin-t-25 inst-description-text">
+
+
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 margin-t-30 inst-description-text">
                 {!!$data->description!!}
             </div>
-            
 
+            <div class="col-lg-12 inst-description margin-t-50 text-center">
+                <h2 class="inst-title text-center rowed">Контакты</h2>
+            </div>
 
-            <div class="col-lg-12 inst-social text-center margin-t-25">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-xs-12 margin-t-25 inst-contacts ">
+
+                <div class="col-sm-6 ">
+
+                    <div class="row inst-tel">
+
+                        <div class="col-sm-3 text-right">
+                            <div class="row">
+                                <span>
+                                    <b class="text-uppercase">Телефон</b>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-sm-offset-1">
+                            <a href="tel:+37360192969" ><span >0601 91 111</span></a><br>
+                        </div>
+
+                    </div>
+
+                    <div class="row inst-email  margin-t-30">
+                    
+                        <div class="col-sm-3 text-right">
+                            <div class="row">
+                                <b class="text-uppercase">E-mail</b>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-sm-offset-1">
+                            <a href="mailto:alexzc@mail.ru" ><span>alexzc@mail.ru</span></a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-sm-6">
+                
+                    <div class="row inst-adres margin-xs-t-30">
+                        <div class="col-sm-3 text-right">
+                            <div class="row">
+                                <b class="text-uppercase">Адрес</b>  
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-sm-offset-1">
+                            <span >Bulevardul Grigore Vieru 22/9</span>
+                        </div>
+                    </div>
+                    
+
+                    <div class="row inst-adres margin-t-30">
+                        <div class="col-sm-3 text-right">
+                            <div class="row">
+                                <b class="text-uppercase">График</b>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-sm-offset-1">
+                            <time >Пн.-Пт.: с 9:30 до 18:00</time>
+                        </div>
+                    </div>
+
+                </div>
+                    
+            </div>
+
+            <div class="col-lg-12 inst-social text-center margin-t-50">
                     <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
                     <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
                     <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,gplus,twitter" data-counter=""></div>
             </div>
             
-            <div class="col-lg-12 margin-t-50 inst-map">
+            <div class="col-lg-12 margin-t-40 inst-map">
                 <div class="row">
                     <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=28.85437846183777%2C47.039721515551776%2C28.86635184288025%2C47.044196031419304&amp;layer=mapnik&amp;marker=47.04195882039511%2C28.86036515235901"></iframe>
                     <br/>
@@ -175,6 +228,10 @@
                 </div>
             </div>
         </div>
+        <div> 
+        </div>
+        
+
     </div>         
 </div>
 
@@ -221,17 +278,100 @@
 @section('metaProductSharing')
 <!-- Open Graph data -->
 <meta property="og:title" content="{{$data->name}}" />
+<meta name="google-site-verification" content="QruLMs9kDD29q-ycCBLohXLrKZiVoczPXuTS4Goif6A" />
 <meta property="og:site_name" content="Allevents.md" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://6e6065f7.ngrok.io/{{$data->slug}}" />
-<meta property="og:image" content="http://6e6065f7.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" />
+<meta property="og:url" content="http://170d3237.ngrok.io/{{$data->slug}}" />
+<meta property="og:image" content="http://170d3237.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" />
 <meta property="og:description" content="{{$data->description_short}}" />
 
 <!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@Allevents.md">
-<meta name="twitter:creator" content="@Allevents.md">
-<meta name="twitter:title" content="{{$data->name}}">
-<meta name="twitter:description" content="{{$data->description_short}}">
-<meta name="twitter:image" content="http://6e6065f7.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}">
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@Allevents.md" />
+<meta name="twitter:creator" content="@Allevents.md" />
+<meta name="twitter:title" content="{{$data->name}}" />
+<meta name="twitter:description" content="{{$data->description_short}}" /
+<meta name="twitter:image" content="http://170d3237.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" / >
+@stop
+
+@section('jsonProductSharing')
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Restaurant",
+  "image": "http://170d3237.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}",
+  "@id": "http://davessteakhouse.example.com",
+  "name": "{{$data->name}}",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "148 W 51st St",
+    "addressLocality": "New York",
+    "addressRegion": "NY",
+    "postalCode": "10019",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 40.761293,
+    "longitude": -73.982294
+  },
+  "url": "http://www.example.com/restaurant-locations/manhattan",
+  "telephone": "+12122459600",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday"
+      ],
+      "opens": "11:30",
+      "closes": "22:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "11:30",
+      "closes": "23:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "16:00",
+      "closes": "23:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Sunday",
+      "opens": "16:00",
+      "closes": "22:00"
+    }
+  ],
+
+
+  "potentialAction": {
+    "@type": "ReserveAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://www.example.com/reserve?merchantId=20373",
+      "inLanguage": "en-US",
+      "actionPlatform": [
+        "http://schema.org/DesktopWebPlatform",
+        "http://schema.org/IOSPlatform",
+        "http://schema.org/AndroidPlatform"
+      ]
+    },
+    "result": {
+      "@type": "FoodEstablishmentReservation",
+      "name": "Reserve table"
+    }
+  },
+
+  "menu": "http://www.example.com/menu",
+  "acceptsReservations": "True"
+}
+</script>
 @stop

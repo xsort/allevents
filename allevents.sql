@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2016 at 03:32 PM
+-- Generation Time: Jul 01, 2016 at 01:14 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.4
 
@@ -20,24 +20,51 @@ SET time_zone = "+00:00";
 -- Database: `allevents`
 --
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `menu_type_id` tinyint(4) NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `top` tinyint(1) NOT NULL,
+  `views` int(11) NOT NULL,
+  `sort` int(11) NOT NULL,
+  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `menu_type_id`, `enabled`, `top`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
-(5, 'Клубы', 'Сluburi', 'Clubs', '<p>Все лучшие клубы Кишинева и вся информация о них: адреса, расписание работы, отзывы,&nbsp;фотографии, цены,&nbsp;рейтинг, карта проезда.</p>\r\n', '<p>Toate cele mai bune cluburi din Chisinau si toate informatiile despre ei: adresa, programul de lucru, comentarii, fotografii, preturi, ratinguri, hartă.</p>\r\n', '<p>All the best clubs of Chisinau and all information about them: address, work schedule, reviews, photos, prices, ratings, map.</p>\r\n', '', '', '', 1, 1, 1, 0, 0, 'kluby', NULL, '2016-06-21 20:13:57'),
+(5, 'Клубы', 'Сluburi', 'Clubs', '<p>Все лучшие клубы Кишинева и вся информация о них: адреса, расписание работы, отзывы,&nbsp;фотографии, цены,&nbsp;рейтинг, карта проезда.</p>\r\n', '<p>Toate cele mai bune cluburi din Chisinau si toate informatiile despre ei: adresa, programul de lucru, comentarii, fotografii, preturi, ratinguri, hartă.</p>\r\n', '<p>All the best clubs of Chisinau and all information about them: address, work schedule, reviews, photos, prices, ratings, map.</p>\r\n', '', '', '', 1, 1, 1, 0, 0, 'kluby', '2016-06-24 21:00:00', '2016-06-29 08:17:45'),
 (6, 'Свадьбы', 'Nunți', 'Weddings', '<p>Организация и проведение свадеб в Кишиневе. У нас вы найдете все необходимое&nbsp;для свадебы:&nbsp;декор, флористика, а также&nbsp;поиск помещений, подбор персонала для обслуживания.&nbsp;</p>\r\n', '<p>Organizarea si desfasurarea de nunti la Chișinău. Aici vei gasi tot ce ai nevoie pentru nunti: decor, florale și sedii de căutare, servicii de personal.</p>\r\n', '<p>The organization and carrying out of weddings in Chisinau. Here you will find everything you need for weddings: decor, floral and search premises, personnel services.</p>\r\n', '', '', '', 1, 1, 1, 0, 0, 'svadiby', NULL, '2016-06-21 20:14:21'),
 (7, 'Корпоративы', 'Evenimente corporative', 'Corporate events', '<p>Хотите заказать незабываемый&nbsp;корпоратив?&nbsp;Поможем организовать и провести любой&nbsp;корпоратив&nbsp;профессионально и по высшему разряду.</p>\r\n', '<p>Doriți să comandați un eveniment corporate memorabil? Vă putem ajuta să vă organizați și să efectueze orice clasă de corporație și profesional.</p>\r\n', '<p>You want to order a memorable corporate event? We can help you organize and carry out any corporate and professional class.</p>\r\n', '', '', '', 1, 1, 1, 0, 0, 'korporativy', NULL, '2016-06-21 20:15:32'),
 (8, 'Рестораны \\ Кафе', 'Restaurant \\ Cafenea', 'Restaurant \\ Cafe', '<p>Перечень ресторанов,&nbsp;кафе, баров и пабов города (меню , цены , фото , отзывы , описание). Возможность быстрого заказа столика или&nbsp;банкета.</p>\r\n', '<p>Lista de restaurante, cafenele, baruri și pub-uri din oraș (meniu, preturi, fotografii, recenzii, descrieri). Posibilitatea de a comanda rapid o masă sau banchet.</p>\r\n', '<p>The list of restaurants, cafes, bars and pubs of the city (menu, prices, photos, reviews, descriptions). The ability to quickly order a table or banquet.</p>\r\n', '', '', '', 1, 1, 1, 0, 0, 'restorany-kafe', NULL, '2016-06-21 20:15:55'),
 (9, 'Крестины', 'Botezuri', 'Christening', '<p>Крестины, крещение ребенка. Мы готова оказать вам квалифицированную и профессиональную помощь в&nbsp;организации&nbsp;и проведении</p>\r\n', '<p>Botez, copil botez. Suntem pregătiți să vă ofere asistență calificată și profesională &icirc;n organizarea și desfășurarea</p>\r\n', '<p>Christening, baby baptism. We are ready to provide you with qualified and professional assistance in organizing and conducting</p>\r\n', '', '', '', 0, 1, 1, 0, 0, 'krestiny', '2016-06-10 07:51:22', '2016-06-21 20:34:02'),
-(10, 'Выпускной', 'Absolvire', 'High school graduation', '<p>Организация&nbsp;лучших&nbsp;выпускных&nbsp;</p>\r\n\r\n<p>вечеров в Кишиневе.&nbsp;Мы поможем вам выбрать все необходимое, для успешного проведения выпускного вечера.</p>\r\n', '<p>Organizarea celor mai bune proms din Chișinău pentru studenți. Vă vom ajuta să alegeți tot ce ai nevoie pentru un bal de succes.</p>\r\n', '<p>Organization of the best proms in Chisinau for students. We will help you to choose everything you need for a successful prom.</p>\r\n', '', '', '', 0, 1, 1, 0, 0, 'vypusknoj', '2016-06-10 08:34:16', '2016-06-21 20:34:29'),
+(10, 'Выпускной', 'Absolvire', 'High school graduation', '<p>Организация лучших выпускных вечеров в Кишиневе. Мы поможем вам выбрать все необходимое, для успешного проведения выпускного вечера.</p>\r\n', '<p>Organizarea celor mai bune proms din Chișinău pentru studenți. Vă vom ajuta să alegeți tot ce ai nevoie pentru un bal de succes.</p>\r\n', '<p>Organization of the best proms in Chisinau for students. We will help you to choose everything you need for a successful prom.</p>\r\n', '', '', '', 0, 1, 1, 0, 0, 'vypusknoj', '2016-06-09 21:00:00', '2016-06-30 07:48:37'),
 (11, 'День рождения', 'Zi de naștere', 'Birthday', '<p>Не знаете где и как отпраздновать&nbsp;день рождение?&nbsp;Мы поможем вам в&nbsp;организации праздника. У нас вы найдете все необходимые услуги, нужные для проведения дня рождения.</p>\r\n', '<p>Tu nu știi unde și cum pentru a sărbători ziua de nastere? Vă vom ajuta să vă organizați evenimentul. Aici veti gasi toate serviciile necesare necesare pentru a efectua aniversari.</p>\r\n', '<p>You do not know where and how to celebrate a birthday? We will help you organize the event. Here you will find all the necessary services needed to conduct birthdays.</p>\r\n', '', '', '', 0, 1, 1, 0, 0, 'deni-rojdenia', '2016-06-17 04:50:36', '2016-06-21 20:16:19'),
 (12, 'Детские праздники', 'Petrecerile copiilor', 'Children holidays', '<p>Организация&nbsp;проведения&nbsp;детских праздников.&nbsp;Мы поможем организовать незабываемый&nbsp;праздник&nbsp;для Вашего ребенка. Большой выбор программ, конкурсов и аниматоров.</p>\r\n', '<p>Organizare de festivitati pentru copii. Vă vom ajuta să vă organizați o vacanță de neuitat pentru copilul tau. O gamă largă de programe, concursuri și divertisment.</p>\r\n', '<p>Organization of children&#39;s holiday. We will help you organize an unforgettable holiday for your child. A wide range of programs, competitions and entertainment.</p>\r\n', '', '', '', 0, 1, 1, 0, 0, 'detskie-prazdniki', '2016-06-17 04:54:52', '2016-06-21 20:16:41'),
 (13, 'Акции \\ Скидки', 'Promotii \\ Reduceri', 'Promotions \\ Discounts', '<p>Список&nbsp;акций&nbsp;и скидок заведений&nbsp;в Кишиневе.&nbsp;Будьте в курсе всех&nbsp;акций&nbsp;и специальных предложений проходящих в&nbsp;заведениях&nbsp;города Кишинева.</p>\r\n', '<p>Lista promoții și a instituțiilor de reduceri &icirc;n Chișinău. Să fie conștienți de toate acțiunile și ofertele speciale care au loc &icirc;n instituții ale orașului Chișinău.</p>\r\n', '<p>The list of promotions and discounts institutions in Chisinau. Be aware of all the shares and special offers taking place in Chisinau city institutions.</p>\r\n', '', '', '', 0, 1, 1, 0, 0, 'akczii-skidki', '2016-06-21 04:58:24', '2016-06-21 20:17:03'),
 (14, 'Event менеджер \\ Организатор', 'Event Manager \\ Organizator', 'Event Manager \\ Organizer', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'event-menedzher-organizator', '2016-06-21 05:10:43', '2016-06-21 06:41:51'),
 (15, 'ЗАГСы \\ Церкви', 'Saloane de Înregistrare \\ Bisericii', 'Registry offices \\ Church', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'zagsy-czerkvi', '2016-06-21 05:12:38', '2016-06-21 06:42:24'),
 (16, 'Свадебная обувь и аксессуары', 'Pantofi de nunta si accesorii', 'Wedding shoes and accessories', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'svadebnaya-obuvi-i-aksessuary', '2016-06-21 05:13:09', '2016-06-21 06:42:46'),
-(17, 'Свадебные и вечерние платья', 'Nunta si rochii de seara', 'Wedding & Evening Dresses', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'svadebnye-i-vechernie-platiya', '2016-06-21 05:14:53', '2016-06-22 03:43:58'),
+(17, 'Свадебные и вечерние платья', 'Nunta si rochii de seara', 'Wedding & Evening Dresses', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'svadebnye-i-vechernie-platiya', '2016-06-20 21:00:00', '2016-06-29 09:34:03'),
 (18, 'Мужские костюмы', 'Costume pentru bărbați', 'Men''s suits', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'muzhskie-kostyumy', '2016-06-21 05:15:45', '2016-06-21 06:40:46'),
 (19, 'Свадебный танец', 'Dans de nunta', 'A wedding dance', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'svadebnyj-tanecz', '2016-06-21 05:17:21', '2016-06-21 06:44:14'),
 (20, 'Фото \\ Видео', 'Fotografie \\ Video', 'Photo \\ Video', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'foto-video', '2016-06-21 05:18:01', '2016-06-21 06:44:34'),
@@ -60,6 +87,18 @@ INSERT INTO `categories` (`id`, `name`, `name_ro`, `name_en`, `description`, `de
 (37, 'Кейтеринг \\ Шатры', 'Catering \\ Corturi', 'Catering \\ Tents', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'kejtering-shatry', '2016-06-21 05:32:43', '2016-06-21 06:57:41'),
 (38, 'Организация предложения руки и сердца', 'Organizația oferă mâini și inimi', 'The organization offers hands and hearts', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'organizacziya-predlozheniya-ruki-i-serdcza', '2016-06-21 05:33:19', '2016-06-21 06:54:28'),
 (39, 'Фитнес центр', 'Centru de fitness', 'Fitness center', '', '', '', '', '', '', 0, 1, 0, 0, 0, 'fitnes-czentr', '2016-06-21 05:34:12', '2016-06-21 06:55:07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories_xref`
+--
+
+CREATE TABLE `categories_xref` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `parent_id` int(11) NOT NULL,
+  `child_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `categories_xref`
@@ -160,12 +199,45 @@ INSERT INTO `categories_xref` (`id`, `parent_id`, `child_id`) VALUES
 (112, 0, 9),
 (113, 0, 8);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `constants`
+--
+
+CREATE TABLE `constants` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `key` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `value` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `content`
+--
+
+CREATE TABLE `content` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `views` int(11) NOT NULL,
+  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Dumping data for table `content`
 --
 
 INSERT INTO `content` (`id`, `name`, `name_en`, `name_ro`, `description`, `description_en`, `description_ro`, `enabled`, `views`, `slug`, `created_at`, `updated_at`) VALUES
-(3, 'Об Allevents', 'Об Allevents', 'Об Allevents', '<p>Здесь будет описание о сайте Allevents</p>\r\n', '<p>Здесь будет описание о сайте Allevents</p>\r\n', '<p>Здесь будет описание о сайте Allevents</p>\r\n', 1, 0, 'about', '2016-06-26 09:56:14', '2016-06-26 09:56:14'),
+(3, 'Об Allevents', 'Об Allevents', 'Об Allevents', '<p>Здесь будет описание о сайте Allevents</p>\r\n', '<p>Здесь будет описание о сайте Allevents</p>\r\n', '<p>Здесь будет описание о сайте Allevents</p>\r\n', 1, 0, 'about', '2016-06-26 21:00:00', '2016-06-29 08:18:15'),
 (4, 'Отчеты', '', '', '<p>Здесь будут отчеты</p>\r\n', '<p>Здесь будут отчеты</p>\r\n', '<p>Здесь будут отчеты</p>\r\n', 1, 0, 'reports', '2016-06-26 09:59:26', '2016-06-26 09:59:26'),
 (5, 'Акции', '', '', '<p>Здесь будут акции</p>\r\n', '<p>Здесь будут акции</p>\r\n', '<p>Здесь будут акции</p>\r\n', 1, 0, 'promo', '2016-06-26 10:00:07', '2016-06-26 10:00:07'),
 (6, 'Экслюзив', 'Экслюзив', 'Экслюзив', '<p>Здесь будет выводиться экслюзив</p>\r\n', '<p>Здесь будет выводиться экслюзив</p>\r\n', '<p>Здесь будет выводиться экслюзив</p>\r\n', 1, 0, 'exclusive', '2016-06-26 10:00:55', '2016-06-26 10:00:55'),
@@ -173,6 +245,118 @@ INSERT INTO `content` (`id`, `name`, `name_en`, `name_ro`, `description`, `descr
 (8, 'Реклама', 'Реклама', 'Реклама', '<p>Сдесь будет реклама</p>\r\n', '<p>Сдесь будет реклама</p>\r\n', '<p>Сдесь будет реклама</p>\r\n', 1, 0, 'advert', '2016-06-26 10:04:56', '2016-06-26 10:04:56'),
 (9, 'Права', 'Права', 'Права', '<p>здесь будут права</p>\r\n', '<p>здесь будут права</p>\r\n', '<p>здесь будут права</p>\r\n', 1, 0, 'copyright', '2016-06-26 10:06:19', '2016-06-26 10:06:19'),
 (10, 'Карта сайта', 'Карта сайта', 'Карта сайта', '<p>Сдесь будет карта сайта</p>\r\n', '<p>Сдесь будет карта сайта</p>\r\n', '<p>Сдесь будет карта сайта</p>\r\n', 1, 0, 'sitemap', '2016-06-26 10:07:09', '2016-06-26 10:07:09');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `galleries`
+--
+
+CREATE TABLE `galleries` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `views` int(11) NOT NULL,
+  `sort` int(11) NOT NULL,
+  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `galleries_xref`
+--
+
+CREATE TABLE `galleries_xref` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `galleries_id` int(10) UNSIGNED NOT NULL,
+  `table_id` int(11) NOT NULL,
+  `table` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu_categories`
+--
+
+CREATE TABLE `menu_categories` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `parent_id` tinyint(4) NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `views` int(11) NOT NULL,
+  `sort` int(11) NOT NULL,
+  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu_products`
+--
+
+CREATE TABLE `menu_products` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `category_id` tinyint(4) NOT NULL,
+  `price` double(15,2) NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `views` int(11) NOT NULL,
+  `sort` int(11) NOT NULL,
+  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `meta`
+--
+
+CREATE TABLE `meta` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `meta_description` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `meta_description_ro` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `meta_description_en` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `meta_keywords` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `meta_keywords_ro` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `meta_keywords_en` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `title_ro` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `title_en` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `table_id` int(11) NOT NULL,
+  `table` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `meta`
@@ -247,7 +431,21 @@ INSERT INTO `meta` (`id`, `meta_description`, `meta_description_ro`, `meta_descr
 (66, '', '', '', '', '', '', '', '', '', 7, 'content'),
 (67, '', '', '', '', '', '', '', '', '', 8, 'content'),
 (68, '', '', '', '', '', '', '', '', '', 9, 'content'),
-(69, '', '', '', '', '', '', '', '', '', 10, 'content');
+(69, '', '', '', '', '', '', '', '', '', 10, 'content'),
+(70, '', '', '', '', '', '', '', '', '', 19, 'products'),
+(71, '', '', '', '', '', '', '', '', '', 20, 'products'),
+(72, '', '', '', '', '', '', '', '', '', 21, 'products');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `migration` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -339,16 +537,54 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2016_05_25_122425_menu_categories', 1),
 ('2016_06_23_074721_products_categories', 2);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news`
+--
+
+CREATE TABLE `news` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `top` tinyint(1) NOT NULL,
+  `views` int(11) NOT NULL,
+  `sort` int(11) NOT NULL,
+  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Dumping data for table `news`
 --
 
 INSERT INTO `news` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `enabled`, `top`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'Voice Vocal Club Karaoke приглашает принять участие в проекте AntiProfy', '123', '123', '<p><strong>Каждый четверг в Voice Vocal Club Karaoke вас ждут звездные гости, а самые активные любители караоке могут проявить свой талант и артистичность, приняв участие в проекте AntiProfy. Правила просты: для участия в конкурсе приглашаются 3 гостя из зала, которые исполнят по 2 песни, а остальные посетители отдают свои голоса понравившемуся исполнителю. Звездный гость выбирает своего фаворита и отдает ему 5 баллов. Победитель с максимальным количеством баллов получает главный приз вечера &mdash; трофей конкурса AntiProfy .</strong></p>\r\n\r\n<p><strong><img alt="" src="http://cdn.allfun.md/2016/06/23/10/576b94a5c41e9.jpg" style="height:289px; width:620px" /></strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>На этот раз, 23 июня, специальным гостем проекта станет молодая исполнительница&nbsp; Stela Botez. Все участники получат приятные призы от партнеров проекта.</p>\r\n\r\n<p>Voice Vocal Club ждет вас каждый четверг!</p>\r\n\r\n<p>Sing Different - be Anti Profy!</p>\r\n\r\n<p>Начало в 22:00.</p>\r\n\r\n<p>Московский пр-т 15/4, 022 43 93 93, 79409266<br />\r\n<a href="http://www.facebook.com/VVCK.MD/" target="_blank">www.facebook.com/VVCK.MD/</a>,<a href="http://www.voiceclub.md/" target="_blank">www.voiceclub.md</a></p>\r\n', '<p>123</p>\r\n', '<p>456</p>\r\n', 'Каждый четверг в Voice Vocal Club Karaoke вас ждут звездные гости, а самые активные любители караоке могут проявить свой талант и артистичность, приняв участие в проекте AntiProfy.', 'Рум описание', 'Англ описание', 1, 1, 26, 0, 'voice-vocal-club-karaoke-priglashaet-prinyati-uchastie-v-proekte-antiprofy', '2016-06-26 09:14:43', '0000-00-00 00:00:00'),
-(4, 'Несколько учебных заведений будут реорганизованы или ликвидированы', '', '', '<h3>По предложению Министерства просвещения, несколько профессионально-технических учебных заведений будут ликвидированы, реорганизованы или переименованы.</h3>\r\n\r\n<p><br />\r\nСоответствующее решение было утверждено сегодня на заседании правительства, сообщает NOI.md.<br />\r\n<br />\r\nТак, путем реорганизации Кишиневского политехнического колледжа и Кишиневского колледжа микроэлектроники и вычислительной техники будет создан Центр передового опыта в области энергетики и электроники. На базе Финансово-банковского колледжа будет создан Центр передового опыта в области экономики и финансов.<br />\r\n<br />\r\nВ соответствии с другим решением кабмина, Каларашский педагогический колледж имени Александру чел Бун будет ликвидирован. Из названия шести учебных заведений будет исключено название &laquo;педагогический&raquo;. Это Кишиневский колледж имени Алексея Матеевича, Липканского колледжа имени Георгия Асаки, Оргеевский колледж имени Василия Лупу и т.д.<br />\r\n<br />\r\nПо словам руководства Министерства просвещения, реорганизация данных учебных заведений осуществляется в рамках реформы профессионально-технического образования. По словам властей, создание 10 центров передового опыта является обязательством правительства по модернизации профессионально-технического образования. В 2015 году было создано пять центров передового опыта в строительстве, транспорте, информатике, легкой промышленности и пищевой промышленности.</p>\r\n', '', '', 'По предложению Министерства просвещения, несколько профессионально-технических учебных заведений будут ликвидированы, реорганизованы или переименованы.', '', '', 1, 1, 7, 0, 'neskoliko-uchebnyx-zavedenij-budut-reorganizovany-ili-likvidirovany', '2016-06-26 09:15:06', '0000-00-00 00:00:00'),
-(5, 'Black & White Party @ Versenz Cafe', 'Black & White Party @ Versenz Cafe', 'Black & White Party @ Versenz Cafe', '<p>Правильный субботний вечер - это отдых, большая компания друзей, любимые напитки и отличная атмосфера. Если вам это по душе, то Versenz Cafe ждет вас в 21:00.</p>\r\n\r\n<p>Для вас и ваших друзей в эту субботу зажжет DJ DEN DI.<br />\r\nБронируем столики по телефону 060 224422.</p>\r\n\r\n<p>Подробности на страничке Versenz в&nbsp;<a href="http://www.facebook.com/versenzcafe" target="_blank">www.facebook.com</a></p>\r\n', '', '', 'Правильный субботний вечер - это отдых, большая компания друзей, любимые напитки и отличная атмосфера. Если вам это по душе, то Versenz Cafe ждет вас в 21:00.', '', '', 1, 1, 10, 0, 'black-white-party-versenz-cafe', '2016-06-26 09:30:16', '0000-00-00 00:00:00'),
-(6, 'С песней по жизни: Voice Vocal Club - 8 лет', 'С песней по жизни: Voice Vocal Club - 8 лет', 'С песней по жизни: Voice Vocal Club - 8 лет', '<p><strong>В воскресенье, 29 мая, Voice Vocal Club отмечает свой VIII день рождения. К знаменательной дате клуб подошел, основательно подготовившись. За это время он обзавелся широким кругом постоянных гостей, в числе которых много звездных персонажей, для которых пение - не просто хобби.&nbsp;</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&quot;Voice Vocal Club&quot; славится своей душевной атмосферой и настроением, ну а зрелища здесь всегда на высоком уровне.&nbsp;<br />\r\nДень своего рождения&nbsp; Voice Vocal Club решил отметить с друзьями.</p>\r\n\r\n<p>Приглашенные гости : Max Zavidia и Broono SB.</p>\r\n\r\n<p>В программе вечера: &laquo;Танец персонала&raquo; и исполнение всем коллективом гимна &quot;Voice Vocal Club&quot;, клубный фотограф, бесплатное шампанское и, конечно же, праздничный торт для всех гостей клуба!</p>\r\n\r\n<p>8 лет мы работаем для вас: тысячи караокеров, сотни звездных гостей, десятки победителей в караоке чемпионатах и МИЛЛИОН исполненных песен.&nbsp;</p>\r\n\r\n<p>Начало в 21.00.</p>\r\n\r\n<p>&quot;Voice Vocal Club&quot;: с песней по жизни!</p>\r\n', '', '', '"Voice Vocal Club" славится своей душевной атмосферой и настроением, ну а зрелища здесь всегда на высоком уровне. \r\nДень своего рождения  Voice Vocal Club решил отметить с друзьями.', '', '', 1, 1, 1, 0, 's-pesnej-po-zhizni-voice-vocal-club-let', '2016-06-26 06:52:35', '0000-00-00 00:00:00'),
-(7, 'Самир Логин в проекте AntiProfy в Voice Vocal Club Karaoke', '', '', '<p>Проект AntiProfy с бессменной ведущей Алиной Дабижа в Voice Vocal Club Karaoke набирает обороты. Каждый четверг здесь вас ждут звездные гости, а самые активные любители караоке могут проявить свой талант и артистичность, приняв участие в проекте.&nbsp;</p>\r\n\r\n<p>На этот раз, 26 мая, специальным гостем проекта станет талантливый исполнитель Самир Логин.&nbsp;&nbsp; Все участники получат приятные призы от партнеров проекта.</p>\r\n\r\n<p>Voice Vocal Club ждет вас каждый четверг!</p>\r\n\r\n<p>Sing Different - be Anti Profy!</p>\r\n\r\n<p>Начало в 22:00.</p>\r\n\r\n<p>Московский пр-т 15/4, 022 43 93 93, 79409266</p>\r\n', '', '', 'На этот раз, 26 мая, специальным гостем проекта станет талантливый исполнитель Самир Логин.   Все участники получат приятные призы от партнеров проекта.', '', '', 1, 1, 4, 0, 'samir-login-v-proekte-antiprofy-v-voice-vocal-club-karaoke', '2016-06-26 06:54:09', '0000-00-00 00:00:00');
+(1, 'Voice Vocal Club Karaoke приглашает принять участие в проекте AntiProfy', '123', '123', '<p><strong>Каждый четверг в Voice Vocal Club Karaoke вас ждут звездные гости, а самые активные любители караоке могут проявить свой талант и артистичность, приняв участие в проекте AntiProfy. Правила просты: для участия в конкурсе приглашаются 3 гостя из зала, которые исполнят по 2 песни, а остальные посетители отдают свои голоса понравившемуся исполнителю. Звездный гость выбирает своего фаворита и отдает ему 5 баллов. Победитель с максимальным количеством баллов получает главный приз вечера &mdash; трофей конкурса AntiProfy .</strong></p>\r\n\r\n<p><strong><img alt="" src="http://cdn.allfun.md/2016/06/23/10/576b94a5c41e9.jpg" style="height:289px; width:620px" /></strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>На этот раз, 23 июня, специальным гостем проекта станет молодая исполнительница&nbsp; Stela Botez. Все участники получат приятные призы от партнеров проекта.</p>\r\n\r\n<p>Voice Vocal Club ждет вас каждый четверг!</p>\r\n\r\n<p>Sing Different - be Anti Profy!</p>\r\n\r\n<p>Начало в 22:00.</p>\r\n\r\n<p>Московский пр-т 15/4, 022 43 93 93, 79409266<br />\r\n<a href="http://www.facebook.com/VVCK.MD/" target="_blank">www.facebook.com/VVCK.MD/</a>,<a href="http://www.voiceclub.md/" target="_blank">www.voiceclub.md</a></p>\r\n', '<p>123</p>\r\n', '<p>456</p>\r\n', 'Каждый четверг в Voice Vocal Club Karaoke вас ждут звездные гости, а самые активные любители караоке могут проявить свой талант и артистичность, приняв участие в проекте AntiProfy.', 'Рум описание', 'Англ описание', 1, 1, 63, 0, 'voice-vocal-club-karaoke-priglashaet-prinyati-uchastie-v-proekte-antiprofy', '2016-06-23 21:00:00', '0000-00-00 00:00:00'),
+(4, 'Несколько учебных заведений будут реорганизованы или ликвидированы', '', '', '<h3>По предложению Министерства просвещения, несколько профессионально-технических учебных заведений будут ликвидированы, реорганизованы или переименованы.</h3>\r\n\r\n<p><br />\r\nСоответствующее решение было утверждено сегодня на заседании правительства, сообщает NOI.md.<br />\r\n<br />\r\nТак, путем реорганизации Кишиневского политехнического колледжа и Кишиневского колледжа микроэлектроники и вычислительной техники будет создан Центр передового опыта в области энергетики и электроники. На базе Финансово-банковского колледжа будет создан Центр передового опыта в области экономики и финансов.<br />\r\n<br />\r\nВ соответствии с другим решением кабмина, Каларашский педагогический колледж имени Александру чел Бун будет ликвидирован. Из названия шести учебных заведений будет исключено название &laquo;педагогический&raquo;. Это Кишиневский колледж имени Алексея Матеевича, Липканского колледжа имени Георгия Асаки, Оргеевский колледж имени Василия Лупу и т.д.<br />\r\n<br />\r\nПо словам руководства Министерства просвещения, реорганизация данных учебных заведений осуществляется в рамках реформы профессионально-технического образования. По словам властей, создание 10 центров передового опыта является обязательством правительства по модернизации профессионально-технического образования. В 2015 году было создано пять центров передового опыта в строительстве, транспорте, информатике, легкой промышленности и пищевой промышленности.</p>\r\n', '', '', 'По предложению Министерства просвещения, несколько профессионально-технических учебных заведений будут ликвидированы, реорганизованы или переименованы.', '', '', 1, 1, 27, 0, 'neskoliko-uchebnyx-zavedenij-budut-reorganizovany-ili-likvidirovany', '2016-06-26 09:15:06', '0000-00-00 00:00:00'),
+(5, 'Black & White Party @ Versenz Cafe', 'Black & White Party @ Versenz Cafe', 'Black & White Party @ Versenz Cafe', '<p>Правильный субботний вечер - это отдых, большая компания друзей, любимые напитки и отличная атмосфера. Если вам это по душе, то Versenz Cafe ждет вас в 21:00.</p>\r\n\r\n<p>Для вас и ваших друзей в эту субботу зажжет DJ DEN DI.<br />\r\nБронируем столики по телефону 060 224422.</p>\r\n\r\n<p>Подробности на страничке Versenz в&nbsp;<a href="http://www.facebook.com/versenzcafe" target="_blank">www.facebook.com</a></p>\r\n', '', '', 'Правильный субботний вечер - это отдых, большая компания друзей, любимые напитки и отличная атмосфера. Если вам это по душе, то Versenz Cafe ждет вас в 21:00.', '', '', 1, 1, 24, 0, 'black-white-party-versenz-cafe', '2016-06-26 09:30:16', '0000-00-00 00:00:00'),
+(6, 'С песней по жизни: Voice Vocal Club - 8 лет', 'С песней по жизни: Voice Vocal Club - 8 лет', 'С песней по жизни: Voice Vocal Club - 8 лет', '<p><strong>В воскресенье, 29 мая, Voice Vocal Club отмечает свой VIII день рождения. К знаменательной дате клуб подошел, основательно подготовившись. За это время он обзавелся широким кругом постоянных гостей, в числе которых много звездных персонажей, для которых пение - не просто хобби.&nbsp;</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&quot;Voice Vocal Club&quot; славится своей душевной атмосферой и настроением, ну а зрелища здесь всегда на высоком уровне.&nbsp;<br />\r\nДень своего рождения&nbsp; Voice Vocal Club решил отметить с друзьями.</p>\r\n\r\n<p>Приглашенные гости : Max Zavidia и Broono SB.</p>\r\n\r\n<p>В программе вечера: &laquo;Танец персонала&raquo; и исполнение всем коллективом гимна &quot;Voice Vocal Club&quot;, клубный фотограф, бесплатное шампанское и, конечно же, праздничный торт для всех гостей клуба!</p>\r\n\r\n<p>8 лет мы работаем для вас: тысячи караокеров, сотни звездных гостей, десятки победителей в караоке чемпионатах и МИЛЛИОН исполненных песен.&nbsp;</p>\r\n\r\n<p>Начало в 21.00.</p>\r\n\r\n<p>&quot;Voice Vocal Club&quot;: с песней по жизни!</p>\r\n', '', '', '"Voice Vocal Club" славится своей душевной атмосферой и настроением, ну а зрелища здесь всегда на высоком уровне. \r\nДень своего рождения  Voice Vocal Club решил отметить с друзьями.', '', '', 1, 1, 8, 0, 's-pesnej-po-zhizni-voice-vocal-club-let', '2016-06-26 06:52:35', '0000-00-00 00:00:00'),
+(7, 'Самир Логин в проекте AntiProfy в Voice Vocal Club Karaoke', '', '', '<p>Проект AntiProfy с бессменной ведущей Алиной Дабижа в Voice Vocal Club Karaoke набирает обороты. Каждый четверг здесь вас ждут звездные гости, а самые активные любители караоке могут проявить свой талант и артистичность, приняв участие в проекте.&nbsp;</p>\r\n\r\n<p>На этот раз, 26 мая, специальным гостем проекта станет талантливый исполнитель Самир Логин.&nbsp;&nbsp; Все участники получат приятные призы от партнеров проекта.</p>\r\n\r\n<p>Voice Vocal Club ждет вас каждый четверг!</p>\r\n\r\n<p>Sing Different - be Anti Profy!</p>\r\n\r\n<p>Начало в 22:00.</p>\r\n\r\n<p>Московский пр-т 15/4, 022 43 93 93, 79409266</p>\r\n', '', '', 'На этот раз, 26 мая, специальным гостем проекта станет талантливый исполнитель Самир Логин.   Все участники получат приятные призы от партнеров проекта.', '', '', 1, 1, 14, 0, 'samir-login-v-proekte-antiprofy-v-voice-vocal-club-karaoke', '2016-06-26 06:54:09', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news_tags`
+--
+
+CREATE TABLE `news_tags` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `news_id` int(10) UNSIGNED NOT NULL,
+  `tags_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `news_tags`
@@ -359,6 +595,45 @@ INSERT INTO `news_tags` (`id`, `news_id`, `tags_id`) VALUES
 (4, 4, 1),
 (5, 4, 2),
 (6, 5, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news_types`
+--
+
+CREATE TABLE `news_types` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `news_id` int(10) UNSIGNED NOT NULL,
+  `types_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `photos`
+--
+
+CREATE TABLE `photos` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `source` text COLLATE utf8_unicode_ci NOT NULL,
+  `table_id` int(11) NOT NULL,
+  `table` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `sort` int(11) NOT NULL,
+  `token` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `photos`
@@ -401,9 +676,9 @@ INSERT INTO `photos` (`id`, `source`, `table_id`, `table`, `sort`, `token`) VALU
 (36, 'kejtering--shatry_36.png', 37, 'categories', 36, ''),
 (37, 'organizacziya-predlozheniya-ruki-i-serdcza_37.png', 38, 'categories', 37, ''),
 (38, 'fitnes-czentr_38.png', 39, 'categories', 38, ''),
-(39, 'svadebnye-i-vechernie-platiya_39.png', 17, 'categories', 41, ''),
+(39, 'svadebnye-i-vechernie-platiya_39.png', 17, 'categories', 39, ''),
 (40, 'svadebnye-i-vechernie-platiya_40.png', 17, 'categories', 40, ''),
-(41, 'svadebnye-i-vechernie-platiya_41.png', 17, 'categories', 39, ''),
+(41, 'svadebnye-i-vechernie-platiya_41.png', 17, 'categories', 41, ''),
 (42, 'drive_42.png', 1, 'products', 0, ''),
 (43, 'krysha_43.png', 2, 'products', 43, ''),
 (44, '576bb1ed13fc3.jpg', 0, 'products', 44, '2a917165591994c2cfb202d624f9f1ee604c6f9c'),
@@ -441,23 +716,129 @@ INSERT INTO `photos` (`id`, `source`, `table_id`, `table`, `sort`, `token`) VALU
 (76, '576fa3238d7d2.jpg', 0, 'news', 76, 'fceb471460d21c2999d8fce09cb7932774b02e2c'),
 (77, 'black--white-party--versenz-cafe_77.jpg', 5, 'news', 77, ''),
 (78, 's-pesnej-po-zhizni-voice-vocal-club---let_78.jpg', 6, 'news', 78, ''),
-(79, 'samir-login-v-proekte-antiprofy-v-voice-vocal-club-karaoke_79.jpg', 7, 'news', 79, '');
+(79, 'samir-login-v-proekte-antiprofy-v-voice-vocal-club-karaoke_79.jpg', 7, 'news', 79, ''),
+(80, '57737769d5684.png', 0, 'products', 80, '6f71517191b2898d7b3457e2fa8c19c73d2f7282'),
+(81, 'levis_81.png', 19, 'products', 81, ''),
+(82, 'sample-club_82.jpg', 20, 'products', 82, ''),
+(86, 'barhat_86.png', 21, 'products', 86, ''),
+(89, 'andys-pizza_89.jpg', 7, 'products', 89, ''),
+(91, 'andys-pizza_91.jpg', 7, 'products', 91, ''),
+(92, 'andys-pizza_92.jpg', 7, 'products', 92, ''),
+(94, '5776156331143.jpg', 0, 'products', 94, 'dd39c3d6257e6794a85918238de7ac42321b59d1'),
+(96, '57761b3778610.jpg', 0, 'products', 96, '0e573ee5cb92c26e2064a38bfdcaf9a35079143f'),
+(97, '57761b3e53d52.png', 0, 'products', 97, '50197850e059b19e294d64cb8175f24fb37c677f'),
+(98, '57761b4595cc3.jpg', 0, 'products', 98, '360d532d8a1cb3dcb78f4321cf445deed321c7ea'),
+(99, '57761b4aaf1ca.jpg', 0, 'products', 99, '027090e92beee659600cfe9e083e59e940dc3358'),
+(100, '57761b4f8364b.jpg', 0, 'products', 100, '26480a1c8faaa727f7f6b77e7274c266a6c46f1d'),
+(101, '57761b816df16.jpg', 0, 'products', 101, '8e0e7c90540f16f8c92d6de150869fb08df3a519'),
+(102, '57761b859e76a.png', 0, 'products', 102, '040991315dabfccbaa6b9b36d299f5b3d89f7cc0'),
+(103, '57761b8bb2448.jpg', 0, 'products', 103, 'cf4308c701fd2b1e303bccd6356b1dddcfbb9a40'),
+(104, '57761b8f4b313.jpg', 0, 'products', 104, '0feff1e2c90a5d0385042bc0229b796aaa4e8344'),
+(105, '577622893709f.jpg', 0, 'products', 105, '16ccc3439675a89d785217d91b06deb7b9cff16b'),
+(106, '577622923f0ac.png', 0, 'products', 106, 'e262b71125e7baecb400ab0671ad1f862f44a415'),
+(107, '5776234f9ae51.jpg', 0, 'products', 107, '4522e0f0b304b34d089781343a03d6fe6e30003e'),
+(108, '577623531e1b7.jpg', 0, 'products', 108, '61c4d04d520acd728bcc67315fd0469ca3fd4e9e'),
+(109, '577624e670ae4.jpg', 0, 'products', 109, '1272a745afe166313800d4d1e78cfc58ba49eb53'),
+(110, '577624e9d96cc.png', 0, 'products', 110, 'cd3f24a9be0bb4b0f852971b96122924e4a53a11'),
+(111, '5776258b2a78e.jpg', 0, 'products', 111, 'f1c8f55e1080781ba0eab5290e60ed06bfb6d590'),
+(112, '5776258f6af95.jpg', 0, 'products', 112, 'e4acd382abf86d23310235c13274858615da14b2'),
+(113, '5776259229dd6.jpg', 0, 'products', 113, 'ec4766cffcf25a4394dce39da8376de3ad649491'),
+(114, '57762721a4b5d.jpg', 0, 'products', 114, 'dab50726ae5b756007238f93a2b6f9f666b7d86a'),
+(115, '577627249ef0e.png', 0, 'products', 115, '97882bfa07ccec281c3d20c330b1c74a0e8abd91'),
+(116, '577643466c6e1.jpg', 0, 'products', 116, '8e9f51819b53484a8616876681cbade38b9f0012');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `price` double(15,2) NOT NULL,
+  `map` text COLLATE utf8_unicode_ci NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `top` tinyint(1) NOT NULL,
+  `views` int(11) NOT NULL,
+  `sort` int(11) NOT NULL,
+  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `price`, `map`, `enabled`, `top`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
-(7, 'Andy''s Pizza', 'Andy''s Pizza', 'Andy''s Pizza', '<p>В меню&nbsp;Andys Pizza&nbsp;самые вкусные блюда! Закажите еду в офис, на дом или оформите предварительный заказ. Приятного аппетита!</p>\r\n', '', '', 'Andy''s Pizza - самый вкусный заказ еды онлайн! Быстрая доставка днем и ночью!', 'Andys Pizza - comanda online cele mai delicioase bucate! Livrarea rapidă ziua și noaptea!', 'Andys Pizza - the most delicious food order online! Fast delivery day and night!', 0.00, '', 1, 1, 0, 0, 'andys-pizza', '2016-06-23 10:18:04', '2016-06-24 04:33:33'),
-(8, 'Krysha', 'Krysha', 'Krysha', '<p>Отдельного внимания заслуживает наша терраса под открытым небом. Уникальная терраса&nbsp;<strong>LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo;</strong>, которая располагается на пятом этаже коммерческого центра&nbsp;<strong>&laquo;Sun City&raquo;</strong>, позволит Вам полюбоваться уникальными пейзажами городского центрального парка и ночными огнями столицы. Уютные диванные зоны, легкая музыка, стильный интерьер и свежий воздух &ndash; поистине отдых &laquo;НА ВЫСОТЕ&raquo;.<br />\r\n<br />\r\nК организации праздничного вечера в&nbsp;<strong>LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo;</strong>&nbsp;подойдут профессионально: разработают план мероприятия, подберут ведущего, составят шоу-программу, пригласят артистов, оформят зал, продумают и разработают меню для фуршета и подарят массу приятных впечатлений.</p>\r\n', '<p>O atenție specială merită terasa noastră &icirc;n aer liber. Unice Terasa LOUNGE-CAF&Eacute; &laquo;Krysha&raquo;, care este situat la etajul cinci al &laquo;Sun City&raquo; centru comercial vă va permite să se bucure de peisajul unic al parcului central de oraș și luminile de noapte ale capitalei. zonă confortabilă canapea, muzica usoara, aer curat interior si elegant - cu adevărat o vacanță de &quot;sus&quot;.</p>\r\n\r\n<p>Prin organizarea unei seri festive &icirc;n LOUNGE-CAF&Eacute; &laquo;Krysha&raquo; profesionale adecvate: artiștii să elaboreze un plan de acțiune, se va ridica la conducere, face un program de spectacol, invitați vor desena o cameră, cred că peste și de a lucra din meniul pentru bufet și va da o mulțime de experiențe plăcute.</p>\r\n', '<p>Special attention deserves our terrace in the open air. Unique terrace LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo;, which is located on the fifth floor of &laquo;Sun City&raquo; shopping center, will allow you to enjoy the unique scenery of the city central park and the night lights of the capital. Cozy sofa area, light music, stylish interior and fresh air - truly a vacation &quot;on high&quot;.</p>\r\n\r\n<p>By organizing a festive evening in the LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo; suitable professional: develop an action plan, will pick up the lead, make a show program, invited artists will draw room, think over and work out the menu for the buffet and will give a lot of pleasant experiences.</p>\r\n', 'Атмосфера в стиле LOUNGE-CAFÉ «KRYSHA» не отвлекает от повседневности, а скорее украшает её.', 'Atmosfera din stilul LOUNGE-CAFÉ «Krysha» nu distrage de la viața de zi cu zi, ci mai degrabă o împodobește.', 'The atmosphere in the style LOUNGE-CAFÉ «KRYSHA» does not distract from everyday life, but rather adorns it.', 0.00, '', 1, 1, 0, 0, 'krysha', '2016-06-23 09:37:21', '2016-06-23 09:37:21'),
-(10, 'Mojito', 'Mojito', 'Mojito', '<p>Если вы в поиске места для романтического ужина при свете фонарей, или пре-пати с друзьями, вы его найдете здесь, в&nbsp;<strong>MOJITO</strong>, около Театра Оперы и Балета.<br />\r\n<br />\r\n<strong>Мы очень ценим наших клиентов, поэтому всегда предлагаем только самое лучшее:</strong></p>\r\n\r\n<ul>\r\n	<li>Рабочее время&nbsp;<strong>24/24</strong></li>\r\n	<li>Аргентинская и Японская кухня</li>\r\n	<li>Самый большой выбор коктейлей Мохито:&nbsp; алкогольных и безалкогольных</li>\r\n	<li>Терраса в тени для курящих и некурящих</li>\r\n	<li>Живая музыка каждую пятницу и воскресенье</li>\r\n	<li>Комфортабельный ресторан&nbsp; с расслабляющей атмосферой</li>\r\n	<li>Быстрое и&nbsp; качественное обслуживание</li>\r\n</ul>\r\n\r\n<p><br />\r\nЗайдите к нам, чтобы расслабиться&nbsp; на мягких креслах с чашечкой кофе или чая на завтрак, отведав&nbsp; мисо-суп или стейк на обед, либо коктейль на ужин.<br />\r\n<br />\r\nШагните на территорию, где сочетаются вкусное с&nbsp; приятным, прохлада с удовольствием &ndash; на территорию</p>\r\n', '', '', 'Если вы в поиске места для романтического ужина при свете фонарей, или пре-пати с друзьями, вы его найдете здесь.', '', '', 0.00, '', 1, 1, 0, 0, 'mojito', '2016-06-23 09:47:27', '2016-06-23 09:47:27'),
+(7, 'Andy''s Pizza', 'Andy''s Pizza', 'Andy''s Pizza', '<p>В меню&nbsp;Andys Pizza&nbsp;самые вкусные блюда! Закажите еду в офис, на дом или оформите предварительный заказ. Приятного аппетита!</p>\r\n', '', '', 'Andy''s Pizza - самый вкусный заказ еды онлайн! Быстрая доставка днем и ночью!', 'Andys Pizza - comanda online cele mai delicioase bucate! Livrarea rapidă ziua și noaptea!', 'Andys Pizza - the most delicious food order online! Fast delivery day and night!', 0.00, '', 1, 1, 0, 0, 'andys-pizza', '2016-06-24 21:00:00', '2016-06-29 08:18:00'),
+(8, 'Krysha', 'Krysha', 'Krysha', '<p>Отдельного внимания заслуживает наша терраса под открытым небом. Уникальная терраса&nbsp;<strong>LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo;</strong>, которая располагается на пятом этаже коммерческого центра&nbsp;<strong>&laquo;Sun City&raquo;</strong>, позволит Вам полюбоваться уникальными пейзажами городского центрального парка и ночными огнями столицы. Уютные диванные зоны, легкая музыка, стильный интерьер и свежий воздух &ndash; поистине отдых &laquo;НА ВЫСОТЕ&raquo;.<br />\r\n<br />\r\nК организации праздничного вечера в&nbsp;<strong>LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo;</strong>&nbsp;подойдут профессионально: разработают план мероприятия, подберут ведущего, составят шоу-программу, пригласят артистов, оформят зал, продумают и разработают меню для фуршета и подарят массу приятных впечатлений.</p>\r\n', '<p>O atenție specială merită terasa noastră &icirc;n aer liber. Unice Terasa LOUNGE-CAF&Eacute; &laquo;Krysha&raquo;, care este situat la etajul cinci al &laquo;Sun City&raquo; centru comercial vă va permite să se bucure de peisajul unic al parcului central de oraș și luminile de noapte ale capitalei. zonă confortabilă canapea, muzica usoara, aer curat interior si elegant - cu adevărat o vacanță de &quot;sus&quot;.</p>\r\n\r\n<p>Prin organizarea unei seri festive &icirc;n LOUNGE-CAF&Eacute; &laquo;Krysha&raquo; profesionale adecvate: artiștii să elaboreze un plan de acțiune, se va ridica la conducere, face un program de spectacol, invitați vor desena o cameră, cred că peste și de a lucra din meniul pentru bufet și va da o mulțime de experiențe plăcute.</p>\r\n', '<p>Special attention deserves our terrace in the open air. Unique terrace LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo;, which is located on the fifth floor of &laquo;Sun City&raquo; shopping center, will allow you to enjoy the unique scenery of the city central park and the night lights of the capital. Cozy sofa area, light music, stylish interior and fresh air - truly a vacation &quot;on high&quot;.</p>\r\n\r\n<p>By organizing a festive evening in the LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo; suitable professional: develop an action plan, will pick up the lead, make a show program, invited artists will draw room, think over and work out the menu for the buffet and will give a lot of pleasant experiences.</p>\r\n', 'Атмосфера в стиле LOUNGE-CAFÉ «KRYSHA» не отвлекает от повседневности, а скорее украшает её.', 'Atmosfera din stilul LOUNGE-CAFÉ «Krysha» nu distrage de la viața de zi cu zi, ci mai degrabă o împodobește.', 'The atmosphere in the style LOUNGE-CAFÉ «KRYSHA» does not distract from everyday life, but rather adorns it.', 0.00, '', 1, 1, 0, 0, 'krysha', '2016-06-08 21:00:00', '2016-06-29 06:12:48'),
+(10, 'Mojito', 'Mojito', 'Mojito', '<p>Если вы в поиске места для романтического ужина при свете фонарей, или пре-пати с друзьями, вы его найдете здесь, в&nbsp;<strong>MOJITO</strong>, около Театра Оперы и Балета.<br />\r\n<br />\r\n<strong>Мы очень ценим наших клиентов, поэтому всегда предлагаем только самое лучшее:</strong></p>\r\n\r\n<ul>\r\n	<li>Рабочее время&nbsp;<strong>24/24</strong></li>\r\n	<li>Аргентинская и Японская кухня</li>\r\n	<li>Самый большой выбор коктейлей Мохито:&nbsp; алкогольных и безалкогольных</li>\r\n	<li>Терраса в тени для курящих и некурящих</li>\r\n	<li>Живая музыка каждую пятницу и воскресенье</li>\r\n	<li>Комфортабельный ресторан&nbsp; с расслабляющей атмосферой</li>\r\n	<li>Быстрое и&nbsp; качественное обслуживание</li>\r\n</ul>\r\n\r\n<p><br />\r\nЗайдите к нам, чтобы расслабиться&nbsp; на мягких креслах с чашечкой кофе или чая на завтрак, отведав&nbsp; мисо-суп или стейк на обед, либо коктейль на ужин.<br />\r\n<br />\r\nШагните на территорию, где сочетаются вкусное с&nbsp; приятным, прохлада с удовольствием &ndash; на территорию</p>\r\n', '', '', 'Если вы в поиске места для романтического ужина при свете фонарей, или пре-пати с друзьями, вы его найдете здесь.', '', '', 0.00, '', 1, 1, 0, 0, 'mojito', '2016-01-04 22:00:00', '2016-06-29 07:11:59'),
 (11, 'Caffe Graffiti', 'Caffe Graffiti', 'Caffe Graffiti', '', '', '', 'Caffe Graffiti ждет "Филе форели на пару с овощами и соусом из Tartaro" и желаем Вам приятного аппетита!', 'Caffe Graffiti va asteapta cu "Fileu de păstrăv la abur cu legume și sos tartaro" si va ureaza POFTA BUNA!', 'Caffe Graffiti awaits "Trout fillet steamed with vegetables and sauce Tartaro" and wish you bon appétit!', 0.00, '', 1, 1, 0, 0, 'caffe-graffiti', '2016-06-23 09:46:56', '2016-06-23 09:46:56'),
 (12, 'CLUB LUXOR', 'CLUB LUXOR', 'CLUB LUXOR', '', '', '', '', '', '', 0.00, '', 1, 1, 0, 0, 'club-luxor', '2016-06-23 09:49:42', '2016-06-23 09:49:42'),
 (13, 'La Plăcinte', 'La Plăcinte', 'La Plăcinte', '', '', '', '', '', '', 0.00, '', 1, 1, 0, 0, 'la-plcinte', '2016-06-23 09:51:18', '2016-06-23 09:51:18'),
 (14, 'PARADYSE CLUB', 'PARADYSE CLUB', 'PARADYSE CLUB', '', '', '', '', '', '', 0.00, '', 1, 1, 0, 0, 'paradyse-club', '2016-06-23 09:52:36', '2016-06-23 09:52:36'),
 (16, 'Chocolate Karaoke Club', 'Chocolate Karaoke Club', 'Chocolate Karaoke Club', '', '', '', '', '', '', 0.00, '', 1, 1, 0, 0, 'chocolate-karaoke-club', '2016-06-23 10:01:44', '2016-06-23 10:01:44'),
 (17, 'Drive', 'Drive', 'Drive', '', '', '', '', '', '', 0.00, '', 1, 1, 0, 0, 'drive', '2016-06-23 10:02:21', '2016-06-23 10:02:21'),
-(18, 'Cocos Prive', 'Cocos Prive', 'Cocos Prive', '', '', '', '', '', '', 0.00, '', 1, 1, 0, 0, 'cocos-prive', '2016-06-23 10:03:04', '2016-06-23 10:03:04');
+(18, 'Cocos Prive', 'Cocos Prive', 'Cocos Prive', '', '', '', '', '', '', 0.00, '', 1, 1, 0, 0, 'cocos-prive', '2016-06-23 10:03:04', '2016-06-23 10:03:04'),
+(21, 'BARHAT', 'BARHAT', 'BARHAT', '<p>В отличии от других салонов, Ваrhat предоставляет платье в прокат на два дня,а не на сутки. Если вы берёте в прокат вечернее платье,все аксессуары к нему:бижутерия,сумочка,шубка,будут предоставлены вам,бесплатно. Цены у нас очень демократичные,на любой бюджет,выбор платьев,огромный,практически на любой размер,а если учесть,что мы постоянно,шьем что-то новенькое,то вполне понятно,что у нас сложно, не найти себе платье. Опытные консультанты помогут вам в выборе платья для вашего торжества. Будь то свадьба или крестины,выпускной или корпоративная вечеринка,даже тематическая,мы непременно, подберём вам платье,в котором вы будите неотразимы.&nbsp;</p>\r\n', '<p>Spre deosebire de alte saloane, Varhat oferă rochie pentru &icirc;nchiriere de două zile, nu pe zi. Dacă ați luat &icirc;ntr-o rochie de seara de &icirc;nchiriere, toate accesoriile sale: bijuterii, geantă de m&acirc;nă, paltoane, va fi furnizat &icirc;n mod gratuit. Prețurile s-au foarte accesibile cu privire la orice buget, selecție de rochii, un imens, aproape orice dimensiune, dar atunci c&acirc;nd considerați că suntem &icirc;n mod constant, coase ceva nou, este destul de clar că avem o problemă dificilă, nu pentru a găsi o rochie. consultanți cu experiență vă va ajuta &icirc;n alegerea rochiei pentru celebrarea ta. Fie ca este vorba de o nunta sau un botez, absolvire sau petrecere corporate, chiar și de actualitate, vom cu siguranță, vă va ridica o rochie in care vei fi irezistibil.</p>\r\n', '<p>Unlike other salons, Varhat provides Dress for two days rental, not per day. If you take in an evening dress rental, all its accessories: jewelry, handbag, coat, will be provided to you free of charge. Prices have very affordable on any budget, selection of dresses, a huge, virtually any size, but when you consider that we are constantly, sew something new, it is quite clear that we have a difficult, not to find a dress. Experienced consultants will help you in choosing the dress for your celebration. Whether it is a wedding or a christening, graduation or corporate party, even topical, we will certainly, you will pick up a dress in which you&#39;ll be irresistible.</p>\r\n', 'Салон BARHAT предлагает уникальные платья,авторской работы.Здесь вы найдёте платье на любой вкус. Мы поможем создать вам неповторимый образ, о котором вы мечтали!', 'BARHAT Salonul ofera rochii unice, autor raboty.Zdes găsiți o rochie pentru a se potrivi cu fiecare gust. Vă vom ajuta să creați o imagine unică, care ai visat!', 'BARHAT Salon offers unique dresses, author raboty.Zdes you find a dress to suit every taste. We will help you create a unique image of which you dreamed!', 0.00, '', 1, 1, 0, 0, 'barhat', '2016-06-28 21:00:00', '2016-07-01 05:23:05');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products_categories`
+--
+
+CREATE TABLE `products_categories` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `products_id` int(10) UNSIGNED NOT NULL,
+  `categories_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `products_categories`
+--
+
+INSERT INTO `products_categories` (`id`, `products_id`, `categories_id`) VALUES
+(1, 21, 6),
+(2, 21, 10),
+(3, 21, 17);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products_news`
+--
+
+CREATE TABLE `products_news` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `products_id` int(10) UNSIGNED NOT NULL,
+  `news_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tags`
+--
+
+CREATE TABLE `tags` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `top` tinyint(1) NOT NULL,
+  `slug` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tags`
@@ -467,12 +848,363 @@ INSERT INTO `tags` (`id`, `created_at`, `updated_at`, `name`, `top`, `slug`) VAL
 (1, NULL, NULL, 'Спорт', 1, ''),
 (2, '2016-06-26 09:08:16', '2016-06-26 09:08:16', 'Музыка', 0, '');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `types`
+--
+
+CREATE TABLE `types` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `rights` tinyint(4) NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `rights`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Xsort', 'support@xsort.md', '$2y$10$twmlb5YlgimkrTIwnKqeauX9JusORUAVWnjjK1jBhM0AQwJW/3RIy', 1, NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `videos`
+--
+
+CREATE TABLE `videos` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
+  `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
+  `source` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `enabled` tinyint(1) NOT NULL DEFAULT '1',
+  `views` int(11) NOT NULL,
+  `sort` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_slug` (`slug`);
+
+--
+-- Indexes for table `categories_xref`
+--
+ALTER TABLE `categories_xref`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_parent_id` (`parent_id`),
+  ADD KEY `idx_child_id` (`child_id`);
+
+--
+-- Indexes for table `constants`
+--
+ALTER TABLE `constants`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `constants_key_unique` (`key`);
+
+--
+-- Indexes for table `content`
+--
+ALTER TABLE `content`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_slug` (`slug`);
+
+--
+-- Indexes for table `galleries`
+--
+ALTER TABLE `galleries`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_slug` (`slug`);
+
+--
+-- Indexes for table `galleries_xref`
+--
+ALTER TABLE `galleries_xref`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_table_id` (`table_id`),
+  ADD KEY `idx_table` (`table`);
+
+--
+-- Indexes for table `menu_categories`
+--
+ALTER TABLE `menu_categories`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_slug` (`slug`);
+
+--
+-- Indexes for table `menu_products`
+--
+ALTER TABLE `menu_products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_slug` (`slug`);
+
+--
+-- Indexes for table `meta`
+--
+ALTER TABLE `meta`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_table_id` (`table_id`),
+  ADD KEY `idx_table` (`table`);
+
+--
+-- Indexes for table `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_slug` (`slug`);
+
+--
+-- Indexes for table `news_tags`
+--
+ALTER TABLE `news_tags`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `news_tags_news_id_foreign` (`news_id`),
+  ADD KEY `news_tags_tags_id_foreign` (`tags_id`);
+
+--
+-- Indexes for table `news_types`
+--
+ALTER TABLE `news_types`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `news_types_news_id_foreign` (`news_id`),
+  ADD KEY `news_types_types_id_foreign` (`types_id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`),
+  ADD KEY `password_resets_token_index` (`token`);
+
+--
+-- Indexes for table `photos`
+--
+ALTER TABLE `photos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_table_id` (`table_id`),
+  ADD KEY `idx_table` (`table`),
+  ADD KEY `idx_sort` (`sort`),
+  ADD KEY `photos_token_index` (`token`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_slug` (`slug`);
+
+--
+-- Indexes for table `products_categories`
+--
+ALTER TABLE `products_categories`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `products_categories_products_id_foreign` (`products_id`),
+  ADD KEY `products_categories_categories_id_foreign` (`categories_id`);
+
+--
+-- Indexes for table `products_news`
+--
+ALTER TABLE `products_news`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `products_news_products_id_foreign` (`products_id`),
+  ADD KEY `products_news_news_id_foreign` (`news_id`);
+
+--
+-- Indexes for table `tags`
+--
+ALTER TABLE `tags`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `tags_name_unique` (`name`),
+  ADD KEY `idx_slug` (`slug`);
+
+--
+-- Indexes for table `types`
+--
+ALTER TABLE `types`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- Indexes for table `videos`
+--
+ALTER TABLE `videos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+--
+-- AUTO_INCREMENT for table `categories_xref`
+--
+ALTER TABLE `categories_xref`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
+--
+-- AUTO_INCREMENT for table `constants`
+--
+ALTER TABLE `constants`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `content`
+--
+ALTER TABLE `content`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `galleries`
+--
+ALTER TABLE `galleries`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `galleries_xref`
+--
+ALTER TABLE `galleries_xref`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `menu_categories`
+--
+ALTER TABLE `menu_categories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `menu_products`
+--
+ALTER TABLE `menu_products`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `meta`
+--
+ALTER TABLE `meta`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+--
+-- AUTO_INCREMENT for table `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `news_tags`
+--
+ALTER TABLE `news_tags`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `news_types`
+--
+ALTER TABLE `news_types`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `photos`
+--
+ALTER TABLE `photos`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT for table `products_categories`
+--
+ALTER TABLE `products_categories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `products_news`
+--
+ALTER TABLE `products_news`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tags`
+--
+ALTER TABLE `tags`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `types`
+--
+ALTER TABLE `types`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `videos`
+--
+ALTER TABLE `videos`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `news_tags`
+--
+ALTER TABLE `news_tags`
+  ADD CONSTRAINT `news_tags_news_id_foreign` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
+  ADD CONSTRAINT `news_tags_tags_id_foreign` FOREIGN KEY (`tags_id`) REFERENCES `tags` (`id`);
+
+--
+-- Constraints for table `news_types`
+--
+ALTER TABLE `news_types`
+  ADD CONSTRAINT `news_types_news_id_foreign` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
+  ADD CONSTRAINT `news_types_types_id_foreign` FOREIGN KEY (`types_id`) REFERENCES `types` (`id`);
+
+--
+-- Constraints for table `products_categories`
+--
+ALTER TABLE `products_categories`
+  ADD CONSTRAINT `products_categories_categories_id_foreign` FOREIGN KEY (`categories_id`) REFERENCES `categories` (`id`),
+  ADD CONSTRAINT `products_categories_products_id_foreign` FOREIGN KEY (`products_id`) REFERENCES `products` (`id`);
+
+--
+-- Constraints for table `products_news`
+--
+ALTER TABLE `products_news`
+  ADD CONSTRAINT `products_news_news_id_foreign` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
+  ADD CONSTRAINT `products_news_products_id_foreign` FOREIGN KEY (`products_id`) REFERENCES `products` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
