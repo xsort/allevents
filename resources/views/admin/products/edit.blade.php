@@ -160,12 +160,12 @@
                             <li class="active">
                                 <a href="#photos"  data-toggle="tab">Лого</a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="#img-slide"  data-toggle="tab">Слайдшоу</a>
-                            </li>
+                            </li> -->
                            
 
-                            <div class="center"> <span class="label label-xlg label-purple">Логотип заведения</span></div>
+                            <div class="center"> <span class="label label-xlg label-purple">Логотип заведения / Слайдшоу</span></div>
                         </ul>
                     
                         <div class="tab-content">

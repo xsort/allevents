@@ -104,7 +104,9 @@
 	</script>
 
     @yield('jsonProductSharing')
+    @yield('jsonIndexMicrodata')
     @yield('productPageScripts')
+
 
 </body>
 </html>

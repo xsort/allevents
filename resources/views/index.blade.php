@@ -346,3 +346,18 @@
 </div>
 </div></div>
 @stop
+
+@section('jsonIndexMicrodata')
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "WebSite",
+  "url": "https://allevents.md/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://query.example.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+@stop
