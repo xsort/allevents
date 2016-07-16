@@ -154,7 +154,7 @@ class PhotosController extends Controller
         $photos = Photos::whereIn('id', $request->photos)->get();
 
         foreach($photos as $photo){
-            if ($photo->table_id == 0){
+            if ($photo->table_id == 0 || !str_contains($photo->source, "_")){
                 $photo->table_id = $id;
                 $photo->token = "";
                 if ($request->slug){
