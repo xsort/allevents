@@ -40,16 +40,18 @@ class RouteServiceProvider extends ServiceProvider
     {
 
         $locale = $request->segment(1);
+
+        if (array_key_exists($locale, $this->app->config->get('app.locales'))){
+            $router->group(['namespace' => $this->namespace, 'prefix' => $locale], function ($router) {
+                require app_path('Http/routes.php');
+            });
+        }else{
+            $locale = $this->app->config->get('app.fallback_locale');
+            $router->group(['namespace' => $this->namespace], function ($router) {
+                require app_path('Http/routes.php');
+            });
+        }
+
         $this->app->setLocale($locale);
-
-        $router->group(['namespace' => $this->namespace, 'prefix' => $locale], function($router) {
-            require app_path('Http/routes.php');
-        });
-
-        /*
-        $router->group(['namespace' => $this->namespace], function ($router) {
-            require app_path('Http/routes.php');
-        });
-        */
     }
 }

@@ -7,8 +7,6 @@
         <h1> <a href="{{ URL::to('admin/products') }}">Объекты</a> <small><i class="ace-icon fa fa-angle-double-right"></i> Клубы, салоны, фотографы и пр. </small> </h1>
     </div>
 
-
-
     @include('admin.partials.errors')
 
     @if(!isset($data))
@@ -109,10 +107,6 @@
                         <input type="text" class="col-sm-5 col-sm-offset-1" placeholder="Y">
                     </div>
             </div>
-
-            
-
-
             
         </div><!-- /.col-sm-6 -->
         
@@ -169,10 +163,7 @@
                         </ul>
                     
                         <div class="tab-content">
-                        @include('admin.partials.photos', ['table' => 'products', 'class' => 'active', 'table_id' => isset($data->id) ? $data->id : 0] )
-                            <div class="tab-pane" id="img-slide">
-                                 <textarea class="form-control" name="description_short_ro" rows="2">Тут будет слайдшоу</textarea>
-                            </div>
+                            @include('admin.partials.photos', ['table' => 'products', 'class' => 'active', 'table_id' => isset($data->id) ? $data->id : 0] )
                         </div>
 
                     </div>
@@ -281,9 +272,8 @@
                  <textarea class="form-control" name="photootchet" rows="2">Тут будет фотоотчет</textarea>
             </div>
 
-            <div class="tab-pane" id="plan">
-                 <textarea class="form-control" name="description_short_ro" rows="2">Тут будут фотографии Плана зала</textarea>
-            </div>
+
+            @include('admin.partials.photos', ['table' => 'hall_plan', 'div_id' => 'plan', 'table_id' => isset($data->id) ? $data->id : 0] )
 
             <div class="tab-pane" id="videor">
                  <textarea class="form-control" name="videootchet" rows="2">Тут будет видеоотчет</textarea>
@@ -310,13 +300,13 @@
 
     @include('admin.partials.ckeditor')
 
-    @include('admin.partials.slug',['input_name'=>'name'])
+    @include('admin.partials.slug',['input_name'=>'name[ru]'])
 
     {!! HTML::script('ace/assets/js/date-time/bootstrap-datepicker.js') !!}
     <script type="text/javascript">
         jQuery(function($) {
             var mydate = $('#mydate')[0];
-            if(mydate.type !== 'date') {//if browser doesn't support "date" input
+            if(mydate.type !== 'date') {    //if browser doesn't support "date" input
                 $(mydate).datepicker({
                     weekStart: 1,
                     autoclose:true,
@@ -329,39 +319,11 @@
     {!! HTML::script('ace/assets/js/chosen.jquery.min.js') !!}
     <script>
         $("#chosencat").chosen();
-    </script>
 
-    <script>
-
-        $(document).ready(function(){
-         initSEFonEnter();   
-        });
-
-        transliterate = (
-        function() {
-            var
-                rus = "щ   ш  ч  ц  ю  я  ё  ж  ъ  ы  э  а б в г д е з и й к л м н о п р с т у ф х ь".split(/ +/g),
-                eng = "shh sh ch cz yu ya yo zh i  y  e  a b v g d e z i j k l m n o p r s t u f x i".split(/ +/g)
-            ;
-            return function(text, engToRus) {
-                var x;
-                for(x = 0; x < rus.length; x++) {
-                    text = text.split(engToRus ? eng[x] : rus[x]).join(engToRus ? rus[x] : eng[x]);
-                    text = text.split(engToRus ? eng[x].toUpperCase() : rus[x].toUpperCase()).join(engToRus ? rus[x].toUpperCase() : eng[x].toUpperCase());
-                }
-                text = text.toLowerCase().replace(/[^a-zA-Z ]/g, "").split(' ').join('-');
-                return text;
-            }
+        var modalCallbackFunction = function(){
+            toastr.success("TEST");
         }
-    )();
-
-    function initSEFonEnter(){
-        $("input.name_ru").keyup(function() {
-            var a = $(this).val();
-            var b = transliterate(a);
-            $("input[name=slug]").val(b);
-        });
-    }
 
     </script>
+
 @endsection
