@@ -1,32 +1,32 @@
 <!-- PARAMS
-    photos  = array of photos
-    table   = model or uniq name
-    thumbs  = array of thumbs paths (optional)
-    div_id  = id of tab panel (optional)
-    width   = width of final photo (optional)
-    height  = height of final photo (optional)
-    table   = name of table (optional)
+    table       = model or uniq name
+    table_id    = id of table
+    thumbs      = array of thumbs paths (optional)
+    div_id      = id of tab panel (optional)
+    width       = width of final photo (optional)
+    height      = height of final photo (optional)
 -->
 
 <div class="tab-pane {{isset($class) ? $class : 0}}" id="{{$div_id or 'photos'}}">
         <div id="queue"></div>
-        <input class="file_upload" name="file_upload" type="file" multiple="true"/>
-    <ul class="ace-thumbnails clearfix photos">
+        <input class="file_upload" name="file_upload" type="file" multiple="true" id="uploadifive_{{$div_id or 'photos'}}"/>
+        <ul class="ace-thumbnails clearfix photos">
 
-    </ul>
+        </ul>
 </div>
 
-
+@if ($table == "products")
 {{ HTML::script('ace/assets/js/uploadifive/jquery.uploadifive.min.js') }}
 {{ HTML::style('ace/assets/js/uploadifive/uploadifive.css') }}
+@endif
 
 <script>
     $(document).ready(function(){
         var PHOTOS_DIV = "#{{ $div_id or 'photos' }}";
 
-        PhotosObj = new PhotosClass(PHOTOS_DIV);
+        PhotosObj{{$div_id or 'photos'}} = new PhotosClass(PHOTOS_DIV);
 
-        PhotosObj.GetAjaxPhotos("{{ $table }}", "{{ $table_id }}");
+        PhotosObj{{$div_id or 'photos'}}.GetAjaxPhotos("{{ $table }}", "{{ $table_id }}");
 
         $(function() {
             $(PHOTOS_DIV).find('.file_upload').uploadifive({
@@ -37,6 +37,7 @@
                 'auto'             : true,
                 'removeCompleted'  : true,
                 'formData'         : {
+                    @if(isset($table_id))table_id: "{{ $table_id }}",@endif
                     @if(isset($thumbs))thumbs: "{{ implode(",", $thumbs) }}",@endif
                     table:	"{{ $table }}"
                 },
@@ -55,7 +56,7 @@
                         }
 
                         // add file to the list
-                        PhotosObj.ShowPhoto(response.data);
+                        PhotosObj{{$div_id or 'photos'}}.ShowPhoto(response.data);
                     }
             });
         });
