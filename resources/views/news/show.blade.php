@@ -114,8 +114,8 @@
 <meta property="og:title" content="{{$data->name}}" />
 <meta property="og:site_name" content="Allevents" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://6e6065f7.ngrok.io/news/{{$data->slug}}" />
-<meta property="og:image" content="http://6e6065f7.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" />
+<meta property="og:url" content="http://27b6bd48.ngrok.io/news/{{$data->slug}}" />
+<meta property="og:image" content="http://27b6bd48.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" />
 <meta property="og:description" content="{{$data->description_short}}" />
 
 <!-- Twitter Card -->
@@ -124,7 +124,7 @@
 <meta name="twitter:creator" content="@SarahMaslinNir">
 <meta name="twitter:title" content="{{$data->name}}">
 <meta name="twitter:description" content="{{$data->description_short}}">
-<meta name="twitter:image" content="http://6e6065f7.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}">
+<meta name="twitter:image" content="http://27b6bd48.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}">
 
 <!-- Schema.org -->
 <!-- <meta itemscope itemtype="http://schema.org/Article" />

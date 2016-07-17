@@ -41,6 +41,11 @@ class ProductsController extends Controller
         return view('products.product-interier')->with('data', $product);
     }
 
+        public function getCard()
+    {
+        return view('products.product-card');
+    }
+
         public function reservation($slug)
     {
         $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();

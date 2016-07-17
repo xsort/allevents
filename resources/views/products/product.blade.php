@@ -281,8 +281,8 @@
 <meta name="google-site-verification" content="QruLMs9kDD29q-ycCBLohXLrKZiVoczPXuTS4Goif6A" />
 <meta property="og:site_name" content="Allevents.md" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://170d3237.ngrok.io/{{$data->slug}}" />
-<meta property="og:image" content="http://170d3237.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" />
+<meta property="og:url" content="http://27b6bd48.ngrok.io/{{$data->slug}}" />
+<meta property="og:image" content="http://27b6bd48.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" />
 <meta property="og:description" content="{{$data->description_short}}" />
 
 <!-- Twitter Card -->
@@ -291,7 +291,7 @@
 <meta name="twitter:creator" content="@Allevents.md" />
 <meta name="twitter:title" content="{{$data->name}}" />
 <meta name="twitter:description" content="{{$data->description_short}}" /
-<meta name="twitter:image" content="http://170d3237.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" / >
+<meta name="twitter:image" content="http://27b6bd48.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" / >
 @stop
 
 @section('jsonProductSharing')
@@ -299,7 +299,7 @@
 {
   "@context": "http://schema.org",
   "@type": "Restaurant",
-  "image": "http://170d3237.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}",
+  "image": "http://27b6bd48.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}",
   "@id": "http://davessteakhouse.example.com",
   "name": "{{$data->name}}",
   "address": {

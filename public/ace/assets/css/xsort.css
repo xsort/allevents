@@ -127,3 +127,12 @@ button.deletebutton{
     margin-right: 5px;
     margin-bottom: 5px;
 }
+
+.margin-b-m-15{
+    margin-bottom: -15px;
+}
+
+.margin-t-m-15{
+    margin-top: -15px;
+}
+

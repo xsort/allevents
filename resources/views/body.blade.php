@@ -87,7 +87,6 @@
     <script src="js/angular.min.js"></script>
     <!-- <script src="js/combined.js"></script> -->
     <script src="js/components.js"></script>
-
     <script>
 		// Skroll-page
 		$(document).ready(function() {
