@@ -20,9 +20,9 @@
                                         <th class="item-remove">&nbsp;</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody >
 
-                                    <tr class="item-row">
+                                    <tr class="item-row" >
 
                                         <td class="item-thumb">
                                             <a href="javascript:void(0)">
@@ -31,26 +31,54 @@
                                         </td>
 
                                         <td class="item-name">
-                                            <a href="javascript:void(0)">Lorem ipsum dolor sit amet.</a><span class="amount">$12.00</span> 
+                                            <a href="javascript:void(0)">Lorem ipsum dolor sit amet.</a><span class="amount" ng-model="price" ng-init="price='12'"> $@{{price}}</span> 
                                         </td>
 
                                         <td class="item-quantity">
                                             <div class="quantity">
-                                                <input type="number" size="4" value="2" name="" min="0" step="1">
+                                                <input min="1" type="number" ng-model="value" ng-init="value='1'" value="1">
                                             </div>
                                         </td>
 
                                         <td class="item-subtotal">
-                                            <span class="amount">$24.00</span> 
+                                            <span class="amount">$@{{value*price}} </span> 
                                         </td>
 
                                         <td class="item-remove">
-                                            <a title="Remove this item" class="remove" href="javascript:void(0)">×</a> 
+                                            <a  class="remove" href="javascript:void(0)">×</a> 
                                         </td>
 
                                     </tr>
 
-                                    <tr class="item-row">
+                                    <tr class="item-row" >
+
+                                        <td class="item-thumb">
+                                            <a href="javascript:void(0)">
+                                                <img src="http://laravel.local/img/menu/menu-5.jpg">
+                                            </a>
+                                        </td>
+
+                                        <td class="item-name">
+                                            <a href="javascript:void(0)">Lorem ipsum dolor sit amet.</a><span class="amount" ng-model="price1" ng-init="price1='24'"> $@{{price1}}</span> 
+                                        </td>
+
+                                        <td class="item-quantity">
+                                            <div class="quantity">
+                                                <input min="1" type="number" ng-model="value1" ng-init="value1='1'" value="1">
+                                            </div>
+                                        </td>
+
+                                        <td class="item-subtotal">
+                                            <span class="amount">$@{{value1*price1}} </span> 
+                                        </td>
+
+                                        <td class="item-remove">
+                                            <a  class="remove" href="javascript:void(0)">×</a> 
+                                        </td>
+
+                                    </tr>
+
+                                    <tr class="item-row" >
 
                                         <td class="item-thumb">
                                             <a href="javascript:void(0)">
@@ -59,54 +87,26 @@
                                         </td>
 
                                         <td class="item-name">
-                                            <a href="javascript:void(0)">Lorem ipsum dolor sit amet, consectetur.</a><span class="amount">$5.00</span> 
+                                            <a href="javascript:void(0)">Lorem ipsum dolor sit amet.</a><span class="amount" ng-model="price2" ng-init="price2='36'"> $@{{price2}}</span> 
                                         </td>
 
                                         <td class="item-quantity">
                                             <div class="quantity">
-                                                <input type="number" size="4" value="1" name="" min="0" step="1">
+                                                <input min="1" type="number" ng-model="value2" ng-init="value2='1'" value="1">
                                             </div>
                                         </td>
 
                                         <td class="item-subtotal">
-                                            <span class="amount">$5.00</span> 
+                                            <span class="amount">$@{{value2*price2}} </span> 
                                         </td>
 
                                         <td class="item-remove">
-                                            <a title="Remove this item" class="remove" href="javascript:void(0)">×</a> 
+                                            <a  class="remove" href="javascript:void(0)">×</a> 
                                         </td>
 
                                     </tr>
 
-                                    <tr class="item-row">
-
-                                        <td class="item-thumb">
-                                            <a href="javascript:void(0)">
-                                                <img src="http://laravel.local/img/menu/menu-1.jpg">
-                                            </a>
-                                        </td>
-
-                                        <td class="item-name">
-                                            <a href="javascript:void(0)">Lorem ipsum dolor sit amet.</a><span class="amount">$12.00</span> 
-                                        </td>
-
-                                        <td class="item-quantity">
-                                            <div class="quantity">
-                                                <input type="number" size="4" value="2" name="" min="0" step="1">
-                                            </div>
-                                        </td>
-
-                                        <td class="item-subtotal">
-                                            <span class="amount">$24.00</span> 
-                                        </td>
-
-                                        <td class="item-remove">
-                                            <a title="Remove this item" class="remove" href="javascript:void(0)">×</a> 
-                                        </td>
-
-                                    </tr>
-
-                                    <tr class="item-row">
+                                    <tr class="item-row" >
 
                                         <td class="item-thumb">
                                             <a href="javascript:void(0)">
@@ -115,21 +115,21 @@
                                         </td>
 
                                         <td class="item-name">
-                                            <a href="javascript:void(0)">Lorem ipsum dolor sit amet, consectetur.</a><span class="amount">$5.00</span> 
+                                            <a href="javascript:void(0)">Lorem ipsum dolor sit amet.</a><span class="amount" ng-model="price3" ng-init="price3='48'"> $@{{price3}}</span> 
                                         </td>
 
                                         <td class="item-quantity">
                                             <div class="quantity">
-                                                <input type="number" size="4" value="1" name="" min="0" step="1">
+                                                <input min="1" type="number" ng-model="value3" ng-init="value3='1'" value="1">
                                             </div>
                                         </td>
 
                                         <td class="item-subtotal">
-                                            <span class="amount">$5.00</span> 
+                                            <span class="amount">$@{{value3*price3}} </span> 
                                         </td>
 
                                         <td class="item-remove">
-                                            <a title="Remove this item" class="remove" href="javascript:void(0)">×</a> 
+                                            <a class="remove" href="javascript:void(0)">×</a> 
                                         </td>
 
                                     </tr>
@@ -227,7 +227,7 @@
     </div>
 </div>
 
-</div>         
+</div>        
 @stop
 
 @section('cardPluginsValidation')
