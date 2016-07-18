@@ -86,6 +86,7 @@
     <script src="js/plugins-scroll.js"></script>
     <script src="js/angular.min.js"></script>
     <!-- <script src="js/combined.js"></script> -->
+    @yield('cardPluginsValidation')
     <script src="js/components.js"></script>
     <script>
 		// Skroll-page

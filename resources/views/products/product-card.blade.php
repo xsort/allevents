@@ -175,6 +175,7 @@
                     </div>
 
                     <div class="col-md-6 col-md-pull-6">
+                    <form  id="cart-form" role="form" method="post" action="index.php?action=main_cart&a=sendcart">
                     <div class="row">
                             <div id="order_review">
                                 <h3 class="order_review_heading">Личные данные</h3>
@@ -183,19 +184,19 @@
 
                                          <div class="form-group">
                                             <label for="inputTextarea" class="control-label">Ваше имя</label>
-                                            <input type="text" placeholder="Ваше имя *" class="placeholder-fix form-control" >
+                                            <input type="text" placeholder="Ваше имя *" class="placeholder-fix form-control" name="name">
                                          </div>
                                          <div class="form-group">
                                             <label for="inputTextarea" class="control-label">E-mail адрес</label>
-                                            <input type="email" placeholder="E-mail адрес *" class="placeholder-fix form-control" >
+                                            <input type="email" placeholder="E-mail адрес *" class="placeholder-fix form-control" name="email">
                                          </div>
                                          <div class="form-group">
                                             <label for="inputTextarea" class="control-label">Телефон</label>
-                                            <input type="tel" placeholder="Телефон *" class="placeholder-fix form-control" >
+                                            <input type="tel" placeholder="Телефон *" class="placeholder-fix form-control" name="tel">
                                          </div>
                                          <div class="form-group">
                                             <label for="inputTextarea" class="control-label">Адрес</label>
-                                            <input type="tel" placeholder="Адрес *" class="placeholder-fix form-control">
+                                            <input type="text" placeholder="Адрес *" class="placeholder-fix form-control" name="adress">
                                          </div>
 
                                          <div class="form-group margin-b-25">
@@ -216,6 +217,7 @@
                             </div>
 
                         </div>
+                        </form>
                     </div>
                 </div>
                 </div>
@@ -226,4 +228,9 @@
 </div>
 
 </div>         
+@stop
+
+@section('cardPluginsValidation')
+    <script src="js/formValidation.min.js"></script>
+    <script src="js/validate_bootstrap.js"></script>
 @stop
