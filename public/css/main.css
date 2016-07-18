@@ -3861,6 +3861,20 @@ width: 77%;
     display: inline-block;
 }
 
+.inst-title.inst-title-search {
+        letter-spacing: 1px;
+        font-size: 28px;
+            text-transform: uppercase;
+}
+
+.inst-title.inst-title-search:before {
+    right: 115%;
+}
+
+.inst-title.inst-title-search:after {
+    left: 115%;
+}
+
 .rowed:after {
     content: '';
     position: absolute;

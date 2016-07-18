@@ -12,6 +12,8 @@ use App\Models\Categories;
 
 use App\Models\Products;
 
+use App\Models\News;
+
 use View;
 
 
@@ -38,6 +40,11 @@ class CommonController extends Controller
 	    
 	    $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
 		return view('products.product')->with('data', $product);
+    }
+
+    public function getSearch()
+    { 
+    	return view('search');
     }
     
 }

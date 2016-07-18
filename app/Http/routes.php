@@ -50,6 +50,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('{slug}/reservation', 'ProductsController@reservation');
 
     Route::get('card', 'ProductsController@getCard');
+
+    Route::get('search', 'CommonController@getSearch');
     
     Route::get('admin', 'Admin\AdminController@index');
     

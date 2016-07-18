@@ -344,7 +344,7 @@
                     <div class="row">
                      <div class="form-actions margin-t-m-15">
                         <div class="row center">
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                                 <button id="submit_button1" type="submit" class="btn  btn-success btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить </button>
                             </div>
                             <!--
@@ -382,13 +382,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    {{ Form::label('name', 'Заголовок рум', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                                    {{ Form::label('name', 'Заголовок RO', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                                     <div class="col-sm-9">
                                         {{ Form::text('name[ro]', (isset($data->name_ro) ? $data->name_ro : old('name_ro')), array('class' => 'col-sm-11 col-xs-12')) }}
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    {{ Form::label('name', 'Заголовок англ', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                                    {{ Form::label('name', 'Заголовок ENG', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                                     <div class="col-sm-9">
                                         {{ Form::text('name[en]', (isset($data->name_en) ? $data->name_en : old('name_en')), array('class' => 'col-sm-11 col-xs-12')) }}
                                     </div>
@@ -512,7 +512,7 @@
                     <div class="row">
                      <div class="form-actions margin-t-m-15">
                         <div class="row center">
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                                 <button id="submit_button1" type="submit" class="btn  btn-success btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить </button>
                             </div>
                             <!--
@@ -542,22 +542,22 @@
                      </div>
                     
                         <div class="row">
-                            <div class="col-sm-7">
+                            <div class="col-sm-6">
                                 <div class="form-group">
-                                    {{ Form::label('name', 'Заголовок', ['class'=>'col-sm-3 control-label no-padding-right']) }}
-                                    <div class="col-sm-9">
+                                    {{ Form::label('name', 'Заголовок', ['class'=>'col-sm-4 control-label no-padding-right']) }}
+                                    <div class="col-sm-8">
                                         {{ Form::text('name[ru]', (isset($data->name) ? $data->name : old('name')), array('class' => 'col-sm-11 col-xs-12 name_ru')) }}
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    {{ Form::label('name', 'Заголовок рум', ['class'=>'col-sm-3 control-label no-padding-right']) }}
-                                    <div class="col-sm-9">
+                                    {{ Form::label('name', 'Заголовок RO', ['class'=>'col-sm-4 control-label no-padding-right']) }}
+                                    <div class="col-sm-8">
                                         {{ Form::text('name[ro]', (isset($data->name_ro) ? $data->name_ro : old('name_ro')), array('class' => 'col-sm-11 col-xs-12')) }}
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    {{ Form::label('name', 'Заголовок англ', ['class'=>'col-sm-3 control-label no-padding-right']) }}
-                                    <div class="col-sm-9">
+                                    {{ Form::label('name', 'Заголовок ENG', ['class'=>'col-sm-4 control-label no-padding-right']) }}
+                                    <div class="col-sm-8">
                                         {{ Form::text('name[en]', (isset($data->name_en) ? $data->name_en : old('name_en')), array('class' => 'col-sm-11 col-xs-12')) }}
                                     </div>
                                 </div>
@@ -565,15 +565,42 @@
                                 
                             </div><!-- /.col-sm-6 -->
 
-                            <div class="col-sm-5">
-                            
-                                <div class="form-group">
-                                        {{ Form::label('slug', 'URL', ['class'=>'col-sm-3 control-label no-padding-right']) }}
-                                        <div class="col-sm-9">
-                                            {{ Form::text('slug', (isset($data->slug) ? $data->slug : old('slug')), array('class' => 'col-sm-11 col-xs-12')) }}
-                                        </div>
-                                </div>
+                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    {{ Form::label('name', 'Описание', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                                                    <div class="col-sm-9">
+                                                        {{ Form::textarea('description_short[ru]', (isset($data->description_short) ? $data->description_short : old('description_short')), array('style'=>'width:100%; height:78px', 'rows'=>'3')) }}
+                                                    </div>
+                                                </div>
+                                                <div class="form-group" id="video">
+                                                    <!-- {foreach from=$videoList item=v} -->
+                                                    <div class="col-sm-12 col-xs-12">
+                                                        <input type="hidden" name="video_id[]" {if isset($product.products_id)}value="{$v.video_id}"{/if}>
+                                                        <div class="form-group">
+                                                            <label for="cname" class="col-sm-3 control-label no-padding-right"> Видео <small><!-- {counter} --></small></label>
+                                                            <div class="col-sm-9 col-xs-12">
+                                                                <div class="input-group">
+                                                                    <input type="text" class="form-control" name='video[]' value='' />
+                                                                    <span class="input-group-addon">
+                                                                        <div class=" action-buttons">
+                                                                            <a href="javascript:void(0);" class="red delete_features">
+                                                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </span>   
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- {/foreach}  --> 
+                                                </div><!-- /#video -->
 
+                                                <div class="form-group">
+                                                    <div class="col-xs-12">
+                                                        <a href="javascript:AddVideo();" class="btn btn-pink pull-right" type="submit" id="submit_button1"><i class="ace-icon fa fa-youtube  bigger-120"></i> Добавить Видео </a>
+                                                    </div>
+                                                </div>
+<!-- 
                                 <div class="form-group">
                                     <label for="mydate" class="col-sm-3 control-label no-padding-right"> Дата:</label>
                                     <div class="col-sm-5">
@@ -587,104 +614,11 @@
                                         </div>
 
                                     </div>
-                                </div>
+                                </div> -->
                             </div><!-- /.col-sm-6 -->
                         </div><!-- /.row -->
                 <hr>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <div class="tabbable">
-                                    <ul id="myTab1" class="nav nav-tabs padding-12 tab-color-blue background-blue">
 
-                                        <li class="active">
-                                            <a href="#video-ru" data-toggle="tab">Описание</a>
-                                        </li>
-                                        <li>
-                                            <a href="#video-galleries-modal" data-toggle="tab">Видео</a>
-                                        </li>  
-                                        <li>
-                                            <a href="#video-galleries-meta"  data-toggle="tab">Мета</a>
-                                        </li>                                    
-
-                                        <div class="center"> <span class="label label-xlg label-purple">Логотип категории / Галлерея</span></div>
-
-                                    </ul>
-
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="video-ru">
-                                            <div class="tabbable  tabs-left">
-                                                <ul id="myTab" class="nav nav-tabs">
-                                                    <li class="active">
-                                                        <a href="#videodescRu" data-toggle="tab">Описание на русском</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#videodescRo" data-toggle="tab">Описание на румынском</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#videodescEn" data-toggle="tab">Описание на английском</a>
-                                                    </li>
-                                                </ul>
-
-                                                <div class="tab-content">
-                                                    <div class="tab-pane in active" id="videodescRu">
-                                                             {{ Form::textarea('description[ru]', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => 'editor')) }}
-                                                    </div>
-                                                    <div class="tab-pane" id="videodescRo">
-                                                             {{ Form::textarea('description[ro]', (isset($data->description_ro) ? $data->description_ro : old('description_ro')), array('class' => 'ckeditor', 'id' => 'editor')) }}
-                                                    </div>
-                                                    <div class="tab-pane" id="videodescEn">
-                                                             {{ Form::textarea('description[en]', (isset($data->description_en) ? $data->description_en : old('description_en')), array('class' => 'ckeditor', 'id' => 'editor')) }}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="tab-pane" id="video-galleries-modal">
-                                        <div class="row">
-                                            <div class="col-sm-6 video-block">
-                                                <div class="form-group" id="video">
-                                                    {foreach from=$videoList item=v}
-                                                    <div class="col-sm-12 col-xs-12">
-                                                        <input type="hidden" name="video_id[]" {if isset($product.products_id)}value="{$v.video_id}"{/if}>
-                                                        <div class="form-group">
-                                                            <label for="cname" class="col-sm-3 control-label no-padding-right"> Видео <small>{counter}</small></label>
-                                                            <div class="col-sm-9 col-xs-12">
-                                                                <div class="input-group">
-                                                                    <input type="text" class="form-control" name='video[]' value='{$v.source}' />
-                                                                    <span class="input-group-addon">
-                                                                        <div class=" action-buttons">
-                                                                            <a href="javascript:void(0);" class="red delete_features">
-                                                                                <i class="ace-icon fa fa-trash-o bigger-130"></i>
-                                                                            </a>
-                                                                        </div>
-                                                                    </span>   
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    {/foreach}  
-                                                </div><!-- /#video -->
-
-                                                <div class="form-group">
-                                                    <div class="col-xs-12">
-                                                        <a href="javascript:AddVideo();" class="btn btn-pink pull-right" type="submit" id="submit_button1"><i class="ace-icon fa fa-youtube  bigger-120"></i> Добавить Видео </a>
-                                                    </div>
-                                                </div>
-                                            </div></div>
-                                        </div>
-
-                                        <div class="tab-pane" id="video-galleries-meta">
-                                            @include('admin.partials.meta')
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="form-actions margin-b-m-15">
                         {{ Form::submit('Сохранить', array('class' => 'btn btn-success')) }}
@@ -732,6 +666,7 @@ function AddVideo(){
  videos = '<div class="col-sm-12"><input type="hidden" name="video_id[]" /><div class="form-group"><label for="cname" class="col-sm-3 control-label no-padding-right"> Видео <small></small></label> <div class="col-sm-9"> <div class="input-group"> <input type="text" class="form-control" name="video[]" /> <span class="input-group-addon"> <div class=" action-buttons"> <a href="javascript:void(0);" class="red delete_features"> <i class="ace-icon fa fa-trash-o bigger-130"></i> </a> </div> </span> </div> </div> </div> </div>';
  $("#video").append(videos);
  InitDeleteVideo();
+ 
 }
 
 function InitDeleteVideo(){
@@ -761,6 +696,3 @@ function InitDeleteVideo(){
 
 
 
-=======
-@endsection
->>>>>>> origin/master
