@@ -95,11 +95,13 @@ class PhotosController extends Controller
         $photo              = new Photos;
         $photo->source      = $new_filename;
         $photo->table       = $table;
-        if (isset($table_id)){
+
+        if ($table_id != 0){
             $photo->table_id = $table_id;
         }else {
             $photo->token = Session::getId();
         }
+
         $photo->save();
         $photo_id           = $photo->id;
         $photo->sort        = $photo_id;

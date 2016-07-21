@@ -2,69 +2,67 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\Galleries;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\Models\Products;
-use Illuminate\Support\Facades\Session;
-use App\Models\Categories;
+use Validator;
 
-
-class ProductsController extends Controller
+class GalleriesController extends Controller
 {
     public function index(){
-        $data = Products::all();
-        return view('admin.products.index')->with(compact('data'));
+        $data = Galleries::all();
+        return view('admin.galleries.index')->with(compact('data'));
     }
 
     public function create(){
-        $categories = Categories::lists('name','id')->toArray();
-        return view('admin.products.edit')->with('categories', $categories);
+        return view('admin.galleries.edit');
     }
 
     public function store(Request $request)
     {
         $rules = array(
             'name'          => 'required',
-            'slug'          => 'required|unique:products'
+            'slug'          => 'required|unique:galleries'
         );
 
-        $this->validate($request, $rules);
+        $validator = Validator::make($request->all(), $rules);
 
-        return $this->save($request, null);
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'data'    => $validator->messages()
+            ]);
+        }
+
+        return $this->save($request);
     }
 
-    private function save(Request $request, $id){
+    private function save(Request $request, $id = null){
         // store
         if (!isset($id)) {
-            $data = new Products();
+            $data = new Galleries();
         }else{
-            $data = Products::find($id);
+            $data = Galleries::find($id);
         }
-		//dd($request);
+        //dd($request);
 
         $data->name              = $request->name;
-        $data->top               = $request->top;
         $data->created_at        = $request->date;
         $data->slug              = $request->slug;
         $data->description       = $request->description;
-        $data->description_short = $request->description_short;
         $data->meta_description  = $request->meta_description;
         $data->meta_keywords     = $request->meta_keywords;
         $data->title             = $request->title;
         $data->save();
-        
-        $this->UpdatePhotos($request, $data->id);
-        
-        //categories
-        if ($request->parent) {
-            $data->parents()->sync($request->parent);
-        }
 
-        // redirect
-        Session::flash('message', trans('common.saved'));
-        return redirect('admin/products');
+        $this->UpdatePhotos($request, $data->id);
+
+        return response()->json([
+            'success' => true,
+            'data'    => ['table' => 'galleries', 'id' => $data->id, 'name' => $data->name, 'slug' => $data->slug]
+        ]);
     }
     /**
      * Display the specified resource.
@@ -85,16 +83,9 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $data = Products::find($id);
-        //$tags = Tags::all();
-        $categories = Categories::lists('name','id')->toArray();
-        $parents = $data->parents->pluck('id')->toArray();
-        return view('admin.products.edit')->with('data', $data)->with('categories', $categories)->with('parents',$parents);
-        
-        
- 
-        //$parents = $data->parents->pluck('id')->toArray();
-        //return view('admin.categories.edit')->with('data', $data)->with('categories', $categories)->with('parents',$parents);
+        $data = Galleries::find($id);
+        return view('admin.products.edit')->with(compact($data));
+
     }
 
     /**
@@ -107,7 +98,7 @@ class ProductsController extends Controller
     {
         $rules = array(
             'name'          => 'required',
-            'slug'          => 'required|unique:products,id,{$id}'
+            'slug'          => 'required|unique:galleries,id,{$id}'
         );
 
         $this->validate($request, $rules);
@@ -123,7 +114,7 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
-        Products::destroy($id);
+        Galleries::destroy($id);
         Session::flash('message', trans('common.deleted'));
         return back();
     }

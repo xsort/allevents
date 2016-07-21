@@ -9,5 +9,4 @@ class Products extends BaseModel
 	public function parents() {
 	    return $this->belongsToMany('App\Models\Categories', 'products_categories',  'products_id', 'categories_id');
     }
-
 }

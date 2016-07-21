@@ -1,7 +1,9 @@
 <script>
+    var FORM_ID    = '{{ $form_id or ''}}';
+    if (FORM_ID != "") FORM_ID = "#" + FORM_ID + " ";
     var INPUT_NAME = '{{ $input_name }}';
     $(document).ready(function(){
-        if ($("input[name=slug]").val() == "") {
+        if ($(FORM_ID + "input[name=slug]").val() == "") {
             //Если с английского на русский, то передаём вторым параметром true.
             transliterate = (function () {
                         var rus = "щ   ш  ч  ц  ю  я  ё  ж  ъ  ы  э  а б в г д е з и й к л м н о п р с т у ф х ь".split(/ +/g),
@@ -20,7 +22,7 @@
                     })();
 
 
-            $('input[name="' + INPUT_NAME + '"]').keyup(function () {
+            $(FORM_ID + 'input[name="' + INPUT_NAME + '"]').keyup(function () {
                 var a = $(this).val();
                 var b = transliterate(a);
                 $("input[name=slug]").val(b);

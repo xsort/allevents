@@ -95,8 +95,9 @@ Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin', 'as' => 'ad
     
     Route::resource('products',     'Admin\ProductsController', ['as' => 'products']);
 
-});
+    Route::resource('galleries',    'Admin\GalleriesController', ['as' => 'galleries']);
 
+});
 
 /*
  *
