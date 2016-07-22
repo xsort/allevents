@@ -103,7 +103,7 @@
                         @include('admin.partials.photos', ['table' => 'galleries', 'div_id' => 'gallery', 'table_id' => isset($data->id) ? $data->id : 0] )
 
                         <div class="tab-pane" id="photo-galleries-meta">
-                            @include('admin.partials.meta')
+                            @include('admin.partials.meta', ['form_id' => 'videos'])
                         </div>
                     </div>
                 </div>

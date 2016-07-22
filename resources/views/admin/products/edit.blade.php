@@ -278,7 +278,7 @@
 
             <div class="tab-pane" id="videor">
 
-                 <a href="javascript:AddVideoGallery();" id="uploadifive-undefined" class="uploadifive-button btn btn-yellow">Добавить видео</a>
+                 <a href="admin/videos/create" class="btn btn-yellow modalbox" title="Добавить видео">Добавить видео</a>
             </div>
 
 

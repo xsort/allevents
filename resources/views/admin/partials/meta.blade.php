@@ -3,18 +3,18 @@
 
                  <ul id="myTab" class="nav nav-tabs">
                    <li class="active">
-                      <a href="#metaRu" data-toggle="tab">Meta на русском</a>
+                      <a href="#metaRu{{ $form_id or '' }}" data-toggle="tab">Meta на русском</a>
                    </li>
                    <li>
-                      <a href="#metaRo" data-toggle="tab">Meta на румынском</a>
+                      <a href="#metaRo{{ $form_id or '' }}" data-toggle="tab">Meta на румынском</a>
                    </li>
                    <li>
-                      <a href="#metaEn" data-toggle="tab">Meta на английском</a>
+                      <a href="#metaEn{{ $form_id or '' }}" data-toggle="tab">Meta на английском</a>
                    </li>
                  </ul>
 
                  <div class="tab-content">
-                   <div class="tab-pane in active" id="metaRu">
+                   <div class="tab-pane in active" id="metaRu{{ $form_id or '' }}">
                      <div class="form-group">
                             {{ Form::label('meta_description', 'Meta description:', ['class'=>'col-sm-2 control-label no-padding-right']) }}
                             <div class="col-sm-10">
@@ -34,7 +34,7 @@
                             </div>
                         </div>
                    </div>
-                   <div class="tab-pane" id="metaRo">
+                   <div class="tab-pane" id="metaRo{{ $form_id or '' }}">
                      <div class="form-group">
                             {{ Form::label('meta_description', 'Meta description:', ['class'=>'col-sm-2 control-label no-padding-right']) }}
                             <div class="col-sm-10">
@@ -54,7 +54,7 @@
                             </div>
                         </div>
                    </div>
-                   <div class="tab-pane" id="metaEn">
+                   <div class="tab-pane" id="metaEn{{ $form_id or '' }}">
                      <div class="form-group">
                             {{ Form::label('meta_description', 'Meta description:', ['class'=>'col-sm-2 control-label no-padding-right']) }}
                             <div class="col-sm-10">
