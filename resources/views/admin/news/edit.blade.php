@@ -1,60 +1,19 @@
-@extends('admin.body')
-@section('title', 'Новости')
-
-
-@section('centerbox')
-    <div class="page-header">
-        <h1> <a href="{{ URL::to('admin/news') }}">Новости</a> <small><i class="ace-icon fa fa-angle-double-right"></i> Редактирование новости </small> </h1>
-    </div>
-
-    @include('admin.partials.errors')
-
     @if(!isset($data))
-    {{ Form::open(['url' => 'admin/news', 'class' => 'form-horizontal']) }}
+        {{ Form::open(['url' => 'admin/news', 'class' => 'form-horizontal', 'id' => 'news']) }}
     @else
-    {{ Form::open(['url' => 'admin/news/' . $data->id, 'method' => 'put', 'class' => 'form-horizontal']) }}
+        {{ Form::open(['url' => 'admin/news/' . $data->id, 'method' => 'put', 'class' => 'form-horizontal', 'id' => 'news']) }}
     @endif
-    
-
-    <div class="form-actions">
-        <div class="row center">
-            <div class="col-sm-2">
-                <button id="submit_button1" type="submit" class="btn  btn-success btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить </button>
-            </div>
-            <!--
-            <div class="col-sm-2">
-                <button id="submit_button1" type="submit" class="btn  btn-yellow btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить и закрыть</button>
-            </div>-->
-            <div class="col-sm-2 ">
-                <label>
-                    {{ Form::checkbox('top',  1, (isset($data) && $data->top == 1 ? true : false), ['class' => 'ace']) }}
-                    <span class="lbl"> На главную </span>
-                </label>
-            </div>
-            <div class="col-sm-4">
-                <div class="profile-contact-info">
-                    <div class="profile-links align-left">
-                        
-                        @if (isset($data))
-                        <div class="btn btn-link">
-                            <i class="ace-icon fa fa- bigger-120 green"></i>
-                            ID: {{ $data->id }}
-                        </div>
-                        
-                        <div class="btn btn-link">
-                            <i class="ace-icon fa fa-calendar bigger-120 green"></i>
-                             Изменен: {{ $data->updated_at }}
-                        </div>
-                        @endif
-                    </div>
-                </div>
-            </div>
-
-        </div><!-- /.row -->
-    </div><!-- /.form-actions -->
 
     <div class="row">
         <div class="col-sm-6">
+            <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-3 ">
+                    <label>
+                        {{ Form::checkbox('top',  1, (isset($data) && $data->top == 1 ? true : false), ['class' => 'ace']) }}
+                        <span class="lbl"> На главную </span>
+                    </label>
+                </div>
+            </div>
             <div class="form-group">
                 {{ Form::label('name[ru]', 'Заголовок', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-9">
@@ -73,8 +32,6 @@
                     {{ Form::text('name[en]', (isset($data->name_en) ? $data->name_en : old('name_en')), array('class' => 'col-sm-11 col-xs-12')) }}
                 </div>
             </div>
-            
-            
         </div><!-- /.col-sm-6 -->
 
         <div class="col-sm-6">
@@ -106,15 +63,13 @@
             <div class="form-group">
                 {{ Form::label('categories', 'Теги', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-7">
-                    <select multiple data-placeholder="выберите категорию" id="chosencat" name="chosencat[]" class="tag-input-style col-xs-12">
+                    <select multiple data-placeholder="выберите категорию" id="chosentags" name="chosencat[]" class="tag-input-style col-xs-12">
                         @foreach($tags as $tag)
                         <option value="{{$tag->id}}" @if (in_array($tag->id, isset($data) ? $data->getTagsIdsArray() : array())) selected="selected" @endif>
                             {{ $tag->name }}
                         </option>
                         @endforeach
                     </select>
-
-                  
                 </div>
                 <div class="col-sm-1">
                      <a href="javascript:AddTag();" class="btn btn-sm btn-primary"><i class="ace-icon fa fa-plus-circle"></i></a>
@@ -128,28 +83,28 @@
                     <div class="tabbable">
                         <ul id="myTab1" class="nav nav-tabs padding-12 tab-color-blue background-blue">
                             <li class="active">
-                                <a href="#short_ru" data-toggle="tab" aria-expanded="true">Русс. яз.</a>
+                                <a href="#newsShort_ru" data-toggle="tab" aria-expanded="true">Русс. яз.</a>
                             </li>
                     
                             <li class="">
-                                <a href="#short_ro" data-toggle="tab" aria-expanded="false">Рум. яз.</a>
+                                <a href="#newsShort_ro" data-toggle="tab" aria-expanded="false">Рум. яз.</a>
                             </li>
 
                             <li class="">
-                                <a href="#short_en" data-toggle="tab" aria-expanded="false">Англ. яз.</a>
+                                <a href="#newsShort_en" data-toggle="tab" aria-expanded="false">Англ. яз.</a>
                             </li>
 
                             <div class="center"> <span class="label label-xlg label-purple">Краткое описание</span></div>
                         </ul>
                     
                         <div class="tab-content">
-                            <div class="tab-pane in active" id="short_ru">
+                            <div class="tab-pane in active" id="newsShort_ru">
                              {{ Form::textarea('description_short[ru]', (isset($data->description_short) ? $data->description_short : old('description_short')), array('style'=>'width:100%', 'rows'=>'3')) }}
                            </div>
-                           <div class="tab-pane" id="short_ro">
+                           <div class="tab-pane" id="newsShort_ro">
                              {{ Form::textarea('description_short[ro]', (isset($data->description_short_ro) ? $data->description_short_ro : old('description_short_ro')), array('style'=>'width:100%', 'rows'=>'3')) }}
                            </div>
-                           <div class="tab-pane" id="short_en">
+                           <div class="tab-pane" id="newsShort_en">
                              {{ Form::textarea('description_short[en]', (isset($data->description_short_en) ? $data->description_short_en : old('description_short_en')), array('style'=>'width:100%', 'rows'=>'3')) }}
                            </div>
                         </div>
@@ -165,42 +120,42 @@
     <div class="tabbable">
         <ul id="myTab4" class="nav nav-tabs padding-12 tab-color-blue background-blue">
             <li class="active">
-                <a href="#ru" data-toggle="tab">Описание</a>
+                <a href="#newsDesc" data-toggle="tab">Описание</a>
             </li>
             <li>
-                <a href="#photos" data-toggle="tab">Фото</a>
+                <a href="#newsPhotos" data-toggle="tab">Фото</a>
             </li>
             <li>
-                <a href="#meta" data-toggle="tab">META</a>
+                <a href="#newsmeta" data-toggle="tab">META</a>
             </li>
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane active" id="ru">
+            <div class="tab-pane active" id="newsDesc">
 
                 <div class="tabbable  tabs-left">
 
                  <ul id="myTab" class="nav nav-tabs">
                    <li class="active">
-                      <a href="#descRu" data-toggle="tab">Описание на русском</a>
+                      <a href="#newsDescRu" data-toggle="tab">Описание на русском</a>
                    </li>
                    <li>
-                      <a href="#descRo" data-toggle="tab">Описание на румынском</a>
+                      <a href="#newsDescRo" data-toggle="tab">Описание на румынском</a>
                    </li>
                    <li>
-                      <a href="#descEn" data-toggle="tab">Описание на английском</a>
+                      <a href="#newsDescEn" data-toggle="tab">Описание на английском</a>
                    </li>
                  </ul>
 
                  <div class="tab-content">
-                   <div class="tab-pane in active" id="descRu">
-                     {{ Form::textarea('description[ru]', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+                   <div class="tab-pane in active" id="newsDescRu">
+                     {{ Form::textarea('description[ru]', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => uniqid('id'))) }}
                    </div>
-                   <div class="tab-pane" id="descRo">
-                     {{ Form::textarea('description[ro]', (isset($data->description_ro) ? $data->description_ro : old('description_ro')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+                   <div class="tab-pane" id="newsDescRo">
+                     {{ Form::textarea('description[ro]', (isset($data->description_ro) ? $data->description_ro : old('description_ro')), array('class' => 'ckeditor', 'id' => uniqid('id'))) }}
                    </div>
-                   <div class="tab-pane" id="descEn">
-                     {{ Form::textarea('description[en]', (isset($data->description_en) ? $data->description_en : old('description_en')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+                   <div class="tab-pane" id="newsDescEn">
+                     {{ Form::textarea('description[en]', (isset($data->description_en) ? $data->description_en : old('description_en')), array('class' => 'ckeditor', 'id' => uniqid('id'))) }}
                    </div>
 
                  </div>
@@ -208,72 +163,21 @@
                 </div>
              </div>
 
-            @include('admin.partials.meta')
-            @include('admin.partials.photos', ['table' => 'news', 'table_id' => isset($data->id) ? $data->id : 0])
+            @include('admin.partials.meta', ['form_id' => 'news'])
+
+            @include('admin.partials.photos', ['table' => 'news', 'div_id' => 'newsPhotos', 'table_id' => isset($data->id) ? $data->id : 0])
         </div>
 
 </div>
 
-    <div class="form-actions">
-        {{ Form::submit('Сохранить', array('class' => 'btn btn-success')) }}
-    </div>
 
-    {{ Form::close() }}
-    <!--! popup tag insert -->
-    <div aria-hidden="true" aria-labelledby="mySmallModalLabel" role="dialog" tabindex="-1" data-show="true" data-backdrop="true" data-keyboard="true" class="modal fade" id="add-tag-modal" >
-         <div class="modal-dialog modal-sm">
-             <div class="modal-content">
-                 <div class="modal-body">
-                     <div class="row">
-                         <div class="col-sm-12">
-                             <label>Введите новый тег</label>
-                         </div>
-                     </div>
-                     <div class="row">
-                         <div class="col-sm-12">
-                             <input class="form-control" type="text" name="tag_name" />
-                         </div>
-                     </div>
-                     <br/>
-                     <div class="row">
-                         <div class="col-sm-12">
-                             <button class="btn btn-default" >Сохранить</button>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div><!-- /popup tag insert-->
-    
-    
-    
-   
-@endsection
+    @include('admin.partials.ckeditor', ['form_id' => 'news'])
 
-@section('styles')
-    {!! HTML::style('ace/assets/css/datepicker.css') !!}
-    {!! HTML::style('ace/assets/css/chosen.css') !!}
-@endsection
+    @include('admin.partials.slug',['input_name'=>'name[ru]', 'form_id' => 'news'])
 
-@section('scripts')
+    @include('admin.partials.datepicker')
 
-    @include('admin.partials.ckeditor')
-
-    @include('admin.partials.slug',['input_name'=>'name'])
-
-    {!! HTML::script('ace/assets/js/date-time/bootstrap-datepicker.js') !!}
     <script type="text/javascript">
-        jQuery(function($) {
-            var mydate = $('#mydate')[0];
-            if(mydate.type !== 'date') {//if browser doesn't support "date" input
-                $(mydate).datepicker({
-                    weekStart: 1,
-                    autoclose:true,
-                    language: 'ru'
-                })
-            }
-           });
- 
          function AddTag(){
              var modal = $('#add-tag-modal');
              modal.modal();
@@ -290,8 +194,8 @@
                              }
  
                              var id = response.data;
-                             $('#chosencat').append('<option value="'+id+'" selected="selected">'+value+'</option>');
-                             $("#chosencat").trigger("chosen:updated");
+                             $('#chosentags').append('<option value="' + id + '" selected="selected">' + value + '</option>');
+                             $("#chosentags").trigger("chosen:updated");
                              toastr.success("Тег добавлен");
                              modal.modal('toggle');
                          }
@@ -302,39 +206,32 @@
 
     {!! HTML::script('ace/assets/js/chosen.jquery.min.js') !!}
     <script>
-        $("#chosencat").chosen();
+        $("#chosentags").chosen();
     </script>
-     <script>
 
-        $(document).ready(function(){
-         initSEFonEnter();   
-        });
 
-        transliterate = (
-        function() {
-            var
-                rus = "щ   ш  ч  ц  ю  я  ё  ж  ъ  ы  э  а б в г д е з и й к л м н о п р с т у ф х ь".split(/ +/g),
-                eng = "shh sh ch cz yu ya yo zh i  y  e  a b v g d e z i j k l m n o p r s t u f x i".split(/ +/g)
-            ;
-            return function(text, engToRus) {
-                var x;
-                for(x = 0; x < rus.length; x++) {
-                    text = text.split(engToRus ? eng[x] : rus[x]).join(engToRus ? rus[x] : eng[x]);
-                    text = text.split(engToRus ? eng[x].toUpperCase() : rus[x].toUpperCase()).join(engToRus ? rus[x].toUpperCase() : eng[x].toUpperCase());
-                }
-                text = text.toLowerCase().replace(/[^a-zA-Z ]/g, "").split(' ').join('-');
-                return text;
-            }
-        }
-    )();
-
-    function initSEFonEnter(){
-        $("input.name_ru").keyup(function() {
-            var a = $(this).val();
-            var b = transliterate(a);
-            $("input[name=slug]").val(b);
-        });
-    }
-
-    </script>
-@endsection
+    <!--! popup tag insert -->
+    <div aria-hidden="true" aria-labelledby="mySmallModalLabel" role="dialog" tabindex="-1" data-show="true" data-backdrop="true" data-keyboard="true" class="modal fade" id="add-tag-modal" >
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label>Введите новый тег</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <input class="form-control" type="text" name="tag_name" />
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <button class="btn btn-default" >Сохранить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /popup tag insert-->

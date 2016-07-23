@@ -61,7 +61,7 @@
                             <a href="#videos-desc" data-toggle="tab">Описание</a>
                         </li>
                         <li>
-                            <a href="#videos-meta"  data-toggle="tab">Мета</a>
+                            <a href="#videosmeta"  data-toggle="tab">Мета</a>
                         </li>
                     </ul>
 
@@ -94,9 +94,8 @@
                             </div>
                         </div>
 
-                        <div class="tab-pane" id="videos-meta">
-                            @include('admin.partials.meta', ['form_id' => 'videos'])
-                        </div>
+                        @include('admin.partials.meta', ['form_id' => 'videos'])
+
                     </div>
                 </div>
             </div>

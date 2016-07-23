@@ -2,33 +2,31 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Content;
-use App\Models\News;
-use App\Models\Tags;
+use App\Models\Videos;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+
 use Illuminate\Support\Facades\Session;
 use Validator;
 
-class NewsController extends Controller
+class VideosController extends Controller
 {
     public function index(){
-        $data = News::all();
-        return view('admin.news.index')->with(compact('data'));
+        $data = Videos::all();
+        return view('admin.videos.index')->with(compact('data'));
     }
 
     public function create(){
-        $tags = Tags::all();
-        return view('admin.news.edit')->with(compact('tags'));
+        return view('admin.videos.edit');
     }
 
     public function store(Request $request)
     {
         $rules = array(
             'name'          => 'required',
-            'slug'          => 'required|unique:content'
+            'source'        => 'required'
         );
 
         $validator = Validator::make($request->all(), $rules);
@@ -44,37 +42,26 @@ class NewsController extends Controller
     }
 
     private function save(Request $request, $id = null){
-        //photos
-        //dd($request->photos);
-
         // store
         if (!isset($id)) {
-            $data = new News();
+            $data = new Videos();
         }else{
-            $data = News::find($id);
+            $data = Videos::find($id);
         }
 
         $data->name              = $request->name;
-        $data->top               = $request->top;
         $data->created_at        = $request->date;
-        $data->slug              = $request->slug;
+        $data->source            = $request->source;
         $data->description       = $request->description;
-        $data->description_short = $request->description_short;
         $data->meta_description  = $request->meta_description;
         $data->meta_keywords     = $request->meta_keywords;
         $data->title             = $request->title;
+
         $data->save();
-
-        //tags
-        if ($request->chosencat) {
-            $data->tags()->sync($request->chosencat);
-        }
-
-        $this->UpdatePhotos($request, $data->id);
 
         return response()->json([
             'success' => true,
-            'data'    => ['table' => 'news', 'id' => $data->id, 'name' => $data->name]
+            'data'    => ['table' => 'videos', 'id' => $data->id, 'name' => $data->name]
         ]);
     }
     /**
@@ -96,10 +83,9 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        $data = News::find($id);
-        $tags = Tags::all();
-        return view('admin.news.edit')->with(compact('data'))
-                                      ->with(compact('tags'));
+        $data = Videos::find($id);
+        return view('admin.videos.edit')->with(compact($data));
+
     }
 
     /**
@@ -112,7 +98,7 @@ class NewsController extends Controller
     {
         $rules = array(
             'name'          => 'required',
-            'slug'          => 'required|unique:news,id,{$id}'
+            'source'        => 'required'
         );
 
         $validator = Validator::make($request->all(), $rules);
@@ -135,9 +121,8 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        Content::destroy($id);
+        Videos::destroy($id);
         Session::flash('message', trans('common.deleted'));
         return back();
     }
-
 }

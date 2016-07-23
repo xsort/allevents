@@ -15,7 +15,7 @@
         </ul>
 </div>
 
-@if ($table == "products")
+@if (!isset($div_id))
 {{ HTML::script('ace/assets/js/uploadifive/jquery.uploadifive.min.js') }}
 {{ HTML::style('ace/assets/js/uploadifive/uploadifive.css') }}
 @endif
@@ -37,8 +37,10 @@
                 'auto'             : true,
                 'removeCompleted'  : true,
                 'formData'         : {
-                    @if(isset($table_id))table_id: "{{ $table_id }}",@endif
-                    @if(isset($thumbs))thumbs: "{{ implode(",", $thumbs) }}",@endif
+                    @if(isset($table_id))table_id:  "{{ $table_id }}",              @endif
+                    @if(isset($thumbs))thumbs:      "{{ implode(",", $thumbs) }}",  @endif
+                    @if(isset($width)) width:       "{{ $width }}",                 @endif
+                    @if(isset($height))height:      "{{ $height }}",                @endif
                     table:	"{{ $table }}"
                 },
                 //'queueID'          : 'queue',

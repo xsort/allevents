@@ -87,17 +87,26 @@ Route::group(['middleware' => ['web', 'admin']], function () {
 Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::controllers(['json' => 'Admin\JsonController']);
 
-    Route::resource('content',      'Admin\ContentController', ['as' => 'content']);
+    Route::resource('content',          'Admin\ContentController');
 
-    Route::resource('news',         'Admin\NewsController', ['as' => 'news']);
+    Route::resource('news',             'Admin\NewsController');
     
-    Route::resource('categories',   'Admin\CategoriesController', ['as' => 'categories']);
+    Route::resource('categories',       'Admin\CategoriesController');
     
-    Route::resource('products',     'Admin\ProductsController', ['as' => 'products']);
+    Route::resource('products',         'Admin\ProductsController');
 
-    Route::resource('galleries',    'Admin\GalleriesController', ['as' => 'galleries']);
+    Route::resource('galleries',        'Admin\GalleriesController');
 
-    Route::resource('videos',       'Admin\VideosController', ['as' => 'videos']);
+    Route::resource('videos',           'Admin\VideosController');
+
+    Route::resource('menucategories',   'Admin\MenuCategoriesController');
+
+    Route::get('menu/{id}',             ['uses' => 'Admin\MenuProductsController@index',    'as' => 'menu']);
+    Route::get('menu/create/{id}',      ['uses' => 'Admin\MenuProductsController@create',   'as' => 'menu.create']);
+    Route::get('menu/edit/{id}',        ['uses' => 'Admin\MenuProductsController@edit',     'as' => 'menu.edit']);
+    Route::post('menu/{id}',            ['uses' => 'Admin\MenuProductsController@store',    'as' => 'menu.store']);
+    Route::put('menu/{id}',             ['uses' => 'Admin\MenuProductsController@update',   'as' => 'menu.update']);
+    Route::delete('menu/{id}',          ['uses' => 'Admin\MenuProductsController@delete',   'as' => 'menu.delete']);
 
 });
 

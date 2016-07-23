@@ -1,22 +1,18 @@
 @extends('admin.body')
-@section('title', 'Категория')
+@section('title', 'Меню')
 
 
 @section('centerbox')
     <div class="page-header">
-        <h1> <a href="{{ URL::to('admin/categories') }}">Категории</a> <small><i class="ace-icon fa fa-angle-double-right"></i> Редактирование категории </small> </h1>
+        <h1> <a href="{{ route('admin.menu', $product->id) }}">Меню</a> <small><i class="ace-icon fa fa-angle-double-right"></i> Редактирование меню для {{ $product->name }}</small> </h1>
     </div>
-    
-
-
-    
 
     @include('admin.partials.errors')
 
     @if(!isset($data))
-    {{ Form::open(['url' => 'admin/categories', 'class' => 'form-horizontal']) }}
+    {{ Form::open(['url' => route('admin.menu.store', $product->id), 'class' => 'form-horizontal']) }}
     @else
-    {{ Form::open(['url' => 'admin/categories/' . $data->id, 'method' => 'put', 'class' => 'form-horizontal']) }}
+    {{ Form::open(['url' => route('admin.menu.update', $data->id), 'method' => 'put', 'class' => 'form-horizontal']) }}
     @endif
     
     <div class="form-actions">
@@ -24,16 +20,7 @@
             <div class="col-sm-2">
                 <button id="submit_button1" type="submit" class="btn  btn-success btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить </button>
             </div>
-            <!--
-            <div class="col-sm-2">
-                <button id="submit_button1" type="submit" class="btn  btn-yellow btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить и закрыть</button>
-            </div>-->
-            <div class="col-sm-2 ">
-                <label>
-                	{{ Form::checkbox('top',  1, (isset($data) && $data->top == 1 ? true : false), ['class' => 'ace']) }}
-                    <span class="lbl"> На главную </span>
-                </label>
-            </div>
+
             <div class="col-sm-4">
                 <div class="profile-contact-info">
                     <div class="profile-links align-left">
@@ -77,10 +64,6 @@
                 </div>
             </div>
             
-            
-				
-			
-            
         </div><!-- /.col-sm-6 -->
 
         <div class="col-sm-6">
@@ -97,22 +80,18 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                {{ Form::label('slug', 'URL', ['class'=>'col-sm-3 control-label no-padding-right']) }}
-                <div class="col-sm-9">
-                    {{ Form::text('slug', (isset($data->slug) ? $data->slug : old('slug')), array('class' => 'col-sm-11 col-xs-12')) }}
-                </div>
-            </div>
             
             <div class="form-group">
-                {{ Form::label('parent', 'родитель', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                {{ Form::label('category_id', 'Категория', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 
                 <div class="col-sm-9">
-                    @if(isset($parents))
-                    {{ Form::select('parent[]', array("null" => "Нет родителя") + $categories, $parents, ['multiple'=>'multiple','id'=>'chosencat','class'=>'tag-input-style col-sm-11 control-label no-padding-right']) }}
-	                @else
-	                {{ Form::select('parent[]', $categories, '', ['multiple'=>'multiple','id'=>'chosencat','class'=>'tag-input-style col-sm-11 control-label no-padding-right']) }}
-	                @endif
+                    {{ Form::select('category_id', array("0" => "Нет родителя") + $categories, (isset($data->category_id) ? $data->category_id : 0), ['class'=>'col-sm-11']) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ Form::label('price', 'Цена', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-9">
+                    {{ Form::text('price', (isset($data->price) ? $data->price : old('price')), array('class' => 'col-sm-11 col-xs-12')) }}
                 </div>
             </div>
         </div><!-- /.col-sm-6 -->
@@ -151,13 +130,13 @@
 
                  <div class="tab-content">
                    <div class="tab-pane in active" id="descRu">
-                     {{ Form::textarea('description[ru]', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+                     {{ Form::textarea('description[ru]', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => uniqid('id'))) }}
                    </div>
                    <div class="tab-pane" id="descRo">
-                     {{ Form::textarea('description[ro]', (isset($data->description_ro) ? $data->description_ro : old('description_ro')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+                     {{ Form::textarea('description[ro]', (isset($data->description_ro) ? $data->description_ro : old('description_ro')), array('class' => 'ckeditor', 'id' => uniqid('id'))) }}
                    </div>
                    <div class="tab-pane" id="descEn">
-                     {{ Form::textarea('description[en]', (isset($data->description_en) ? $data->description_en : old('description_en')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+                     {{ Form::textarea('description[en]', (isset($data->description_en) ? $data->description_en : old('description_en')), array('class' => 'ckeditor', 'id' => uniqid('id'))) }}
                    </div>
 
                  </div>
@@ -166,7 +145,9 @@
              </div>
 
             @include('admin.partials.meta')
-            @include('admin.partials.photos', ['table' => 'categories', 'table_id' => isset($data->id) ? $data->id : 0])
+
+            @include('admin.partials.photos', ['table' => 'menu_products', 'table_id' => isset($data->id) ? $data->id : 0])
+
         </div>
 
 </div>
@@ -178,10 +159,6 @@
 {{ Form::close() }}
 @endsection
 
-@section('styles')
-{!! HTML::style('ace/assets/css/datepicker.css') !!}
-{!! HTML::style('ace/assets/css/chosen.css') !!}
-@endsection
 
 @section('scripts')
 
@@ -190,19 +167,5 @@
 @include('admin.partials.slug',['input_name'=>'name[ru]'])
 
 @include('admin.partials.datepicker')
-
-<script>
-if($(window).width() < 640){
-    $('.tabbable').removeClass('tabs-left');
-}
-</script>
-
-
-{!! HTML::script('ace/assets/js/chosen.jquery.min.js') !!}
-<script>
-$("#chosencat").chosen();
-</script>
-
-
 
 @endsection

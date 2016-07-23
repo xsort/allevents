@@ -1,4 +1,4 @@
-<div class="tab-pane " id="meta">
+<div class="tab-pane " id="{{ $form_id or '' }}meta">
                 <div class="tabbable  tabs-left">
 
                  <ul id="myTab" class="nav nav-tabs">

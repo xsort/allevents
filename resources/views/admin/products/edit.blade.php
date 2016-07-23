@@ -226,10 +226,26 @@
             <li>
                 <a href="#videor" data-toggle="tab">Видеоотчет</a>
             </li>
-            
+
+            <li>
+                <a href="#news" data-toggle="tab">Новости</a>
+            </li>
+
+            <li>
+                <a href="#background" data-toggle="tab">Обложка</a>
+            </li>
+
+            @if (isset($data))
+                <li>
+                    <a href="{{ route('admin.menu', $data->id) }}" target="_blank">Меню</a>
+                </li>
+            @endif
+
+
             <li>
                 <a href="#meta" data-toggle="tab">META</a>
             </li>
+
         </ul>
 
        
@@ -274,10 +290,17 @@
 
             </div>
 
+            <div class="tab-pane" id="news">
+
+                <a href="admin/news/create" class="btn btn-yellow modalbox" title="Добавить новость">Добавить новость</a>
+
+            </div>
+
             @include('admin.partials.photos', ['table' => 'hall_plan', 'div_id' => 'plan', 'table_id' => isset($data->id) ? $data->id : 0] )
 
-            <div class="tab-pane" id="videor">
+            @include('admin.partials.photos', ['table' => 'background', 'div_id' => 'background', 'width'=> 10000, 'height'=> 10000, 'table_id' => isset($data->id) ? $data->id : 0] )
 
+            <div class="tab-pane" id="videor">
                  <a href="admin/videos/create" class="btn btn-yellow modalbox" title="Добавить видео">Добавить видео</a>
             </div>
 
