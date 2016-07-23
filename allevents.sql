@@ -2,10 +2,10 @@
 -- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 14, 2016 at 08:25 AM
--- Server version: 10.1.10-MariaDB
--- PHP Version: 7.0.4
+-- Хост: 127.0.0.1
+-- Время создания: Июл 23 2016 г., 12:05
+-- Версия сервера: 10.1.10-MariaDB
+-- Версия PHP: 5.6.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `allevents`
+-- База данных: `allevents`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories`
+-- Структура таблицы `categories`
 --
 
 CREATE TABLE `categories` (
@@ -48,7 +48,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `categories`
+-- Дамп данных таблицы `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `menu_type_id`, `enabled`, `top`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
@@ -91,7 +91,7 @@ INSERT INTO `categories` (`id`, `name`, `name_ro`, `name_en`, `description`, `de
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categories_xref`
+-- Структура таблицы `categories_xref`
 --
 
 CREATE TABLE `categories_xref` (
@@ -101,7 +101,7 @@ CREATE TABLE `categories_xref` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `categories_xref`
+-- Дамп данных таблицы `categories_xref`
 --
 
 INSERT INTO `categories_xref` (`id`, `parent_id`, `child_id`) VALUES
@@ -202,7 +202,7 @@ INSERT INTO `categories_xref` (`id`, `parent_id`, `child_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `constants`
+-- Структура таблицы `constants`
 --
 
 CREATE TABLE `constants` (
@@ -214,7 +214,7 @@ CREATE TABLE `constants` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `content`
+-- Структура таблицы `content`
 --
 
 CREATE TABLE `content` (
@@ -233,7 +233,7 @@ CREATE TABLE `content` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `content`
+-- Дамп данных таблицы `content`
 --
 
 INSERT INTO `content` (`id`, `name`, `name_en`, `name_ro`, `description`, `description_en`, `description_ro`, `enabled`, `views`, `slug`, `created_at`, `updated_at`) VALUES
@@ -249,7 +249,7 @@ INSERT INTO `content` (`id`, `name`, `name_en`, `name_ro`, `description`, `descr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `galleries`
+-- Структура таблицы `galleries`
 --
 
 CREATE TABLE `galleries` (
@@ -271,10 +271,17 @@ CREATE TABLE `galleries` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Дамп данных таблицы `galleries`
+--
+
+INSERT INTO `galleries` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `enabled`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'Галерея 1', 'Галерея 1', 'Галерея 1', '', '', '', '', '', '', 1, 0, 0, 'galereya', '2016-07-21 21:00:00', '2016-07-22 04:12:58');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `galleries_xref`
+-- Структура таблицы `galleries_xref`
 --
 
 CREATE TABLE `galleries_xref` (
@@ -287,7 +294,7 @@ CREATE TABLE `galleries_xref` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu_categories`
+-- Структура таблицы `menu_categories`
 --
 
 CREATE TABLE `menu_categories` (
@@ -310,10 +317,18 @@ CREATE TABLE `menu_categories` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Дамп данных таблицы `menu_categories`
+--
+
+INSERT INTO `menu_categories` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `parent_id`, `enabled`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'Холодные закуски', '', '', '', '', '', '', '', '', 0, 1, 0, 0, 'xolodnye-zakuski', '2016-07-22 21:00:00', '2016-07-23 05:21:06'),
+(2, 'Супы', '', '', '', '', '', '', '', '', 0, 1, 0, 0, 'supy', '2016-07-22 21:00:00', '2016-07-23 05:26:57');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu_products`
+-- Структура таблицы `menu_products`
 --
 
 CREATE TABLE `menu_products` (
@@ -328,6 +343,7 @@ CREATE TABLE `menu_products` (
   `description_short_ro` text COLLATE utf8_unicode_ci NOT NULL,
   `description_short_en` text COLLATE utf8_unicode_ci NOT NULL,
   `category_id` tinyint(4) NOT NULL,
+  `product_id` int(11) NOT NULL,
   `price` double(15,2) NOT NULL,
   `enabled` tinyint(1) NOT NULL DEFAULT '1',
   `views` int(11) NOT NULL,
@@ -337,10 +353,19 @@ CREATE TABLE `menu_products` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Дамп данных таблицы `menu_products`
+--
+
+INSERT INTO `menu_products` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `category_id`, `product_id`, `price`, `enabled`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
+(1, 'вцувцуцу', 'вцувцув', 'цувцу', '<p>вувц</p>\r\n', '<p>вцувцувцу</p>\r\n', '<p>вцувцувцу</p>\r\n', '', '', '', 1, 7, 420.00, 1, 0, 0, '', '2016-07-22 21:00:00', '2016-07-23 06:58:15'),
+(2, 'вцувцуцу', 'вцувцув', 'цувцу', '<p>вувц</p>\r\n', '<p>вцувцувцу</p>\r\n', '<p>вцувцувцу</p>\r\n', '', '', '', 1, 1, 0.00, 1, 0, 0, '', '2016-07-22 21:00:00', '2016-07-23 06:49:27'),
+(3, 'лапша 2', '', '', '', '', '', '', '', '', 2, 7, 500.00, 1, 0, 0, '', '2016-07-22 21:00:00', '2016-07-23 06:58:34');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `meta`
+-- Структура таблицы `meta`
 --
 
 CREATE TABLE `meta` (
@@ -359,7 +384,7 @@ CREATE TABLE `meta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `meta`
+-- Дамп данных таблицы `meta`
 --
 
 INSERT INTO `meta` (`id`, `meta_description`, `meta_description_ro`, `meta_description_en`, `meta_keywords`, `meta_keywords_ro`, `meta_keywords_en`, `title`, `title_ro`, `title_en`, `table_id`, `table`) VALUES
@@ -434,12 +459,19 @@ INSERT INTO `meta` (`id`, `meta_description`, `meta_description_ro`, `meta_descr
 (69, '', '', '', '', '', '', '', '', '', 10, 'content'),
 (70, '', '', '', '', '', '', '', '', '', 19, 'products'),
 (71, '', '', '', '', '', '', '', '', '', 20, 'products'),
-(72, '', '', '', '', '', '', '', '', '', 21, 'products');
+(72, '', '', '', '', '', '', '', '', '', 21, 'products'),
+(73, 'ввв', '', '', 'вввв', '', '', 'вввв', '', '', 1, 'galleries'),
+(74, '', '', '', '', '', '', '', '', '', 1, 'videos'),
+(75, 'g', '545', '3453', 'g', '4534', '534', 'g', '5435', '534', 1, 'menu_categories'),
+(76, '', '', '', '', '', '', '', '', '', 2, 'menu_categories'),
+(77, 'вцувцу', '', '', 'вцувцу', '', '', 'вцувцу', '', '', 1, 'menu_products'),
+(78, 'вцувцу', '', '', 'вцувцу', '', '', 'вцувцу', '', '', 2, 'menu_products'),
+(79, '', '', '', '', '', '', '', '', '', 3, 'menu_products');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Структура таблицы `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -448,7 +480,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Дамп данных таблицы `migrations`
 --
 
 INSERT INTO `migrations` (`migration`, `batch`) VALUES
@@ -535,12 +567,13 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2016_05_25_121927_create_videos', 1),
 ('2016_05_25_122240_menu_products', 1),
 ('2016_05_25_122425_menu_categories', 1),
-('2016_06_23_074721_products_categories', 2);
+('2016_06_23_074721_products_categories', 2),
+('2016_07_23_062337_create_videos_xref', 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news`
+-- Структура таблицы `news`
 --
 
 CREATE TABLE `news` (
@@ -564,7 +597,7 @@ CREATE TABLE `news` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `news`
+-- Дамп данных таблицы `news`
 --
 
 INSERT INTO `news` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `enabled`, `top`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
@@ -577,7 +610,7 @@ INSERT INTO `news` (`id`, `name`, `name_ro`, `name_en`, `description`, `descript
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news_tags`
+-- Структура таблицы `news_tags`
 --
 
 CREATE TABLE `news_tags` (
@@ -587,7 +620,7 @@ CREATE TABLE `news_tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `news_tags`
+-- Дамп данных таблицы `news_tags`
 --
 
 INSERT INTO `news_tags` (`id`, `news_id`, `tags_id`) VALUES
@@ -599,7 +632,7 @@ INSERT INTO `news_tags` (`id`, `news_id`, `tags_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news_types`
+-- Структура таблицы `news_types`
 --
 
 CREATE TABLE `news_types` (
@@ -611,7 +644,7 @@ CREATE TABLE `news_types` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Структура таблицы `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -623,7 +656,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `photos`
+-- Структура таблицы `photos`
 --
 
 CREATE TABLE `photos` (
@@ -636,7 +669,7 @@ CREATE TABLE `photos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `photos`
+-- Дамп данных таблицы `photos`
 --
 
 INSERT INTO `photos` (`id`, `source`, `table_id`, `table`, `sort`, `token`) VALUES
@@ -746,12 +779,32 @@ INSERT INTO `photos` (`id`, `source`, `table_id`, `table`, `sort`, `token`) VALU
 (114, '57762721a4b5d.jpg', 0, 'products', 114, 'dab50726ae5b756007238f93a2b6f9f666b7d86a'),
 (115, '577627249ef0e.png', 0, 'products', 115, '97882bfa07ccec281c3d20c330b1c74a0e8abd91'),
 (116, '577643466c6e1.jpg', 0, 'products', 116, '8e9f51819b53484a8616876681cbade38b9f0012'),
-(117, 'mojito_117.jpg', 10, 'products', 117, '');
+(117, 'mojito_117.jpg', 10, 'products', 117, ''),
+(119, '5789fe7f31e18.jpg', 0, 'products', 119, 'c35f537e054e665778e8f226159c21231545370e'),
+(120, 'andys-pizza_120.jpg', 7, 'hall_plan', 121, ''),
+(121, '578a042cefabc.jpg', 0, 'hall_plan', 120, '03e3f38165fe5f2344b76850c188600e226d1d18'),
+(122, 'andys-pizza_122.jpg', 7, 'hall_plan', 122, ''),
+(123, '578a04768c255.png', 0, 'products', 123, '0d73ac624693c4c7b35ce1d3d058e7c6e2a0a76b'),
+(124, '578a04823df8b.png', 0, 'products', 124, '092f4fa541547d369a54070843365faffbf6e4a6'),
+(125, '578a048e0e2d6.png', 0, 'products', 125, '3fe914c0dd12d98b5c76698a1d7700f75a288eb1'),
+(128, 'andys-pizza_128.jpg', 7, 'hall_plan', 128, ''),
+(129, 'galereya-_129.jpg', 1, 'galleries', 129, ''),
+(130, 'galereya-_130.jpg', 1, 'galleries', 130, ''),
+(131, 'galereya-_131.jpg', 1, 'galleries', 131, ''),
+(132, 'galereya-_132.jpg', 1, 'galleries', 132, ''),
+(133, 'galereya-_133.jpg', 1, 'galleries', 133, ''),
+(134, 'andys-pizza_134.png', 7, 'hall_plan', 134, ''),
+(135, 'andys-pizza_135.jpg', 7, 'hall_plan', 135, ''),
+(136, 'andys-pizza_136.jpg', 7, 'background', 136, ''),
+(137, '57933da1e4a43.jpg', 2, 'menu_products', 137, ''),
+(138, '57933da1b5c6d.jpg', 2, 'menu_products', 138, ''),
+(139, '57933da199672.jpg', 2, 'menu_products', 139, ''),
+(140, '57933ed4f24d2.jpg', 3, 'menu_products', 140, '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Структура таблицы `products`
 --
 
 CREATE TABLE `products` (
@@ -777,11 +830,11 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `products`
+-- Дамп данных таблицы `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `price`, `map`, `enabled`, `top`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
-(7, 'Andy''s Pizza', 'Andy''s Pizza', 'Andy''s Pizza', '<p>В меню&nbsp;Andys Pizza&nbsp;самые вкусные блюда! Закажите еду в офис, на дом или оформите предварительный заказ. Приятного аппетита!</p>\r\n', '', '', 'Andy''s Pizza - самый вкусный заказ еды онлайн! Быстрая доставка днем и ночью!', 'Andys Pizza - comanda online cele mai delicioase bucate! Livrarea rapidă ziua și noaptea!', 'Andys Pizza - the most delicious food order online! Fast delivery day and night!', 0.00, '', 1, 1, 0, 0, 'andys-pizza', '2016-06-24 21:00:00', '2016-06-29 08:18:00'),
+(7, 'Andy''s Pizza', 'Andy''s Pizza', 'Andy''s Pizza', '<p>В меню&nbsp;Andys Pizza&nbsp;самые вкусные блюда! Закажите еду в офис, на дом или оформите предварительный заказ. Приятного аппетита!</p>\r\n', '', '', 'Andy''s Pizza - самый вкусный заказ еды онлайн! Быстрая доставка днем и ночью!', 'Andys Pizza - comanda online cele mai delicioase bucate! Livrarea rapidă ziua și noaptea!', 'Andys Pizza - the most delicious food order online! Fast delivery day and night!', 0.00, '', 0, 1, 0, 0, 'andys-pizza', '2016-06-24 21:00:00', '2016-07-16 07:33:42'),
 (8, 'Krysha', 'Krysha', 'Krysha', '<p>Отдельного внимания заслуживает наша терраса под открытым небом. Уникальная терраса&nbsp;<strong>LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo;</strong>, которая располагается на пятом этаже коммерческого центра&nbsp;<strong>&laquo;Sun City&raquo;</strong>, позволит Вам полюбоваться уникальными пейзажами городского центрального парка и ночными огнями столицы. Уютные диванные зоны, легкая музыка, стильный интерьер и свежий воздух &ndash; поистине отдых &laquo;НА ВЫСОТЕ&raquo;.<br />\r\n<br />\r\nК организации праздничного вечера в&nbsp;<strong>LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo;</strong>&nbsp;подойдут профессионально: разработают план мероприятия, подберут ведущего, составят шоу-программу, пригласят артистов, оформят зал, продумают и разработают меню для фуршета и подарят массу приятных впечатлений.</p>\r\n', '<p>O atenție specială merită terasa noastră &icirc;n aer liber. Unice Terasa LOUNGE-CAF&Eacute; &laquo;Krysha&raquo;, care este situat la etajul cinci al &laquo;Sun City&raquo; centru comercial vă va permite să se bucure de peisajul unic al parcului central de oraș și luminile de noapte ale capitalei. zonă confortabilă canapea, muzica usoara, aer curat interior si elegant - cu adevărat o vacanță de &quot;sus&quot;.</p>\r\n\r\n<p>Prin organizarea unei seri festive &icirc;n LOUNGE-CAF&Eacute; &laquo;Krysha&raquo; profesionale adecvate: artiștii să elaboreze un plan de acțiune, se va ridica la conducere, face un program de spectacol, invitați vor desena o cameră, cred că peste și de a lucra din meniul pentru bufet și va da o mulțime de experiențe plăcute.</p>\r\n', '<p>Special attention deserves our terrace in the open air. Unique terrace LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo;, which is located on the fifth floor of &laquo;Sun City&raquo; shopping center, will allow you to enjoy the unique scenery of the city central park and the night lights of the capital. Cozy sofa area, light music, stylish interior and fresh air - truly a vacation &quot;on high&quot;.</p>\r\n\r\n<p>By organizing a festive evening in the LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo; suitable professional: develop an action plan, will pick up the lead, make a show program, invited artists will draw room, think over and work out the menu for the buffet and will give a lot of pleasant experiences.</p>\r\n', 'Атмосфера в стиле LOUNGE-CAFÉ «KRYSHA» не отвлекает от повседневности, а скорее украшает её.', 'Atmosfera din stilul LOUNGE-CAFÉ «Krysha» nu distrage de la viața de zi cu zi, ci mai degrabă o împodobește.', 'The atmosphere in the style LOUNGE-CAFÉ «KRYSHA» does not distract from everyday life, but rather adorns it.', 0.00, '', 1, 1, 0, 0, 'krysha', '2016-06-08 21:00:00', '2016-06-29 06:12:48'),
 (10, 'Mojito', 'Mojito', 'Mojito', '<p>Если вы в поиске места для романтического ужина при свете фонарей, или пре-пати с друзьями, вы его найдете здесь, в&nbsp;<strong>MOJITO</strong>, около Театра Оперы и Балета.<br />\r\n<br />\r\n<strong>Мы очень ценим наших клиентов, поэтому всегда предлагаем только самое лучшее:</strong></p>\r\n\r\n<ul>\r\n	<li>Рабочее время&nbsp;<strong>24/24</strong></li>\r\n	<li>Аргентинская и Японская кухня</li>\r\n	<li>Самый большой выбор коктейлей Мохито:&nbsp; алкогольных и безалкогольных</li>\r\n	<li>Терраса в тени для курящих и некурящих</li>\r\n	<li>Живая музыка каждую пятницу и воскресенье</li>\r\n	<li>Комфортабельный ресторан&nbsp; с расслабляющей атмосферой</li>\r\n	<li>Быстрое и&nbsp; качественное обслуживание</li>\r\n</ul>\r\n\r\n<p><br />\r\nЗайдите к нам, чтобы расслабиться&nbsp; на мягких креслах с чашечкой кофе или чая на завтрак, отведав&nbsp; мисо-суп или стейк на обед, либо коктейль на ужин.<br />\r\n<br />\r\nШагните на территорию, где сочетаются вкусное с&nbsp; приятным, прохлада с удовольствием &ndash; на территорию</p>\r\n', '', '', 'Если вы в поиске места для романтического ужина при свете фонарей, или пре-пати с друзьями, вы его найдете здесь.', '', '', 0.00, '', 1, 1, 0, 0, 'mojito', '2016-01-04 22:00:00', '2016-06-29 07:11:59'),
 (11, 'Caffe Graffiti', 'Caffe Graffiti', 'Caffe Graffiti', '', '', '', 'Caffe Graffiti ждет "Филе форели на пару с овощами и соусом из Tartaro" и желаем Вам приятного аппетита!', 'Caffe Graffiti va asteapta cu "Fileu de păstrăv la abur cu legume și sos tartaro" si va ureaza POFTA BUNA!', 'Caffe Graffiti awaits "Trout fillet steamed with vegetables and sauce Tartaro" and wish you bon appétit!', 0.00, '', 1, 1, 0, 0, 'caffe-graffiti', '2016-06-23 09:46:56', '2016-06-23 09:46:56'),
@@ -796,7 +849,7 @@ INSERT INTO `products` (`id`, `name`, `name_ro`, `name_en`, `description`, `desc
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products_categories`
+-- Структура таблицы `products_categories`
 --
 
 CREATE TABLE `products_categories` (
@@ -806,7 +859,7 @@ CREATE TABLE `products_categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `products_categories`
+-- Дамп данных таблицы `products_categories`
 --
 
 INSERT INTO `products_categories` (`id`, `products_id`, `categories_id`) VALUES
@@ -817,7 +870,7 @@ INSERT INTO `products_categories` (`id`, `products_id`, `categories_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products_news`
+-- Структура таблицы `products_news`
 --
 
 CREATE TABLE `products_news` (
@@ -829,7 +882,7 @@ CREATE TABLE `products_news` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tags`
+-- Структура таблицы `tags`
 --
 
 CREATE TABLE `tags` (
@@ -842,7 +895,7 @@ CREATE TABLE `tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tags`
+-- Дамп данных таблицы `tags`
 --
 
 INSERT INTO `tags` (`id`, `created_at`, `updated_at`, `name`, `top`, `slug`) VALUES
@@ -852,7 +905,7 @@ INSERT INTO `tags` (`id`, `created_at`, `updated_at`, `name`, `top`, `slug`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `types`
+-- Структура таблицы `types`
 --
 
 CREATE TABLE `types` (
@@ -865,7 +918,7 @@ CREATE TABLE `types` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Структура таблицы `users`
 --
 
 CREATE TABLE `users` (
@@ -880,7 +933,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Дамп данных таблицы `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `rights`, `remember_token`, `created_at`, `updated_at`) VALUES
@@ -889,7 +942,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `rights`, `remember_toke
 -- --------------------------------------------------------
 
 --
--- Table structure for table `videos`
+-- Структура таблицы `videos`
 --
 
 CREATE TABLE `videos` (
@@ -912,18 +965,38 @@ CREATE TABLE `videos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Indexes for dumped tables
+-- Дамп данных таблицы `videos`
+--
+
+INSERT INTO `videos` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `source`, `enabled`, `views`, `sort`, `created_at`, `updated_at`) VALUES
+(1, '123', '', '', '', '', '', '', '', '', '123', 1, 0, 0, '2016-07-21 21:00:00', '2016-07-22 04:54:49');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `videos_xref`
+--
+
+CREATE TABLE `videos_xref` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `videos_id` int(10) UNSIGNED NOT NULL,
+  `table_id` int(11) NOT NULL,
+  `table` varchar(20) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `categories`
+-- Индексы таблицы `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_slug` (`slug`);
 
 --
--- Indexes for table `categories_xref`
+-- Индексы таблицы `categories_xref`
 --
 ALTER TABLE `categories_xref`
   ADD PRIMARY KEY (`id`),
@@ -931,28 +1004,28 @@ ALTER TABLE `categories_xref`
   ADD KEY `idx_child_id` (`child_id`);
 
 --
--- Indexes for table `constants`
+-- Индексы таблицы `constants`
 --
 ALTER TABLE `constants`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `constants_key_unique` (`key`);
 
 --
--- Indexes for table `content`
+-- Индексы таблицы `content`
 --
 ALTER TABLE `content`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_slug` (`slug`);
 
 --
--- Indexes for table `galleries`
+-- Индексы таблицы `galleries`
 --
 ALTER TABLE `galleries`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_slug` (`slug`);
 
 --
--- Indexes for table `galleries_xref`
+-- Индексы таблицы `galleries_xref`
 --
 ALTER TABLE `galleries_xref`
   ADD PRIMARY KEY (`id`),
@@ -960,21 +1033,22 @@ ALTER TABLE `galleries_xref`
   ADD KEY `idx_table` (`table`);
 
 --
--- Indexes for table `menu_categories`
+-- Индексы таблицы `menu_categories`
 --
 ALTER TABLE `menu_categories`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_slug` (`slug`);
 
 --
--- Indexes for table `menu_products`
+-- Индексы таблицы `menu_products`
 --
 ALTER TABLE `menu_products`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_slug` (`slug`);
+  ADD KEY `idx_slug` (`slug`),
+  ADD KEY `product_id` (`product_id`);
 
 --
--- Indexes for table `meta`
+-- Индексы таблицы `meta`
 --
 ALTER TABLE `meta`
   ADD PRIMARY KEY (`id`),
@@ -982,14 +1056,14 @@ ALTER TABLE `meta`
   ADD KEY `idx_table` (`table`);
 
 --
--- Indexes for table `news`
+-- Индексы таблицы `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_slug` (`slug`);
 
 --
--- Indexes for table `news_tags`
+-- Индексы таблицы `news_tags`
 --
 ALTER TABLE `news_tags`
   ADD PRIMARY KEY (`id`),
@@ -997,7 +1071,7 @@ ALTER TABLE `news_tags`
   ADD KEY `news_tags_tags_id_foreign` (`tags_id`);
 
 --
--- Indexes for table `news_types`
+-- Индексы таблицы `news_types`
 --
 ALTER TABLE `news_types`
   ADD PRIMARY KEY (`id`),
@@ -1005,14 +1079,14 @@ ALTER TABLE `news_types`
   ADD KEY `news_types_types_id_foreign` (`types_id`);
 
 --
--- Indexes for table `password_resets`
+-- Индексы таблицы `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`),
   ADD KEY `password_resets_token_index` (`token`);
 
 --
--- Indexes for table `photos`
+-- Индексы таблицы `photos`
 --
 ALTER TABLE `photos`
   ADD PRIMARY KEY (`id`),
@@ -1022,14 +1096,14 @@ ALTER TABLE `photos`
   ADD KEY `photos_token_index` (`token`);
 
 --
--- Indexes for table `products`
+-- Индексы таблицы `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_slug` (`slug`);
 
 --
--- Indexes for table `products_categories`
+-- Индексы таблицы `products_categories`
 --
 ALTER TABLE `products_categories`
   ADD PRIMARY KEY (`id`),
@@ -1037,7 +1111,7 @@ ALTER TABLE `products_categories`
   ADD KEY `products_categories_categories_id_foreign` (`categories_id`);
 
 --
--- Indexes for table `products_news`
+-- Индексы таблицы `products_news`
 --
 ALTER TABLE `products_news`
   ADD PRIMARY KEY (`id`),
@@ -1045,7 +1119,7 @@ ALTER TABLE `products_news`
   ADD KEY `products_news_news_id_foreign` (`news_id`);
 
 --
--- Indexes for table `tags`
+-- Индексы таблицы `tags`
 --
 ALTER TABLE `tags`
   ADD PRIMARY KEY (`id`),
@@ -1053,155 +1127,168 @@ ALTER TABLE `tags`
   ADD KEY `idx_slug` (`slug`);
 
 --
--- Indexes for table `types`
+-- Индексы таблицы `types`
 --
 ALTER TABLE `types`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Индексы таблицы `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- Indexes for table `videos`
+-- Индексы таблицы `videos`
 --
 ALTER TABLE `videos`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Индексы таблицы `videos_xref`
+--
+ALTER TABLE `videos_xref`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_table_id` (`table_id`),
+  ADD KEY `idx_table` (`table`);
+
+--
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT for table `categories`
+-- AUTO_INCREMENT для таблицы `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
--- AUTO_INCREMENT for table `categories_xref`
+-- AUTO_INCREMENT для таблицы `categories_xref`
 --
 ALTER TABLE `categories_xref`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 --
--- AUTO_INCREMENT for table `constants`
+-- AUTO_INCREMENT для таблицы `constants`
 --
 ALTER TABLE `constants`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `content`
+-- AUTO_INCREMENT для таблицы `content`
 --
 ALTER TABLE `content`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT for table `galleries`
+-- AUTO_INCREMENT для таблицы `galleries`
 --
 ALTER TABLE `galleries`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `galleries_xref`
+-- AUTO_INCREMENT для таблицы `galleries_xref`
 --
 ALTER TABLE `galleries_xref`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `menu_categories`
+-- AUTO_INCREMENT для таблицы `menu_categories`
 --
 ALTER TABLE `menu_categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `menu_products`
+-- AUTO_INCREMENT для таблицы `menu_products`
 --
 ALTER TABLE `menu_products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `meta`
+-- AUTO_INCREMENT для таблицы `meta`
 --
 ALTER TABLE `meta`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 --
--- AUTO_INCREMENT for table `news`
+-- AUTO_INCREMENT для таблицы `news`
 --
 ALTER TABLE `news`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT for table `news_tags`
+-- AUTO_INCREMENT для таблицы `news_tags`
 --
 ALTER TABLE `news_tags`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT for table `news_types`
+-- AUTO_INCREMENT для таблицы `news_types`
 --
 ALTER TABLE `news_types`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `photos`
+-- AUTO_INCREMENT для таблицы `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
--- AUTO_INCREMENT for table `products_categories`
+-- AUTO_INCREMENT для таблицы `products_categories`
 --
 ALTER TABLE `products_categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `products_news`
+-- AUTO_INCREMENT для таблицы `products_news`
 --
 ALTER TABLE `products_news`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `tags`
+-- AUTO_INCREMENT для таблицы `tags`
 --
 ALTER TABLE `tags`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `types`
+-- AUTO_INCREMENT для таблицы `types`
 --
 ALTER TABLE `types`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `videos`
+-- AUTO_INCREMENT для таблицы `videos`
 --
 ALTER TABLE `videos`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT для таблицы `videos_xref`
+--
+ALTER TABLE `videos_xref`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- Constraints for dumped tables
+-- Ограничения внешнего ключа сохраненных таблиц
 --
 
 --
--- Constraints for table `news_tags`
+-- Ограничения внешнего ключа таблицы `news_tags`
 --
 ALTER TABLE `news_tags`
   ADD CONSTRAINT `news_tags_news_id_foreign` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
   ADD CONSTRAINT `news_tags_tags_id_foreign` FOREIGN KEY (`tags_id`) REFERENCES `tags` (`id`);
 
 --
--- Constraints for table `news_types`
+-- Ограничения внешнего ключа таблицы `news_types`
 --
 ALTER TABLE `news_types`
   ADD CONSTRAINT `news_types_news_id_foreign` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
   ADD CONSTRAINT `news_types_types_id_foreign` FOREIGN KEY (`types_id`) REFERENCES `types` (`id`);
 
 --
--- Constraints for table `products_categories`
+-- Ограничения внешнего ключа таблицы `products_categories`
 --
 ALTER TABLE `products_categories`
   ADD CONSTRAINT `products_categories_categories_id_foreign` FOREIGN KEY (`categories_id`) REFERENCES `categories` (`id`),
   ADD CONSTRAINT `products_categories_products_id_foreign` FOREIGN KEY (`products_id`) REFERENCES `products` (`id`);
 
 --
--- Constraints for table `products_news`
+-- Ограничения внешнего ключа таблицы `products_news`
 --
 ALTER TABLE `products_news`
   ADD CONSTRAINT `products_news_news_id_foreign` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
