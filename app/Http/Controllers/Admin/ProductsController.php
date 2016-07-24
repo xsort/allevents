@@ -85,16 +85,10 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $data = Products::find($id);
-        //$tags = Tags::all();
-        $categories = Categories::lists('name','id')->toArray();
-        $parents = $data->parents->pluck('id')->toArray();
+        $data           = Products::find($id);
+        $categories     = Categories::lists('name','id')->toArray();
+        $parents        = $data->parents->pluck('id')->toArray();
         return view('admin.products.edit')->with('data', $data)->with('categories', $categories)->with('parents',$parents);
-        
-        
- 
-        //$parents = $data->parents->pluck('id')->toArray();
-        //return view('admin.categories.edit')->with('data', $data)->with('categories', $categories)->with('parents',$parents);
     }
 
     /**

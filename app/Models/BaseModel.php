@@ -119,7 +119,11 @@ class BaseModel extends Model
     }
 
     public function galleries() {
-        //TODO
+        return $this->belongsToMany('App\Models\Galleries', 'galleries_xref', 'table_id', 'galleries_id')->where('table', $this->getTable());
+    }
+
+    public function videos() {
+        return $this->belongsToMany('App\Models\Videos', 'videos_xref', 'table_id', 'videos_id')->where('table', $this->getTable());
     }
 
     public function meta(){
