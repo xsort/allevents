@@ -3,7 +3,7 @@
 @section('productClass','products-page')
 @section('centerbox')
 <div class="layout-page ">
-@include('partials.product-up-menu')
+@include('products.top-menu')
 <div class="layout-breadcrumbs">
     <div class="container-fluid">
         <div class="container-breadcrumbs">
@@ -11,7 +11,7 @@
                 <li><a href="">Главная</a></li>
                 <li><a href="/kluby">Клубы</a></li>
                 <li><a href="/{{$data->slug}}">{{$data->name}}</a></li>
-                <li>План зала</li>
+                <li>Интерьер</li>
             </ul>
         </div>
     </div>
@@ -27,7 +27,7 @@
             <img src="img/club-page/inst-plan-3.jpg" alt="">
             <img src="img/club-page/inst-plan-4.jpg" alt="">
         </div>
-        <a href="/{{$data->slug}}/menu" class="menu-label"><img src="images/plan-menu-img.png" alt="" ></a>
+        <a href="menu.php" class="menu-label"><img src="images/plan-menu-img.png" alt="" ></a>
     </div>
     <div class="container-slider-nav ">
 

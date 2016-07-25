@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    @include('partials.product-up-menu')
+    @include('products.top-menu')
 
     <div class="layout-content" >
 

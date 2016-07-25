@@ -27,14 +27,7 @@ class NewsController extends Controller
     
     public function getNewsList()
     {
-	    
 	    $news = News::get(); 
 		return view('news.newslist')->with('data',$news);
-    }
-
-    public function getPromo($slug)
-    {
-        $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
-        return view('products.product-promo')->with('data',$product);
     }
 }

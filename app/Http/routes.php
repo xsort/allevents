@@ -39,7 +39,7 @@ Route::group(['middleware' => ['web']], function () {
     
     Route::get('{slug}/video', 'ProductsController@getVideos');
     
-    Route::get('{slug}/promo', 'NewsController@getPromo');
+    Route::get('{slug}/promo', 'ProductsController@getPromo');
     
     Route::get('{slug}/menu', 'ProductsController@getMenu');
     

@@ -285,13 +285,219 @@
              </div>
 
             <div class="tab-pane" id="photo-galleries">
+ <div class="row">
+                                    <div class="col-xs-12">
+                                        <table id="simple-table" class="table  table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th class="center">
+                                                        <label class="pos-rel">
+                                                            <input type="checkbox" class="ace">
+                                                            <span class="lbl"></span>
+                                                        </label>
+                                                    </th>
+                                                    <th class="detail-col">ID</th>
+                                                    <th>Наименование</th>
+                                                    <th class="hidden-480">Доп. информация</th>
 
+                                                    <th class="hidden-480">Дата</th>
+
+                                                    <th>
+                                                        <i class="ace-icon fa fa-eye-slash bigger-130"></i>
+                                                    </th>
+
+                                                    <th>
+                                                        <i class="menu-icon fa fa-cogs"></i>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr class="">
+                                                    <td class="center">
+                                                        <label class="pos-rel">
+                                                            <input type="checkbox" class="ace">
+                                                            <span class="lbl"></span>
+                                                        </label>
+                                                    </td>
+
+                                                    <td class="center">
+                                                        1
+                                                    </td>
+
+                                                    <td>
+                                                        <a href="#">Вечеринка на пляже</a>
+                                                    </td>
+
+                                                    <td class="hidden-480"></td>
+
+                                                    <td class="hidden-480 center">25-06-2016</td>
+
+                                                    <td class="center">
+                                                        <div class="action-buttons">
+                                                            <a href="javascript:void(0);" class="unvisible">
+                                                                <i class="ace-icon fa fa-eye bigger-130"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+
+                                                    
+
+                                                    <td class="center">
+                                                        <div class="hidden-sm hidden-xs btn-group">
+
+                                                            <button class="btn btn-xs btn-info">
+                                                                <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                                            </button>
+
+                                                            <button class="btn btn-xs btn-danger">
+                                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                            </button>
+
+                                                        </div>
+
+                                                        <div class="hidden-md hidden-lg">
+                                                            <div class="inline pos-rel">
+                                                                <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                                                    <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+                                                                </button>
+
+                                                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+
+                                                                    <li>
+                                                                        <a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
+                                                                            <span class="green">
+                                                                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                                                            </span>
+                                                                        </a>
+                                                                    </li>
+
+                                                                    <li>
+                                                                        <a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
+                                                                            <span class="red">
+                                                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                                            </span>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div><!-- /.span -->
+                                </div>
                  <a href="admin/galleries/create" class="btn btn-yellow modalbox" title="Добавить галерею">Добавить галерею</a>
 
             </div>
 
             <div class="tab-pane" id="news">
+            <div class="row">
+                                    <div class="col-xs-12">
+                                        <table id="simple-table" class="table  table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th class="center">
+                                                        <label class="pos-rel">
+                                                            <input type="checkbox" class="ace">
+                                                            <span class="lbl"></span>
+                                                        </label>
+                                                    </th>
+                                                    <th class="detail-col">ID</th>
+                                                    <th>Наименование</th>
+                                                    <th class="hidden-480">Доп. информация</th>
 
+                                                    <th class="hidden-480">Дата</th>
+
+                                                    <th>
+                                                        <i class="ace-icon fa fa-eye-slash bigger-130"></i>
+                                                    </th>
+
+                                                    <th>
+                                                        <i class="menu-icon fa fa-cogs"></i>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr class="">
+                                                    <td class="center">
+                                                        <label class="pos-rel">
+                                                            <input type="checkbox" class="ace">
+                                                            <span class="lbl"></span>
+                                                        </label>
+                                                    </td>
+
+                                                    <td class="center">
+                                                        1
+                                                    </td>
+
+                                                    <td>
+                                                        <a href="#">Вечеринка на пляже</a>
+                                                    </td>
+
+                                                    <td class="hidden-480"></td>
+
+                                                    <td class="hidden-480 center">25-06-2016</td>
+
+                                                    <td class="center">
+                                                        <div class="action-buttons">
+                                                            <a href="javascript:void(0);" class="unvisible">
+                                                                <i class="ace-icon fa fa-eye bigger-130"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+
+                                                    
+
+                                                    <td class="center">
+                                                        <div class="hidden-sm hidden-xs btn-group">
+
+                                                            <button class="btn btn-xs btn-info">
+                                                                <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                                            </button>
+
+                                                            <button class="btn btn-xs btn-danger">
+                                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                            </button>
+
+                                                        </div>
+
+                                                        <div class="hidden-md hidden-lg">
+                                                            <div class="inline pos-rel">
+                                                                <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                                                    <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+                                                                </button>
+
+                                                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+
+                                                                    <li>
+                                                                        <a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
+                                                                            <span class="green">
+                                                                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                                                            </span>
+                                                                        </a>
+                                                                    </li>
+
+                                                                    <li>
+                                                                        <a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
+                                                                            <span class="red">
+                                                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                                            </span>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div><!-- /.span -->
+                                </div>
                 <a href="admin/news/create" class="btn btn-yellow modalbox" title="Добавить новость">Добавить новость</a>
 
             </div>
@@ -301,6 +507,110 @@
             @include('admin.partials.photos', ['table' => 'background', 'div_id' => 'background', 'width'=> 10000, 'height'=> 10000, 'table_id' => isset($data->id) ? $data->id : 0] )
 
             <div class="tab-pane" id="videor">
+                         <div class="row">
+                                    <div class="col-xs-12">
+                                        <table id="simple-table" class="table  table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th class="center">
+                                                        <label class="pos-rel">
+                                                            <input type="checkbox" class="ace">
+                                                            <span class="lbl"></span>
+                                                        </label>
+                                                    </th>
+                                                    <th class="detail-col">ID</th>
+                                                    <th>Наименование</th>
+                                                    <th class="hidden-480">Доп. информация</th>
+
+                                                    <th class="hidden-480">Дата</th>
+
+                                                    <th>
+                                                        <i class="ace-icon fa fa-eye-slash bigger-130"></i>
+                                                    </th>
+
+                                                    <th>
+                                                        <i class="menu-icon fa fa-cogs"></i>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                <tr class="">
+                                                    <td class="center">
+                                                        <label class="pos-rel">
+                                                            <input type="checkbox" class="ace">
+                                                            <span class="lbl"></span>
+                                                        </label>
+                                                    </td>
+
+                                                    <td class="center">
+                                                        1
+                                                    </td>
+
+                                                    <td>
+                                                        <a href="#">Вечеринка на пляже</a>
+                                                    </td>
+
+                                                    <td class="hidden-480"></td>
+
+                                                    <td class="hidden-480 center">25-06-2016</td>
+
+                                                    <td class="center">
+                                                        <div class="action-buttons">
+                                                            <a href="javascript:void(0);" class="unvisible">
+                                                                <i class="ace-icon fa fa-eye bigger-130"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+
+                                                    
+
+                                                    <td class="center">
+                                                        <div class="hidden-sm hidden-xs btn-group">
+
+                                                            <button class="btn btn-xs btn-info">
+                                                                <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                                            </button>
+
+                                                            <button class="btn btn-xs btn-danger">
+                                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                            </button>
+
+                                                        </div>
+
+                                                        <div class="hidden-md hidden-lg">
+                                                            <div class="inline pos-rel">
+                                                                <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                                                    <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+                                                                </button>
+
+                                                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+
+                                                                    <li>
+                                                                        <a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
+                                                                            <span class="green">
+                                                                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                                                                            </span>
+                                                                        </a>
+                                                                    </li>
+
+                                                                    <li>
+                                                                        <a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
+                                                                            <span class="red">
+                                                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                                                            </span>
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div><!-- /.span -->
+                                </div>
                  <a href="admin/videos/create" class="btn btn-yellow modalbox" title="Добавить видео">Добавить видео</a>
             </div>
 

@@ -14,42 +14,48 @@ class ProductsController extends Controller
         public function getPhotos($slug)
     {
         $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
-		return view('products.product-photo')->with('data', $product);
+		return view('products.photo')->with('data', $product);
     }
 
         public function getVideos($slug)
     {
         $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
-		return view('products.product-video')->with('data', $product);
+		return view('products.video')->with('data', $product);
     }
 
     	public function getPlan($slug)
     {
         $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
-		return view('products.product-plan')->with('data', $product);
+		return view('products.plan')->with('data', $product);
     }
 
         public function getMenu($slug)
     {
         $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
-		return view('products.product-menu')->with('data', $product);
+		return view('products.menu')->with('data', $product);
     }
 
         public function getInterier($slug)
     {
         $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
-        return view('products.product-interier')->with('data', $product);
+        return view('products.interier')->with('data', $product);
     }
 
         public function getCard()
     {
-        return view('products.product-card');
+        return view('products.card');
     }
 
         public function reservation($slug)
     {
         $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
-        return view('products.product-reservation')->with('data', $product);
+        return view('products.reservation')->with('data', $product);
+    }
+
+        public function getPromo($slug)
+    {
+        $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
+        return view('products.promo')->with('data',$product);
     }
 
 }

@@ -3,7 +3,7 @@
 @section('productClass','products-page')
 @section('centerbox')
 <div class="layout-page ">
-@include('partials.product-up-menu')
+@include('products.top-menu')
 <div class="layout-breadcrumbs">
     <div class="container-fluid">
         <div class="container-breadcrumbs">

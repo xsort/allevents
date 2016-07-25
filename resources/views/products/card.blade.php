@@ -26,7 +26,7 @@
 
                                         <td class="item-thumb">
                                             <a href="javascript:void(0)">
-                                                <img src="http://laravel.local/img/menu/menu-6.jpg">
+                                                <img src="img/menu/menu-6.jpg">
                                             </a>
                                         </td>
 
@@ -54,7 +54,7 @@
 
                                         <td class="item-thumb">
                                             <a href="javascript:void(0)">
-                                                <img src="http://laravel.local/img/menu/menu-5.jpg">
+                                                <img src="img/menu/menu-5.jpg">
                                             </a>
                                         </td>
 
@@ -82,7 +82,7 @@
 
                                         <td class="item-thumb">
                                             <a href="javascript:void(0)">
-                                                <img src="http://laravel.local/img/menu/menu-4.jpg">
+                                                <img src="img/menu/menu-4.jpg">
                                             </a>
                                         </td>
 
@@ -110,7 +110,7 @@
 
                                         <td class="item-thumb">
                                             <a href="javascript:void(0)">
-                                                <img src="http://laravel.local/img/menu/menu-2.jpg">
+                                                <img src="img/menu/menu-2.jpg">
                                             </a>
                                         </td>
 
@@ -145,7 +145,7 @@
                 <div class="col-md-12">
                 <div class="row">
 
-
+                    <form  id="cart-form" role="form" method="post" action="index.php?action=main_cart&a=sendcart">
                     <div class="col-md-5 col-md-offset-1 col-md-push-6 margin-b-30">
                         <div class="row">
                             <div id="order_review">
@@ -172,10 +172,20 @@
                                 </table>
                             </div>
                         </div>
+
+                            <div class="container-fluid margin-t-15">
+                                <div class="row">
+                                    <div class="col-xs-12 text-center"> 
+                                        <button class="btn check-accept " type="submit">ОФОРМИТЬ</button>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
+                    
+
 
                     <div class="col-md-6 col-md-pull-6">
-                    <form  id="cart-form" role="form" method="post" action="index.php?action=main_cart&a=sendcart">
+                    
                     <div class="row">
                             <div id="order_review">
                                 <h3 class="order_review_heading">Личные данные</h3>
@@ -208,13 +218,7 @@
                                     </div>
                             </div>
                             <br>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-xs-12 text-center"> 
-                                        <button class="btn check-accept " type="submit">ОФОРМИТЬ</button>
-                                    </div>
-                                </div>
-                            </div>
+
 
                         </div>
                         </form>
@@ -233,4 +237,98 @@
 @section('cardPluginsValidation')
     <script src="js/formValidation.min.js"></script>
     <script src="js/validate_bootstrap.js"></script>
+    <script>
+        $('#cart-form') //инициализируем валидатор форм
+                .formValidation({
+                    fields: {
+                        email: {
+                            validators: {
+                                notEmpty: {
+                                   message: 'Введите Адрес электронной почты.'
+                                },
+                                emailAddress: {
+                                   message: 'Адрес электронной почты был введен неправильно.'
+                                }
+                            }
+                        },
+                        name: {
+                             validators: {
+                                notEmpty: {
+                                    message: 'Введите имя.'
+                                },
+                                 stringLength: {
+                                 min: 3,
+                                 max: 20,
+                                 message: 'Имя должно содержать не меньше 3 символов.'
+                                },
+                                regexp: {
+                                   regexp: /^[a-zA-Zа-яА-Я ]+$/,
+                                   message: 'Имя должно содержать только буквы'
+                                }
+                             }
+                         },
+                        adress: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Введите адрес.'
+                                },
+                                stringLength: {
+                                 min: 3,
+                                 max: 20,
+                                 message: 'Адрес должен содержать не меньше 3 символов.'
+                                },
+                                regexp: {
+                                   regexp: /^[a-zA-Zа-яА-Я,0-9. ]+$/,
+                                   message: 'Адресс должен содержать только буквы'
+                                }
+                             }
+                         },
+                        tel: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Введите телефон.'
+                                },
+                                numeric: {
+                                    message: 'Телефон должен состоять только из цифр.'
+                                },
+                                stringLength: {
+                                 min: 5,
+                                 max: 20,
+                                 message: 'Телефон должен содержать не меньше 5 цифр.'
+                                }
+                            }
+                         }
+                    }
+                })
+                .on('success.form.fv', function(e) {
+                    // Prevent form submission
+                    e.preventDefault();
+        
+                    var $form = $(e.target),
+                        formData = new FormData(),
+                        params   = $form.serializeArray(),
+                        fv    = $(e.target).data('formValidation');
+                        
+                    $.each(params, function(i, val) {
+                        formData.append(val.name, val.value);
+                    });
+                    
+                    $.ajax({
+                            url: $form.attr('action'),
+                            data: formData,
+                            async: false,
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            type: 'POST',
+                            success: function(result) {
+//                              alert("Вы подписаны!");
+                                var confirmlink = lg+"/order-confirmed";
+                                window.location.replace(confirmlink);
+                                    
+                            }   
+                        });
+
+                });
+    </script>
 @stop
