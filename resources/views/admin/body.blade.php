@@ -327,6 +327,57 @@
 {!! HTML::script('ace/assets/js/toastr.min.js') !!}
 {!! HTML::script('ace/assets/js/fancybox2/jquery.fancybox.pack.js') !!}
 
+ <script src="//api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
+    <script type="text/javascript">
+        var x = {$x};
+        var y = {$y};
+        if (x==0) x = 47.02615918;
+        if (y==0) y = 28.83406047;
+        
+       
+        ymaps.ready(function () {
+            var myMap = new ymaps.Map('YMapsID', {
+                    center: [x, y],
+                    zoom: 14,
+                    type: 'yandex#publicMap',
+                    behaviors: ['default', 'scrollZoom']
+                });
+
+            myMap.controls
+                .add('mapTools')
+                .add('zoomControl')
+                .add('typeSelector', { top: 5, right: 5 })
+                .add(new ymaps.control.SearchControl({ noPlacemark: true }), { top: 5, left: 200 });
+
+            new LocationTool(myMap);
+        });
+        
+        function DoneClick(){
+            var str = $("#markerPosition").val();
+            var arr = str.split(',');
+            var x_coord = arr[0].trim();
+            var y_coord = arr[1].trim();
+            $("input[name=x_coord]").val(x_coord);
+            $("input[name=y_coord]").val(y_coord);
+            tb_remove();
+        }
+        
+    </script>
+    <style type="text/css">
+        #YMapsID {
+            width: 600px;
+            height: 350px;
+        }
+        .hero-unit p {
+            line-height: 20px;
+        }
+        .cross-control {
+            background: url(center.gif) no-repeat;
+            position: absolute;
+            width: 16px;
+            height: 16px;
+        }
+    </style>
 
 @yield('scripts')
 

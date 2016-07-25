@@ -935,6 +935,10 @@ $(document).ready(function () {
     });
 });
 
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
                 $('#cart-form') //инициализируем валидатор форм
                 .formValidation({
                     fields: {
@@ -1027,3 +1031,4 @@ $(document).ready(function () {
                         });
 
                 });
+

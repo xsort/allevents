@@ -41,7 +41,7 @@
                                         </td>
 
                                         <td class="item-subtotal">
-                                            <span class="amount">$@{{value*price}} </span> 
+                                            <span class="amount">$@{{total=value*price}} </span> 
                                         </td>
 
                                         <td class="item-remove">
@@ -64,12 +64,12 @@
 
                                         <td class="item-quantity">
                                             <div class="quantity">
-                                                <input min="1" type="number" ng-model="value1" ng-init="value1='1'" value="1">
+                                                <input min="1" type="number" ng-model="value1" ng-init="value1='1'" value="1" string-to-number>
                                             </div>
                                         </td>
 
                                         <td class="item-subtotal">
-                                            <span class="amount">$@{{value1*price1}} </span> 
+                                            <span class="amount">$@{{total1=value1*price1}} </span> 
                                         </td>
 
                                         <td class="item-remove">
@@ -91,13 +91,13 @@
                                         </td>
 
                                         <td class="item-quantity">
-                                            <div class="quantity">
+                                            <div class="quantity" >
                                                 <input min="1" type="number" ng-model="value2" ng-init="value2='1'" value="1">
                                             </div>
                                         </td>
 
                                         <td class="item-subtotal">
-                                            <span class="amount">$@{{value2*price2}} </span> 
+                                            <span class="amount">$@{{total2=value2*price2}} </span> 
                                         </td>
 
                                         <td class="item-remove">
@@ -125,7 +125,7 @@
                                         </td>
 
                                         <td class="item-subtotal">
-                                            <span class="amount">$@{{value3*price3}} </span> 
+                                            <span class="amount">$@{{total3=value3*price3}} </span> 
                                         </td>
 
                                         <td class="item-remove">
@@ -154,18 +154,18 @@
                                 <tbody>
                                     <tr>
                                         <th>Подсчитано</th>
-                                        <td><span class="amount">$229.00</span></td>
+                                        <td><span class="amount">$@{{conc=total+total1+total2+total3}}</span></td>
                                     </tr>
                                     <tr>
                                         <th>Скидка</th>
-                                        <td>
-                                            10%   
+                                        <td ng-model="red" ng-init="red='10'">
+                                            @{{red}}%   
                                         </td>
                                     </tr>
                                     <tr>
                                         <th>Всего</th>
                                             <td>
-                                                <strong><span class="amount">$209.00</span></strong> 
+                                                <strong><span class="amount">$@{{conc}}</span></strong> 
                                             </td>
                                         </tr>
                                 </tbody>
