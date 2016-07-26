@@ -2325,6 +2325,7 @@ li.blue .extend-top-menu li a:hover {
 
 .header-search-menu {
     margin-top: 20px;
+    position: relative;
 
 }
 
@@ -6470,13 +6471,17 @@ border-right: none;
 
 /*--------------------POPUP CHECKOUT----------------------*/
 
-.pull-right:hover .restrain{
+.cart-trig{
+    position: relative;
+}
+
+.pull-right:hover .cart-container{
     transform: scaleY(1);
-        opacity: 1;
+    opacity: 1;
     z-index: 11111111;
 }
 
-.small-cart-content {
+.cart-container {
     width: 270px;
     position: absolute;
     top: 102%;
@@ -6485,9 +6490,9 @@ border-right: none;
     text-align: left;
     right: 15px;
     border: 1px solid #ededed;
-}
+        box-shadow: 0px 0px 2px 0px #181818;
+    margin-top: 10px;
 
-.restrain {
     opacity: 0;
     z-index: 0;
     position: absolute;
@@ -6497,29 +6502,70 @@ border-right: none;
     right: 0;
 }
 
-
-
-.header-search-menu{
-    position: relative;
-}
-
-.header-search-menu .wallet:hover .restrain {
-    opacity: 1;
-    transform: scaleY(1);
-    z-index: 2147483647;
-}
-
-ul.cart-list li {
+.cart-container ul.cart-list li {
     float: left;
     width: 100%;
     margin-bottom: 10px;
+    display: flex;
+    padding-bottom: 10px;
+        border-bottom: 1px solid gainsboro;
 }
 
-.cart-list a {
+.cart-container ul.cart-list li:last-child {
+    border-bottom: 0;
+}
+
+.cart-list {
+    padding:0;
+    float: left;
+    width: 100%;
+        margin: 0;
+}
+
+.cart-list .cart-product-image {
     float: left;
     margin-right: 10px;
-        height: auto;
+    height: auto;
+        min-width: 50px;
+    width: 50px;
 }
+
+.cart-list .cart-product-image img{
+    height: 50px;
+    width:50px;
+}
+
+.cart-product-detail{
+    width: 100%;
+    display: flex;
+}
+
+.cart-product-info{
+    width: 75%;
+}
+
+.cart-product-btn{
+    width: 25%;
+    display: flex;
+}
+
+.cart-product-detail .cart-product-btn a:hover{
+    color:red;
+}
+
+
+.cart-product-detail .cart-product-btn a{
+    width: 50%;
+        display: flex;
+     justify-content: center; 
+    align-items: center;
+    transition: all 0.1s ease;
+}
+
+.cart-product-detail .cart-product-btn a:hover{
+    color:red;
+}
+
 .shopping-cart a {
     font-size: 14px;
     color: #fff;
@@ -6527,18 +6573,12 @@ ul.cart-list li {
     line-height: 40px;
 }
 
-.small-cart-detail .remove {
-    float: right;
-    margin-right: 0;
+.cart-product-detail .cart-remove-btn,.cart-product-detail .cart-edit-btn {
     color: #666;
 }
 
-.small-cart-detail .edit-btn {
-    float: right;
-    margin-right: 8px;
-}
 
-.small-cart-detail .small-cart-name {
+.cart-product-detail .cart-product-name {
     color: #666;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
@@ -6546,17 +6586,18 @@ ul.cart-list li {
     text-transform: capitalize;
     font-size: 14px;
     display: block;
-    margin: 10px 0px 0px 0;
+    margin: 7px 0 0 0;
 }
 
-.small-cart-detail .quantitys {
+.cart-product-detail .quantitys {
     color: #666;
+        margin-top: 3px;
+    display: block;
 }
 
-p.total {
+p.cart-total {
     color: #666;
     float: left;
-    margin: 10px 0 0;
     font-size: 10px;
     text-transform: uppercase;
     font-weight: normal;
@@ -6578,7 +6619,7 @@ span.amount {
     border: 1px solid #ddd;
 }
 
-.small-cart-detail a {
+.cart-product-detail a {
     font-size: 14px;
     color: #fff;
     display: inline-block;
@@ -6587,33 +6628,27 @@ span.amount {
     min-width: auto;
 }
 
-.small-cart-detail .edit-btn img {
+.cart-product-detail .cart-edit-btn img {
     border: none;
 }
 
-.small-cart-detail .quantitys strong {
+.cart-product-detail .quantitys strong {
     font-size: 11px;
     margin-right: 5px;
 }
 
-.small-cart-detail .quantitys span {
+.cart-product-detail .quantitys span {
     font-size: 14px;
     font-weight: 400;
     margin-left: 5px;
 }
 
-.small-cart-content .buttons {
-    padding: 0;
-    float: right;
-    margin: 10px 0 0 5px;
-}
-
-.small-cart-content .buttons .button:hover {
-    background: #e44f4f;
+.cart-container .cart-check-button:hover {
+    background: #b5605b;
     color: #ffffff !important;
 }
 
-.small-cart-content .buttons .button {
+.cart-container  .cart-check-button {
     display: block;
     padding: 8px 25px;
     font-weight: 700;
@@ -6621,9 +6656,12 @@ span.amount {
     font-size: 18px;
     text-align: center;
     white-space: nowrap;
-    background: #65c178;
+    background: #e3605b;
     text-transform: capitalize;
     color: #fff;
+        float: left;
+    width: 100%;
+    margin-top: 5px;
 }
 
 /*-----------------------------------------------------------*/
