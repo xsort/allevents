@@ -285,112 +285,48 @@
              </div>
 
             <div class="tab-pane" id="photo-galleries">
- <div class="row">
-                                    <div class="col-xs-12">
-                                        <table id="simple-table" class="table  table-bordered table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th class="center">
-                                                        <label class="pos-rel">
-                                                            <input type="checkbox" class="ace">
-                                                            <span class="lbl"></span>
-                                                        </label>
-                                                    </th>
-                                                    <th class="detail-col">ID</th>
-                                                    <th>Наименование</th>
-                                                    <th class="hidden-480">Доп. информация</th>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <a href="admin/galleries/create" class="btn btn-yellow modalbox" title="Добавить галерею">Добавить галерею</a>
+                    </div>
+                </div>
+                <div class="space"></div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table id="simple-table" class="table  table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="detail-col">ID</th>
+                                    <th>Наименование</th>
+                                    <th class="hidden-480">Доп. информация</th>
 
-                                                    <th class="hidden-480">Дата</th>
+                                    <th class="hidden-480">Дата</th>
 
-                                                    <th>
-                                                        <i class="ace-icon fa fa-eye-slash bigger-130"></i>
-                                                    </th>
+                                    <th>
+                                        <i class="ace-icon fa fa-eye-slash bigger-130"></i>
+                                    </th>
 
-                                                    <th>
-                                                        <i class="menu-icon fa fa-cogs"></i>
-                                                    </th>
-                                                </tr>
-                                            </thead>
+                                    <th>
+                                        <i class="menu-icon fa fa-cogs"></i>
+                                    </th>
+                                </tr>
+                            </thead>
 
-                                            <tbody>
-                                                <tr class="">
-                                                    <td class="center">
-                                                        <label class="pos-rel">
-                                                            <input type="checkbox" class="ace">
-                                                            <span class="lbl"></span>
-                                                        </label>
-                                                    </td>
-
-                                                    <td class="center">
-                                                        1
-                                                    </td>
-
-                                                    <td>
-                                                        <a href="#">Вечеринка на пляже</a>
-                                                    </td>
-
-                                                    <td class="hidden-480"></td>
-
-                                                    <td class="hidden-480 center">25-06-2016</td>
-
-                                                    <td class="center">
-                                                        <div class="action-buttons">
-                                                            <a href="javascript:void(0);" class="unvisible">
-                                                                <i class="ace-icon fa fa-eye bigger-130"></i>
-                                                            </a>
-                                                        </div>
-                                                    </td>
-
-                                                    
-
-                                                    <td class="center">
-                                                        <div class="hidden-sm hidden-xs btn-group">
-
-                                                            <button class="btn btn-xs btn-info">
-                                                                <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                                            </button>
-
-                                                            <button class="btn btn-xs btn-danger">
-                                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                                            </button>
-
-                                                        </div>
-
-                                                        <div class="hidden-md hidden-lg">
-                                                            <div class="inline pos-rel">
-                                                                <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
-                                                                    <i class="ace-icon fa fa-cog icon-only bigger-110"></i>
-                                                                </button>
-
-                                                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
-
-                                                                    <li>
-                                                                        <a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-                                                                            <span class="green">
-                                                                                <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-                                                                            </span>
-                                                                        </a>
-                                                                    </li>
-
-                                                                    <li>
-                                                                        <a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-                                                                            <span class="red">
-                                                                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
-                                                                            </span>
-                                                                        </a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                
-                                            </tbody>
-                                        </table>
-                                    </div><!-- /.span -->
-                                </div>
-                 <a href="admin/galleries/create" class="btn btn-yellow modalbox" title="Добавить галерею">Добавить галерею</a>
-
+                            <tbody>
+                                @if(isset($data))
+                                    @foreach($data->galleries as $d)
+                                        @include('admin.partials.table_tr', ['table'    => 'galleries',
+                                                                             'id'       => $d->id,
+                                                                             'date'     => $d->created_at,
+                                                                             'name'     => $d->name,
+                                                                             'enabled'  => $d->enabled
+                                                                             ] )
+                                    @endforeach
+                                @endif
+                            </tbody>
+                        </table>
+                    </div><!-- /.span -->
+                </div>
             </div>
 
             <div class="tab-pane" id="news">
@@ -638,9 +574,54 @@
 
     @include('admin.common.modals')
 
+    @include('admin.partials.visibility')
+
+    @include('admin.partials.ajaxdelete')
+
     <script>
         var modalSuccessSubmit = function(result){
-            toastr.success("modalSuccessSubmit");
+            var stop     = false;
+            var table    = result.table;
+            var block_id = "";
+            switch (table) {
+                case 'galleries':
+                        block_id = "photo-galleries";
+                    break;
+                case 'videos':
+                        block_id = "videor";
+                    break;
+                case 'news':
+                        block_id = "news";
+                    break;
+            }
+
+            var $TABLE      = $("#" + block_id + ' table tbody');
+            //смотрим если уже был такой id, т.е. update
+            $TABLE.find('tr').each(function(){
+                var cur_id = $(this).find("input").val();
+                if (cur_id == result.id){
+                    $(this).find('a.modalbox:first').text(result.name);
+                    stop = true;
+                }
+            });
+
+            if (stop) return true;
+
+            var $TR         = $('<tr></tr>');
+            var $TD         = $('<td class="center"></td>');
+            var $INPUT      = $('<td class="center"><input type="hidden" name="'+table+'[]" value="' + result.id + '"  /><span>'+result.id+'</span></td>');
+            var $NAME       = $('<td><a href="admin/'+ table +'/' + result.id + '/edit" class="modalbox" title="Редактирование: ' + result.name + '"> ' + result.name + '</a></td>');
+
+            $TABLE.append(
+                    $TR.append($INPUT)
+                        .append($NAME)
+                        .append($TD)
+                        .append($TD.clone())
+                        .append($TD.clone())
+                        .append($TD.clone())
+                    );
+
+            initModals();
         }
     </script>
 

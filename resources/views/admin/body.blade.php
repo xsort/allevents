@@ -327,10 +327,11 @@
 {!! HTML::script('ace/assets/js/toastr.min.js') !!}
 {!! HTML::script('ace/assets/js/fancybox2/jquery.fancybox.pack.js') !!}
 
+<!--
  <script src="//api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
     <script type="text/javascript">
-        var x = {$x};
-        var y = {$y};
+        var x = 0;
+        var y = 0;
         if (x==0) x = 47.02615918;
         if (y==0) y = 28.83406047;
         
@@ -378,6 +379,7 @@
             height: 16px;
         }
     </style>
+    -->
 
 @yield('scripts')
 

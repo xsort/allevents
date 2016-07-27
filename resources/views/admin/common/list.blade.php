@@ -79,4 +79,14 @@
     </div><!-- /.row -->
 @endsection
 
+@section('styles')
+    {{HTML::style('ace/assets/css/dataTables.responsive.css')}}
+@endsection
+
+@section('scripts')
+
 @include('admin.partials.datatable-init')
+
+@include('admin.partials.visibility')
+
+@endsection

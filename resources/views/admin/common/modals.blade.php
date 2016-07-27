@@ -1,7 +1,12 @@
 {!! HTML::script('ace/assets/js/jquery.form.js') !!}
 
 <script>
+
     $(document).ready(function() {
+        initModals();
+    });
+
+    function initModals(){
         $("a.modalbox").click(function (e) {
             e.preventDefault();
 
@@ -19,20 +24,31 @@
                 });
             });
         });
-    });
+    }
+
+
 
     function initFormAjaxSubmit($form){
         $form.ajaxForm({
+            beforeSerialize: function(form, options) {
+                for (instance in CKEDITOR.instances)
+                    CKEDITOR.instances[instance].updateElement();
+            },
             beforeSubmit:  function(){
                 if (typeof modalBeforeSubmit !== 'undefined' && $.isFunction(modalBeforeSubmit)){
                     return modalBeforeSubmit();
                 }
             },
             success:       function(response){
-                if (response.success == false){
-                    $.each(response.data, function(k, v) {
-                        toastr.error(v);
-                    });
+                if (response.success !== true) {
+
+                    if (response.data !== undefined) {
+                        $.each(response.data, function (k, v) {
+                            toastr.error(v);
+                        });
+                    } else{
+                        toastr.error("ERROR: " + response);
+                    }
 
                     return false;
                 }
@@ -40,7 +56,7 @@
                 $("#myModal").modal('hide');
 
                 if (typeof modalSuccessSubmit !== 'undefined' && $.isFunction(modalSuccessSubmit)){
-                    modalSuccessSubmit(response);
+                    modalSuccessSubmit(response.data);
                 }
             }
         });

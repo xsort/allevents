@@ -62,6 +62,15 @@ class ProductsController extends Controller
             $data->parents()->sync($request->parent);
         }
 
+        //galleries
+        if ($request->galleries) {
+            $pivot = [];
+            foreach($request->galleries as $gallery_id){
+                $pivot[$gallery_id] = ['table' => 'products'];
+            }
+            $data->galleries()->sync($pivot);
+        }
+
         // redirect
         Session::flash('message', trans('common.saved'));
         return redirect('admin/products');

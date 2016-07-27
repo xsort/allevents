@@ -46,7 +46,6 @@ class GalleriesController extends Controller
         }else{
             $data = Galleries::find($id);
         }
-        //dd($request);
 
         $data->name              = $request->name;
         $data->created_at        = $request->date;
@@ -61,7 +60,7 @@ class GalleriesController extends Controller
 
         return response()->json([
             'success' => true,
-            'data'    => ['table' => 'galleries', 'id' => $data->id, 'name' => $data->name, 'slug' => $data->slug]
+            'data'    => ['table' => 'galleries', 'id' => $data->id, 'name' => $data->name]
         ]);
     }
     /**
@@ -84,8 +83,7 @@ class GalleriesController extends Controller
     public function edit($id)
     {
         $data = Galleries::find($id);
-        return view('admin.products.edit')->with(compact($data));
-
+        return view('admin.galleries.edit')->with('data',$data);
     }
 
     /**
@@ -101,7 +99,14 @@ class GalleriesController extends Controller
             'slug'          => 'required|unique:galleries,id,{$id}'
         );
 
-        $this->validate($request, $rules);
+        $validator = Validator::make($request->all(), $rules);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'data'    => $validator->messages()
+            ]);
+        }
 
         return $this->save($request, $id);
     }
