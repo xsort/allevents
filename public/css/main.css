@@ -6475,7 +6475,7 @@ border-right: none;
     position: relative;
 }
 
-.pull-right:hover .cart-container{
+.cart-container.cart-active{
     transform: scaleY(1);
     opacity: 1;
     z-index: 11111111;
@@ -6649,19 +6649,22 @@ span.amount {
 }
 
 .cart-container  .cart-check-button {
-    display: block;
     padding: 8px 25px;
-    font-weight: 700;
     font-family: 'Open Sans', sans-serif;
-    font-size: 18px;
-    text-align: center;
+    font-size: 14px;
     white-space: nowrap;
     background: #e3605b;
     text-transform: capitalize;
     color: #fff;
-        float: left;
+    float: left;
     width: 100%;
     margin-top: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 /*-----------------------------------------------------------*/
