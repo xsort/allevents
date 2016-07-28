@@ -872,6 +872,7 @@ $('.other-category').slick({
     }
   ]
 });
+
 $(document).ready(function () {
     $('.modal-slider-for').slick({
         slidesToShow: 1,
@@ -937,6 +938,21 @@ $(document).ready(function () {
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip()
-})
+});
+
+$(".cart-trig").mouseenter(function () {
+    $('.cart-container').addClass('cart-active');
+});
+
+$(".cart-container").mouseleave(function () {
+    $('.cart-container').removeClass('cart-active');
+});
+
+$(".cart-remove-btn").click(function () {
+    $(this).closest('.cart-item').remove();
+});
 
 
+$(".remove").click(function () {
+    $(this).closest('.item-row').remove();
+});
