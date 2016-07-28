@@ -150,8 +150,8 @@ class PhotosController extends Controller
      * @param $id
      */
     public function UpdatePhotos(Request $request, $id){
-        if (is_null($request->photos)) return;
-        if (!is_numeric($id)) return;
+        if (is_null($request->photos))  return;
+        if (!is_numeric($id))           return;
 
         $photos = Photos::whereIn('id', $request->photos)->get();
 

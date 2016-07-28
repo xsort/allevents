@@ -119,8 +119,9 @@ class GalleriesController extends Controller
      */
     public function destroy($id)
     {
-        Galleries::destroy($id);
-        Session::flash('message', trans('common.deleted'));
-        return back();
+        return response()->json([
+            'success' => true,
+            'data'    => null
+        ]);
     }
 }

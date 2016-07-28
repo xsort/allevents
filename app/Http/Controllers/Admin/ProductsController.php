@@ -71,6 +71,20 @@ class ProductsController extends Controller
             $data->galleries()->sync($pivot);
         }
 
+        //videos
+        if ($request->videos) {
+            $pivot = [];
+            foreach($request->videos as $video_id){
+                $pivot[$video_id] = ['table' => 'products'];
+            }
+            $data->videos()->sync($pivot);
+        }
+
+        //news
+        if ($request->news) {
+            $data->news()->sync($request->news);
+        }
+
         // redirect
         Session::flash('message', trans('common.saved'));
         return redirect('admin/products');

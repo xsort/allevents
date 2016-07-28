@@ -84,7 +84,7 @@ class VideosController extends Controller
     public function edit($id)
     {
         $data = Videos::find($id);
-        return view('admin.videos.edit')->with(compact($data));
+        return view('admin.videos.edit')->with('data',$data);
 
     }
 

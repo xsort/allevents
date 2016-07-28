@@ -6,7 +6,7 @@
     </td>
 
     <td>
-        <a href="admin/galleries/{{ $id }}/edit" class="modalbox" title="Редактирование: {{ $name }}"> {{ $name }}</a>
+        <a href="admin/{{ $table }}/{{ $id }}/edit" class="modalbox" title="Редактирование: {{ $name }}"> {{ $name }}</a>
     </td>
 
     <td class="hidden-480"><!-- доп. информация --></td>
@@ -24,11 +24,11 @@
     <td class="center">
         <div class="hidden-sm hidden-xs btn-group">
 
-            <a href="admin/galleries/{{ $id }}/edit" class="btn btn-xs btn-info modalbox" title="Редактирование: {{ $name }}">
+            <a href="admin/{{ $table }}/{{ $id }}/edit" class="btn btn-xs btn-info modalbox" title="Редактирование: {{ $name }}">
                 <i class="ace-icon fa fa-pencil bigger-120"></i>
             </a>
 
-            <a class="btn btn-xs btn-danger ajaxdelete">
+            <a class="btn btn-xs btn-danger ajaxdelete" data-id="{{ $id }}" data-model="{{ $table }}">
                 <i class="ace-icon fa fa-trash-o bigger-120"></i>
             </a>
 

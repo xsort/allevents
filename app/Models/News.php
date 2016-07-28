@@ -18,5 +18,12 @@ class News extends BaseModel
         return $this->tags->pluck('id')->toArray();
     }
 
+    public function setTopAttribute($value)
+    {
+        if (!isset($value)) $value = false;
+
+        $this->attributes['top'] = $value;
+    }
+
 
 }

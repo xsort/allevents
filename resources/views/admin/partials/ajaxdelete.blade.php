@@ -1,20 +1,22 @@
 <script>
 $(document).ready(function(){
     $('.ajaxdelete').click( function(){
-
-        toastr.error('TODO ajaxdelete');
-        return false;
-
         var id      =  $(this).data('id');
         var model   =  $(this).data('model');
-        var $thisdiv = $(this);
-        $.get("{{ URL::to('admin/json/changevisibility') }}", {'id': id, 'model': model}, function(data){
-            if ($thisdiv.attr('class') == "visible"){
-                $thisdiv.attr('class', 'unvisible');
-            } else{
-                $thisdiv.attr('class', 'visible');
-            }
-        });
+        var token   =  $("input[name=_token]").val();
+        var $tr     =  $(this).closest('tr');
+
+        $.post("admin/"+model+"/"+id,
+                {"_method":"delete", "_token":token},
+                function(result){
+                    if (result.success){
+                        $tr.remove();
+                        toastr.success('Связь удалена');
+                    }else{
+                        toastr.error('ERROR: ' + result);
+                    }
+                }
+        );
     });
 });
 </script>

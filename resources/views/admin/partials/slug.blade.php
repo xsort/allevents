@@ -25,7 +25,7 @@
             $(FORM_ID + 'input[name="' + INPUT_NAME + '"]').keyup(function () {
                 var a = $(this).val();
                 var b = transliterate(a);
-                $("input[name=slug]").val(b);
+                $(FORM_ID + "input[name=slug]").val(b);
             });
         }
     });
