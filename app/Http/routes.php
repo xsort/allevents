@@ -35,19 +35,19 @@ Route::group(['middleware' => ['web']], function () {
     
     Route::get('categories', 'CategoriesController@getCategoriesList');
     
-    Route::get('{slug}/photo', 'ProductsController@getPhotos');
-    
-    Route::get('{slug}/video', 'ProductsController@getVideos');
-    
-    Route::get('{slug}/promo', 'ProductsController@getPromo');
-    
-    Route::get('{slug}/menu', 'ProductsController@getMenu');
-    
-    Route::get('{slug}/plan', 'ProductsController@getPlan');
+    Route::get('{slug}/photo', ['uses'=>'ProductsController@getPhotos', 'as' => 'get_galleries']);
 
-    Route::get('{slug}/interier', 'ProductsController@getInterier');
+    Route::get('{slug}/photo/{name}', ['uses'=>'ProductsController@getGallery', 'as' => 'get_gallery']);
 
-    Route::get('{slug}/reservation', 'ProductsController@reservation');
+    Route::get('{slug}/video', ['uses'=>'ProductsController@getVideos', 'as' => 'get_videos']);
+    
+    Route::get('{slug}/promo', ['uses'=>'ProductsController@getPromo', 'as' => 'get_promo']);
+    
+    Route::get('{slug}/menu', ['uses'=>'ProductsController@getMenu', 'as' => 'get_menu']);
+    
+    Route::get('{slug}/plan', ['uses'=>'ProductsController@getPlan', 'as' => 'get_plan']);
+
+    Route::get('{slug}/reservation', ['uses'=>'ProductsController@getReservation', 'as' => 'get_reservation']);
 
     Route::get('card', 'ProductsController@getCard');
 
@@ -55,7 +55,7 @@ Route::group(['middleware' => ['web']], function () {
     
     Route::get('admin', 'Admin\AdminController@index');
     
-    Route::get('{slug}', 'CommonController@getSlug');
+    Route::get('{slug}', ['uses'=>'CommonController@getSlug', 'as'=>'get_slug']);
 
     Route::get('tag/{id}', 'NewsController@getNewsByTagID');
 

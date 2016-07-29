@@ -235,6 +235,10 @@
                 <a href="#background" data-toggle="tab">Обложка</a>
             </li>
 
+            <li>
+                <a href="#contacts" data-toggle="tab">Контакты</a>
+            </li>
+
             @if (isset($data))
                 <li>
                     <a href="{{ route('admin.menu', $data->id) }}" target="_blank">Меню</a>
@@ -423,6 +427,49 @@
                     </div><!-- /.span -->
                 </div>
 
+            </div>
+
+
+            <div class="tab-pane" id="contacts">
+
+                <div class="tabbable  tabs-left">
+
+                    <ul id="myTab" class="nav nav-tabs">
+                        @foreach($contacts as $key => $contact)
+                        <li @if($key==0)class="active"@endif>
+                            <a href="#contact{{ $contact->id }}" data-toggle="tab">{{ $contact->name }}</a>
+                        </li>
+                        @endforeach
+                    </ul>
+
+                    <div class="tab-content">
+                        @foreach($contacts as $key => $contact)
+                        <div class="tab-pane @if($key==0) in active @endif" id="contact{{ $contact->id }}">
+                            <div class="row">
+                                <label class="col-xs-1">RU:</label>
+                                <div class="col-xs-6">
+                                {{ Form::textarea('contacts['.$contact->id.'][ru]', (isset($contacts_values)  ? $contacts_values[$contact->id]->name : ''),     ['placeholder'=>$contact->name, 'rows'=>'3'])}}
+                                </div>
+                            </div>
+                            <div class="space"></div>
+                            <div class="row">
+                                <label class="col-xs-1">RO:</label>
+                                <div class="col-xs-6">
+                                {{ Form::textarea('contacts['.$contact->id.'][ro]', (isset($contacts_values)  ? $contacts_values[$contact->id]->name_ro : ''),  ['placeholder'=>$contact->name_ro, 'rows'=>'3'])}}
+                                </div>
+                            </div>
+                            <div class="space"></div>
+                            <div class="row">
+                                <label class="col-xs-1">EN:</label>
+                                <div class="col-xs-6">
+                                {{ Form::textarea('contacts['.$contact->id.'][en]', (isset($contacts_values)  ? $contacts_values[$contact->id]->name_en : ''),  ['placeholder'=>$contact->name_en, 'rows'=>'3'])}}
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+
+                </div>
             </div>
 
 

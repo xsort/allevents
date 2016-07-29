@@ -3,65 +3,36 @@
 @section('productClass','products-page')
 @section('centerbox')
 <div class="layout-page ">
-@include('products.top-menu')
-<div class="layout-breadcrumbs">
-    <div class="container-fluid">
-        <div class="container-breadcrumbs">
-            <ul class="breadcrumbs">
-                <li><a href="">Главная</a></li>
-                <li><a href="/kluby">Клубы</a></li>
-                <li><a href="/{{$data->slug}}">{{$data->name}}</a></li>
-                <li>План зала</li>
-            </ul>
-        </div>
-    </div>
-</div>
+
+    @include('products.top-menu')
+
+    @include('partials.breadcrumbs', ['breadcrumbs' => [['title' => trans('common.plan')]]])
 
     <div class="layout-content" >
         <div class="container-fluid">
     <div class="container-slider-for">
         <div class="plan-slider-for">
-            <img src="img/club-page/inst-plan.png" alt="">
-            <img src="img/club-page/inst-plan-1.jpg" alt="">
-            <img src="img/club-page/inst-plan-2.jpg" alt="">
-            <img src="img/club-page/inst-plan-3.jpg" alt="">
-            <img src="img/club-page/inst-plan-4.jpg" alt="">
+            @foreach($data->hallplan as $photo)
+                <img src="uploaded/{{ $photo->source }}" alt="{{ $data->name }}">
+            @endforeach
         </div>
-        <a href="/{{$data->slug}}/menu" class="menu-label"><img src="images/plan-menu-img.png" alt="" ></a>
+        <a href="{{ route('get_menu', $data->slug) }}" class="menu-label"><img src="images/plan-menu-img.png" alt="" ></a>
     </div>
     <div class="container-slider-nav ">
 
 
         <button type="button" class="plan-next "></button>
         <div class="plan-slider-nav">
+            @foreach($data->hallplan as $photo)
             <div class="item">
                 <div class="filter"> </div>
-                <img src="img/club-page/inst-plan.png" height="300px" width="100%" alt="">
-
+                <img src="uploaded/thumbs/{{ $photo->source }}" height="300px" width="100%" alt="{{ $data->name }}">
             </div>
-            <div class="item">
-                <div class="filter"> </div>
-                <img src="img/club-page/inst-plan-1.jpg" alt="">
-
-            </div>
-            <div class="item">
-                <div class="filter"></div>
-                <img src="img/club-page/inst-plan-2.jpg" height="300px" width="100%" alt="">
-
-            </div>
-            <div class="item">
-                <div class="filter"> </div>
-                <img src="img/club-page/inst-plan-3.jpg" alt="">
-
-            </div>
-            <div class="item">
-                <div class="filter"></div>
-                <img src="img/club-page/inst-plan-4.jpg" height="300px" width="100%" alt="">
-
-            </div>
+            @endforeach
         </div>
         <button type="button" class="plan-prev "></button>
     </div>
+    <!--
     <div class="container-fluid section margin-b-40 margin-t-10">
         <div class="row text-center">
             <button type="button" class="other-plan-photo">
@@ -69,6 +40,7 @@
             </button>
         </div>
     </div>
+    -->
     <div class="separator-light"></div>
     
     <div class="section margin-t-80">

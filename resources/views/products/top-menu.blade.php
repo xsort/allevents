@@ -4,7 +4,11 @@
             <div class="hidden-xs">
                
                 <table class="sticky sticky-left">
-                <tr><th><a href="{{$data->slug}}/photo">Фото</a></th><th><a href="{{$data->slug}}/video">Видео</a></th><th><a href="{{$data->slug}}/promo">Акции</a></th><th><a href="{{$data->slug}}/plan">План зала</a></th></tr>
+                     <tr>
+                         <th><a href="{{ route('get_galleries',  $data->slug) }}">{{ trans('common.photo') }}</a></th>
+                         <th><a href="{{ route('get_videos',     $data->slug) }}">{{ trans('common.video') }}</a></th>
+                         <th><a href="{{ route('get_promo',      $data->slug) }}">{{ trans('common.promo') }}</a></th>
+                     </tr>
                 </table>
                 <a href="{{$data->slug}}" class="menu-logo hidden-sm hidden-xs">
                     <span>
@@ -12,20 +16,22 @@
                     </span>
                 </a>
                 <table class="sticky sticky-right">
-                <tr><th ><a href="{{$data->slug}}/menu">Меню</a></th><th><a href="{{$data->slug}}/interier">Интерьер</a></th><th ><a href="{{$data->slug}}/reservation">Резервирование</a></th></tr>
+                    <tr>
+                        <th><a href="{{ route('get_plan',       $data->slug) }}">{{ trans('common.plan') }}</a></th>
+                        <th><a href="{{ route('get_menu',       $data->slug) }}">{{ trans('common.menu') }}</a></th>
+                        <th><a href="{{ route('get_reservation',$data->slug) }}">{{ trans('common.reservation') }}</a></tr>
                 </table>
             </div>
              
             <div class="visible-xs">
                 <button type="button" class="visible-xs togglebtn-second "><i class="fa fa-reorder fa-2x"></i></button>
                 <ul class="nav xs-menu-second">
-                    <li><a href="{{$data->slug}}/photo">Фото</a></li>
-                    <li><a href="{{$data->slug}}/video">Видео</a></li>
-                    <li><a href="{{$data->slug}}/promo">Акции</a></li>
-                    <li><a href="{{$data->slug}}/plan">План зала</a></li>
-                    <li><a href="{{$data->slug}}/menu">Меню</a></li>
-                    <li><a href="{{$data->slug}}/interier">Интерьер</a></li>
-                    <li><a href="{{$data->slug}}/reservation">Резервирование</a></li>
+                    <li><a href="{{ route('get_galleries',  $data->slug) }}">{{ trans('common.photo') }}</a></li>
+                    <li><a href="{{ route('get_videos',     $data->slug) }}">{{ trans('common.video') }}</a></li>
+                    <li><a href="{{ route('get_promo',      $data->slug) }}">{{ trans('common.promo') }}</a></li>
+                    <li><a href="{{ route('get_plan',       $data->slug) }}">{{ trans('common.plan') }}</a></li>
+                    <li><a href="{{ route('get_menu',       $data->slug) }}">{{ trans('common.menu') }}</a></li>
+                    <li><a href="{{ route('get_reservation',$data->slug) }}">{{ trans('common.reservation') }}</a></li>
                 </ul>
             </div>
 

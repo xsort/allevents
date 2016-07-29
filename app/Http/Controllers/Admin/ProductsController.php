@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Contacts;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -20,7 +21,8 @@ class ProductsController extends Controller
 
     public function create(){
         $categories = Categories::lists('name','id')->toArray();
-        return view('admin.products.edit')->with('categories', $categories);
+        $contacts   = Contacts::all();
+        return view('admin.products.edit')->with(compact('categories','contacts'));
     }
 
     public function store(Request $request)
@@ -42,7 +44,7 @@ class ProductsController extends Controller
         }else{
             $data = Products::find($id);
         }
-		//dd($request);
+
 
         $data->name              = $request->name;
         $data->top               = $request->top;
@@ -85,6 +87,18 @@ class ProductsController extends Controller
             $data->news()->sync($request->news);
         }
 
+
+        //contacts
+        if ($request->contacts){
+            $pivot = [];
+            foreach($request->contacts as $key => $contact){
+                $pivot[$key] = ['name'    => $contact['ru'],
+                                'name_ro' => $contact['ro'],
+                                'name_en' => $contact['en']];
+            }
+            $data->contacts()->sync($pivot);
+        }
+
         // redirect
         Session::flash('message', trans('common.saved'));
         return redirect('admin/products');
@@ -108,10 +122,12 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $data           = Products::find($id);
-        $categories     = Categories::lists('name','id')->toArray();
-        $parents        = $data->parents->pluck('id')->toArray();
-        return view('admin.products.edit')->with('data', $data)->with('categories', $categories)->with('parents',$parents);
+        $data              = Products::find($id);
+        $categories        = Categories::lists('name','id')->toArray();
+        $parents           = $data->parents->pluck('id')->toArray();
+        $contacts          = Contacts::all();
+        $contacts_values   = $data->getContactsArray();
+        return view('admin.products.edit')->with(compact('data','categories','parents','contacts','contacts_values'));
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Lang;
 use Jenssegers\Date\Date;
 
 class BaseModel extends Model
@@ -31,13 +32,6 @@ class BaseModel extends Model
         }else{
             $this->attributes['slug'] = str_slug($value);
         }
-    }
-    
-    public function getSlugAttribute($value) {
-        $lang = "";
-        if ($lang == "ro") return "ro/".$value;
-        if ($lang == "en") return "en/".$value;
-        return $value;
     }
     
     public function setMetaDescriptionAttribute($values) {
@@ -93,7 +87,7 @@ class BaseModel extends Model
             $this->attributes['description_' . $key] = $value;
         }
     }
-    
+
     public function setDescriptionShortAttribute($values) {
         foreach($values as $key=>$value){
             if ($key == "ru") {
@@ -114,6 +108,36 @@ class BaseModel extends Model
         return Date::parse($date)->format($this->dateFormat);
     }
 
+    public function getDescriptionAttribute()
+    {
+        $locale = Lang::locale();
+        if ($locale == "ru"){
+            return $this->attributes['description'];
+        }else{
+            return $this->attributes['description_' . $locale];
+        }
+    }
+
+    public function getDescriptionShortAttribute()
+    {
+        $locale = Lang::locale();
+        if ($locale == "ru"){
+            return $this->attributes['description_short'];
+        }else{
+            return $this->attributes['description_short_' . $locale];
+        }
+    }
+
+    public function getNameAttribute()
+    {
+        $locale = Lang::locale();
+        if ($locale == "ru"){
+            return $this->attributes['name'];
+        }else{
+            return $this->attributes['name_' . $locale];
+        }
+    }
+
     public function photos(){
         return $this->hasMany('App\Models\Photos','table_id')->where('table', $this->getTable())->orderBy('sort');
     }
@@ -122,8 +146,16 @@ class BaseModel extends Model
         return $this->belongsToMany('App\Models\Galleries', 'galleries_xref', 'table_id', 'galleries_id')->where('table', $this->getTable());
     }
 
+    public function getVisibleGalleriesAttribute(){
+        return $this->galleries()->where("enabled", true)->get();
+    }
+
     public function videos() {
         return $this->belongsToMany('App\Models\Videos', 'videos_xref', 'table_id', 'videos_id')->where('table', $this->getTable());
+    }
+
+    public function getVisibleVideosAttribute(){
+        return $this->videos()->where("enabled", true)->get();
     }
 
     public function meta(){

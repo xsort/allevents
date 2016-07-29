@@ -3,19 +3,9 @@
 @section('productClass','products-page')
 @section('centerbox')
 <div class="layout-page ">
-@include('products.top-menu')
-<div class="layout-breadcrumbs">
-    <div class="container-fluid">
-        <div class="container-breadcrumbs">
-            <ul class="breadcrumbs">
-                <li><a href="">Главная</a></li>
-                <li><a href="/kluby">Клубы</a></li>
-                <li><a href="/{{$data->slug}}">{{$data->name}}</a></li>
-                <li>Акции</li>
-            </ul>
-        </div>
-    </div>
-</div>
+    @include('products.top-menu')
+
+    @include('partials.breadcrumbs', ['breadcrumbs' => [['title' => trans('common.promo')]]])
 
     <div class="layout-content" >
         <div class="container-fluid">
