@@ -22,9 +22,8 @@ class Products extends BaseModel
 		return $this->hasMany('App\Models\Photos', 'table_id')->where('table', 'hall_plan')->orderBy('sort');
 	}
 
-	public function getContactAttribute(){
-		//TODO
-		return "TODO";
+	public function menu(){
+		return $this->hasMany('App\Models\MenuProducts', 'product_id');
 	}
 
 	public function getContactsArray(){

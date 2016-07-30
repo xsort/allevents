@@ -3,512 +3,178 @@
 @section('productClass','products-page')
 @section('centerbox')
 <div class="layout-page ">
+
     @include('products.top-menu')
 
     @include('partials.breadcrumbs', ['breadcrumbs' => [['title' => trans('common.menu')]]])
 
     <div class="layout-content" >
-<div class="container-fluid">
-    <div class="row">
-
-
-        <div class="menu-container">
-            <div class="col-md-3  menu-left-container">
-                <div class="menu-left-title">Меню нашего ресторана
-                    <button type="button" class="visible-xs visible-sm menu-left-btn "><i class="fa fa-reorder "></i></button>
-                </div>
-                <ul class="menu-left">
-                    <li class="has-sub"><a href="javascript:void(0)" class="left-a">Холодные закуски<span class="fa"></span></a>
-                        <ul class="sub-menu-left">
-                            <li><a href="#">Закуска "Рафаэлки"</a></li>
-                            <li><a href="#">Тарталетки "Казанова"</a></li>
-                            <li><a href="#">Бутерброды</a></li>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="menu-container">
+                    <div class="col-md-3  menu-left-container">
+                        <div class="menu-left-title">{{ trans('common.menu') }} {{ $data->name }}
+                            <button type="button" class="visible-xs visible-sm menu-left-btn "><i class="fa fa-reorder "></i></button>
+                        </div>
+                        <ul class="menu-left">
+                            <li class="has-sub"><a href="javascript:void(0)" class="left-a">Холодные закуски<span class="fa"></span></a>
+                                <ul class="sub-menu-left">
+                                    <li><a href="#">Закуска "Рафаэлки"</a></li>
+                                    <li><a href="#">Тарталетки "Казанова"</a></li>
+                                    <li><a href="#">Бутерброды</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-sub"><a href="javascript:void(0)" class="left-a">Горячие закуски<span class="fa"></span></a>
+                                <ul class="sub-menu-left">
+                                    <li><a href="#" >Закуска "Рафаэлки"</a></li>
+                                    <li><a href="#" class="active">Тарталетки "Казанова"</a></li>
+                                    <li><a href="#">Бутерброды </a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Супы</a></li>
+                            <li><a href="#">Блюда из рыбы</a></li>
+                            <li><a href="#">Морепродукты</a></li>
+                            <li><a href="javascript:void(0)">Блюда из мяса и птицы</a></li>
+                            <li><a href="javascript:void(0)">Сыры и десерты</a></li>
+                            <li><a href="javascript:void(0)">Кофе и чай</a></li>
+                            <li><a href="javascript:void(0)">Безалкогольные напитки</a></li>
+                            <li><a href="javascript:void(0)">Ночь и завтрак</a></li>
+                            <li class="has-sub"><a href="javascript:void(0)">Блюда на заказ<span class="fa"></span></a>
+                             <ul class="sub-menu-left">
+                                    <li><a href="#">Закуска "Рафаэлки"</a></li>
+                                    <li><a href="#">Тарталетки "Казанова"</a></li>
+                                    <li><a href="#">Бутерброды на праздничный стол</a></li>
+                                </ul></li>
+                            <li><a href="javascript:void(0)">Обеденная формула</a></li>
+                            <li><a href="javascript:void(0)">Закуски и блюда дня</a></li>
+                            <li><a href="javascript:void(0)">Вино и бар</a></li>
+                            <li><a href="javascript:void(0)">Табак</a></li>
                         </ul>
-                    </li>
-                    <li class="has-sub"><a href="javascript:void(0)" class="left-a">Горячие закуски<span class="fa"></span></a>
-                        <ul class="sub-menu-left">
-                            <li><a href="#" >Закуска "Рафаэлки"</a></li>
-                            <li><a href="#" class="active">Тарталетки "Казанова"</a></li>
-                            <li><a href="#">Бутерброды </a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Супы</a></li>
-                    <li><a href="#">Блюда из рыбы</a></li>
-                    <li><a href="#">Морепродукты</a></li>
-                    <li><a href="javascript:void(0)">Блюда из мяса и птицы</a></li>
-                    <li><a href="javascript:void(0)">Сыры и десерты</a></li>
-                    <li><a href="javascript:void(0)">Кофе и чай</a></li>
-                    <li><a href="javascript:void(0)">Безалкогольные напитки</a></li>
-                    <li><a href="javascript:void(0)">Ночь и завтрак</a></li>
-                    <li class="has-sub"><a href="javascript:void(0)">Блюда на заказ<span class="fa"></span></a>
-                     <ul class="sub-menu-left">
-                            <li><a href="#">Закуска "Рафаэлки"</a></li>
-                            <li><a href="#">Тарталетки "Казанова"</a></li>
-                            <li><a href="#">Бутерброды на праздничный стол</a></li>
-                        </ul></li>
-                    <li><a href="javascript:void(0)">Обеденная формула</a></li>
-                    <li><a href="javascript:void(0)">Закуски и блюда дня</a></li>
-                    <li><a href="javascript:void(0)">Вино и бар</a></li>
-                    <li><a href="javascript:void(0)">Табак</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-3 col-sm-6">
-                <a href="javascript:void(0)" class="menu-toggle">
-                    <figure class="menu-item menu-item-1">
-                        <img src="http://salat-s-foto.ru/wp-content/uploads/2016/01/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82-%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9.jpg" height="180px;" width="100%" alt="">
-                        <div class="price-white"></div>
-                        <div class="price-red"></div>
-                        <div class="price-price">
-                            <span>480</span>
-                            <span>лей</span>
-                        </div>
-                        <figurecaption class="menu">
-
-                            <div class="menu-title">Lorem ipsum dolor sit amet.</div>
-                            <div class="menu-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error facere non repellat, perspiciatis repellendus dolor eum nisi cum.</div>
-                        </figurecaption>
-
-                    </figure>
-                </a>
-                <div class="menu-order">
-                    <a href="javascript:void(0)" class="order"><span>Добавить в корзину</span></a>
-                    <div class="pull-right">
-                        <a href="javascript:void(0)" class="low"><span>-</span></a>
-                        <input class="menu-input" type="text" value="1">
-                        <a href="javascript:void(0)" class="hight"><span>+</span></a>
                     </div>
+
+                    @foreach($menu_products as $product)
+                    <div class="col-md-3 col-sm-6">
+                        <a href="javascript:void(0)" class="menu-toggle">
+                            <figure class="menu-item menu-item-{{ random_int(1, 5) }}">
+                                <img src="{{ isset($product->photos{0}) ? 'uploaded/thumbs/' . $product->photos{0}->source : 'images/inst-menu-photo/photo.png'}}" height="180px;" width="100%" alt="{{ $product->name }}">
+                                <div class="price-white"></div>
+                                <div class="price-red"></div>
+                                <div class="price-price">
+                                    @if ($product->price > 0)
+                                        <span>{{ $product->price }}</span>
+                                        <span>{{ trans('common.lei') }}</span>
+                                    @endif
+                                </div>
+                                <figurecaption class="menu">
+                                    <div class="menu-title">{{ $product->name }}</div>
+                                    <div class="menu-text">{{ str_limit(strip_tags($product->description), 100) }}</div>
+                                </figurecaption>
+                            </figure>
+                        </a>
+
+                        <div class="menu-order">
+                            <a href="javascript:void(0)" class="order"><span>Добавить в корзину</span></a>
+                            <div class="pull-right">
+                                <a href="javascript:void(0)" class="low"><span>-</span></a>
+                                <input class="menu-input" type="text" value="1">
+                                <a href="javascript:void(0)" class="hight"><span>+</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <a href="javascript:void(0)" class="menu-toggle">
-                    <figure class="menu-item menu-item-2">
-                        <img src="http://salat-s-foto.ru/wp-content/uploads/2016/01/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82-%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9.jpg" height="180px;" width="100%" alt="">
-                        <div class="price-white"></div>
-                        <div class="price-red"></div>
-                        <div class="price-price">
-                            <span>480</span>
-                            <span>лей</span>
-                        </div>
-                        <figurecaption class="menu">
-
-                            <div class="menu-title">Lorem ipsum dolor sit amet.</div>
-                            <div class="menu-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error facere non repellat, perspiciatis repellendus dolor eum nisi cum.</div>
-                        </figurecaption>
-                    </figure>
-                    <div class="menu-order">
-                        <a href="javascript:void(0)" class="order"><span>Добавить в корзину</span></a>
-                        <div class="pull-right">
-                            <a href="javascript:void(0)" class="low"><span>-</span></a>
-                            <input class="menu-input" type="text" value="1">
-                            <a href="javascript:void(0)" class="hight"><span>+</span></a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <a href="javascript:void(0)" class="menu-toggle">
-                    <figure class="menu-item menu-item-3">
-                        <img src="http://salat-s-foto.ru/wp-content/uploads/2016/01/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82-%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9.jpg" height="180px;" width="100%" alt="">
-                        <div class="price-white"></div>
-                        <div class="price-red"></div>
-                        <div class="price-price">
-                            <span>480</span>
-                            <span>лей</span>
-                        </div>
-                        <figurecaption class="menu">
-
-                            <div class="menu-title">Lorem ipsum dolor sit amet.</div>
-                            <div class="menu-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error facere non repellat, perspiciatis repellendus dolor eum nisi cum.</div>
-                        </figurecaption>
-                    </figure>
-                    <div class="menu-order">
-                        <a href="javascript:void(0)" class="order"><span>Добавить в корзину</span></a>
-                        <div class="pull-right">
-                            <a href="javascript:void(0)" class="low"><span>-</span></a>
-                            <input class="menu-input" type="text" value="1">
-                            <a href="javascript:void(0)" class="hight"><span>+</span></a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <a href="javascript:void(0)" class="menu-toggle">
-                    <figure class="menu-item menu-item-1">
-                        <img src="http://salat-s-foto.ru/wp-content/uploads/2016/01/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82-%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9.jpg" height="180px;" width="100%" alt="">
-                        <div class="price-white"></div>
-                        <div class="price-red"></div>
-                        <div class="price-price">
-                            <span>480</span>
-                            <span>лей</span>
-                        </div>
-                        <figurecaption class="menu">
-
-                            <div class="menu-title">Lorem ipsum dolor sit amet.</div>
-                            <div class="menu-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error facere non repellat, perspiciatis repellendus dolor eum nisi cum.</div>
-                        </figurecaption>
-                    </figure>
-                    <div class="menu-order">
-                        <a href="javascript:void(0)" class="order"><span>Добавить в корзину</span></a>
-                        <div class="pull-right">
-                            <a href="javascript:void(0)" class="low"><span>-</span></a>
-                            <input class="menu-input" type="text" value="1">
-                            <a href="javascript:void(0)" class="hight"><span>+</span></a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-3 col-sm-6">
-                <a href="javascript:void(0)" class="menu-toggle">
-                    <figure class="menu-item menu-item-5">
-                        <img src="http://salat-s-foto.ru/wp-content/uploads/2016/01/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82-%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9.jpg" height="180px;" width="100%" alt="">
-                        <div class="price-white"></div>
-                        <div class="price-red"></div>
-                        <div class="price-price">
-                            <span>480</span>
-                            <span>лей</span>
-                        </div>
-                        <figurecaption class="menu">
-
-                            <div class="menu-title">Lorem ipsum dolor sit amet.</div>
-                            <div class="menu-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error facere non repellat, perspiciatis repellendus dolor eum nisi cum.</div>
-                        </figurecaption>
-                    </figure>
-                    <div class="menu-order">
-                        <a href="javascript:void(0)" class="order"><span>Добавить в корзину</span></a>
-                        <div class="pull-right">
-                            <a href="javascript:void(0)" class="low"><span>-</span></a>
-                            <input class="menu-input" type="text" value="1">
-                            <a href="javascript:void(0)" class="hight"><span>+</span></a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-md-3 col-sm-6">
-                <a href="javascript:void(0)" class="menu-toggle">
-                    <figure class="menu-item menu-item-3">
-                        <img src="http://salat-s-foto.ru/wp-content/uploads/2016/01/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82-%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9.jpg" height="180px;" width="100%" alt="">
-                        <div class="price-white"></div>
-                        <div class="price-red"></div>
-                        <div class="price-price">
-                            <span>480</span>
-                            <span>лей</span>
-                        </div>
-                        <figurecaption class="menu">
-
-                            <div class="menu-title">Lorem ipsum dolor sit amet.</div>
-                            <div class="menu-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error facere non repellat, perspiciatis repellendus dolor eum nisi cum.</div>
-                        </figurecaption>
-                    </figure>
-
-                    <div class="menu-order">
-                        <a href="javascript:void(0)" class="order"><span>Добавить в корзину</span></a>
-                        <div class="pull-right">
-                            <a href="javascript:void(0)" class="low"><span>-</span></a>
-                            <input class="menu-input" type="text" value="1">
-                            <a href="javascript:void(0)" class="hight"><span>+</span></a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <a href="javascript:void(0)" class="menu-toggle">
-                    <figure class="menu-item menu-item-4">
-                        <img src="http://salat-s-foto.ru/wp-content/uploads/2016/01/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82-%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9.jpg" height="180px;" width="100%" alt="">
-                        <div class="price-white"></div>
-                        <div class="price-red"></div>
-                        <div class="price-price">
-                            <span>480</span>
-                            <span>лей</span>
-                        </div>
-                        <figurecaption class="menu">
-
-                            <div class="menu-title">Lorem ipsum dolor sit amet.</div>
-                            <div class="menu-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error facere non repellat, perspiciatis repellendus dolor eum nisi cum.</div>
-                        </figurecaption>
-                    </figure>
-                    <div class="menu-order">
-                        <a href="javascript:void(0)" class="order"><span>Добавить в корзину</span></a>
-                        <div class="pull-right">
-                            <a href="javascript:void(0)" class="low"><span>-</span></a>
-                            <input class="menu-input" type="text" value="1">
-                            <a href="javascript:void(0)" class="hight"><span>+</span></a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <a href="javascript:void(0)" class="menu-toggle">
-                    <figure class="menu-item menu-item-2">
-                        <img src="http://salat-s-foto.ru/wp-content/uploads/2016/01/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82-%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9.jpg" height="180px;" width="100%" alt="">
-                        <div class="price-white"></div>
-                        <div class="price-red"></div>
-                        <div class="price-price">
-                            <span>480</span>
-                            <span>лей</span>
-                        </div>
-                        <figurecaption class="menu">
-
-                            <div class="menu-title">Lorem ipsum dolor sit amet.</div>
-                            <div class="menu-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error facere non repellat, perspiciatis repellendus dolor eum nisi cum.</div>
-                        </figurecaption>
-                    </figure>
-
-                    <div class="menu-order">
-                        <a href="javascript:void(0)" class="order"><span>Добавить в корзину</span></a>
-                        <div class="pull-right">
-                            <a href="javascript:void(0)" class="low"><span>-</span></a>
-                            <input class="menu-input" type="text" value="1">
-                            <a href="javascript:void(0)" class="hight"><span>+</span></a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <a href="javascript:void(0)" class="menu-toggle">
-                    <figure class="menu-item menu-item-4">
-                        <img src="http://salat-s-foto.ru/wp-content/uploads/2016/01/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82-%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9.jpg" height="180px;" width="100%" alt="">
-                        <div class="price-white"></div>
-                        <div class="price-red"></div>
-                        <div class="price-price">
-                            <span>480</span>
-                            <span>лей</span>
-                        </div>
-                        <figurecaption class="menu">
-
-                            <div class="menu-title">Lorem ipsum dolor sit amet.</div>
-                            <div class="menu-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error facere non repellat, perspiciatis repellendus dolor eum nisi cum.</div>
-                        </figurecaption>
-                    </figure>
-                    <div class="menu-order">
-                        <a href="javascript:void(0)" class="order"><span>Добавить в корзину</span></a>
-                        <div class="pull-right">
-                            <a href="javascript:void(0)" class="low"><span>-</span></a>
-                            <input class="menu-input" type="text" value="1">
-                            <a href="javascript:void(0)" class="hight"><span>+</span></a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <a href="javascript:void(0)" class="menu-toggle">
-                    <figure class="menu-item menu-item-3">
-                        <img src="http://salat-s-foto.ru/wp-content/uploads/2016/01/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82-%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9.jpg" height="180px;" width="100%" alt="">
-                        <div class="price-white"></div>
-                        <div class="price-red"></div>
-                        <div class="price-price">
-                            <span>480</span>
-                            <span>лей</span>
-                        </div>
-                        <figurecaption class="menu">
-
-                            <div class="menu-title">Lorem ipsum dolor sit amet.</div>
-                            <div class="menu-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error facere non repellat, perspiciatis repellendus dolor eum nisi cum.</div>
-                        </figurecaption>
-                    </figure>
-                    <div class="menu-order">
-                        <a href="javascript:void(0)" class="order"><span>Добавить в корзину</span></a>
-                        <div class="pull-right">
-                            <a href="javascript:void(0)" class="low"><span>-</span></a>
-                            <input class="menu-input" type="text" value="1">
-                            <a href="javascript:void(0)" class="hight"><span>+</span></a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <a href="javascript:void(0)" class="menu-toggle">
-                    <figure class="menu-item menu-item-1">
-                        <img src="http://salat-s-foto.ru/wp-content/uploads/2016/01/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82-%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9.jpg" height="180px;" width="100%" alt="">
-                        <div class="price-white"></div>
-                        <div class="price-red"></div>
-                        <div class="price-price">
-                            <span>480</span>
-                            <span>лей</span>
-                        </div>
-                        <figurecaption class="menu">
-
-                            <div class="menu-title">Lorem ipsum dolor sit amet.</div>
-                            <div class="menu-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error facere non repellat, perspiciatis repellendus dolor eum nisi cum.</div>
-                        </figurecaption>
-                    </figure>
-                    <div class="menu-order">
-                        <a href="javascript:void(0)" class="order"><span>Добавить в корзину</span></a>
-                        <div class="pull-right">
-                            <a href="javascript:void(0)" class="low"><span>-</span></a>
-                            <input class="menu-input" type="text" value="1">
-                            <a href="javascript:void(0)" class="hight"><span>+</span></a>
-                        </div>
-                    </div>
-                </a>
-
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <a href="javascript:void(0)" class="menu-toggle">
-                    <figure class="menu-item menu-item-5">
-                        <img src="http://salat-s-foto.ru/wp-content/uploads/2016/01/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82-%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9.jpg" height="180px;" width="100%" alt="">
-                        <div class="price-white"></div>
-                        <div class="price-red"></div>
-                        <div class="price-price">
-                            <span>480</span>
-                            <span>лей</span>
-                        </div>
-                        <figurecaption class="menu">
-
-                            <div class="menu-title">Lorem ipsum dolor sit amet.</div>
-                            <div class="menu-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error facere non repellat, perspiciatis repellendus dolor eum nisi cum.</div>
-                        </figurecaption>
-                    </figure>
-                    <div class="menu-order">
-                        <a href="javascript:void(0)" class="order"><span>Добавить в корзину</span></a>
-                        <a href="javascript:void(0)" class="low"><span>-</span></a>
-                        <input class="menu-input" type="text" value="1">
-                        <a href="javascript:void(0)" class="hight"><span>+</span></a>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <a href="javascript:void(0)" class="menu-toggle">
-                    <figure class="menu-item menu-item-3">
-                        <img src="http://salat-s-foto.ru/wp-content/uploads/2016/01/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82-%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9.jpg" height="180px;" width="100%" alt="">
-                        <div class="price-white"></div>
-                        <div class="price-red"></div>
-                        <div class="price-price">
-                            <span>480</span>
-                            <span>лей</span>
-                        </div>
-                        <figurecaption class="menu">
-
-                            <div class="menu-title">Lorem ipsum dolor sit amet.</div>
-                            <div class="menu-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error facere non repellat, perspiciatis repellendus dolor eum nisi cum.</div>
-                        </figurecaption>
-                    </figure>
-
-                    <div class="menu-order">
-                        <a href="javascript:void(0)" class="order"><span>Добавить в корзину</span></a>
-                        <div class="pull-right">
-                            <a href="javascript:void(0)" class="low"><span>-</span></a>
-                            <input class="menu-input" type="text" value="1">
-                            <a href="javascript:void(0)" class="hight"><span>+</span></a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <a href="javascript:void(0)" class="menu-toggle">
-                    <figure class="menu-item menu-item-4">
-                        <img src="http://salat-s-foto.ru/wp-content/uploads/2016/01/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82-%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9.jpg" height="180px;" width="100%" alt="">
-                        <div class="price-white"></div>
-                        <div class="price-red"></div>
-                        <div class="price-price">
-                            <span>480</span>
-                            <span>лей</span>
-                        </div>
-                        <figurecaption class="menu">
-
-                            <div class="menu-title">Lorem ipsum dolor sit amet.</div>
-                            <div class="menu-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error facere non repellat, perspiciatis repellendus dolor eum nisi cum.</div>
-                        </figurecaption>
-                    </figure>
-                    <div class="menu-order">
-                        <a href="javascript:void(0)" class="order"><span>Добавить в корзину</span></a>
-                        <div class="pull-right">
-                            <a href="javascript:void(0)" class="low"><span>-</span></a>
-                            <input class="menu-input" type="text" value="1">
-                            <a href="javascript:void(0)" class="hight"><span>+</span></a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <figure class="menu-item menu-item-2">
-                    <a href="javascript:void(0)" class="menu-toggle">
-                        <img src="http://salat-s-foto.ru/wp-content/uploads/2016/01/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82-%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9.jpg" height="180px;" width="100%" alt="">
-                        <div class="price-white"></div>
-                        <div class="price-red"></div>
-                        <div class="price-price">
-                            <span>480</span>
-                            <span>лей</span>
-                        </div>
-                        <figurecaption class="menu">
-
-                            <div class="menu-title">Lorem ipsum dolor sit amet.</div>
-                            <div class="menu-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error facere non repellat, perspiciatis repellendus dolor eum nisi cum.</div>
-                        </figurecaption>
-                </figure>
-
-                <div class="menu-order">
-                    <a href="javascript:void(0)" class="order"><span>Добавить в корзину</span></a>
-                    <div class="pull-right">
-                        <a href="javascript:void(0)" class="low"><span>-</span></a>
-                        <input class="menu-input" type="text" value="1">
-                        <a href="javascript:void(0)" class="hight"><span>+</span></a>
-                    </div>
-                </div>
-                </figure>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <a href="javascript:void(0)" class="menu-toggle">
-                    <figure class="menu-item menu-item-4">
-                        <img src="http://salat-s-foto.ru/wp-content/uploads/2016/01/%D0%A1%D0%B0%D0%BB%D0%B0%D1%82-%D0%A6%D0%B5%D0%B7%D0%B0%D1%80%D1%8C-%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9.jpg" height="180px;" width="100%" alt="">
-                        <div class="price-white"></div>
-                        <div class="price-red"></div>
-                        <div class="price-price">
-                            <span>480</span>
-                            <span>лей</span>
-                        </div>
-                        <figurecaption class="menu">
-
-                            <div class="menu-title">Lorem ipsum dolor sit amet.</div>
-                            <div class="menu-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error facere non repellat, perspiciatis repellendus dolor eum nisi cum.</div>
-                        </figurecaption>
-                    </figure>
-                    <div class="menu-order">
-                        <a href="javascript:void(0)" class="order"><span>Добавить в корзину</span></a>
-                        <div class="pull-right">
-                            <a href="javascript:void(0)" class="low"><span>-</span></a>
-                            <input class="menu-input" type="text" value="1">
-                            <a href="javascript:void(0)" class="hight"><span>+</span></a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="menu-items ">
-                <a href="layout/pages/menu-page-2.php">Следущая страница</a>
-            </div>
-
-            <div class="col-lg-12 margin-t-30 club-pagin">
-               
             </div>
         </div>
-        <!--
-        <div class="pagination-container text-center pagination-container text-center margin-b-30">
-            <ul class="pagination-list">
-                <li>
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true"><span class="fa fa-angle-left"></span></span>
-                    </a>
-                </li>
-
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-
-                <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true"><span class="fa fa-angle-right"></span></span>
-                    </a>
-                </li>
-            </ul>
-        </div>
--->
     </div>
 </div>
-    </div>         
+
+
+<div class="modal menu-modal">
+    <div class="col-sm-6">
+        <div class="container-slider-for">
+            <div class="modal-slider-for">
+                <img src="img/menu/menu-1.jpg" alt="">
+                <img src="img/menu/menu-2.jpg" alt="">
+                <img src="img/menu/menu-3.jpeg" alt="">
+                <img src="img/menu/menu-4.jpg" alt="">
+                <img src="img/menu/menu-5.jpg" alt="">
+                <img src="img/menu/menu-6.jpg" alt="">
+            </div>
+        </div>
+        <div class="container-slider-nav ">
+            <button type="button" class="modal-next "></button>
+            <div class="modal-slider-nav">
+                <div class="item">
+                    <div class="filter"> </div>
+                    <img src="img/menu/menu-1.jpg" alt="">
+                </div>
+                <div class="item">
+                    <div class="filter"></div>
+                    <img src="img/menu/menu-2.jpg" height="300px" width="100%" alt="">
+                </div>
+                <div class="item">
+                    <div class="filter"> </div>
+                    <img src="img/menu/menu-3.jpeg" alt="">
+                </div>
+                <div class="item">
+                    <div class="filter"></div>
+                    <img src="img/menu/menu-4.jpg" height="300px" width="100%" alt="">
+                </div>
+                <div class="item">
+                    <div class="filter"></div>
+                    <img src="img/menu/menu-5.jpg" height="300px" width="100%" alt="">
+                </div>
+                <div class="item">
+                    <div class="filter"></div>
+                    <img src="img/menu/menu-6.jpg" height="300px" width="100%" alt="">
+                </div>
+            </div>
+            <button type="button" class="modal-prev "></button>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <div class="menu-title">
+            Lorem ipsum dolor sit.
+        </div>
+        <div class="menu-text">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error voluptas quis quaerat unde, sapiente labore cum repellat veritatis ad laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, repellendus?
+        </div>
+        <div class="separator margin-t-15"></div>
+
+        <div class="modal-quant" >
+            <span class="quant-title" ng-model="price" ng-init="price='480'">Цена: @{{price}} {{ trans('common.lei') }}</span>
+
+            <span class="quant-title">Количество:</span>
+
+            <input class="modal-input" min="1" type="number" ng-model="value" ng-init="value='1'" value="1">
+
+            <span class="quant-title">Сумма: @{{value*price}} {{ trans('common.lei') }}</span>
+        </div>
+
+        <button class="menu-submit">Заказать</button>
+    </div>
+
 </div>
+
+@stop
+
+@section('productPageScripts')
+
+<script>
+     $('.menu-toggle').click(function () {
+
+         $('.modal-fade-third').slideToggle("fast");
+         $('.menu-modal').slideToggle("fast")
+         $("body").toggleClass('overflow-h');
+     });
+
+     $('.modal-fade-third').click(function () {
+         $('.menu-modal').slideToggle("fast");
+         $('.modal-fade-third').slideToggle("fast");
+         $("body").removeClass('overflow-h');
+     });
+
+</script>
 
 @stop

@@ -15,8 +15,8 @@ class MenuProductsController extends Controller
 {
     public function index($id){
 
-        $data       = MenuProducts::where('product_id', $id)->get();
         $product    = Products::find($id);
+        $data       = $product->menu;
         return view('admin.menu.index')->with(compact('data', 'product'));
     }
 

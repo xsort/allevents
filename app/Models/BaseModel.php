@@ -46,27 +46,7 @@ class BaseModel extends Model
         $this->saveMeta($values, "title");
     }
 
-    private function saveMeta($values, $type){
-        $table    = $this->getTable();
-        //save model before saving meta
-        if (!isset($this->id)) $this->save();
-        $table_id = $this->id;
 
-        $meta = Meta::where('table', $table)->where('table_id',$table_id)->first();
-        if (!isset($meta)){
-            $meta = new Meta();
-        }
-        foreach($values as $key=>$value){
-            if ($key == "ru") {
-                $meta->attributes[$type] = $value;
-                continue;
-            }
-            $meta->attributes[$type . '_' . $key] = $value;
-        }
-        $meta->table            = $table;
-        $meta->table_id         = $table_id;
-        $meta->save();
-    }
 
     public function setNameAttribute($values) {
         foreach($values as $key=>$value){
@@ -161,4 +141,28 @@ class BaseModel extends Model
     public function meta(){
         return $this->hasOne('App\Models\Meta','table_id')->where('table', $this->getTable());
     }
+
+
+    private function saveMeta($values, $type){
+        $table    = $this->getTable();
+        //save model before saving meta
+        if (!isset($this->id)) $this->save();
+        $table_id = $this->id;
+
+        $meta = Meta::where('table', $table)->where('table_id',$table_id)->first();
+        if (!isset($meta)){
+            $meta = new Meta();
+        }
+        foreach($values as $key=>$value){
+            if ($key == "ru") {
+                $meta->attributes[$type] = $value;
+                continue;
+            }
+            $meta->attributes[$type . '_' . $key] = $value;
+        }
+        $meta->table            = $table;
+        $meta->table_id         = $table_id;
+        $meta->save();
+    }
+
 }

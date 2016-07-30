@@ -587,19 +587,6 @@ $('.modal-fade-second').click(function () {
     $("body").removeClass('overflow-h');
 })
 
-$('.menu-toggle').click(function () {
-    $('.modal-fade-third').slideToggle("fast", function () {});
-    $('.menu-modal').slideToggle("fast", function () {})
-    $("body").toggleClass('overflow-h');
-
-});
-
-$('.modal-fade-third').click(function () {
-    $('.menu-modal').slideToggle("fast", function () {})
-    $('.modal-fade-third').slideToggle("fast", function () {})
-    $("body").removeClass('overflow-h');
-})
-
 $(document).ready(function () {
     var input = $('.menu-input');
     var a;

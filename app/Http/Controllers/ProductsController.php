@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Galleries;
 use App\Models\MenuCategories;
+use App\Models\MenuProducts;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -32,13 +33,11 @@ class ProductsController extends Controller
 
         public function getMenu($slug)
     {
-        $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
+        $data          = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
 
-        $menu_categories = MenuCategories::find(1);
+        $menu_products = $data->menu()->where('enabled', true)->orderByRaw("RAND()")->limit(16)->get();
 
-        dd($menu_categories->children);
-
-        return view('products.menu')->with('data', $product);
+        return view('products.menu')->with(compact('data','menu_products'));
     }
 
         public function getInterier($slug)

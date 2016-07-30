@@ -154,7 +154,7 @@
 
 @include('admin.partials.ckeditor')
 
-@include('admin.partials.slug',['input_name'=>'name[]'])
+@include('admin.partials.slug',['input_name'=>'name[ru]'])
 
 @include('admin.partials.datepicker')
 

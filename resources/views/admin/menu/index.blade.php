@@ -65,4 +65,8 @@
     </div><!-- /.row -->
 @endsection
 
-@include('admin.partials.datatable-init')
+@section('scripts')
+
+    @include('admin.partials.datatable-init')
+
+@endsection
