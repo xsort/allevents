@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="css/bootstrap-social.css">
 	<link rel="stylesheet" href="css/lightbox.min.css">
 	<!-- <link rel="stylesheet" href="css/combined.css"> -->
+    <link rel="stylesheet" href="css/loading.css">
 	<link rel="stylesheet" href="css/main.css">
 	<!-- <link rel="stylesheet" href="css/main.min.css"> -->
 
@@ -31,6 +32,8 @@
    
 </head>
 <body class="remove-bg @yield('productClass')" style="background-image: url('../images/background/main-bg.jpg');">
+
+@yield('loadingPage')
 
 	<div id="fb-root"></div>
 
@@ -74,6 +77,7 @@
                 n.parentNode.insertBefore(s, n);
                 })(document, window, 'Chatra');
     </script>
+
     <!-- /Chatra-->
    	<script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -85,23 +89,10 @@
     <script src="js/lightbox.min.js"></script>
     <script src="js/plugins-scroll.js"></script>
     <script src="js/angular.min.js"></script>
-    <!-- <script src="js/combined.js"></script> -->
     @yield('cardPluginsValidation')
+    <script src="js/sliders.js" ></script>
+    <script src="js/sidebar.js"></script>
     <script src="js/components.js"></script>
-    <script>
-		// Skroll-page
-		$(document).ready(function() {
-			//Chrome Smooth Scroll
-			try {
-				$.browserSelector();
-				if ($("html").hasClass("chrome")) {
-					$.smoothScroll();
-				}
-			} catch(err) {
-
-			};
-		});
-	</script>
 
     @yield('jsonProductSharing')
     @yield('jsonIndexMicrodata')
