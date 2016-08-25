@@ -9,9 +9,21 @@
 
     @include('partials.breadcrumbs', ['breadcrumbs' => [['title' => trans('common.video')]]])
 
-<div class="layout-content" >
+<div class="layout-content" style="position:relative">
 
-<div class="container-fluid">
+<div id="loading" class="page">
+    <div id="loading-center">
+        <div id="loading-center-absolute">
+            <div class="object page-l" id="object_four"></div>
+            <div class="object page-l" id="object_three"></div>
+            <div class="object page-l" id="object_two"></div>
+            <div class="object page-l" id="object_one"></div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" >
+
     <div class="row">
         <div class="masonry video-page" data-columns>
             @foreach($data->visible_videos as $video)

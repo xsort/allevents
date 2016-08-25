@@ -1527,6 +1527,7 @@ body.page-on-scroll .sliding {
     position: absolute;
     top: -1px;
     left: 0;
+    height: 39px;
     width: 100%;
     z-index: 2;
     margin-top: 0 !important;
@@ -2082,7 +2083,7 @@ header+.layout-page {
     padding-right: 22px;
     display: block;
     text-decoration: none;
-    height: 40px;
+    height: 39px;
 }
 
 .page-on-scroll .top-menu > li > a {
@@ -2239,78 +2240,109 @@ li.blue .extend-top-menu li a:hover {
     padding-left: 5px;
 }
 
+
+
+
+
+
 .language {
     margin-top: 15px;
+    float: right;
+}
+
+
+
+.language a:hover{
+    z-index: 2;
+    position: relative;
+}
+
+.language ul{
+    margin:0;
+    padding: 0;
+    float: left;
+    display: none;
+}
+
+.language ul li{
+    list-style-type: none;
+    float: left;
+    margin-right: 0px;
+}
+
+.language > a {
+    border-radius: 3px;
 }
 
 .language a {
     width: 35px;
     display: inline-block;
     padding: 7px 0 7px 0;
-    -webkit-box-shadow: inset 0px 0px 0px 1px #b5b5b5;
-    -moz-box-shadow: inset 0px 0px 0px 1px #b5b5b5;
-    box-shadow: inset 0px 0px 0px 1px #b5b5b5;
+    border:1px solid #b5b5b5;
     font-size: 14px;
     color: rgb(181, 181, 181);
-    line-height: 1.2;
+    line-height: 1;
     text-align: center;
+        
+}
+
+.language.active > a {
+    border-radius: 0;
+}
+
+.language.active > ul li:first-child a{
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.language.active ul li{
+    margin-right: -1px;
 }
 
 .language a:hover {
     color: black;
-    -webkit-box-shadow: inset 0px 0px 0px 1px black;
-    -moz-box-shadow: inset 0px 0px 0px 1px black;
-    box-shadow: inset 0px 0px 0px 1px black;
+    border:1px solid black;
 }
 
-.language a.active {
+.language a.lang-main.active:hover {
+    color:white;
+        -webkit-box-shadow: inset 0px 0px 0px 1px white;
+    -moz-box-shadow: inset 0px 0px 0px 1px white;
+    box-shadow: inset 0px 0px 0px 1px white;
+    border-radius: 0px;
+}
+
+.lang-main.active {
     background: #f56a3f;
     color: white;
-    -webkit-box-shadow: inset 0px 0px 0px 1px #f56a3f;
-    -moz-box-shadow: inset 0px 0px 0px 1px #f56a3f;
-    box-shadow: inset 0px 0px 0px 1px #f56a3f;
+    -webkit-box-shadow: inset 0px 0px 0px 1px white;
+    -moz-box-shadow: inset 0px 0px 0px 1px white;
+    box-shadow: inset 0px 0px 0px 1px white;
+    border:1px solid black;
+    box-sizing: border-box;
+    position: relative;
 }
 
-.language a.lang-l {
-    -webkit-border-top-left-radius: 3px;
-    -moz-border-radius-topleft: 3px;
-    border-top-left-radius: 3px;
-    -webkit-border-bottom-left-radius: 3px;
-    -moz-border-radius-bottomleft: 3px;
-    border-bottom-left-radius: 3px;
-    display: none;
-    -webkit-transition: all 0.2s ease;
-    -moz-transition: all 0.2s ease;
-    -o-transition: all 0.2s ease;
-    transition: all 0.2s ease;
-}
 
-.language a.lang-r {
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    margin-left: -5px;
-}
+/*.language a.lang-main.active:before{
+    position: absolute;
+    content: '';
+    top:2px;
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    border:1px solid black;
+        border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+}*/
 
-.language a.lang-l.lang-l-active {
-    display: inline-block;
-}
 
-.language.language-ru a.lang-l:before {
-    content: 'Ro';
-}
 
-.language.language-ru a.lang-r:before {
-    content: 'Ru';
-}
 
-.language.language-ro a.lang-l:before {
-    content: 'Ru';
-}
 
-.language.language-ro a.lang-r:before {
-    content: 'Ro';
-}
+
+
+
 
 .header-search-menu {
     margin-top: 20px;
@@ -2319,7 +2351,7 @@ li.blue .extend-top-menu li a:hover {
 
 .header-search-menu a {
     display: inline-block;
-    height: 40px;
+    height: 39px;
     min-width: 40px;
     -webkit-transition: all 0.2s ease;
     -moz-transition: all 0.2s ease;
@@ -2397,6 +2429,7 @@ li.blue .extend-top-menu li a:hover {
     font-size: 14px;
     color: rgb(91, 91, 91);
     margin-right: 15px;
+        line-height: 41px;
 }
 
 .header-search-menu a.wallet span:before {
@@ -4499,6 +4532,7 @@ li.blue .extend-top-menu li a:hover {
 
 .menu-container {
     float: left;
+    width: 100%;
 }
 
 .menu-container .pull-right {
@@ -6164,6 +6198,10 @@ figure.categories-gallery-container:hover:before{
     font-size: 14px;
 }
 
+.video-disc * {
+    font-size: 14px !important;
+}
+
 .video-share {
     display: inline-block;
     float: right;
@@ -7273,3 +7311,4 @@ table.shop-info tr:last-child {
 
 
 /*-----------------------------------------------------------*/
+

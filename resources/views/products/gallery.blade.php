@@ -24,8 +24,10 @@
         <div class="col-lg-12 inst-description margin-b-40 text-center ">
             <div class="gallery-date"><!--25 февраля 2015 (вторник)-->{{ $gallery->created_at }}</div>
             <h2 class="inst-title text-center rowed">{{ $gallery->name }}</h2>
+            <div class="row">
             <div class="col-lg-8 col-lg-offset-2 margin-t-25 text-center inst-description-text">
                 {!! $gallery->description !!}
+            </div>
             </div>
         </div>
 

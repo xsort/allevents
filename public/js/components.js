@@ -160,24 +160,20 @@ $(document).ready(
     }
 );
 
-$(".lang-r").click(function() {
-    $(".lang-l").toggleClass("lang-l-active");
-    $(".lang-r").toggleClass("active");
+
+
+
+
+$(".language .lang-main").click(function() {
+    $(".language ul").slideToggle(0);
+    $(".language").toggleClass("active");
+    $(".lang-main").toggleClass("active");
 });
 
-$(".lang-l").click(function() {
-    if ($(".language").hasClass("language-ru")) {
-        $(".language").toggleClass("language-ro");
-        $(".language").removeClass("language-ru");
-        $(".lang-l").toggleClass("lang-l-active");
-        $(".lang-r").removeClass("active");
-    } else {
-        $(".language").toggleClass("language-ru");
-        $(".language").removeClass("language-ro");
-        $(".lang-l").toggleClass("lang-l-active");
-        $(".lang-r").removeClass("active");
-    }
-});
+
+
+
+
 
 $(window).resize(function() {
     if ($(window).width() > 767) {

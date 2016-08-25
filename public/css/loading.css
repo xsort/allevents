@@ -8,6 +8,12 @@
     top: 0px;
 }
 
+#loading.page{
+    position: absolute !important;
+    background-color: white;
+    z-index: 100;
+}
+
 @media(max-width: 767px) {
     #loading {
         display: none;
@@ -41,6 +47,11 @@
     border-bottom: 5px solid transparent;
     -webkit-animation: animate 2s infinite;
     animation: animate 2s infinite;
+}
+
+.object.page-l {
+    border-left: 5px solid #bcadae;
+    border-right: 5px solid #bcadae;
 }
 
 #object_one {

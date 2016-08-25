@@ -13,7 +13,7 @@
     <div class="container-slider-for">
         <div class="plan-slider-for">
             @foreach($data->hallplan as $photo)
-                <img src="uploaded/{{ $photo->source }}" alt="{{ $data->name }}">
+                <img src="resize.php?width=1110&height=600&cropratio=1110:600&image=/uploaded/{{ $photo->source }}" alt="{{ $data->name }}">
             @endforeach
         </div>
         <a href="{{ route('get_menu', $data->slug) }}" class="menu-label"><img src="images/plan-menu-img.png" alt="" ></a>
@@ -26,7 +26,7 @@
             @foreach($data->hallplan as $photo)
             <div class="item">
                 <div class="filter"> </div>
-                <img src="uploaded/thumbs/{{ $photo->source }}" height="300px" width="100%" alt="{{ $data->name }}">
+                <img src="resize.php?width=233&height=160&cropratio=233:160&image=/uploaded/thumbs/{{ $photo->source }}" height="300px" width="100%" alt="{{ $data->name }}">
             </div>
             @endforeach
         </div>
@@ -70,3 +70,4 @@
 </div>
 
 @stop
+

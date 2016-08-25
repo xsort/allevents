@@ -14,7 +14,7 @@
                 <div class="row">
                     <a href="{{ route('get_gallery',[$data->slug, $gallery->slug]) }}">
                         <figure class="categories-gallery-container">
-                            <img src="{{isset($gallery->photos{0}) ? 'uploaded/' . $gallery->photos{0}->source : 'images/inst-menu-photo/photo.png'}}" width="100%" alt="{{ $gallery->name }}">
+                            <img src="{{isset($gallery->photos{0}) ? 'uploaded/' . $gallery->photos{0}->source : 'resize.php?width=355&height=270&cropratio=355:270&image=/images/inst-menu-photo/photo.png'}}" width="100%" alt="{{ $gallery->name }}">
                             
                             <figurecaption class="categories-1">
                                <div class="figurecaption-container">

@@ -11,7 +11,8 @@
             <div class="club-main-gallery">
                 @foreach ($data->photos as $key => $photo)
                 @if ($key == 0) @continue; @endif
-                <div class="club-main-photo" style="background:url('uploaded/{{$photo->source}}')"></div>
+                <!-- <div class="club-main-photo" style="background:url('')"></div> -->
+                <div class="club-main-photo"><img src="resize.php?width=1110&height=375&cropratio=1110:375&image=/uploaded/{{$photo->source}}" alt=""></div>
                 @endforeach
             </div>
             <div class="button club-main-next"><span class="fa fa-angle-right"></span></div>

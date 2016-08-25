@@ -28,7 +28,7 @@
 
                         </div>
                         <div class="post-content">
-                            <h3 class="post-title"><a href="detail-news.php">Lorem ipsum dolor sit amet.</a></h3>
+                            <h3 class="post-title"><a href="detail-news.php"></a></h3>
 
                             <p class="post-inner-content mrg-vertical-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
