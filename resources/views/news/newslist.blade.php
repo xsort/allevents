@@ -15,7 +15,16 @@
 </div>
 
 <div class="layout-content" >
-
+    <div id="loading" class="page">
+    <div id="loading-center">
+        <div id="loading-center-absolute" class="page">
+            <div class="object page-l one" id="object_four"></div>
+            <div class="object page-l one" id="object_three"></div>
+            <div class="object page-l one" id="object_two"></div>
+            <div class="object page-l one" id="object_one"></div>
+        </div>
+    </div>
+    </div>
 
     <div class="row">
         <div class="col-md-9">

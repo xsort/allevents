@@ -257,6 +257,12 @@ h2.c-block-title {
     background: #dee3eb;
 }
 
+.c-bg-center{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
 .c-border-bottom {
     border-bottom: 1px solid;
 }
@@ -350,6 +356,7 @@ body.page-clubs {
     float: left;
     width: 100%;
     padding-bottom: 30px;
+    position: relative;
 }
 
 .page-on-scroll .layout-inst-menu + .layout-content {
@@ -4860,6 +4867,8 @@ a.order span:before {
     margin-top: 1px;
     margin-bottom: 25px;
     float: left;
+        z-index: 1;
+    position: relative;
 }
 
 .layout-inst-menu + .layout-breadcrumbs {
@@ -5372,6 +5381,30 @@ figure.categories-gallery-container:hover:before{
     float: left;
     width: 100%;
     position: relative;
+}
+
+@media(max-width: 767px){
+    .plan-slider-for .c-bg-center{
+        height: 305px;
+    }
+}
+
+@media(min-width: 768px) and (max-width: 991px){
+    .plan-slider-for .c-bg-center {
+        height: 375px;
+    }
+}
+
+@media(min-width: 992px) and (max-width: 1199px){
+    .plan-slider-for .c-bg-center{
+        height: 500px;
+    }
+}
+
+@media(min-width: 1200px){
+    .plan-slider-for .c-bg-center{
+        height: 600px;
+    }
 }
 
 .plan-slider-for:before {
@@ -5889,6 +5922,7 @@ figure.categories-gallery-container:hover:before{
 
 .blog-post {
     float: left;
+        width: 100%;
 }
 
 .blog-post .blog-wrapper {
@@ -7312,3 +7346,4 @@ table.shop-info tr:last-child {
 
 /*-----------------------------------------------------------*/
 
+}

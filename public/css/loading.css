@@ -36,6 +36,16 @@
     margin-left: -100px;
 }
 
+#loading-center-absolute.page {
+    position: absolute;
+    left: 50%;
+    top: 150px;
+    height: 200px;
+    width: 200px;
+    margin-top: -100px;
+    margin-left: -100px;
+}
+
 .object {
     -moz-border-radius: 50% 50% 50% 50%;
     -webkit-border-radius: 50% 50% 50% 50%;
@@ -50,8 +60,13 @@
 }
 
 .object.page-l {
-    border-left: 5px solid #bcadae;
-    border-right: 5px solid #bcadae;
+    border-left: 5px solid rgb(105, 105, 105);
+    border-right: 5px solid rgb(105, 105, 105);
+}
+
+.object.page-l.one {
+    border-left: 2px solid rgb(105, 105, 105);
+    border-right: 2px solid rgb(105, 105, 105);
 }
 
 #object_one {
@@ -87,6 +102,8 @@
     -webkit-animation-delay: 0.3s;
     animation-delay: 0.3s;
 }
+
+
 
 @-webkit-keyframes animate {
     50% {

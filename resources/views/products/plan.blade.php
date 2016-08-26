@@ -9,24 +9,36 @@
     @include('partials.breadcrumbs', ['breadcrumbs' => [['title' => trans('common.plan')]]])
 
     <div class="layout-content" >
+    <div id="loading" class="page">
+    <div id="loading-center">
+        <div id="loading-center-absolute" class="page">
+            <div class="object page-l one" id="object_four"></div>
+            <div class="object page-l one" id="object_three"></div>
+            <div class="object page-l one" id="object_two"></div>
+            <div class="object page-l one" id="object_one"></div>
+        </div>
+    </div>
+    
+</div>
         <div class="container-fluid">
     <div class="container-slider-for">
         <div class="plan-slider-for">
             @foreach($data->hallplan as $photo)
-                <img src="resize.php?width=1110&height=600&cropratio=1110:600&image=/uploaded/{{ $photo->source }}" alt="{{ $data->name }}">
+                <!-- <img src="resize.php?width=1110&height=600&cropratio=1110:600&image=/uploaded/{{ $photo->source }}" alt="{{ $data->name }}"> -->
+                <div class="c-bg-center" style="background-image:url(uploaded/{{ $photo->source }});"></div>
             @endforeach
         </div>
         <a href="{{ route('get_menu', $data->slug) }}" class="menu-label"><img src="images/plan-menu-img.png" alt="" ></a>
     </div>
     <div class="container-slider-nav ">
 
-
         <button type="button" class="plan-next "></button>
         <div class="plan-slider-nav">
             @foreach($data->hallplan as $photo)
             <div class="item">
                 <div class="filter"> </div>
-                <img src="resize.php?width=233&height=160&cropratio=233:160&image=/uploaded/thumbs/{{ $photo->source }}" height="300px" width="100%" alt="{{ $data->name }}">
+                <!-- <img src="resize.php?width=233&height=160&cropratio=233:160&image=/uploaded/thumbs/{{ $photo->source }}" height="300px" width="100%" alt="{{ $data->name }}"> -->
+                <div class="c-bg-center" style="background-image:url(uploaded/{{ $photo->source }});height:100%;"></div>
             </div>
             @endforeach
         </div>

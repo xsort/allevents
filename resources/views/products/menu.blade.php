@@ -16,7 +16,9 @@
                         <div class="menu-left-title">{{ trans('common.menu') }} {{ $data->name }}
                             <button type="button" class="visible-xs visible-sm menu-left-btn "><i class="fa fa-reorder "></i></button>
                         </div>
+
                         <ul class="menu-left">
+                        
                             <li class="has-sub"><a href="javascript:void(0)" class="left-a">Холодные закуски<span class="fa"></span></a>
                                 <ul class="sub-menu-left">
                                     <li><a href="#">Закуска "Рафаэлки"</a></li>

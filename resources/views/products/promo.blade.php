@@ -8,6 +8,19 @@
     @include('partials.breadcrumbs', ['breadcrumbs' => [['title' => trans('common.promo')]]])
 
     <div class="layout-content" >
+
+<div id="loading" class="page">
+    <div id="loading-center">
+        <div id="loading-center-absolute" class="page">
+            <div class="object page-l one" id="object_four"></div>
+            <div class="object page-l one" id="object_three"></div>
+            <div class="object page-l one" id="object_two"></div>
+            <div class="object page-l one" id="object_one"></div>
+        </div>
+    </div>
+    
+</div>
+
         <div class="container-fluid">
 
     <div class="row">
@@ -16,190 +29,29 @@
                 <h1 class="page-title rowed">Акции</h1>
             </div>
             <div class="blog-post masonry" data-columns>
-
+                @foreach($data->news as $d)
                 <div class="item">
                     <div class="blog-wrapper">
                         <div class="blog-img">
-                            <img class="img-responsive" src="img/news/news-page-1.jpg" alt="">
+                            <img class="img-responsive" src="uploaded/{{isset($d->photos{0}) ? $d->photos{0}->source : 'nophoto.png'}}" alt="">
                             <div class="post-date ">
-                                <p class="">Дек
-                                    <br class="hide-mobile"><span>02</span></p>
+                                <p class="">{{ date('M', strtotime($d->created_at)) }}
+                                    <br class="hide-mobile"><span>{{ date('d', strtotime($d->created_at)) }}</span></p>
                             </div>
 
                         </div>
                         <div class="post-content">
-                            <h3 class="post-title"><a href="detail-news.php"></a></h3>
+                            <h3 class="post-title"><a href="detail-news.php">{{$d->name}}</a></h3>
 
-                            <p class="post-inner-content mrg-vertical-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            <p class="post-inner-content mrg-vertical-15">{{$d->description_short}}</p>
 
                             <div class="post-bottom">
-                                <span class="read-more"><a class="btn no-padding " href="detail-news.php">Читать далее</a></span>
+                                <span class="read-more"><a class="btn no-padding " href="{{ route('get-news', $d->slug) }}">Читать далее</a></span>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="item">
-                    <div class="blog-wrapper">
-                        <div class="blog-img">
-                            <img class="img-responsive" src="img/news/news-page-2.jpg" alt="">
-                            <div class="post-date ">
-                                <p class="">Дек
-                                    <br class="hide-mobile"><span>02</span></p>
-                            </div>
-                        </div>
-                        <div class="post-content">
-                            <h3 class="post-title"><a href="detail-news.php">Lorem ipsum dolor sit amet.</a></h3>
-
-                            <p class="post-inner-content mrg-vertical-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-                            <div class="post-bottom">
-                                <span class="read-more"><a class="btn no-padding " href="detail-news.php">Читать далее</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="blog-wrapper">
-                        <div class="blog-img">
-                            <img class="img-responsive" src="img/news/news-page-3.jpg" alt="">
-                            <div class="post-date ">
-                                <p class="">Дек
-                                    <br class="hide-mobile"><span>02</span></p>
-                            </div>
-                        </div>
-                        <div class="post-content">
-                            <h3 class="post-title"><a href="single-left.html">Lorem ipsum dolor sit amet.</a></h3>
-                            <p class="post-inner-content mrg-vertical-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-                            <div class="post-bottom">
-                                <span class="read-more"><a class="btn no-padding " href="detail-news.php">Читать далее</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="blog-wrapper">
-                        <div class="blog-img">
-                            <img class="img-responsive" src="img/news/news-page-4.jpg" alt="">
-                            <div class="post-date ">
-                                <p class="">Дек
-                                    <br class="hide-mobile"><span>02</span></p>
-                            </div>
-                        </div>
-                        <div class="post-content">
-                            <h3 class="post-title"><a href="detail-news.php">Lorem ipsum dolor sit amet.</a></h3>
-                            <p class="post-inner-content mrg-vertical-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-                            <div class="post-bottom">
-                                <span class="read-more"><a class="btn no-padding " href="detail-news.php">Читать далее</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="blog-wrapper">
-                        <div class="blog-img">
-                            <img class="img-responsive" src="img/news/news-page-5.jpg" alt="">
-                            <div class="post-date ">
-                                <p class="">Дек
-                                    <br class="hide-mobile"><span>02</span></p>
-                            </div>
-
-                        </div>
-                        <div class="post-content">
-                            <h3 class="post-title"><a href="detail-news.php">Lorem ipsum dolor sit amet.</a></h3>
-                            <p class="post-inner-content mrg-vertical-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-                            <div class="post-bottom">
-                                <span class="read-more"><a class="btn no-padding " href="detail-news.php">Читать далее</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="blog-wrapper">
-                        <div class="blog-img">
-                            <img class="img-responsive" src="img/news/news-page-6.jpg" alt="">
-                            <div class="post-date ">
-                                <p class="">Дек
-                                    <br class="hide-mobile"><span>02</span></p>
-                            </div>
-                        </div>
-                        <div class="post-content">
-                            <h3 class="post-title"><a href="detail-news.php">Lorem ipsum dolor sit amet.</a></h3>
-
-                            <p class="post-inner-content mrg-vertical-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <div class="post-bottom">
-                                <span class="read-more"><a class="btn no-padding " href="detail-news.php">Читать далее</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="blog-wrapper">
-                        <div class="blog-img">
-                            <img class="img-responsive" src="img/news/news-page-7.jpg" alt="">
-                            <div class="post-date ">
-                                <p class="">Дек
-                                    <br class="hide-mobile"><span>02</span></p>
-                            </div>
-                        </div>
-                        <div class="post-content">
-                            <h3 class="post-title"><a href="detail-news.php">Lorem ipsum dolor sit amet.</a></h3>
-
-                            <p class="post-inner-content mrg-vertical-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <div class="post-bottom">
-                                <span class="read-more"><a class="btn no-padding " href="detail-news.php">Читать далее</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="blog-wrapper">
-                        <div class="blog-img">
-                            <img class="img-responsive" src="img/news/news-page-8.png" alt="">
-                            <div class="post-date ">
-                                <p class="">Дек
-                                    <br class="hide-mobile"><span>02</span></p>
-                            </div>
-                        </div>
-                        <div class="post-content">
-                            <h3 class="post-title"><a href="detail-news.php">Lorem ipsum dolor sit amet.</a></h3>
-
-                            <p class="post-inner-content mrg-vertical-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <div class="post-bottom">
-                                <span class="read-more"><a class="btn no-padding " href="detail-news.php">Читать далее</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="blog-wrapper">
-                        <div class="blog-img">
-                            <img class="img-responsive" src="img/news/news-page-9.jpg" alt="">
-                            <div class="post-date ">
-                                <p class="">Дек
-                                    <br class="hide-mobile"><span>02</span></p>
-                            </div>
-                        </div>
-                        <div class="post-content">
-                            <h3 class="post-title"><a href="detail-news.php">Lorem ipsum dolor sit amet.</a></h3>
-
-                            <p class="post-inner-content mrg-vertical-15">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                            <div class="post-bottom">
-                                <span class="read-more"><a class="btn no-padding " href="detail-news.php">Читать далее</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                @endforeach
 
             </div>
         </div>
