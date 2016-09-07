@@ -2,10 +2,10 @@
 -- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Хост: 127.0.0.1
--- Время создания: Июл 23 2016 г., 12:05
--- Версия сервера: 10.1.10-MariaDB
--- Версия PHP: 5.6.19
+-- Host: 127.0.0.1
+-- Generation Time: Sep 07, 2016 at 02:28 PM
+-- Server version: 10.1.10-MariaDB
+-- PHP Version: 7.0.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `allevents`
+-- Database: `allevents`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -48,7 +48,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Дамп данных таблицы `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `menu_type_id`, `enabled`, `top`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
@@ -91,7 +91,7 @@ INSERT INTO `categories` (`id`, `name`, `name_ro`, `name_en`, `description`, `de
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `categories_xref`
+-- Table structure for table `categories_xref`
 --
 
 CREATE TABLE `categories_xref` (
@@ -101,7 +101,7 @@ CREATE TABLE `categories_xref` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Дамп данных таблицы `categories_xref`
+-- Dumping data for table `categories_xref`
 --
 
 INSERT INTO `categories_xref` (`id`, `parent_id`, `child_id`) VALUES
@@ -202,7 +202,7 @@ INSERT INTO `categories_xref` (`id`, `parent_id`, `child_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `constants`
+-- Table structure for table `constants`
 --
 
 CREATE TABLE `constants` (
@@ -214,7 +214,21 @@ CREATE TABLE `constants` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `content`
+-- Table structure for table `contacts`
+--
+
+CREATE TABLE `contacts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `sort` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `content`
 --
 
 CREATE TABLE `content` (
@@ -233,7 +247,7 @@ CREATE TABLE `content` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Дамп данных таблицы `content`
+-- Dumping data for table `content`
 --
 
 INSERT INTO `content` (`id`, `name`, `name_en`, `name_ro`, `description`, `description_en`, `description_ro`, `enabled`, `views`, `slug`, `created_at`, `updated_at`) VALUES
@@ -243,13 +257,12 @@ INSERT INTO `content` (`id`, `name`, `name_en`, `name_ro`, `description`, `descr
 (6, 'Экслюзив', 'Экслюзив', 'Экслюзив', '<p>Здесь будет выводиться экслюзив</p>\r\n', '<p>Здесь будет выводиться экслюзив</p>\r\n', '<p>Здесь будет выводиться экслюзив</p>\r\n', 1, 0, 'exclusive', '2016-06-26 10:00:55', '2016-06-26 10:00:55'),
 (7, 'Контакты', 'Контакты', 'Контакты', '<p>Здесь будет информация наши&nbsp;контакты</p>\r\n', '<p>Здесь будет информация наши&nbsp;контакты</p>\r\n', '<p>Здесь будет информация наши&nbsp;контакты</p>\r\n', 1, 0, 'contacts', '2016-06-26 10:04:29', '2016-06-26 10:04:29'),
 (8, 'Реклама', 'Реклама', 'Реклама', '<p>Сдесь будет реклама</p>\r\n', '<p>Сдесь будет реклама</p>\r\n', '<p>Сдесь будет реклама</p>\r\n', 1, 0, 'advert', '2016-06-26 10:04:56', '2016-06-26 10:04:56'),
-(9, 'Права', 'Права', 'Права', '<p>здесь будут права</p>\r\n', '<p>здесь будут права</p>\r\n', '<p>здесь будут права</p>\r\n', 1, 0, 'copyright', '2016-06-26 10:06:19', '2016-06-26 10:06:19'),
-(10, 'Карта сайта', 'Карта сайта', 'Карта сайта', '<p>Сдесь будет карта сайта</p>\r\n', '<p>Сдесь будет карта сайта</p>\r\n', '<p>Сдесь будет карта сайта</p>\r\n', 1, 0, 'sitemap', '2016-06-26 10:07:09', '2016-06-26 10:07:09');
+(9, 'Права', 'Права', 'Права', '<p>здесь будут права</p>\r\n', '<p>здесь будут права</p>\r\n', '<p>здесь будут права</p>\r\n', 1, 0, 'copyright', '2016-06-26 10:06:19', '2016-06-26 10:06:19');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `galleries`
+-- Table structure for table `galleries`
 --
 
 CREATE TABLE `galleries` (
@@ -272,16 +285,22 @@ CREATE TABLE `galleries` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Дамп данных таблицы `galleries`
+-- Dumping data for table `galleries`
 --
 
 INSERT INTO `galleries` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `enabled`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'Галерея 1', 'Галерея 1', 'Галерея 1', '', '', '', '', '', '', 1, 0, 0, 'galereya', '2016-07-21 21:00:00', '2016-07-22 04:12:58');
+(1, 'Галерея 1', 'Галерея 1', 'Галерея 1', '', '', '', '', '', '', 1, 0, 0, 'galereya', '2016-07-21 21:00:00', '2016-07-22 04:12:58'),
+(2, 'Фотогаллерея', 'Foto', '', '', '', '', '', '', '', 1, 0, 0, 'fotogallereya', '2016-08-16 21:00:00', '2016-08-17 04:10:13'),
+(3, '123', '123', '', '<p>123</p>\r\n', '', '', '', '', '', 1, 0, 0, '123', '2016-08-16 21:00:00', '2016-08-17 04:11:11'),
+(4, '123', '123', '123', '<p>123</p>\r\n', '', '', '', '', '', 1, 0, 0, '123', '2016-08-16 21:00:00', '2016-08-17 04:11:11'),
+(5, 'ss', 'sss', '', '', '', '', '', '', '', 1, 0, 0, 'ss', '2016-08-21 21:00:00', '2016-08-22 07:35:10'),
+(6, 'dsd', 'dsds', 'dsada', '<p>dsad</p>\r\n', '<p>dasdas</p>\r\n', '<p>dasdas</p>\r\n', '', '', '', 1, 9, 0, 'dsd', '2016-08-21 21:00:00', '0000-00-00 00:00:00'),
+(7, 'Weekend', 'Weekend', 'Weekend', '<p>Krysha добавил(-а) 68 новых фото от 22 июля в альбом &laquo;22-23 Weekend&raquo; &mdash; с Victoria Popa-Condrea и еще 4 в Krysha.</p>\r\n', '<p>Krysha добавил(-а) 68 новых фото от 22 июля в альбом &laquo;22-23 Weekend&raquo; &mdash; с Victoria Popa-Condrea и еще 4 в Krysha.</p>\r\n', '<p>Krysha добавил(-а) 68 новых фото от 22 июля в альбом &laquo;22-23 Weekend&raquo; &mdash; с Victoria Popa-Condrea и еще 4 в Krysha.</p>\r\n', '', '', '', 1, 5, 0, 'weekend', '2016-08-25 21:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `galleries_xref`
+-- Table structure for table `galleries_xref`
 --
 
 CREATE TABLE `galleries_xref` (
@@ -291,10 +310,18 @@ CREATE TABLE `galleries_xref` (
   `table` varchar(20) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `galleries_xref`
+--
+
+INSERT INTO `galleries_xref` (`id`, `galleries_id`, `table_id`, `table`) VALUES
+(1, 6, 8, 'products'),
+(2, 7, 8, 'products');
+
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `menu_categories`
+-- Table structure for table `menu_categories`
 --
 
 CREATE TABLE `menu_categories` (
@@ -318,17 +345,18 @@ CREATE TABLE `menu_categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Дамп данных таблицы `menu_categories`
+-- Dumping data for table `menu_categories`
 --
 
 INSERT INTO `menu_categories` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `parent_id`, `enabled`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
 (1, 'Холодные закуски', '', '', '', '', '', '', '', '', 0, 1, 0, 0, 'xolodnye-zakuski', '2016-07-22 21:00:00', '2016-07-23 05:21:06'),
-(2, 'Супы', '', '', '', '', '', '', '', '', 0, 1, 0, 0, 'supy', '2016-07-22 21:00:00', '2016-07-23 05:26:57');
+(2, 'Супы', '', '', '', '', '', '', '', '', 0, 1, 0, 0, 'supy', '2016-07-22 21:00:00', '2016-07-23 05:26:57'),
+(3, 'Закуска', 'Закуска', 'Закуска', '<p>Закуска</p>\r\n', '<p>Закуска</p>\r\n', '<p>Закуска</p>\r\n', '', '', '', 1, 1, 0, 0, 'zakuska', '2016-08-24 21:00:00', '2016-08-25 04:56:40');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `menu_products`
+-- Table structure for table `menu_products`
 --
 
 CREATE TABLE `menu_products` (
@@ -354,18 +382,19 @@ CREATE TABLE `menu_products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Дамп данных таблицы `menu_products`
+-- Dumping data for table `menu_products`
 --
 
 INSERT INTO `menu_products` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `category_id`, `product_id`, `price`, `enabled`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
 (1, 'вцувцуцу', 'вцувцув', 'цувцу', '<p>вувц</p>\r\n', '<p>вцувцувцу</p>\r\n', '<p>вцувцувцу</p>\r\n', '', '', '', 1, 7, 420.00, 1, 0, 0, '', '2016-07-22 21:00:00', '2016-07-23 06:58:15'),
 (2, 'вцувцуцу', 'вцувцув', 'цувцу', '<p>вувц</p>\r\n', '<p>вцувцувцу</p>\r\n', '<p>вцувцувцу</p>\r\n', '', '', '', 1, 1, 0.00, 1, 0, 0, '', '2016-07-22 21:00:00', '2016-07-23 06:49:27'),
-(3, 'лапша 2', '', '', '', '', '', '', '', '', 2, 7, 500.00, 1, 0, 0, '', '2016-07-22 21:00:00', '2016-07-23 06:58:34');
+(3, 'лапша 2', '', '', '', '', '', '', '', '', 2, 7, 500.00, 1, 0, 0, '', '2016-07-22 21:00:00', '2016-07-23 06:58:34'),
+(4, 'dasdas', 'dsad', 'dsada', '<p>sada</p>\r\n', '<p>dsad</p>\r\n', '<p>dasd</p>\r\n', '', '', '', 2, 8, 122.00, 1, 0, 0, '', '2016-08-21 21:00:00', '2016-08-22 07:53:37');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `meta`
+-- Table structure for table `meta`
 --
 
 CREATE TABLE `meta` (
@@ -384,7 +413,7 @@ CREATE TABLE `meta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Дамп данных таблицы `meta`
+-- Dumping data for table `meta`
 --
 
 INSERT INTO `meta` (`id`, `meta_description`, `meta_description_ro`, `meta_description_en`, `meta_keywords`, `meta_keywords_ro`, `meta_keywords_en`, `title`, `title_ro`, `title_en`, `table_id`, `table`) VALUES
@@ -466,12 +495,31 @@ INSERT INTO `meta` (`id`, `meta_description`, `meta_description_ro`, `meta_descr
 (76, '', '', '', '', '', '', '', '', '', 2, 'menu_categories'),
 (77, 'вцувцу', '', '', 'вцувцу', '', '', 'вцувцу', '', '', 1, 'menu_products'),
 (78, 'вцувцу', '', '', 'вцувцу', '', '', 'вцувцу', '', '', 2, 'menu_products'),
-(79, '', '', '', '', '', '', '', '', '', 3, 'menu_products');
+(79, '', '', '', '', '', '', '', '', '', 3, 'menu_products'),
+(80, '', '', '', '', '', '', '', '', '', 2, 'videos'),
+(81, '', '', '', '', '', '', '', '', '', 2, 'galleries'),
+(82, '', '', '', '', '', '', '', '', '', 3, 'galleries'),
+(83, '', '', '', '', '', '', '', '', '', 4, 'galleries'),
+(84, '', '', '', '', '', '', '', '', '', 5, 'galleries'),
+(85, '', '', '', '', '', '', '', '', '', 3, 'videos'),
+(86, '1', '1', '1', '2', '2', '2', '3', '3', '3', 4, 'videos'),
+(87, '', '', '', '', '', '', '', '', '', 6, 'galleries'),
+(88, '', '', '', '', '', '', '', '', '', 8, 'news'),
+(89, '', '', '', '', '', '', '', '', '', 4, 'menu_products'),
+(90, '', '', '', '', '', '', '', '', '', 5, 'videos'),
+(91, '', '', '', '', '', '', '', '', '', 6, 'videos'),
+(92, '', '', '', '', '', '', '', '', '', 7, 'videos'),
+(93, '', '', '', '', '', '', '', '', '', 8, 'videos'),
+(94, '', '', '', '', '', '', '', '', '', 9, 'videos'),
+(95, '', '', '', '', '', '', '', '', '', 3, 'menu_categories'),
+(96, '', '', '', '', '', '', '', '', '', 9, 'news'),
+(97, 'das', 'das', 'das', 'das', 'd', 'd', 'das', 'asd', 'asd', 10, 'news'),
+(98, '1', '1', '1', '2', '2', '2', '2', '3', '3', 7, 'galleries');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -480,7 +528,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Дамп данных таблицы `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`migration`, `batch`) VALUES
@@ -568,12 +616,362 @@ INSERT INTO `migrations` (`migration`, `batch`) VALUES
 ('2016_05_25_122240_menu_products', 1),
 ('2016_05_25_122425_menu_categories', 1),
 ('2016_06_23_074721_products_categories', 2),
-('2016_07_23_062337_create_videos_xref', 3);
+('2016_07_23_062337_create_videos_xref', 3),
+('2016_07_29_073204_create_contacts', 4),
+('2016_07_29_073503_create_products_contacts', 4),
+('2014_10_12_000000_create_users_table', 1),
+('2014_10_12_100000_create_password_resets_table', 1),
+('2016_03_23_125704_create_news', 1),
+('2016_04_08_084345_create_content_table', 1),
+('2016_04_20_120053_create_tag_table', 1),
+('2016_04_20_120306_create_news_tag_table', 1),
+('2016_04_21_071344_create_constants', 1),
+('2016_04_28_122305_create_photos_table', 1),
+('2016_05_25_092458_create_products', 1),
+('2016_05_25_103543_create_products_news', 1),
+('2016_05_25_111243_create_meta', 1),
+('2016_05_25_112336_create_types', 1),
+('2016_05_25_112545_create_news_types', 1),
+('2016_05_25_113258_create_galleries', 1),
+('2016_05_25_113907_create_galleries_xref', 1),
+('2016_05_25_115447_create_categories', 1),
+('2016_05_25_120511_create_categories_xref', 1),
+('2016_05_25_121927_create_videos', 1),
+('2016_05_25_122240_menu_products', 1),
+('2016_05_25_122425_menu_categories', 1),
+('2016_06_06_080747_update_photos_table', 1),
+('2014_10_12_000000_create_users_table', 1),
+('2014_10_12_100000_create_password_resets_table', 1),
+('2016_03_23_125704_create_news', 1),
+('2016_04_08_084345_create_content_table', 1),
+('2016_04_20_120053_create_tag_table', 1),
+('2016_04_20_120306_create_news_tag_table', 1),
+('2016_04_21_071344_create_constants', 1),
+('2016_04_28_122305_create_photos_table', 1),
+('2016_05_25_092458_create_products', 1),
+('2016_05_25_103543_create_products_news', 1),
+('2016_05_25_111243_create_meta', 1),
+('2016_05_25_112336_create_types', 1),
+('2016_05_25_112545_create_news_types', 1),
+('2016_05_25_113258_create_galleries', 1),
+('2016_05_25_113907_create_galleries_xref', 1),
+('2016_05_25_115447_create_categories', 1),
+('2016_05_25_120511_create_categories_xref', 1),
+('2016_05_25_121927_create_videos', 1),
+('2016_05_25_122240_menu_products', 1),
+('2016_05_25_122425_menu_categories', 1),
+('2016_06_06_080747_update_photos_table', 1),
+('2014_10_12_000000_create_users_table', 1),
+('2014_10_12_100000_create_password_resets_table', 1),
+('2016_03_23_125704_create_news', 1),
+('2016_04_08_084345_create_content_table', 1),
+('2016_04_20_120053_create_tag_table', 1),
+('2016_04_20_120306_create_news_tag_table', 1),
+('2016_04_21_071344_create_constants', 1),
+('2016_04_28_122305_create_photos_table', 1),
+('2016_05_25_092458_create_products', 1),
+('2016_05_25_103543_create_products_news', 1),
+('2016_05_25_111243_create_meta', 1),
+('2016_05_25_112336_create_types', 1),
+('2016_05_25_112545_create_news_types', 1),
+('2016_05_25_113258_create_galleries', 1),
+('2016_05_25_113907_create_galleries_xref', 1),
+('2016_05_25_115447_create_categories', 1),
+('2016_05_25_120511_create_categories_xref', 1),
+('2016_05_25_121927_create_videos', 1),
+('2016_05_25_122240_menu_products', 1),
+('2016_05_25_122425_menu_categories', 1),
+('2016_06_06_080747_update_photos_table', 1),
+('2014_10_12_000000_create_users_table', 1),
+('2014_10_12_100000_create_password_resets_table', 1),
+('2016_03_23_125704_create_news', 1),
+('2016_04_08_084345_create_content_table', 1),
+('2016_04_20_120053_create_tag_table', 1),
+('2016_04_20_120306_create_news_tag_table', 1),
+('2016_04_21_071344_create_constants', 1),
+('2016_04_28_122305_create_photos_table', 1),
+('2016_05_25_092458_create_products', 1),
+('2016_05_25_103543_create_products_news', 1),
+('2016_05_25_111243_create_meta', 1),
+('2016_05_25_112336_create_types', 1),
+('2016_05_25_112545_create_news_types', 1),
+('2016_05_25_113258_create_galleries', 1),
+('2016_05_25_113907_create_galleries_xref', 1),
+('2016_05_25_115447_create_categories', 1),
+('2016_05_25_120511_create_categories_xref', 1),
+('2016_05_25_121927_create_videos', 1),
+('2016_05_25_122240_menu_products', 1),
+('2016_05_25_122425_menu_categories', 1),
+('2016_06_23_074721_products_categories', 2),
+('2016_07_23_062337_create_videos_xref', 3),
+('2016_07_29_073204_create_contacts', 4),
+('2016_07_29_073503_create_products_contacts', 4),
+('2014_10_12_000000_create_users_table', 1),
+('2014_10_12_100000_create_password_resets_table', 1),
+('2016_03_23_125704_create_news', 1),
+('2016_04_08_084345_create_content_table', 1),
+('2016_04_20_120053_create_tag_table', 1),
+('2016_04_20_120306_create_news_tag_table', 1),
+('2016_04_21_071344_create_constants', 1),
+('2016_04_28_122305_create_photos_table', 1),
+('2016_05_25_092458_create_products', 1),
+('2016_05_25_103543_create_products_news', 1),
+('2016_05_25_111243_create_meta', 1),
+('2016_05_25_112336_create_types', 1),
+('2016_05_25_112545_create_news_types', 1),
+('2016_05_25_113258_create_galleries', 1),
+('2016_05_25_113907_create_galleries_xref', 1),
+('2016_05_25_115447_create_categories', 1),
+('2016_05_25_120511_create_categories_xref', 1),
+('2016_05_25_121927_create_videos', 1),
+('2016_05_25_122240_menu_products', 1),
+('2016_05_25_122425_menu_categories', 1),
+('2016_06_06_080747_update_photos_table', 1),
+('2014_10_12_000000_create_users_table', 1),
+('2014_10_12_100000_create_password_resets_table', 1),
+('2016_03_23_125704_create_news', 1),
+('2016_04_08_084345_create_content_table', 1),
+('2016_04_20_120053_create_tag_table', 1),
+('2016_04_20_120306_create_news_tag_table', 1),
+('2016_04_21_071344_create_constants', 1),
+('2016_04_28_122305_create_photos_table', 1),
+('2016_05_25_092458_create_products', 1),
+('2016_05_25_103543_create_products_news', 1),
+('2016_05_25_111243_create_meta', 1),
+('2016_05_25_112336_create_types', 1),
+('2016_05_25_112545_create_news_types', 1),
+('2016_05_25_113258_create_galleries', 1),
+('2016_05_25_113907_create_galleries_xref', 1),
+('2016_05_25_115447_create_categories', 1),
+('2016_05_25_120511_create_categories_xref', 1),
+('2016_05_25_121927_create_videos', 1),
+('2016_05_25_122240_menu_products', 1),
+('2016_05_25_122425_menu_categories', 1),
+('2016_06_06_080747_update_photos_table', 1),
+('2014_10_12_000000_create_users_table', 1),
+('2014_10_12_100000_create_password_resets_table', 1),
+('2016_03_23_125704_create_news', 1),
+('2016_04_08_084345_create_content_table', 1),
+('2016_04_20_120053_create_tag_table', 1),
+('2016_04_20_120306_create_news_tag_table', 1),
+('2016_04_21_071344_create_constants', 1),
+('2016_04_28_122305_create_photos_table', 1),
+('2016_05_25_092458_create_products', 1),
+('2016_05_25_103543_create_products_news', 1),
+('2016_05_25_111243_create_meta', 1),
+('2016_05_25_112336_create_types', 1),
+('2016_05_25_112545_create_news_types', 1),
+('2016_05_25_113258_create_galleries', 1),
+('2016_05_25_113907_create_galleries_xref', 1),
+('2016_05_25_115447_create_categories', 1),
+('2016_05_25_120511_create_categories_xref', 1),
+('2016_05_25_121927_create_videos', 1),
+('2016_05_25_122240_menu_products', 1),
+('2016_05_25_122425_menu_categories', 1),
+('2016_06_06_080747_update_photos_table', 1),
+('2014_10_12_000000_create_users_table', 1),
+('2014_10_12_100000_create_password_resets_table', 1),
+('2016_03_23_125704_create_news', 1),
+('2016_04_08_084345_create_content_table', 1),
+('2016_04_20_120053_create_tag_table', 1),
+('2016_04_20_120306_create_news_tag_table', 1),
+('2016_04_21_071344_create_constants', 1),
+('2016_04_28_122305_create_photos_table', 1),
+('2016_05_25_092458_create_products', 1),
+('2016_05_25_103543_create_products_news', 1),
+('2016_05_25_111243_create_meta', 1),
+('2016_05_25_112336_create_types', 1),
+('2016_05_25_112545_create_news_types', 1),
+('2016_05_25_113258_create_galleries', 1),
+('2016_05_25_113907_create_galleries_xref', 1),
+('2016_05_25_115447_create_categories', 1),
+('2016_05_25_120511_create_categories_xref', 1),
+('2016_05_25_121927_create_videos', 1),
+('2016_05_25_122240_menu_products', 1),
+('2016_05_25_122425_menu_categories', 1),
+('2016_06_23_074721_products_categories', 2),
+('2016_07_23_062337_create_videos_xref', 3),
+('2016_07_29_073204_create_contacts', 4),
+('2016_07_29_073503_create_products_contacts', 4),
+('2014_10_12_000000_create_users_table', 1),
+('2014_10_12_100000_create_password_resets_table', 1),
+('2016_03_23_125704_create_news', 1),
+('2016_04_08_084345_create_content_table', 1),
+('2016_04_20_120053_create_tag_table', 1),
+('2016_04_20_120306_create_news_tag_table', 1),
+('2016_04_21_071344_create_constants', 1),
+('2016_04_28_122305_create_photos_table', 1),
+('2016_05_25_092458_create_products', 1),
+('2016_05_25_103543_create_products_news', 1),
+('2016_05_25_111243_create_meta', 1),
+('2016_05_25_112336_create_types', 1),
+('2016_05_25_112545_create_news_types', 1),
+('2016_05_25_113258_create_galleries', 1),
+('2016_05_25_113907_create_galleries_xref', 1),
+('2016_05_25_115447_create_categories', 1),
+('2016_05_25_120511_create_categories_xref', 1),
+('2016_05_25_121927_create_videos', 1),
+('2016_05_25_122240_menu_products', 1),
+('2016_05_25_122425_menu_categories', 1),
+('2016_06_06_080747_update_photos_table', 1),
+('2014_10_12_000000_create_users_table', 1),
+('2014_10_12_100000_create_password_resets_table', 1),
+('2016_03_23_125704_create_news', 1),
+('2016_04_08_084345_create_content_table', 1),
+('2016_04_20_120053_create_tag_table', 1),
+('2016_04_20_120306_create_news_tag_table', 1),
+('2016_04_21_071344_create_constants', 1),
+('2016_04_28_122305_create_photos_table', 1),
+('2016_05_25_092458_create_products', 1),
+('2016_05_25_103543_create_products_news', 1),
+('2016_05_25_111243_create_meta', 1),
+('2016_05_25_112336_create_types', 1),
+('2016_05_25_112545_create_news_types', 1),
+('2016_05_25_113258_create_galleries', 1),
+('2016_05_25_113907_create_galleries_xref', 1),
+('2016_05_25_115447_create_categories', 1),
+('2016_05_25_120511_create_categories_xref', 1),
+('2016_05_25_121927_create_videos', 1),
+('2016_05_25_122240_menu_products', 1),
+('2016_05_25_122425_menu_categories', 1),
+('2016_06_06_080747_update_photos_table', 1),
+('2014_10_12_000000_create_users_table', 1),
+('2014_10_12_100000_create_password_resets_table', 1),
+('2016_03_23_125704_create_news', 1),
+('2016_04_08_084345_create_content_table', 1),
+('2016_04_20_120053_create_tag_table', 1),
+('2016_04_20_120306_create_news_tag_table', 1),
+('2016_04_21_071344_create_constants', 1),
+('2016_04_28_122305_create_photos_table', 1),
+('2016_05_25_092458_create_products', 1),
+('2016_05_25_103543_create_products_news', 1),
+('2016_05_25_111243_create_meta', 1),
+('2016_05_25_112336_create_types', 1),
+('2016_05_25_112545_create_news_types', 1),
+('2016_05_25_113258_create_galleries', 1),
+('2016_05_25_113907_create_galleries_xref', 1),
+('2016_05_25_115447_create_categories', 1),
+('2016_05_25_120511_create_categories_xref', 1),
+('2016_05_25_121927_create_videos', 1),
+('2016_05_25_122240_menu_products', 1),
+('2016_05_25_122425_menu_categories', 1),
+('2016_06_06_080747_update_photos_table', 1),
+('2014_10_12_000000_create_users_table', 1),
+('2014_10_12_100000_create_password_resets_table', 1),
+('2016_03_23_125704_create_news', 1),
+('2016_04_08_084345_create_content_table', 1),
+('2016_04_20_120053_create_tag_table', 1),
+('2016_04_20_120306_create_news_tag_table', 1),
+('2016_04_21_071344_create_constants', 1),
+('2016_04_28_122305_create_photos_table', 1),
+('2016_05_25_092458_create_products', 1),
+('2016_05_25_103543_create_products_news', 1),
+('2016_05_25_111243_create_meta', 1),
+('2016_05_25_112336_create_types', 1),
+('2016_05_25_112545_create_news_types', 1),
+('2016_05_25_113258_create_galleries', 1),
+('2016_05_25_113907_create_galleries_xref', 1),
+('2016_05_25_115447_create_categories', 1),
+('2016_05_25_120511_create_categories_xref', 1),
+('2016_05_25_121927_create_videos', 1),
+('2016_05_25_122240_menu_products', 1),
+('2016_05_25_122425_menu_categories', 1),
+('2016_06_23_074721_products_categories', 2),
+('2016_07_23_062337_create_videos_xref', 3),
+('2016_07_29_073204_create_contacts', 4),
+('2016_07_29_073503_create_products_contacts', 4),
+('2014_10_12_000000_create_users_table', 1),
+('2014_10_12_100000_create_password_resets_table', 1),
+('2016_03_23_125704_create_news', 1),
+('2016_04_08_084345_create_content_table', 1),
+('2016_04_20_120053_create_tag_table', 1),
+('2016_04_20_120306_create_news_tag_table', 1),
+('2016_04_21_071344_create_constants', 1),
+('2016_04_28_122305_create_photos_table', 1),
+('2016_05_25_092458_create_products', 1),
+('2016_05_25_103543_create_products_news', 1),
+('2016_05_25_111243_create_meta', 1),
+('2016_05_25_112336_create_types', 1),
+('2016_05_25_112545_create_news_types', 1),
+('2016_05_25_113258_create_galleries', 1),
+('2016_05_25_113907_create_galleries_xref', 1),
+('2016_05_25_115447_create_categories', 1),
+('2016_05_25_120511_create_categories_xref', 1),
+('2016_05_25_121927_create_videos', 1),
+('2016_05_25_122240_menu_products', 1),
+('2016_05_25_122425_menu_categories', 1),
+('2016_06_06_080747_update_photos_table', 1),
+('2014_10_12_000000_create_users_table', 1),
+('2014_10_12_100000_create_password_resets_table', 1),
+('2016_03_23_125704_create_news', 1),
+('2016_04_08_084345_create_content_table', 1),
+('2016_04_20_120053_create_tag_table', 1),
+('2016_04_20_120306_create_news_tag_table', 1),
+('2016_04_21_071344_create_constants', 1),
+('2016_04_28_122305_create_photos_table', 1),
+('2016_05_25_092458_create_products', 1),
+('2016_05_25_103543_create_products_news', 1),
+('2016_05_25_111243_create_meta', 1),
+('2016_05_25_112336_create_types', 1),
+('2016_05_25_112545_create_news_types', 1),
+('2016_05_25_113258_create_galleries', 1),
+('2016_05_25_113907_create_galleries_xref', 1),
+('2016_05_25_115447_create_categories', 1),
+('2016_05_25_120511_create_categories_xref', 1),
+('2016_05_25_121927_create_videos', 1),
+('2016_05_25_122240_menu_products', 1),
+('2016_05_25_122425_menu_categories', 1),
+('2016_06_06_080747_update_photos_table', 1),
+('2014_10_12_000000_create_users_table', 1),
+('2014_10_12_100000_create_password_resets_table', 1),
+('2016_03_23_125704_create_news', 1),
+('2016_04_08_084345_create_content_table', 1),
+('2016_04_20_120053_create_tag_table', 1),
+('2016_04_20_120306_create_news_tag_table', 1),
+('2016_04_21_071344_create_constants', 1),
+('2016_04_28_122305_create_photos_table', 1),
+('2016_05_25_092458_create_products', 1),
+('2016_05_25_103543_create_products_news', 1),
+('2016_05_25_111243_create_meta', 1),
+('2016_05_25_112336_create_types', 1),
+('2016_05_25_112545_create_news_types', 1),
+('2016_05_25_113258_create_galleries', 1),
+('2016_05_25_113907_create_galleries_xref', 1),
+('2016_05_25_115447_create_categories', 1),
+('2016_05_25_120511_create_categories_xref', 1),
+('2016_05_25_121927_create_videos', 1),
+('2016_05_25_122240_menu_products', 1),
+('2016_05_25_122425_menu_categories', 1),
+('2016_06_06_080747_update_photos_table', 1),
+('2014_10_12_000000_create_users_table', 1),
+('2014_10_12_100000_create_password_resets_table', 1),
+('2016_03_23_125704_create_news', 1),
+('2016_04_08_084345_create_content_table', 1),
+('2016_04_20_120053_create_tag_table', 1),
+('2016_04_20_120306_create_news_tag_table', 1),
+('2016_04_21_071344_create_constants', 1),
+('2016_04_28_122305_create_photos_table', 1),
+('2016_05_25_092458_create_products', 1),
+('2016_05_25_103543_create_products_news', 1),
+('2016_05_25_111243_create_meta', 1),
+('2016_05_25_112336_create_types', 1),
+('2016_05_25_112545_create_news_types', 1),
+('2016_05_25_113258_create_galleries', 1),
+('2016_05_25_113907_create_galleries_xref', 1),
+('2016_05_25_115447_create_categories', 1),
+('2016_05_25_120511_create_categories_xref', 1),
+('2016_05_25_121927_create_videos', 1),
+('2016_05_25_122240_menu_products', 1),
+('2016_05_25_122425_menu_categories', 1),
+('2016_06_23_074721_products_categories', 2),
+('2016_07_23_062337_create_videos_xref', 3),
+('2016_07_29_073204_create_contacts', 4),
+('2016_07_29_073503_create_products_contacts', 4);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `news`
+-- Table structure for table `news`
 --
 
 CREATE TABLE `news` (
@@ -597,20 +995,23 @@ CREATE TABLE `news` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Дамп данных таблицы `news`
+-- Dumping data for table `news`
 --
 
 INSERT INTO `news` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `enabled`, `top`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'Voice Vocal Club Karaoke приглашает принять участие в проекте AntiProfy', '123', '123', '<p><strong>Каждый четверг в Voice Vocal Club Karaoke вас ждут звездные гости, а самые активные любители караоке могут проявить свой талант и артистичность, приняв участие в проекте AntiProfy. Правила просты: для участия в конкурсе приглашаются 3 гостя из зала, которые исполнят по 2 песни, а остальные посетители отдают свои голоса понравившемуся исполнителю. Звездный гость выбирает своего фаворита и отдает ему 5 баллов. Победитель с максимальным количеством баллов получает главный приз вечера &mdash; трофей конкурса AntiProfy .</strong></p>\r\n\r\n<p><strong><img alt="" src="http://cdn.allfun.md/2016/06/23/10/576b94a5c41e9.jpg" style="height:289px; width:620px" /></strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>На этот раз, 23 июня, специальным гостем проекта станет молодая исполнительница&nbsp; Stela Botez. Все участники получат приятные призы от партнеров проекта.</p>\r\n\r\n<p>Voice Vocal Club ждет вас каждый четверг!</p>\r\n\r\n<p>Sing Different - be Anti Profy!</p>\r\n\r\n<p>Начало в 22:00.</p>\r\n\r\n<p>Московский пр-т 15/4, 022 43 93 93, 79409266<br />\r\n<a href="http://www.facebook.com/VVCK.MD/" target="_blank">www.facebook.com/VVCK.MD/</a>,<a href="http://www.voiceclub.md/" target="_blank">www.voiceclub.md</a></p>\r\n', '<p>123</p>\r\n', '<p>456</p>\r\n', 'Каждый четверг в Voice Vocal Club Karaoke вас ждут звездные гости, а самые активные любители караоке могут проявить свой талант и артистичность, приняв участие в проекте AntiProfy.', 'Рум описание', 'Англ описание', 1, 1, 65, 0, 'voice-vocal-club-karaoke-priglashaet-prinyati-uchastie-v-proekte-antiprofy', '2016-06-23 21:00:00', '0000-00-00 00:00:00'),
-(4, 'Несколько учебных заведений будут реорганизованы или ликвидированы', '', '', '<h3>По предложению Министерства просвещения, несколько профессионально-технических учебных заведений будут ликвидированы, реорганизованы или переименованы.</h3>\r\n\r\n<p><br />\r\nСоответствующее решение было утверждено сегодня на заседании правительства, сообщает NOI.md.<br />\r\n<br />\r\nТак, путем реорганизации Кишиневского политехнического колледжа и Кишиневского колледжа микроэлектроники и вычислительной техники будет создан Центр передового опыта в области энергетики и электроники. На базе Финансово-банковского колледжа будет создан Центр передового опыта в области экономики и финансов.<br />\r\n<br />\r\nВ соответствии с другим решением кабмина, Каларашский педагогический колледж имени Александру чел Бун будет ликвидирован. Из названия шести учебных заведений будет исключено название &laquo;педагогический&raquo;. Это Кишиневский колледж имени Алексея Матеевича, Липканского колледжа имени Георгия Асаки, Оргеевский колледж имени Василия Лупу и т.д.<br />\r\n<br />\r\nПо словам руководства Министерства просвещения, реорганизация данных учебных заведений осуществляется в рамках реформы профессионально-технического образования. По словам властей, создание 10 центров передового опыта является обязательством правительства по модернизации профессионально-технического образования. В 2015 году было создано пять центров передового опыта в строительстве, транспорте, информатике, легкой промышленности и пищевой промышленности.</p>\r\n', '', '', 'По предложению Министерства просвещения, несколько профессионально-технических учебных заведений будут ликвидированы, реорганизованы или переименованы.', '', '', 1, 1, 27, 0, 'neskoliko-uchebnyx-zavedenij-budut-reorganizovany-ili-likvidirovany', '2016-06-26 09:15:06', '0000-00-00 00:00:00'),
+(1, 'Voice Vocal Club Karaoke приглашает принять участие в проекте AntiProfy', '123', '123', '<p><strong>Каждый четверг в Voice Vocal Club Karaoke вас ждут звездные гости, а самые активные любители караоке могут проявить свой талант и артистичность, приняв участие в проекте AntiProfy. Правила просты: для участия в конкурсе приглашаются 3 гостя из зала, которые исполнят по 2 песни, а остальные посетители отдают свои голоса понравившемуся исполнителю. Звездный гость выбирает своего фаворита и отдает ему 5 баллов. Победитель с максимальным количеством баллов получает главный приз вечера &mdash; трофей конкурса AntiProfy .</strong></p>\r\n\r\n<p><strong><img alt="" src="http://cdn.allfun.md/2016/06/23/10/576b94a5c41e9.jpg" style="height:289px; width:620px" /></strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>На этот раз, 23 июня, специальным гостем проекта станет молодая исполнительница&nbsp; Stela Botez. Все участники получат приятные призы от партнеров проекта.</p>\r\n\r\n<p>Voice Vocal Club ждет вас каждый четверг!</p>\r\n\r\n<p>Sing Different - be Anti Profy!</p>\r\n\r\n<p>Начало в 22:00.</p>\r\n\r\n<p>Московский пр-т 15/4, 022 43 93 93, 79409266<br />\r\n<a href="http://www.facebook.com/VVCK.MD/" target="_blank">www.facebook.com/VVCK.MD/</a>,<a href="http://www.voiceclub.md/" target="_blank">www.voiceclub.md</a></p>\r\n', '<p>123</p>\r\n', '<p>456</p>\r\n', 'Каждый четверг в Voice Vocal Club Karaoke вас ждут звездные гости, а самые активные любители караоке могут проявить свой талант и артистичность, приняв участие в проекте AntiProfy.', 'Рум описание', 'Англ описание', 1, 1, 67, 0, 'voice-vocal-club-karaoke-priglashaet-prinyati-uchastie-v-proekte-antiprofy', '2016-06-23 21:00:00', '0000-00-00 00:00:00'),
+(4, 'Несколько учебных заведений будут реорганизованы или ликвидированы', '', '', '<h3>По предложению Министерства просвещения, несколько профессионально-технических учебных заведений будут ликвидированы, реорганизованы или переименованы.</h3>\r\n\r\n<p><br />\r\nСоответствующее решение было утверждено сегодня на заседании правительства, сообщает NOI.md.<br />\r\n<br />\r\nТак, путем реорганизации Кишиневского политехнического колледжа и Кишиневского колледжа микроэлектроники и вычислительной техники будет создан Центр передового опыта в области энергетики и электроники. На базе Финансово-банковского колледжа будет создан Центр передового опыта в области экономики и финансов.<br />\r\n<br />\r\nВ соответствии с другим решением кабмина, Каларашский педагогический колледж имени Александру чел Бун будет ликвидирован. Из названия шести учебных заведений будет исключено название &laquo;педагогический&raquo;. Это Кишиневский колледж имени Алексея Матеевича, Липканского колледжа имени Георгия Асаки, Оргеевский колледж имени Василия Лупу и т.д.<br />\r\n<br />\r\nПо словам руководства Министерства просвещения, реорганизация данных учебных заведений осуществляется в рамках реформы профессионально-технического образования. По словам властей, создание 10 центров передового опыта является обязательством правительства по модернизации профессионально-технического образования. В 2015 году было создано пять центров передового опыта в строительстве, транспорте, информатике, легкой промышленности и пищевой промышленности.</p>\r\n', '', '', 'По предложению Министерства просвещения, несколько профессионально-технических учебных заведений будут ликвидированы, реорганизованы или переименованы.', '', '', 1, 1, 28, 0, 'neskoliko-uchebnyx-zavedenij-budut-reorganizovany-ili-likvidirovany', '2016-06-26 09:15:06', '0000-00-00 00:00:00'),
 (5, 'Black & White Party @ Versenz Cafe', 'Black & White Party @ Versenz Cafe', 'Black & White Party @ Versenz Cafe', '<p>Правильный субботний вечер - это отдых, большая компания друзей, любимые напитки и отличная атмосфера. Если вам это по душе, то Versenz Cafe ждет вас в 21:00.</p>\r\n\r\n<p>Для вас и ваших друзей в эту субботу зажжет DJ DEN DI.<br />\r\nБронируем столики по телефону 060 224422.</p>\r\n\r\n<p>Подробности на страничке Versenz в&nbsp;<a href="http://www.facebook.com/versenzcafe" target="_blank">www.facebook.com</a></p>\r\n', '', '', 'Правильный субботний вечер - это отдых, большая компания друзей, любимые напитки и отличная атмосфера. Если вам это по душе, то Versenz Cafe ждет вас в 21:00.', '', '', 1, 1, 24, 0, 'black-white-party-versenz-cafe', '2016-06-26 09:30:16', '0000-00-00 00:00:00'),
-(6, 'С песней по жизни: Voice Vocal Club - 8 лет', 'С песней по жизни: Voice Vocal Club - 8 лет', 'С песней по жизни: Voice Vocal Club - 8 лет', '<p><strong>В воскресенье, 29 мая, Voice Vocal Club отмечает свой VIII день рождения. К знаменательной дате клуб подошел, основательно подготовившись. За это время он обзавелся широким кругом постоянных гостей, в числе которых много звездных персонажей, для которых пение - не просто хобби.&nbsp;</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&quot;Voice Vocal Club&quot; славится своей душевной атмосферой и настроением, ну а зрелища здесь всегда на высоком уровне.&nbsp;<br />\r\nДень своего рождения&nbsp; Voice Vocal Club решил отметить с друзьями.</p>\r\n\r\n<p>Приглашенные гости : Max Zavidia и Broono SB.</p>\r\n\r\n<p>В программе вечера: &laquo;Танец персонала&raquo; и исполнение всем коллективом гимна &quot;Voice Vocal Club&quot;, клубный фотограф, бесплатное шампанское и, конечно же, праздничный торт для всех гостей клуба!</p>\r\n\r\n<p>8 лет мы работаем для вас: тысячи караокеров, сотни звездных гостей, десятки победителей в караоке чемпионатах и МИЛЛИОН исполненных песен.&nbsp;</p>\r\n\r\n<p>Начало в 21.00.</p>\r\n\r\n<p>&quot;Voice Vocal Club&quot;: с песней по жизни!</p>\r\n', '', '', '"Voice Vocal Club" славится своей душевной атмосферой и настроением, ну а зрелища здесь всегда на высоком уровне. \r\nДень своего рождения  Voice Vocal Club решил отметить с друзьями.', '', '', 1, 1, 8, 0, 's-pesnej-po-zhizni-voice-vocal-club-let', '2016-06-26 06:52:35', '0000-00-00 00:00:00'),
-(7, 'Самир Логин в проекте AntiProfy в Voice Vocal Club Karaoke', '', '', '<p>Проект AntiProfy с бессменной ведущей Алиной Дабижа в Voice Vocal Club Karaoke набирает обороты. Каждый четверг здесь вас ждут звездные гости, а самые активные любители караоке могут проявить свой талант и артистичность, приняв участие в проекте.&nbsp;</p>\r\n\r\n<p>На этот раз, 26 мая, специальным гостем проекта станет талантливый исполнитель Самир Логин.&nbsp;&nbsp; Все участники получат приятные призы от партнеров проекта.</p>\r\n\r\n<p>Voice Vocal Club ждет вас каждый четверг!</p>\r\n\r\n<p>Sing Different - be Anti Profy!</p>\r\n\r\n<p>Начало в 22:00.</p>\r\n\r\n<p>Московский пр-т 15/4, 022 43 93 93, 79409266</p>\r\n', '', '', 'На этот раз, 26 мая, специальным гостем проекта станет талантливый исполнитель Самир Логин.   Все участники получат приятные призы от партнеров проекта.', '', '', 1, 1, 14, 0, 'samir-login-v-proekte-antiprofy-v-voice-vocal-club-karaoke', '2016-06-26 06:54:09', '0000-00-00 00:00:00');
+(6, 'С песней по жизни: Voice Vocal Club - 8 лет', 'С песней по жизни: Voice Vocal Club - 8 лет', 'С песней по жизни: Voice Vocal Club - 8 лет', '<p><strong>В воскресенье, 29 мая, Voice Vocal Club отмечает свой VIII день рождения. К знаменательной дате клуб подошел, основательно подготовившись. За это время он обзавелся широким кругом постоянных гостей, в числе которых много звездных персонажей, для которых пение - не просто хобби.&nbsp;</strong></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>&quot;Voice Vocal Club&quot; славится своей душевной атмосферой и настроением, ну а зрелища здесь всегда на высоком уровне.&nbsp;<br />\r\nДень своего рождения&nbsp; Voice Vocal Club решил отметить с друзьями.</p>\r\n\r\n<p>Приглашенные гости : Max Zavidia и Broono SB.</p>\r\n\r\n<p>В программе вечера: &laquo;Танец персонала&raquo; и исполнение всем коллективом гимна &quot;Voice Vocal Club&quot;, клубный фотограф, бесплатное шампанское и, конечно же, праздничный торт для всех гостей клуба!</p>\r\n\r\n<p>8 лет мы работаем для вас: тысячи караокеров, сотни звездных гостей, десятки победителей в караоке чемпионатах и МИЛЛИОН исполненных песен.&nbsp;</p>\r\n\r\n<p>Начало в 21.00.</p>\r\n\r\n<p>&quot;Voice Vocal Club&quot;: с песней по жизни!</p>\r\n', '', '', '"Voice Vocal Club" славится своей душевной атмосферой и настроением, ну а зрелища здесь всегда на высоком уровне. \r\nДень своего рождения  Voice Vocal Club решил отметить с друзьями.', '', '', 1, 1, 10, 0, 's-pesnej-po-zhizni-voice-vocal-club-let', '2016-06-26 06:52:35', '0000-00-00 00:00:00'),
+(7, 'Самир Логин в проекте AntiProfy в Voice Vocal Club Karaoke', '', '', '<p>Проект AntiProfy с бессменной ведущей Алиной Дабижа в Voice Vocal Club Karaoke набирает обороты. Каждый четверг здесь вас ждут звездные гости, а самые активные любители караоке могут проявить свой талант и артистичность, приняв участие в проекте.&nbsp;</p>\r\n\r\n<p>На этот раз, 26 мая, специальным гостем проекта станет талантливый исполнитель Самир Логин.&nbsp;&nbsp; Все участники получат приятные призы от партнеров проекта.</p>\r\n\r\n<p>Voice Vocal Club ждет вас каждый четверг!</p>\r\n\r\n<p>Sing Different - be Anti Profy!</p>\r\n\r\n<p>Начало в 22:00.</p>\r\n\r\n<p>Московский пр-т 15/4, 022 43 93 93, 79409266</p>\r\n', '', '', 'На этот раз, 26 мая, специальным гостем проекта станет талантливый исполнитель Самир Логин.   Все участники получат приятные призы от партнеров проекта.', '', '', 1, 1, 14, 0, 'samir-login-v-proekte-antiprofy-v-voice-vocal-club-karaoke', '2016-06-26 06:54:09', '0000-00-00 00:00:00'),
+(8, 'dfafd', 'dsad', 'dsad', '<p>dsad</p>\r\n', '<p>dsad</p>\r\n', '<p>dsad</p>\r\n', 'dasd', 'dasdas', 'dasdas', 1, 1, 4, 0, 'dfafd', '2016-08-21 21:00:00', '0000-00-00 00:00:00'),
+(9, 'asdd', 'dasd', 'asd', '<p>11</p>\r\n', '<p>11</p>\r\n', '<p>11</p>\r\n', '11', '11', '111', 1, 0, 0, 0, 'asdd', '2016-08-25 21:00:00', '2016-08-26 05:43:09'),
+(10, 'dasd', 'Desd', 'asdas', '<p>asd</p>\r\n', '<p>dasd</p>\r\n', '<p>dasd</p>\r\n', 'das', 'asd', 'das', 1, 1, 2, 0, 'dasd', '2016-08-25 21:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `news_tags`
+-- Table structure for table `news_tags`
 --
 
 CREATE TABLE `news_tags` (
@@ -620,19 +1021,20 @@ CREATE TABLE `news_tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Дамп данных таблицы `news_tags`
+-- Dumping data for table `news_tags`
 --
 
 INSERT INTO `news_tags` (`id`, `news_id`, `tags_id`) VALUES
 (2, 1, 2),
 (4, 4, 1),
 (5, 4, 2),
-(6, 5, 2);
+(6, 5, 2),
+(7, 10, 2);
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `news_types`
+-- Table structure for table `news_types`
 --
 
 CREATE TABLE `news_types` (
@@ -644,7 +1046,7 @@ CREATE TABLE `news_types` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -656,7 +1058,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `photos`
+-- Table structure for table `photos`
 --
 
 CREATE TABLE `photos` (
@@ -669,7 +1071,7 @@ CREATE TABLE `photos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Дамп данных таблицы `photos`
+-- Dumping data for table `photos`
 --
 
 INSERT INTO `photos` (`id`, `source`, `table_id`, `table`, `sort`, `token`) VALUES
@@ -781,30 +1183,70 @@ INSERT INTO `photos` (`id`, `source`, `table_id`, `table`, `sort`, `token`) VALU
 (116, '577643466c6e1.jpg', 0, 'products', 116, '8e9f51819b53484a8616876681cbade38b9f0012'),
 (117, 'mojito_117.jpg', 10, 'products', 117, ''),
 (119, '5789fe7f31e18.jpg', 0, 'products', 119, 'c35f537e054e665778e8f226159c21231545370e'),
-(120, 'andys-pizza_120.jpg', 7, 'hall_plan', 121, ''),
 (121, '578a042cefabc.jpg', 0, 'hall_plan', 120, '03e3f38165fe5f2344b76850c188600e226d1d18'),
-(122, 'andys-pizza_122.jpg', 7, 'hall_plan', 122, ''),
 (123, '578a04768c255.png', 0, 'products', 123, '0d73ac624693c4c7b35ce1d3d058e7c6e2a0a76b'),
 (124, '578a04823df8b.png', 0, 'products', 124, '092f4fa541547d369a54070843365faffbf6e4a6'),
 (125, '578a048e0e2d6.png', 0, 'products', 125, '3fe914c0dd12d98b5c76698a1d7700f75a288eb1'),
-(128, 'andys-pizza_128.jpg', 7, 'hall_plan', 128, ''),
 (129, 'galereya-_129.jpg', 1, 'galleries', 129, ''),
 (130, 'galereya-_130.jpg', 1, 'galleries', 130, ''),
 (131, 'galereya-_131.jpg', 1, 'galleries', 131, ''),
 (132, 'galereya-_132.jpg', 1, 'galleries', 132, ''),
 (133, 'galereya-_133.jpg', 1, 'galleries', 133, ''),
-(134, 'andys-pizza_134.png', 7, 'hall_plan', 134, ''),
-(135, 'andys-pizza_135.jpg', 7, 'hall_plan', 135, ''),
 (136, 'andys-pizza_136.jpg', 7, 'background', 136, ''),
 (137, '57933da1e4a43.jpg', 2, 'menu_products', 137, ''),
 (138, '57933da1b5c6d.jpg', 2, 'menu_products', 138, ''),
 (139, '57933da199672.jpg', 2, 'menu_products', 139, ''),
-(140, '57933ed4f24d2.jpg', 3, 'menu_products', 140, '');
+(140, '57933ed4f24d2.jpg', 3, 'menu_products', 140, ''),
+(141, 'andys-pizza_141.jpg', 7, 'hall_plan', 134, ''),
+(142, 'andys-pizza_142.png', 7, 'hall_plan', 142, ''),
+(145, 'andys-pizza_145.png', 7, 'hall_plan', 145, ''),
+(146, 'andys-pizza_146.jpg', 7, 'hall_plan', 146, ''),
+(147, 'andys-pizza_147.jpg', 7, 'hall_plan', 147, ''),
+(148, 'fotogallereya_148.jpg', 2, 'galleries', 148, ''),
+(149, 'fotogallereya_149.jpg', 2, 'galleries', 149, ''),
+(150, 'fotogallereya_150.jpg', 2, 'galleries', 150, ''),
+(151, 'fotogallereya_151.jpg', 2, 'galleries', 151, ''),
+(152, '57b40ded46305.jpg', 0, 'galleries', 152, 'b3e38911bf170c7ac82929d84990f4a2bdf3940b'),
+(153, '57b40ded3cb1f.jpg', 0, 'galleries', 153, 'c0a8761200fe2f3a74a2db729e8a41c30a7a953b'),
+(154, '57b40ded42e19.jpg', 0, 'galleries', 154, '0632a48f6ebc2bb93f9517d02fd5afed4e860288'),
+(155, '57b40ded3f25d.jpg', 0, 'galleries', 155, 'd73d20daafb35584da69d66770fc899715ed80e9'),
+(156, '57b40ded709eb.jpg', 0, 'galleries', 156, '89a29ed286a17f6b350d1f3bf81d63e37f8a20f9'),
+(157, '123_157.jpg', 4, 'galleries', 157, ''),
+(158, '123_158.jpg', 4, 'galleries', 158, ''),
+(159, '123_159.jpg', 4, 'galleries', 159, ''),
+(160, '123_160.jpg', 4, 'galleries', 160, ''),
+(161, '123_161.jpg', 3, 'galleries', 161, ''),
+(162, '123_162.jpg', 3, 'galleries', 162, ''),
+(163, '123_163.jpg', 3, 'galleries', 163, ''),
+(165, 'ss_165.jpg', 5, 'galleries', 165, ''),
+(166, 'dsd_166.jpg', 6, 'galleries', 166, ''),
+(167, 'dfafd_167.jpg', 8, 'news', 167, ''),
+(168, '57bad9aee6ac3.jpg', 4, 'menu_products', 168, ''),
+(172, 'krysha_172.jpg', 8, 'background', 172, ''),
+(173, 'asdd_173.jpg', 9, 'news', 173, ''),
+(174, 'dasd_174.jpg', 10, 'news', 174, ''),
+(176, 'krysha_176.jpg', 8, 'hall_plan', 179, ''),
+(177, 'krysha_177.jpg', 8, 'hall_plan', 177, ''),
+(178, 'krysha_178.jpg', 8, 'hall_plan', 178, ''),
+(179, 'krysha_179.jpg', 8, 'hall_plan', 176, ''),
+(181, 'krysha_181.jpg', 8, 'hall_plan', 181, ''),
+(182, 'weekend_182.jpg', 7, 'galleries', 188, ''),
+(183, 'weekend_183.jpg', 7, 'galleries', 183, ''),
+(184, 'weekend_184.jpg', 7, 'galleries', 184, ''),
+(185, 'weekend_185.jpg', 7, 'galleries', 185, ''),
+(186, 'weekend_186.jpg', 7, 'galleries', 186, ''),
+(187, 'weekend_187.jpg', 7, 'galleries', 187, ''),
+(188, 'weekend_188.jpg', 7, 'galleries', 182, ''),
+(189, 'weekend_189.jpg', 7, 'galleries', 189, ''),
+(190, 'weekend_190.jpg', 7, 'galleries', 190, ''),
+(191, 'weekend_191.jpg', 7, 'galleries', 191, ''),
+(194, 'krysha_194.jpg', 8, 'products', 192, ''),
+(195, 'krysha_195.jpg', 8, 'products', 195, '');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
@@ -830,11 +1272,11 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Дамп данных таблицы `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `price`, `map`, `enabled`, `top`, `views`, `sort`, `slug`, `created_at`, `updated_at`) VALUES
-(7, 'Andy''s Pizza', 'Andy''s Pizza', 'Andy''s Pizza', '<p>В меню&nbsp;Andys Pizza&nbsp;самые вкусные блюда! Закажите еду в офис, на дом или оформите предварительный заказ. Приятного аппетита!</p>\r\n', '', '', 'Andy''s Pizza - самый вкусный заказ еды онлайн! Быстрая доставка днем и ночью!', 'Andys Pizza - comanda online cele mai delicioase bucate! Livrarea rapidă ziua și noaptea!', 'Andys Pizza - the most delicious food order online! Fast delivery day and night!', 0.00, '', 0, 1, 0, 0, 'andys-pizza', '2016-06-24 21:00:00', '2016-07-16 07:33:42'),
+(7, 'Andy''s Pizza', 'Andy''s Pizza', 'Andy''s Pizza', '<p>В меню&nbsp;Andys Pizza&nbsp;самые вкусные блюда! Закажите еду в офис, на дом или оформите предварительный заказ. Приятного аппетита!</p>\r\n', '', '', 'Andy''s Pizza - самый вкусный заказ еды онлайн! Быстрая доставка днем и ночью!', 'Andys Pizza - comanda online cele mai delicioase bucate! Livrarea rapidă ziua și noaptea!', 'Andys Pizza - the most delicious food order online! Fast delivery day and night!', 0.00, '', 1, 1, 0, 0, 'andys-pizza', '2016-06-24 21:00:00', '2016-08-17 04:05:13'),
 (8, 'Krysha', 'Krysha', 'Krysha', '<p>Отдельного внимания заслуживает наша терраса под открытым небом. Уникальная терраса&nbsp;<strong>LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo;</strong>, которая располагается на пятом этаже коммерческого центра&nbsp;<strong>&laquo;Sun City&raquo;</strong>, позволит Вам полюбоваться уникальными пейзажами городского центрального парка и ночными огнями столицы. Уютные диванные зоны, легкая музыка, стильный интерьер и свежий воздух &ndash; поистине отдых &laquo;НА ВЫСОТЕ&raquo;.<br />\r\n<br />\r\nК организации праздничного вечера в&nbsp;<strong>LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo;</strong>&nbsp;подойдут профессионально: разработают план мероприятия, подберут ведущего, составят шоу-программу, пригласят артистов, оформят зал, продумают и разработают меню для фуршета и подарят массу приятных впечатлений.</p>\r\n', '<p>O atenție specială merită terasa noastră &icirc;n aer liber. Unice Terasa LOUNGE-CAF&Eacute; &laquo;Krysha&raquo;, care este situat la etajul cinci al &laquo;Sun City&raquo; centru comercial vă va permite să se bucure de peisajul unic al parcului central de oraș și luminile de noapte ale capitalei. zonă confortabilă canapea, muzica usoara, aer curat interior si elegant - cu adevărat o vacanță de &quot;sus&quot;.</p>\r\n\r\n<p>Prin organizarea unei seri festive &icirc;n LOUNGE-CAF&Eacute; &laquo;Krysha&raquo; profesionale adecvate: artiștii să elaboreze un plan de acțiune, se va ridica la conducere, face un program de spectacol, invitați vor desena o cameră, cred că peste și de a lucra din meniul pentru bufet și va da o mulțime de experiențe plăcute.</p>\r\n', '<p>Special attention deserves our terrace in the open air. Unique terrace LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo;, which is located on the fifth floor of &laquo;Sun City&raquo; shopping center, will allow you to enjoy the unique scenery of the city central park and the night lights of the capital. Cozy sofa area, light music, stylish interior and fresh air - truly a vacation &quot;on high&quot;.</p>\r\n\r\n<p>By organizing a festive evening in the LOUNGE-CAF&Eacute; &laquo;KRYSHA&raquo; suitable professional: develop an action plan, will pick up the lead, make a show program, invited artists will draw room, think over and work out the menu for the buffet and will give a lot of pleasant experiences.</p>\r\n', 'Атмосфера в стиле LOUNGE-CAFÉ «KRYSHA» не отвлекает от повседневности, а скорее украшает её.', 'Atmosfera din stilul LOUNGE-CAFÉ «Krysha» nu distrage de la viața de zi cu zi, ci mai degrabă o împodobește.', 'The atmosphere in the style LOUNGE-CAFÉ «KRYSHA» does not distract from everyday life, but rather adorns it.', 0.00, '', 1, 1, 0, 0, 'krysha', '2016-06-08 21:00:00', '2016-06-29 06:12:48'),
 (10, 'Mojito', 'Mojito', 'Mojito', '<p>Если вы в поиске места для романтического ужина при свете фонарей, или пре-пати с друзьями, вы его найдете здесь, в&nbsp;<strong>MOJITO</strong>, около Театра Оперы и Балета.<br />\r\n<br />\r\n<strong>Мы очень ценим наших клиентов, поэтому всегда предлагаем только самое лучшее:</strong></p>\r\n\r\n<ul>\r\n	<li>Рабочее время&nbsp;<strong>24/24</strong></li>\r\n	<li>Аргентинская и Японская кухня</li>\r\n	<li>Самый большой выбор коктейлей Мохито:&nbsp; алкогольных и безалкогольных</li>\r\n	<li>Терраса в тени для курящих и некурящих</li>\r\n	<li>Живая музыка каждую пятницу и воскресенье</li>\r\n	<li>Комфортабельный ресторан&nbsp; с расслабляющей атмосферой</li>\r\n	<li>Быстрое и&nbsp; качественное обслуживание</li>\r\n</ul>\r\n\r\n<p><br />\r\nЗайдите к нам, чтобы расслабиться&nbsp; на мягких креслах с чашечкой кофе или чая на завтрак, отведав&nbsp; мисо-суп или стейк на обед, либо коктейль на ужин.<br />\r\n<br />\r\nШагните на территорию, где сочетаются вкусное с&nbsp; приятным, прохлада с удовольствием &ndash; на территорию</p>\r\n', '', '', 'Если вы в поиске места для романтического ужина при свете фонарей, или пре-пати с друзьями, вы его найдете здесь.', '', '', 0.00, '', 1, 1, 0, 0, 'mojito', '2016-01-04 22:00:00', '2016-06-29 07:11:59'),
 (11, 'Caffe Graffiti', 'Caffe Graffiti', 'Caffe Graffiti', '', '', '', 'Caffe Graffiti ждет "Филе форели на пару с овощами и соусом из Tartaro" и желаем Вам приятного аппетита!', 'Caffe Graffiti va asteapta cu "Fileu de păstrăv la abur cu legume și sos tartaro" si va ureaza POFTA BUNA!', 'Caffe Graffiti awaits "Trout fillet steamed with vegetables and sauce Tartaro" and wish you bon appétit!', 0.00, '', 1, 1, 0, 0, 'caffe-graffiti', '2016-06-23 09:46:56', '2016-06-23 09:46:56'),
@@ -849,7 +1291,7 @@ INSERT INTO `products` (`id`, `name`, `name_ro`, `name_en`, `description`, `desc
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `products_categories`
+-- Table structure for table `products_categories`
 --
 
 CREATE TABLE `products_categories` (
@@ -859,7 +1301,7 @@ CREATE TABLE `products_categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Дамп данных таблицы `products_categories`
+-- Dumping data for table `products_categories`
 --
 
 INSERT INTO `products_categories` (`id`, `products_id`, `categories_id`) VALUES
@@ -870,7 +1312,22 @@ INSERT INTO `products_categories` (`id`, `products_id`, `categories_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `products_news`
+-- Table structure for table `products_contacts`
+--
+
+CREATE TABLE `products_contacts` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL,
+  `contact_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ro` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `name_en` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products_news`
 --
 
 CREATE TABLE `products_news` (
@@ -879,10 +1336,18 @@ CREATE TABLE `products_news` (
   `news_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `products_news`
+--
+
+INSERT INTO `products_news` (`id`, `products_id`, `news_id`) VALUES
+(1, 8, 8),
+(2, 8, 10);
+
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `tags`
+-- Table structure for table `tags`
 --
 
 CREATE TABLE `tags` (
@@ -895,7 +1360,7 @@ CREATE TABLE `tags` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Дамп данных таблицы `tags`
+-- Dumping data for table `tags`
 --
 
 INSERT INTO `tags` (`id`, `created_at`, `updated_at`, `name`, `top`, `slug`) VALUES
@@ -905,7 +1370,7 @@ INSERT INTO `tags` (`id`, `created_at`, `updated_at`, `name`, `top`, `slug`) VAL
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `types`
+-- Table structure for table `types`
 --
 
 CREATE TABLE `types` (
@@ -918,7 +1383,7 @@ CREATE TABLE `types` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -933,7 +1398,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Дамп данных таблицы `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `rights`, `remember_token`, `created_at`, `updated_at`) VALUES
@@ -942,7 +1407,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `rights`, `remember_toke
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `videos`
+-- Table structure for table `videos`
 --
 
 CREATE TABLE `videos` (
@@ -965,16 +1430,21 @@ CREATE TABLE `videos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Дамп данных таблицы `videos`
+-- Dumping data for table `videos`
 --
 
 INSERT INTO `videos` (`id`, `name`, `name_ro`, `name_en`, `description`, `description_ro`, `description_en`, `description_short`, `description_short_ro`, `description_short_en`, `source`, `enabled`, `views`, `sort`, `created_at`, `updated_at`) VALUES
-(1, '123', '', '', '', '', '', '', '', '', '123', 1, 0, 0, '2016-07-21 21:00:00', '2016-07-22 04:54:49');
+(1, '123', '', '', '', '', '', '', '', '', '123', 1, 0, 0, '2016-07-21 21:00:00', '2016-07-22 04:54:49'),
+(2, 'Фестивал', 'Festivalul', '', '<p>123</p>\r\n', '<p>456</p>\r\n', '', '', '', '', 'https://www.youtube.com/watch?v=D5bF7U-mjAA', 1, 0, 0, '2016-08-16 21:00:00', '2016-08-17 04:10:13'),
+(3, '11', '111', '', '<p>1111</p>\n', '', '', '', '', '', 'https://www.youtube.com/watch?v=D5bF7U-mjAA', 1, 0, 0, '2016-08-21 21:00:00', '2016-08-22 07:36:21'),
+(5, '', '', '', '', '', '', '', '', '', 'https://www.youtube.com/embed/7n7kh0xBoCM', 1, 0, 0, '2016-08-23 21:00:00', '2016-08-24 04:46:38'),
+(6, 'KRYSHA GRAND OPENING TERRACE', 'KRYSHA GRAND OPENING TERRACE', 'KRYSHA GRAND OPENING TERRACE', '<h1>KRYSHA GRAND OPENING TERRACE</h1>\n', '<h1>KRYSHA GRAND OPENING TERRACE</h1>\n', '<h1>KRYSHA GRAND OPENING TERRACE</h1>\n', '', '', '', 'https://www.youtube.com/embed/7n7kh0xBoCM', 1, 0, 0, '2016-08-23 21:00:00', '2016-08-24 04:49:21'),
+(7, 'Magic Boogie Night @ Krysha, Chisinau', 'Magic Boogie Night @ Krysha, Chisinau', 'Magic Boogie Night @ Krysha, Chisinau', '\n', '', '', '', '', '', 'https://www.youtube.com/embed/voEE-bzEHFs', 1, 0, 0, '2016-08-23 21:00:00', '2016-08-24 04:52:33');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `videos_xref`
+-- Table structure for table `videos_xref`
 --
 
 CREATE TABLE `videos_xref` (
@@ -985,18 +1455,28 @@ CREATE TABLE `videos_xref` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Индексы сохранённых таблиц
+-- Dumping data for table `videos_xref`
+--
+
+INSERT INTO `videos_xref` (`id`, `videos_id`, `table_id`, `table`) VALUES
+(1, 2, 7, 'products'),
+(3, 6, 8, 'products'),
+(4, 7, 8, 'products'),
+(5, 8, 8, 'products');
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Индексы таблицы `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_slug` (`slug`);
 
 --
--- Индексы таблицы `categories_xref`
+-- Indexes for table `categories_xref`
 --
 ALTER TABLE `categories_xref`
   ADD PRIMARY KEY (`id`),
@@ -1004,28 +1484,35 @@ ALTER TABLE `categories_xref`
   ADD KEY `idx_child_id` (`child_id`);
 
 --
--- Индексы таблицы `constants`
+-- Indexes for table `constants`
 --
 ALTER TABLE `constants`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `constants_key_unique` (`key`);
 
 --
--- Индексы таблицы `content`
+-- Indexes for table `contacts`
+--
+ALTER TABLE `contacts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `contacts_sort_index` (`sort`);
+
+--
+-- Indexes for table `content`
 --
 ALTER TABLE `content`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_slug` (`slug`);
 
 --
--- Индексы таблицы `galleries`
+-- Indexes for table `galleries`
 --
 ALTER TABLE `galleries`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_slug` (`slug`);
 
 --
--- Индексы таблицы `galleries_xref`
+-- Indexes for table `galleries_xref`
 --
 ALTER TABLE `galleries_xref`
   ADD PRIMARY KEY (`id`),
@@ -1033,14 +1520,14 @@ ALTER TABLE `galleries_xref`
   ADD KEY `idx_table` (`table`);
 
 --
--- Индексы таблицы `menu_categories`
+-- Indexes for table `menu_categories`
 --
 ALTER TABLE `menu_categories`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_slug` (`slug`);
 
 --
--- Индексы таблицы `menu_products`
+-- Indexes for table `menu_products`
 --
 ALTER TABLE `menu_products`
   ADD PRIMARY KEY (`id`),
@@ -1048,7 +1535,7 @@ ALTER TABLE `menu_products`
   ADD KEY `product_id` (`product_id`);
 
 --
--- Индексы таблицы `meta`
+-- Indexes for table `meta`
 --
 ALTER TABLE `meta`
   ADD PRIMARY KEY (`id`),
@@ -1056,14 +1543,14 @@ ALTER TABLE `meta`
   ADD KEY `idx_table` (`table`);
 
 --
--- Индексы таблицы `news`
+-- Indexes for table `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_slug` (`slug`);
 
 --
--- Индексы таблицы `news_tags`
+-- Indexes for table `news_tags`
 --
 ALTER TABLE `news_tags`
   ADD PRIMARY KEY (`id`),
@@ -1071,7 +1558,7 @@ ALTER TABLE `news_tags`
   ADD KEY `news_tags_tags_id_foreign` (`tags_id`);
 
 --
--- Индексы таблицы `news_types`
+-- Indexes for table `news_types`
 --
 ALTER TABLE `news_types`
   ADD PRIMARY KEY (`id`),
@@ -1079,14 +1566,14 @@ ALTER TABLE `news_types`
   ADD KEY `news_types_types_id_foreign` (`types_id`);
 
 --
--- Индексы таблицы `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`),
   ADD KEY `password_resets_token_index` (`token`);
 
 --
--- Индексы таблицы `photos`
+-- Indexes for table `photos`
 --
 ALTER TABLE `photos`
   ADD PRIMARY KEY (`id`),
@@ -1096,14 +1583,14 @@ ALTER TABLE `photos`
   ADD KEY `photos_token_index` (`token`);
 
 --
--- Индексы таблицы `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idx_slug` (`slug`);
 
 --
--- Индексы таблицы `products_categories`
+-- Indexes for table `products_categories`
 --
 ALTER TABLE `products_categories`
   ADD PRIMARY KEY (`id`),
@@ -1111,7 +1598,15 @@ ALTER TABLE `products_categories`
   ADD KEY `products_categories_categories_id_foreign` (`categories_id`);
 
 --
--- Индексы таблицы `products_news`
+-- Indexes for table `products_contacts`
+--
+ALTER TABLE `products_contacts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `products_contacts_product_id_foreign` (`product_id`),
+  ADD KEY `products_contacts_contact_id_foreign` (`contact_id`);
+
+--
+-- Indexes for table `products_news`
 --
 ALTER TABLE `products_news`
   ADD PRIMARY KEY (`id`),
@@ -1119,7 +1614,7 @@ ALTER TABLE `products_news`
   ADD KEY `products_news_news_id_foreign` (`news_id`);
 
 --
--- Индексы таблицы `tags`
+-- Indexes for table `tags`
 --
 ALTER TABLE `tags`
   ADD PRIMARY KEY (`id`),
@@ -1127,26 +1622,26 @@ ALTER TABLE `tags`
   ADD KEY `idx_slug` (`slug`);
 
 --
--- Индексы таблицы `types`
+-- Indexes for table `types`
 --
 ALTER TABLE `types`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- Индексы таблицы `videos`
+-- Indexes for table `videos`
 --
 ALTER TABLE `videos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `videos_xref`
+-- Indexes for table `videos_xref`
 --
 ALTER TABLE `videos_xref`
   ADD PRIMARY KEY (`id`),
@@ -1154,141 +1649,158 @@ ALTER TABLE `videos_xref`
   ADD KEY `idx_table` (`table`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT для таблицы `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
--- AUTO_INCREMENT для таблицы `categories_xref`
+-- AUTO_INCREMENT for table `categories_xref`
 --
 ALTER TABLE `categories_xref`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 --
--- AUTO_INCREMENT для таблицы `constants`
+-- AUTO_INCREMENT for table `constants`
 --
 ALTER TABLE `constants`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT для таблицы `content`
+-- AUTO_INCREMENT for table `contacts`
 --
-ALTER TABLE `content`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT для таблицы `galleries`
---
-ALTER TABLE `galleries`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT для таблицы `galleries_xref`
---
-ALTER TABLE `galleries_xref`
+ALTER TABLE `contacts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT для таблицы `menu_categories`
+-- AUTO_INCREMENT for table `content`
 --
-ALTER TABLE `menu_categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `content`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT для таблицы `menu_products`
+-- AUTO_INCREMENT for table `galleries`
 --
-ALTER TABLE `menu_products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT для таблицы `meta`
---
-ALTER TABLE `meta`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
---
--- AUTO_INCREMENT для таблицы `news`
---
-ALTER TABLE `news`
+ALTER TABLE `galleries`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT для таблицы `news_tags`
+-- AUTO_INCREMENT for table `galleries_xref`
+--
+ALTER TABLE `galleries_xref`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `menu_categories`
+--
+ALTER TABLE `menu_categories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `menu_products`
+--
+ALTER TABLE `menu_products`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `meta`
+--
+ALTER TABLE `meta`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+--
+-- AUTO_INCREMENT for table `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `news_tags`
 --
 ALTER TABLE `news_tags`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT для таблицы `news_types`
+-- AUTO_INCREMENT for table `news_types`
 --
 ALTER TABLE `news_types`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT для таблицы `photos`
+-- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=196;
 --
--- AUTO_INCREMENT для таблицы `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
--- AUTO_INCREMENT для таблицы `products_categories`
+-- AUTO_INCREMENT for table `products_categories`
 --
 ALTER TABLE `products_categories`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT для таблицы `products_news`
+-- AUTO_INCREMENT for table `products_contacts`
 --
-ALTER TABLE `products_news`
+ALTER TABLE `products_contacts`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT для таблицы `tags`
+-- AUTO_INCREMENT for table `products_news`
+--
+ALTER TABLE `products_news`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `tags`
 --
 ALTER TABLE `tags`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT для таблицы `types`
+-- AUTO_INCREMENT for table `types`
 --
 ALTER TABLE `types`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT для таблицы `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT для таблицы `videos`
+-- AUTO_INCREMENT for table `videos`
 --
 ALTER TABLE `videos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
--- AUTO_INCREMENT для таблицы `videos_xref`
+-- AUTO_INCREMENT for table `videos_xref`
 --
 ALTER TABLE `videos_xref`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
--- Ограничения внешнего ключа сохраненных таблиц
+-- Constraints for dumped tables
 --
 
 --
--- Ограничения внешнего ключа таблицы `news_tags`
+-- Constraints for table `news_tags`
 --
 ALTER TABLE `news_tags`
   ADD CONSTRAINT `news_tags_news_id_foreign` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
   ADD CONSTRAINT `news_tags_tags_id_foreign` FOREIGN KEY (`tags_id`) REFERENCES `tags` (`id`);
 
 --
--- Ограничения внешнего ключа таблицы `news_types`
+-- Constraints for table `news_types`
 --
 ALTER TABLE `news_types`
   ADD CONSTRAINT `news_types_news_id_foreign` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
   ADD CONSTRAINT `news_types_types_id_foreign` FOREIGN KEY (`types_id`) REFERENCES `types` (`id`);
 
 --
--- Ограничения внешнего ключа таблицы `products_categories`
+-- Constraints for table `products_categories`
 --
 ALTER TABLE `products_categories`
   ADD CONSTRAINT `products_categories_categories_id_foreign` FOREIGN KEY (`categories_id`) REFERENCES `categories` (`id`),
   ADD CONSTRAINT `products_categories_products_id_foreign` FOREIGN KEY (`products_id`) REFERENCES `products` (`id`);
 
 --
--- Ограничения внешнего ключа таблицы `products_news`
+-- Constraints for table `products_contacts`
+--
+ALTER TABLE `products_contacts`
+  ADD CONSTRAINT `products_contacts_contact_id_foreign` FOREIGN KEY (`contact_id`) REFERENCES `contacts` (`id`),
+  ADD CONSTRAINT `products_contacts_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`);
+
+--
+-- Constraints for table `products_news`
 --
 ALTER TABLE `products_news`
   ADD CONSTRAINT `products_news_news_id_foreign` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`),
