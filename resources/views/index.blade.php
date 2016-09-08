@@ -181,7 +181,7 @@
     </div>
 </div>
 
-<div class="c-block-content c-block-content-divider">
+<!-- <div class="c-block-content c-block-content-divider">
     <div class="text-center">
         <h2 class="c-block-title font-pink">Афиша</h2></div>
     <div class="container-fluid margin-t-30 ">
@@ -242,7 +242,7 @@
         </div>
     </div>
 
-</div>
+</div> -->
 
 <div class="c-block-content c-block-content-divider">
     <div class="text-center">
@@ -333,7 +333,7 @@
                     </a>
                     <h2><a href="/news/{{$news->slug}}" class="title-more">{{$news->name}}</a></h2>
                     <figure>
-                        <span class="text-left">{{ date('d F, Y', strtotime($news->created_at)) }}<!-- 18 февраля 2016 --></span><span class="pull-right"><!-- 12:06 -->{{ date('H:i', strtotime($news->created_at)) }}</span>
+                        <span class="text-left">{{ date('d F, Y', strtotime($news->created_at)) }}<!-- 18 февраля 2016 --></span><!-- <span class="pull-right">{{ date('H:i', strtotime($news->created_at)) }}</span> -->
                     </figure>
                     <span>{{ str_limit($news->description_short, $limit = 100, $end = '...') }}</span>
                     <a href="/news/{{$news->slug}}" class="read-more">Читать далее...<span class="fa fa-angle-double-right"></span></a>

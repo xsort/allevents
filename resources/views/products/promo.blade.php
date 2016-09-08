@@ -34,7 +34,7 @@
                 <div class="item">
                     <div class="blog-wrapper">
                         <div class="blog-img">
-                            <img class="img-responsive" src="uploaded/{{isset($d->photos{0}) ? $d->photos{0}->source : 'nophoto.png'}}" alt="">
+                            <a href="{{ route('get-news', $d->slug) }}"><img class="img-responsive" src="uploaded/{{isset($d->photos{0}) ? $d->photos{0}->source : 'nophoto.png'}}" alt=""></a>
                             <div class="post-date ">
                                 <p class="">{{ date('M', strtotime($d->created_at)) }}
                                     <br class="hide-mobile"><span>{{ date('d', strtotime($d->created_at)) }}</span></p>

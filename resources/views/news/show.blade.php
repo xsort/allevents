@@ -36,7 +36,7 @@
 
                         <div class="post-meta">
                             <p class="date-news">
-                                <span class="date">{{ date('d F, Y ', strtotime($data->created_at)) }}</span> <span class="time">{{ date('H:i', strtotime($data->created_at)) }}</span>
+                                <span class="date">{{ date('d', strtotime($data->created_at)) }} {{ ucfirst(Date::parse($data->created_at)->format('M')) }} , {{ date('Y', strtotime($data->created_at)) }}</span> <!-- <span class="time">{{ date('H:i', strtotime($data->created_at)) }}</span> -->
 
                                 <meta itemprop="datePublished" content="{{$data->created_at}}">
 

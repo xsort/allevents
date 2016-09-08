@@ -39,9 +39,9 @@
                     <div class="blog-wrapper" itemscope itemtype="http://schema.org/Article">
                     <meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="https://google.com/article"/>
                         <div class="blog-img" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-                            <img class="img-responsive" src="uploaded/{{isset($news->photos{0}) ? $news->photos{0}->source : 'nophoto.png'}}" alt="">
+                            <a href="news/{{$news->slug}}"><img class="img-responsive" src="uploaded/{{isset($news->photos{0}) ? $news->photos{0}->source : 'nophoto.png'}}" alt=""></a>
                             <div class="post-date ">
-                                <p class="">{{ date('M', strtotime($news->created_at)) }}
+                                <p class="">{{ ucfirst(Date::parse($news->created_at)->format('M')) }}
                                     <br class="hide-mobile"><span>{{ date('d', strtotime($news->created_at)) }}</span></p>
                             </div>
                             <meta itemprop="url" content="http://170d3237.ngrok.io/uploaded/{{isset($news->photos{0}) ? $news->photos{0}->source : 'nophoto.png'}}">

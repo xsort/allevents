@@ -19,7 +19,17 @@
             </div>
         </div>
     </div>
-
+<div class="layout-content" >
+    <div id="loading" class="page">
+    <div id="loading-center">
+        <div id="loading-center-absolute" class="page">
+            <div class="object page-l one" id="object_four"></div>
+            <div class="object page-l one" id="object_three"></div>
+            <div class="object page-l one" id="object_two"></div>
+            <div class="object page-l one" id="object_one"></div>
+        </div>
+    </div>
+    </div>
     <div class="container-fluid">
         <div class="col-lg-12 inst-description margin-b-40 text-center ">
             <div class="gallery-date"><!--25 февраля 2015 (вторник)-->{{ $gallery->created_at }}</div>
@@ -43,7 +53,7 @@
         <div class="col-xs-12 padding-b-50">
             <div class="row">
                 <div class="text-center">
-                    <h2 class="c-block-title font-pink rowed">{{ trans('common.else_photo') }}</h2>
+                    <h2 class="c-block-title font-pink rowed font-slim">{{ trans('common.else_photo') }}</h2>
                 </div>
                 <div class="container-fluid margin-t-30 ">
                     <div class="row">
@@ -53,7 +63,8 @@
                                 @foreach($related as $gallery)
                                 <a href="{{ route('get_gallery',[$data->slug, $gallery->slug]) }}" class="item">
                                     <div class="filter"> </div>
-                                    <img src="{{isset($gallery->photos{0}) ? 'uploaded/thumbs/' . $gallery->photos{0}->source : 'images/inst-menu-photo/photo.png'}}" height="300px" width="100%" alt="{{ $gallery->name }}">
+                                    <!-- <img src="{{isset($gallery->photos{0}) ? 'uploaded/thumbs/' . $gallery->photos{0}->source : 'images/inst-menu-photo/photo.png'}}" height="300px" width="100%" alt="{{ $gallery->name }}"> -->
+                                    <div class="c-bg-center" style="background-image:url('{{isset($gallery->photos{0}) ? 'uploaded/thumbs/' . $gallery->photos{0}->source : 'images/inst-menu-photo/photo.png'}}');height:100%; width:100%;"></div>
                                     <span>{{ $gallery->name }}</span>
                                 </a>
                                 @endforeach
@@ -64,7 +75,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div></div>
 </div>
 
 @stop
