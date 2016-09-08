@@ -22,6 +22,11 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('logout', 'Auth\AuthController@logout');
 	
     Route::get('/', [
+        'as'    => 'cap',
+        'uses'  => 'HomeController@cap'
+    ]);
+
+    Route::get('/index', [
         'as'    => 'index',
         'uses'  => 'HomeController@index'
     ]);

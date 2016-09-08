@@ -26,4 +26,9 @@ class HomeController extends Controller
 		$news = News::where('top',true)->get();
 		return view('index')->with('categories', $categories)->with('products', $products)->with('newslist',$news);
     }
+
+    public function cap()
+    {
+        return view('cap');
+    }
 }
