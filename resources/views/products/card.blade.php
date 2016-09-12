@@ -139,7 +139,7 @@
                                 </tbody>
                             </table>
                 <div class="text-center margin-b-25 margin-t-30">
-                    <h1 class="c-title-card font-black">Заказать</h1>
+                    <div class="c-title-divider"></div>
                 </div>
 
                 <div class="col-md-12">
@@ -173,7 +173,7 @@
                             </div>
                         </div>
 
-                            <div class="container-fluid margin-t-15">
+                            <div class="container-fluid margin-t-15 visible-md visible-lg">
                                 <div class="row">
                                     <div class="col-xs-12 text-center"> 
                                         <button class="btn check-accept " type="submit">ОФОРМИТЬ</button>
@@ -217,7 +217,14 @@
                                       </div>
                                     </div>
                             </div>
-                            <br>
+                            
+                             <div class="container-fluid margin-t-15 visible-sm visible-xs">
+                                <div class="row">
+                                    <div class="col-xs-12 text-center"> 
+                                        <button class="btn check-accept " type="submit">ОФОРМИТЬ</button>
+                                    </div>
+                                </div>
+                            </div>
 
 
                         </div>
@@ -257,9 +264,8 @@
                                     message: 'Введите имя.'
                                 },
                                  stringLength: {
-                                 min: 3,
-                                 max: 20,
-                                 message: 'Имя должно содержать не меньше 3 символов.'
+                                 min: 2,
+                                 message: 'Имя должно содержать не меньше 2 символов.'
                                 },
                                 regexp: {
                                    regexp: /^[a-zA-Zа-яА-Я ]+$/,
@@ -274,7 +280,6 @@
                                 },
                                 stringLength: {
                                  min: 3,
-                                 max: 20,
                                  message: 'Адрес должен содержать не меньше 3 символов.'
                                 },
                                 regexp: {
@@ -293,7 +298,6 @@
                                 },
                                 stringLength: {
                                  min: 5,
-                                 max: 20,
                                  message: 'Телефон должен содержать не меньше 5 цифр.'
                                 }
                             }

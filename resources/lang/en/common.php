@@ -1,0 +1,43 @@
+<?php
+
+return [
+
+    'saved'     		=> 'Сохранено!',
+    'deleted'   		=> 'Удалено!',
+    'meta_description'	=> 'Мета описание сайта',
+    'mainpage'	        => 'Главная',
+    'photo'	            => 'Фото',
+    'video'	            => 'Видео',
+    'promo'	            => 'Акции',
+    'plan'              => 'План зала',
+    'menu'              => 'Меню',
+    'reservation'       => 'Резервирование',
+    'else_photo'        => 'Другие фотоотчеты',
+    'lei'               => 'лей',
+    'm-news'            => 'News',
+    'm-reports'         => 'Reports',
+    'm-promo'           => 'Promo',
+    'm-exclusiv'        => 'Exclusiv',
+    'm-about'           => 'About',
+    'h-event'           => 'Organize Me Event',
+    'recommended'       => 'We recommend',
+    'reports'           => 'Reports',
+    'news'              => 'News',
+    'read-more-dot'     => 'Read more...',
+    'read-more'         => 'Read more',
+    'f-application'     => 'Submit your application',
+    'f-copyright'       => 'Reproduction of any materials, regardless of their shape and the placement date, only possible with the installation of links to the portal www.allevents.md',
+    'f-tell-event'      => 'Report an event',
+    'f-subscribe'       => 'Subscribe',
+
+    'f-on-email'        => 'on email',
+    'f-on-form'         => 'or through the form',
+    'f-feedback'        => 'of feedback',
+    'f-share-link'      => 'Share Allevents.md with your friends:',
+    'f-cooperation'     => 'For any questions, including those concerning advertising and cooperation, please contact:',
+    'f-mailer-title'    => 'News, Discounts, Events Chisinau',
+    'f-social'          => 'We are in social networks:',
+
+    'all-categories'    => 'All categories',
+    'watch-also'        => 'See also',
+];

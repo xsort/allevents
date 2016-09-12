@@ -32,7 +32,6 @@
    
 </head>
 <body class="remove-bg @yield('productClass')" style="background-image: url('../images/background/main-bg.jpg');">
-
 @yield('loadingPage')
 
 	<div id="fb-root"></div>
