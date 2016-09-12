@@ -76,7 +76,7 @@ body.bg-filter-1:before {
     height: -moz-calc(100% + 30px);
     height: calc(100% + 30px);
     width: 100%;
-    background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/brickwall.png);
+    background: url('../images/bg-filter/filter1.png');
     margin-top: -30px;
     opacity: 0.6;
 }
@@ -89,7 +89,7 @@ body.bg-filter-2:before {
     height: -moz-calc(100% + 30px);
     height: calc(100% + 30px);
     width: 100%;
-    background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/wall4.png);
+    background: url('../images/bg-filter/filter2.png');
     margin-top: -30px;
     opacity: 0.6;
 }
@@ -102,7 +102,7 @@ body.bg-filter-3:before {
     height: -moz-calc(100% + 30px);
     height: calc(100% + 30px);
     width: 100%;
-    background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/congruent_pentagon.png);
+    background: url('../images/bg-filter/filter3.png');
     margin-top: -30px;
     opacity: 0.6;
 }
@@ -115,7 +115,7 @@ body.bg-filter-4:before {
     height: -moz-calc(100% + 30px);
     height: calc(100% + 30px);
     width: 100%;
-    background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/grey_wash_wall.png);
+    background: url('../images/bg-filter/filter4.png');
     margin-top: -30px;
     opacity: 0.5;
 }
