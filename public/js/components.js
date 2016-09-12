@@ -92,7 +92,7 @@ $(document).ready(function() {
     LayoutHeader.init();
     LoadingPage.init();
     ScrollToTop.init();
-    SmoothScroll.init();
+    // SmoothScroll.init();
 });
 
 
