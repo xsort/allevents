@@ -1,1 +1,1 @@
-<div class="col-md-3 hidden-xs hidden-sm ">    <a href="javascript:void(0)" class="banner banner-right first" style="background: url('img/public/ad.jpg');"></a>    <a href="javascript:void(0)" class="banner banner-right second" style="background: url('img/public/ad.jpg');"></a></div>
+<div class="col-md-3 hidden-xs hidden-sm ">    <a href="javascript:void(0)" class="banner banner-right first" style="background: url('img/public/ad.jpg');">    </a>    <a href="javascript:void(0)" class="banner banner-right second" style="background: url('img/public/ad.jpg');"></a></div>

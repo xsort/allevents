@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html prefix="og: http://ogp.me/ns#" ng-app> 
+<html prefix="og: http://ogp.me/ns#" > 
 <head>
     <base href="{{ URL::to('/') }}"/>
     <title>Allevents</title>
@@ -7,32 +7,30 @@
     <meta charset="UTF-8" />
     <meta name="keywords" content="Construction, Renovation" />
     <meta name="description" content="@yield('meta_description', trans('common.meta_description'));" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+    <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=.5, user-scalable=no">
+   
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/angular-material.min.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/simple-line-icons.css">
-	<link rel="stylesheet" href="css/bootstrap-social.css">
 	<link rel="stylesheet" href="css/slick.css">
 	<link rel="stylesheet" href="css/slick-theme.css">
-	<link rel="stylesheet" href="css/bootstrap-social.css">
 	<link rel="stylesheet" href="css/lightbox.min.css">
-	<!-- <link rel="stylesheet" href="css/combined.css"> -->
     <link rel="stylesheet" href="css/loading.css">
 	<link rel="stylesheet" href="css/main.css">
-	<!-- <link rel="stylesheet" href="css/main.min.css"> -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
     @yield('metaNewsSharing')
     @yield('metaProductSharing')
 
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-	<meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=.5, user-scalable=no">
-	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-    
+
    
 </head>
-<body class="remove-bg @yield('productClass') bg-filter-3" style="background-image: url('../images/background/main-bg.jpg');">
-@yield('loadingPage')
+
+<body ng-app="BlankApp"  layout="row" flex layout-align="stretch" class="remove-bg @yield('productClass') bgFilter3" style="background-image: url('../images/background/main-bg.jpg');">
+
+<!-- @yield('loadingPage') -->
 
 	<div id="fb-root"></div>
 
@@ -47,22 +45,27 @@
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
-    @include('partials.modals')
-    @include('partials.sidebar')
-    
 
-    <div class="container wrapper">
-    
-        <!-- @include('partials.topbar') -->
-        @include('partials.header')
+
+@include('partials.sidebar')
+
+<md-content flex>
         
-            @yield('centerbox') 
+    @include('partials.modals')
+    
+    <!-- @include('partials.topbar') -->
+    @include('partials.header')
 
+    <div class="container wrapper" ng-cloak>
+        @yield('centerbox') 
     </div>
 
     @include('partials.footer')
 
-    <!--Chatra-->
+</md-content>
+
+<!-- 
+    
     <script>
         ChatraID = 'ZQtbFtfpJdGwqwi6x';
         (function (d, w, c) {
@@ -75,11 +78,21 @@
                 s.src = (d.location.protocol === 'https:' ? 'https:' : 'http:') + '//call.chatra.io/chatra.js';
                 n.parentNode.insertBefore(s, n);
                 })(document, window, 'Chatra');
-    </script>
+    </script> -->
 
     <!-- /Chatra-->
-   	<script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+
+
+   <script src="js/jquery.min.js"></script>
+   <script src="js/bootstrap.min.js"></script>
+   <script src="js/angular.min.js"></script>
+   <script src="js/angular-animate.min.js"></script>
+   <script src="js/angular-aria.min.js"></script>
+   <script src="js/angular-messages.min.js"></script>
+   <script src="js/angular-material.min.js"></script>
+   <script src="js/ngCart.js"></script>
+
+    
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.nicescroll.js"></script>
     <script src="js/jquery.jscroll.min.js"></script>
@@ -87,11 +100,10 @@
     <script src="js/salvattore.min.js"></script>
     <script src="js/lightbox.min.js"></script>
     <script src="js/plugins-scroll.js"></script>
-    <script src="js/angular.min.js"></script>
     @yield('cardPluginsValidation')
     <script src="js/sliders.js" ></script>
-    <script src="js/sidebar.js"></script>
     <script src="js/components.js"></script>
+    <script src="js/controller.js"></script>
 
     @yield('jsonProductSharing')
     @yield('jsonIndexMicrodata')

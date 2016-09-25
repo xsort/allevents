@@ -81,7 +81,7 @@
                                 <div class="tag-news-b">
                                     <h5 class="margin-b-15 tag-news">Теги :</h5>
                                     <ul class="tag">
-                                    @foreach ($tags as $tag)
+                                    @foreach ($data->tags as $tag)
                                         <li><a href="/tag/{{$tag->id}}">{{$tag->name}}</a></li>
                                     @endforeach
                                     </ul>

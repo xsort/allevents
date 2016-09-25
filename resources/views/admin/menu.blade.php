@@ -1,7 +1,7 @@
 
 <ul class="nav nav-list">
     <li class="">
-        <a href="{{ URL::to('/') }}">
+        <a href="{{ URL::to('/admin') }}">
             <i class="menu-icon fa fa-tachometer"></i>
             <span class="menu-text"> Главная </span>
         </a>
@@ -59,7 +59,7 @@
         </ul>
     </li>
 
-    <li class="">
+    <!-- <li class="">
         <a href="#" class="dropdown-toggle">
             <i class="menu-icon fa fa-cogs"></i>
             <span class="menu-text"> Администр.</span>
@@ -104,5 +104,5 @@
                 <b class="arrow"></b>
             </li>
         </ul>
-    </li>
+    </li> -->
 </ul><!-- /.nav-list -->
