@@ -137,65 +137,29 @@
             </div>
 
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-xs-12 margin-t-25 inst-contacts ">
-
+@foreach($data->contacts as $contact)
                 <div class="col-sm-6 ">
-
+                    
                     <div class="row inst-tel">
 
                         <div class="col-sm-3 text-right">
                             <div class="row">
                                 <span>
-                                    <b class="text-uppercase">Телефон</b>
+                                    <b class="text-uppercase">{{$contact->name}}</b>
                                 </span>
                             </div>
                         </div>
                         <div class="col-sm-6 col-sm-offset-1">
-                            <a href="tel:+37360192969" ><span >0601 91 111</span></a><br>
+                            <a href="tel:+37360192969" ><span> {{$contact->pivot->name}}</span></a><br>
                         </div>
 
                     </div>
+                   
 
-                    <div class="row inst-email  margin-t-30">
                     
-                        <div class="col-sm-3 text-right">
-                            <div class="row">
-                                <b class="text-uppercase">E-mail</b>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-sm-offset-1">
-                            <a href="mailto:alexzc@mail.ru" ><span>alexzc@mail.ru</span></a>
-                        </div>
-
-                    </div>
-
                 </div>
-
-                <div class="col-sm-6">
-                
-                    <div class="row inst-adres margin-xs-t-30">
-                        <div class="col-sm-3 text-right">
-                            <div class="row">
-                                <b class="text-uppercase">Адрес</b>  
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-sm-offset-1">
-                            <span >Bulevardul Grigore Vieru 22/9</span>
-                        </div>
-                    </div>
-                    
-
-                    <div class="row inst-adres margin-t-30">
-                        <div class="col-sm-3 text-right">
-                            <div class="row">
-                                <b class="text-uppercase">График</b>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-sm-offset-1">
-                            <time >Пн.-Пт.: с 9:30 до 18:00</time>
-                        </div>
-                    </div>
-
-                </div>
+ @endforeach
+               
                     
             </div>
 

@@ -64,6 +64,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('tag/{id}', 'NewsController@getNewsByTagID');
 
+    Route::post('make-event',    ['uses'=>'MailController@makeEvent', 'as'=>'make-event']);
+
 });
 
 

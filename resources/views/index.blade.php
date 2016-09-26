@@ -133,7 +133,7 @@
     </div>
 </div>
 
-<!-- <div class="c-block-content">
+<div class="c-block-content">
     <ngcart-addtocart id="1" name="Продукт 1" price="767" quantity="1" quantity-max="30" data="item"></ngcart-addtocart>
     <ngcart-addtocart id="2" name="Продукт 2" price="254" quantity="1" quantity-max="30" data="item"></ngcart-addtocart>
 
@@ -161,7 +161,7 @@
             </mark>
     </div>
 </script>
-</div> -->
+</div>
 
 
 

@@ -63,4 +63,8 @@ $scope.showPrerenderedDialog = function(ev) {
   $scope.activeButton = function() {
     $scope.isActive = !$scope.isActive;
   }  
+})
+
+.controller('headerLang', function() {
+      this.selectedMode = 'md-scale';
 });
