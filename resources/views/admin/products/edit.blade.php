@@ -106,11 +106,21 @@
                         <input type="text" class="col-sm-5" placeholder="X">
                         <input type="text" class="col-sm-5 col-sm-offset-1" placeholder="Y">
                     </div>
+
+            </div>
+            <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-3 text-center">
+                    <div class="row">
+                        <a href="javascript:AddMap();" class="btn btn-sm btn-primary">Открыть карту</a>
+                    </div>
+                </div>
             </div>
             
         </div><!-- /.col-sm-6 -->
         
     </div><!-- /.row -->
+
+
 
     <hr>
 
@@ -481,6 +491,19 @@
         {{ Form::submit('Сохранить', array('class' => 'btn btn-success')) }}
     </div>
 
+
+    <div aria-hidden="true" aria-labelledby="mySmallModalLabel" role="dialog" tabindex="-1" data-show="true" data-backdrop="true" data-keyboard="true" class="modal fade" id="add-map-modal" >
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-body">
+                   <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=AvmxJ67EHteF2m0XRxEhm605hGje_ker&amp;width=100%&amp;height=400&amp;lang=ru_RU&amp;sourceType=constructor&amp;scroll=true"></script>
+                </div>
+            </div>
+        </div>
+    </div><!-- /popup map insert-->
+
+
+
     {{ Form::close() }}
 @endsection
 
@@ -499,6 +522,14 @@
     @include('admin.partials.visibility')
 
     @include('admin.partials.ajaxdelete')
+
+    <script type="text/javascript">
+         function AddMap(){
+             var modal = $('#add-map-modal');
+             modal.modal();
+             
+         }
+    </script>
 
     <script>
         var modalSuccessSubmit = function(result){

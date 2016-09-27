@@ -8,11 +8,13 @@
     <div class="container-fluid">
         <div class="club-head-image">
             <div class="button club-main-prev"><span class="fa fa-angle-left"></span> </div>
-            <div class="club-main-gallery">
+            <div class="club-main-gallery" >
                 @foreach ($data->photos as $key => $photo)
                 @if ($key == 0) @continue; @endif
                 <!-- <div class="club-main-photo" style="background:url('')"></div> -->
-                <div class="club-main-photo"><img src="resize.php?width=1110&height=375&cropratio=1110:375&image=/uploaded/{{$photo->source}}" alt=""></div>
+                <div class="club-main-photo" layout-align="center center"> 
+                  <img src="/uploaded/{{$photo->source}}" alt="">
+                </div>
                 @endforeach
             </div>
             <div class="button club-main-next"><span class="fa fa-angle-right"></span></div>

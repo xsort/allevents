@@ -5400,6 +5400,9 @@ table.shop-info tr:last-child { border-bottom: 0px dashed #a4a4a4; }
 /************************************************************************/
 
 
+.club-main-photo img{ margin:0 auto; }
+
+
 /*-----------------------Default---------------------------------------*/
 
 body > md-content{ background-color: transparent !important; }

@@ -76,7 +76,9 @@
                 <h4 class="modal-title"></h4>
             </div>
             <div class="modal-body">
-                <div class="main"></div>
+                <div class="main">
+                    <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=AvmxJ67EHteF2m0XRxEhm605hGje_ker&amp;width=100%&amp;height=400&amp;lang=ru_RU&amp;sourceType=constructor&amp;scroll=true"></script>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary">Сохранить</button>
