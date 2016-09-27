@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\News;
 use App\Models\Tags;
+use App\Models\Categories;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -29,6 +30,12 @@ class ViewServiceProvider extends ServiceProvider
         $tags = Tags::all();
         $tags = Tags::has('news')->limit(config('site.num_tags'))->get();
         view()->share('tags', $tags);
+
+        $categories = Categories::where('top',false)->get();
+        view()->share('categoriesList', $categories);
+
+        $news = News::get();
+        view()->share('newsList', $news);
 
     }
 

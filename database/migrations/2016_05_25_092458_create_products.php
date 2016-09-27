@@ -25,6 +25,7 @@ class CreateProducts extends Migration
 			$t->text('description_short_en');
 			$t->float('price', 15,2);
 			$t->text('map');
+			$t->string('video', 200);
 			$t->boolean('enabled')->default(true);
 			$t->boolean('top');
             $t->integer('views');

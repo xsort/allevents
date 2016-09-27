@@ -34,5 +34,14 @@ class Products extends BaseModel
 		return $return;
 	}
 
+	public function getMapAttribute()
+	{
+		return json_decode( $this->attributes['map'] );
+	}
+
+	public function setMapAttribute( $val )
+	{
+		$this->attributes['map'] = json_encode( $val );
+	}
 
 }

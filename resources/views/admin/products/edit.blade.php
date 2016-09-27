@@ -103,10 +103,9 @@
             <div class="form-group">
                     {{ Form::label('map', 'Координаты:', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                     <div class="col-sm-9">
-                        <input type="text" class="col-sm-5" placeholder="X">
-                        <input type="text" class="col-sm-5 col-sm-offset-1" placeholder="Y">
+                        {{ Form::text('map[X]', ((isset($data->map) && $data->map != '') ? $data->map->X : old('map[X]')), array('class' => 'col-sm-5', 'placeholder' => 'X', 'id' => 'mapX')) }}
+                        {{ Form::text('map[Y]', ((isset($data->map) && $data->map != '') ? $data->map->Y : old('map[Y]')), array('class' => 'col-sm-5 col-sm-offset-1', 'placeholder' => 'Y', 'id' => 'mapY')) }}
                     </div>
-
             </div>
             <div class="form-group">
                 <div class="col-sm-9 col-sm-offset-3 text-center">
@@ -145,9 +144,9 @@
 
         <div class="col-sm-6">
             <div class="form-group">
-                {{ Form::label('video', 'Видео', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                {{ Form::label('video', 'Видео ID', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-9">
-                     {{ Form::text('video', (isset($data->video) ? $data->slug : old('video')), array('class' => 'col-sm-11 col-xs-12')) }}
+                     {{ Form::text('video', (isset($data->video) ? $data->video : old('video')), array('class' => 'col-sm-11 col-xs-12')) }}
                 </div>
             </div>
         </div><!-- /.col-sm-6 -->
@@ -496,7 +495,7 @@
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-body">
-                   <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?sid=AvmxJ67EHteF2m0XRxEhm605hGje_ker&amp;width=100%&amp;height=400&amp;lang=ru_RU&amp;sourceType=constructor&amp;scroll=true"></script>
+                    <div id="YMapsID" style="width:100%;height:500px;"></div>
                 </div>
             </div>
         </div>
@@ -527,8 +526,49 @@
          function AddMap(){
              var modal = $('#add-map-modal');
              modal.modal();
-             
          }
+    </script>
+
+    <script src="https://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"> </script>
+
+    <script type="text/javascript">
+        var x = '{{ $data->map->X or 47.02615918 }}';
+        var y = '{{ $data->map->Y or 28.83406047 }}';
+        ymaps.ready(function () {
+            var myMap = new ymaps.Map('YMapsID', {
+                center: [x, y],
+                zoom: 14,
+                type: 'yandex#publicMap',
+                behaviors: ['default', 'scrollZoom']
+            });
+
+            myMap.controls
+                    .add('mapTools')
+                    .add('zoomControl')
+                    .add('typeSelector', { top: 5, right: 5 })
+                    .add(new ymaps.control.SearchControl({ noPlacemark: true }), { top: 5, left: 200 });
+
+            // Создаем геообъект с типом геометрии "Точка".
+            myPlacemark = new ymaps.Placemark([x, y]);
+            myPlacemark.options.set('draggable', true);
+            myPlacemark.events.add('dragend', function (e) {
+                var coords = myPlacemark.geometry.getCoordinates().toString().split(",");
+                $('input#mapX').val(coords[0]);
+                $('input#mapY').val(coords[1]);
+            });
+            myMap.geoObjects.add(myPlacemark);
+        });
+
+        function DoneClick(){
+            var str = $("#markerPosition").val();
+            var arr = str.split(',');
+            var x_coord = arr[0].trim();
+            var y_coord = arr[1].trim();
+            $("input[name=mapX]").val(x_coord);
+            $("input[name=mapY]").val(y_coord);
+            tb_remove();
+        }
+
     </script>
 
     <script>
