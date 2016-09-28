@@ -23,7 +23,7 @@
                             <input type="text" placeholder="Ваше имя" required>
                             <input type="text"  placeholder="Ваш телефон" required>
 
-                            <textarea name="" id="" placeholder="Пример: Хочу зарезервировать стол №1 на 01.01.2017. Нас будет 6 персон "></textarea>
+                            <textarea name="" id="" placeholder="Пример: Хочу сделать заказ на 01.01.2017. Краткое описание пожеланий "></textarea>
 
                             <button type="submit" class="enter ">Отправить</button>
                             </form>

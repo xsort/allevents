@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="css/slick-theme.css">
 	<link rel="stylesheet" href="css/lightbox.min.css">
     <link rel="stylesheet" href="css/loading.css">
-	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/main.css?ver=4">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
@@ -28,7 +28,7 @@
    
 </head>
 
-<body ng-app="BlankApp"  layout="row" flex layout-align="stretch" class="remove-bg @yield('productClass') bgFilter3" style="background-image: url('../images/background/main-bg.jpg');">
+<body ng-app="BlankApp"  ng-controller="bodyCtrl" class="remove-bg @yield('productClass') bgFilter3" style="background-image: url('../images/background/main-bg.jpg');">
 
 <!-- @yield('loadingPage') -->
 
@@ -49,7 +49,7 @@
 
 @include('partials.sidebar')
 
-<md-content flex>
+<div class="content">
         
     @include('partials.modals')
     
@@ -61,8 +61,9 @@
     </div>
 
     @include('partials.footer')
+    
 
-</md-content>
+</div>
 
 <!-- 
     
@@ -102,8 +103,8 @@
     <script src="js/plugins-scroll.js"></script>
     @yield('cardPluginsValidation')
     <script src="js/sliders.js" ></script>
-    <script src="js/components.js"></script>
-    <script src="js/controller.js"></script>
+    <script src="js/components.js?ver=4"></script>
+    <script src="js/controller.js?ver=4"></script>
 
     @yield('jsonProductSharing')
     @yield('jsonIndexMicrodata')

@@ -20,6 +20,7 @@
             <div class="button club-main-next"><span class="fa fa-angle-right"></span></div>
         </div>
     </div>
+    
 
     @include('products.top-menu')
 
@@ -156,9 +157,6 @@
                         </div>
 
                     </div>
-                   
-
-                    
                 </div>
  @endforeach
                
@@ -171,12 +169,16 @@
                     <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,gplus,twitter" data-counter=""></div>
             </div>
             
+@if(isset($data->map) && ($data->map!=''))
+
             <div class="col-lg-12 margin-t-40 inst-map">
                 <div class="row">
-                    <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=28.85437846183777%2C47.039721515551776%2C28.86635184288025%2C47.044196031419304&amp;layer=mapnik&amp;marker=47.04195882039511%2C28.86036515235901"></iframe>
+                    <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox={{$data->map->Y}}%2C{{$data->map->X}}%2C{{$data->map->Y}}%2C{{$data->map->X}}&amp;layer=mapnik&amp;marker={{$data->map->X}}%2C{{$data->map->Y}}"></iframe>
                     <br/>
                 </div>
             </div>
+@endif
+
 
             <div class="col-lg-12  inst-pub hidden-xs">
                 <div class="row">
@@ -215,7 +217,7 @@
           playerVars : {
                 autoplay : 0
             },
-          videoId: 'F0xoBUDUYyo'
+          videoId: '{{$data->video}}'
         });
       }
 </script>

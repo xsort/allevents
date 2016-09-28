@@ -1581,9 +1581,9 @@ body.page-clubs {
 /*----------------------------ALL CATEGORIES---------------------------*/
 
 .page-title {
-    font-size: 42px;
+    font-size: 35px;
     color: rgb(181, 181, 181);
-    font-weight: bold;
+    /*font-weight: bold;*/
     line-height: 1.2;
     text-align: center;
     margin-top: 0;
@@ -1840,12 +1840,9 @@ body.page-clubs {
 
 .club-main-photo {
     height: 375px;
-    background-position: center !important;
-    -webkit-background-size: cover !important;
-    -moz-background-size: cover !important;
-    -o-background-size: cover !important;
-    background-size: cover !important;
-    background-repeat: no-repeat !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
 }
 
 .club-main-gallery {
@@ -5400,12 +5397,15 @@ table.shop-info tr:last-child { border-bottom: 0px dashed #a4a4a4; }
 /************************************************************************/
 
 
-.club-main-photo img{ margin:0 auto; }
+.club-main-photo img{ margin:0 auto;
+    max-height: 100%;
+    width: auto; 
+}
 
 
 /*-----------------------Default---------------------------------------*/
 
-body > md-content{ background-color: transparent !important; }
+body > div.content{ width:100%; background-color: transparent; position: relative; }
 
 
 .bgFilter3:before {
@@ -5691,7 +5691,7 @@ header .headerLg button.md-button .md-ripple-container{ border-radius: 0  }
 
 .breadcrumbs { margin: 0; float: left; padding-left: 0; }
 
-.breadcrumbs li { float: left; list-style-type: none; font-size: 14px; color: rgb(181, 181, 181); font-weight: bold; line-height: 2.2; text-transform: uppercase; }
+.breadcrumbs li { float: left; list-style-type: none; font-size: 14px; color: rgb(181, 181, 181); line-height: 2.2; text-transform: uppercase; }
 
 .breadcrumbs li a { color: rgb(181, 181, 181); }
 
@@ -5729,11 +5729,12 @@ h3.order_review_heading { margin-top: 0; font-size: 14px; color: #685e52; text-t
 
 /*----------------------NEW FOOTER-----------------------------*/
 
+
 footer{ background: #e8e8e8; color: rgb(91, 91, 91); padding: 50px 15px 20px; margin-top: 30px; line-height: 1.429; }
 
 footer .md-button.md-raised { color: rgb(91, 91, 91); }
 
-footer > div { padding: 0 15px; border-right: 1px solid #d1d1d1; }
+footer > div { padding: 0 15px; border-right: 1px solid #d1d1d1;  float: left; display: block;}
 
 footer > div:last-child { border-right: 0px; text-align: center; }
 
@@ -5795,6 +5796,10 @@ footer .footer-menu li a:before { content: '·'; margin-right: 10px; }
 
 footer .footer-menu li a:hover { color: #E3605B; }
 
+@media(min-width: 1200px){
+    footer > div { width: 25%; }
+}
+
 @media(min-width: 992px) and (max-width: 1199px){
     footer { font-size: 13px; }
 
@@ -5810,7 +5815,9 @@ footer .footer-menu li a:hover { color: #E3605B; }
 
     footer .socialWrapper >span{ font-size: 16px; }
 
-    .flex-gt-sm-25, .layout-row>.flex-gt-sm-25 {    max-width: 25%; max-height: 100%; }
+    /*.flex-gt-sm-25, .layout-row>.flex-gt-sm-25 {    max-width: 25%; max-height: 100%; }*/
+
+    footer > div { width: 25%; }
 
 }
 
@@ -5825,9 +5832,11 @@ footer .footer-menu li a:hover { color: #E3605B; }
 
     footer .socialBtn > div .md-button.md-fab.md-mini { margin-bottom: 10px; }
 
-    .flex-sm-50, .layout-column>.flex-sm-50, .layout-row>.flex-sm-50{ -webkit-box-flex: 1; -webkit-flex: 1 1 50%; flex: 1 1 50%; box-sizing: border-box; }
+    /*.flex-sm-50, .layout-column>.flex-sm-50, .layout-row>.flex-sm-50{ -webkit-box-flex: 1; -webkit-flex: 1 1 50%; flex: 1 1 50%; box-sizing: border-box; }
 
-    .flex-gt-sm-25, .layout-row>.flex-gt-sm-25 {    max-width: 50%; max-height: 100%; }
+    .flex-gt-sm-25, .layout-row>.flex-gt-sm-25 {    max-width: 50%; max-height: 100%; }*/
+
+    footer > div { width: 50%; }
 }
 
 @media(max-width: 674px){
@@ -5839,9 +5848,11 @@ footer .footer-menu li a:hover { color: #E3605B; }
 
     footer .socialBtn > div .md-button.md-fab.md-mini{ height: 40px; width: 40px; line-height: 39px;}
 
-    .layout-xs-column{ -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; flex-direction: column; box-sizing: border-box; display: -webkit-box; display: -webkit-flex; display: flex; }
+    /*.layout-xs-column{ -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; flex-direction: column; box-sizing: border-box; display: -webkit-box; display: -webkit-flex; display: flex; }
 
-    .layout-xs-column>.flex-xs-100, .layout-xs-row>.flex-xs-100{ -webkit-box-flex: 1; -webkit-flex: 1 1 100%; flex: 1 1 100%; max-width: 100%; max-height: 100%; box-sizing: border-box; }
+    .layout-xs-column>.flex-xs-100, .layout-xs-row>.flex-xs-100{ -webkit-box-flex: 1; -webkit-flex: 1 1 100%; flex: 1 1 100%; max-width: 100%; max-height: 100%; box-sizing: border-box; }*/
+
+    footer > div { width: 100%; }
 }
 
 /*----------------------END NEW FOOTER-------------------------------------*/
@@ -5851,11 +5862,13 @@ footer .footer-menu li a:hover { color: #E3605B; }
 
 /*--------------------------NEW SIDEBAR------------------------------------*/
 
-#sidebar {  position: fixed; width: 320px; z-index: 2; bottom: 0; top: 0; background-color: #e8e8e8; -webkit-transform: translate3d(-100%,0,0); transform: translate3d(-100%,0,0); max-width: 320px; -webkit-transition: all .4s cubic-bezier(.25,.8,.25,1); transition: all .4s cubic-bezier(.25,.8,.25,1); }
+#sidebar {  position: fixed; width: 320px; z-index: 61; bottom: 0; top: 0; background-color: #e8e8e8; -webkit-transform: translate3d(-100%,0,0); transform: translate3d(-100%,0,0); max-width: 320px; -webkit-transition: all .4s cubic-bezier(.25,.8,.25,1); transition: all .4s cubic-bezier(.25,.8,.25,1); }
+
+body + #sidebar.open{ overflow: hidden; }
 
 #sidebar md-content{ background-color: #e8e8e8;  }
 
-#sidebar md-content > section{ float:left; padding: 25px; background-image: url(../images/separator.png); background-size: 311px 1px; background-repeat: no-repeat; background-position: center bottom; box-sizing: content-box;}
+#sidebar md-content > section{display: block ; width: 100% ;  float:left ; padding: 25px; background-image: url(../images/separator.png); background-size: 311px 1px; background-repeat: no-repeat; background-position: center bottom; box-sizing: border-box; display: block;}
 
 #sidebar md-content > section:last-child{ background-image: none; }
 

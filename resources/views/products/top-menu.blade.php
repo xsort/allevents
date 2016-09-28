@@ -1,4 +1,4 @@
-<div class="layout-inst-menu">
+<div class="layout-inst-menu hidden-xs">
     <div class="container ">
         <div class="row">
             <div class="hidden-xs">

@@ -2,7 +2,12 @@ angular
 
 .module('BlankApp', ['ngMaterial','ngMessages','ngCart'])
 
-
+.controller('bodyCtrl', function($scope) {
+    $scope.isActive = false;
+    $scope.activeButton = function() {
+    $scope.isActive = !$scope.isActive;
+  }  
+})
 
 .controller('headerCtrl', function($scope, $mdDialog) {
   $scope.showEvent = function(ev) {
@@ -59,10 +64,7 @@ $scope.showPrerenderedDialog = function(ev) {
 })
 
 .controller('sidenavCtrl', function ($scope) {
-  $scope.isActive = false;
-  $scope.activeButton = function() {
-    $scope.isActive = !$scope.isActive;
-  }  
+
 })
 
 .controller('headerLang', function() {

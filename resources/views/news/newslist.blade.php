@@ -31,7 +31,7 @@
                 <div class="col-md-9">
                     <div class="row">
                         <div class="text-center margin-b-50 margin-t-15">
-                            <h1 class="page-title rowed">Новости</h1>
+                            <h1 class="page-title rowed">Все новости</h1>
                         </div>
 
                         <div class="masonry" data-columns>

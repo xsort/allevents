@@ -5,7 +5,7 @@ return [
     'saved'     		=> 'Сохранено!',
     'deleted'   		=> 'Удалено!',
     'meta_description'	=> 'Мета описание сайта',
-    'mainpage'	        => 'Главная',
+    'mainpage'	        => 'Allevents',
     'photo'	            => 'Фото',
     'video'	            => 'Видео',
     'promo'	            => 'Акции',
