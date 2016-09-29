@@ -2,12 +2,13 @@
 @section('centerbox')
 
 <div class="layout-page ">
+
     <div class="layout-breadcrumbs itemscope itemtype="http://schema.org/ItemList">
         <div class="container-fluid">
             <div class="container-breadcrumbs">
                 <ol class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <meta itemprop="itemListOrder" content="http://schema.org/ItemListOrderDescending"/>
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/" itemprop="url">Главная</a></li>
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/" itemprop="url">Allevents</a></li>
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="" itemprop="url">Новости</a></li>
                 </ol>
             </div>
@@ -41,9 +42,9 @@
 
                                     <a class="newsImage" href="news/{{$news->slug}}" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
                                         <img src="uploaded/{{isset($news->photos{0}) ? $news->photos{0}->source : 'nophoto.png'}}" alt="{{$news->name}}">
-                                        <div style="display:none">
-                                        <p class="">{{ ucfirst(Date::parse($news->created_at)->format('M')) }}
-                                        <br class="hide-mobile"><span>{{ date('d', strtotime($news->created_at)) }}</span></p>
+                                        <div class="date">
+                                            <span>{{ ucfirst(Date::parse($news->created_at)->format('M')) }}</span>
+                                            <span>{{ date('d', strtotime($news->created_at)) }}</span>
                                         </div>
 
                                         <meta itemprop="url" content="http://170d3237.ngrok.io/uploaded/{{isset($news->photos{0}) ? $news->photos{0}->source : 'nophoto.png'}}">

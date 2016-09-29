@@ -32,11 +32,11 @@
     </div>
 </div>
 
-<div class="row c-block-content c-bg-blue">
+<div class="row c-block-content c-bg-blue" ng-cloak>
     <div class="text-center">
         <h2 class="c-block-title">{{ trans('common.recommended') }}</h2>
     </div>
-    <div class="container-fluid margin-t-50">
+    <div class="container-fluid margin-t-50" ng-cloak>
         <div class="recommended-slider">
             <button type="button" class="recommended-next prev-arrow control-slider hidden-xs"></button>
             <div id="recommended">
@@ -66,7 +66,7 @@
     <div class="container-fluid margin-t-30 ">
         <div class="news-slider">
 
-            <div id="report-slider">
+            <div id="report-slider" ng-cloak>
 
                 <div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
                     <div class="row">
@@ -170,16 +170,17 @@
         <h2 class="c-block-title font-pink">{{ trans('common.news') }}</h2>
     </div>
     <div class="container-fluid margin-t-50">
-        <div class="news-slider">
+        <div class="news-slider" ng-cloak>
             <button type="button" class="news-next prev-arrow control-slider hidden-xs"></button>
             <div id="news">
 @foreach ($newslist as $news)
-                <div class="category">
+                <div class="newsItem" layout="column" layout-align="stretch">
 
-                    <a href="/news/{{$news->slug}}" class="bg-img-center news-image" style="background:url('uploaded/{{isset($news->photos{0}) ? $news->photos{0}->source : 'nophoto.png'}}');">
-
+                    <a href="/news/{{$news->slug}}" class="bg-img-center" style="background:url('uploaded/{{isset($news->photos{0}) ? $news->photos{0}->source : 'nophoto.png'}}');">
                     </a>
-                    <h2><a href="/news/{{$news->slug}}" class="title-more">{{$news->name}}</a></h2>
+
+                    <h2><a href="/news/{{$news->slug}}" class="newsItemTitle">{{$news->name}}</a></h2>
+
                     <figure>
                         <span class="text-left">{{ date('d F, Y', strtotime($news->created_at)) }}<!-- 18 февраля 2016 --></span><!-- <span class="pull-right">{{ date('H:i', strtotime($news->created_at)) }}</span> -->
                     </figure>

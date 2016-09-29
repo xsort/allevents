@@ -19,6 +19,7 @@
 </div>
 
 <script type="text/ng-template" id="template/ngCart/cart.html">
+   
 
     <div ng-show="ngCart.getTotalItems() === 0">
         <div class="text-center margin-b-25">

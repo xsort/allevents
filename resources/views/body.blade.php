@@ -57,6 +57,7 @@
     @include('partials.header')
 
     <div class="container wrapper" ng-cloak>
+    
         @yield('centerbox') 
     </div>
 

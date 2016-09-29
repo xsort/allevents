@@ -32,9 +32,9 @@
                                     <meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="https://google.com/article"/>
                                     <a class="newsImage" href="{{ route('get-news', $d->slug) }}" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
                                         <img src="uploaded/{{isset($d->photos{0}) ? $d->photos{0}->source : 'nophoto.png'}}">
-                                        <div style="display:none">
-                                            <p class="">{{ ucfirst(Date::parse($d->created_at)->format('M')) }}
-                                            <br class="hide-mobile"><span>{{ date('d', strtotime($d->created_at)) }}</span></p>
+                                        <div class="date">
+                                            <span>{{ ucfirst(Date::parse($d->created_at)->format('M')) }}</span>
+                                            <span>{{ date('d', strtotime($d->created_at)) }}</span>
                                         </div>
 
                                         <meta itemprop="url" content="http://170d3237.ngrok.io/uploaded/{{isset($news->photos{0}) ? $news->photos{0}->source : 'nophoto.png'}}">

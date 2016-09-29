@@ -2,11 +2,20 @@ angular
 
 .module('BlankApp', ['ngMaterial','ngMessages','ngCart'])
 
-.controller('bodyCtrl', function($scope) {
+.controller('bodyCtrl', function($scope,$mdDialog) {
     $scope.isActive = false;
     $scope.activeButton = function() {
     $scope.isActive = !$scope.isActive;
   }  
+    $scope.showEvent = function(ev) {
+    $mdDialog.show({
+        templateUrl: 'template/1.php',
+        
+        parent: angular.element(document.body),
+        clickOutsideToClose:true,
+    });
+  }
+
 })
 
 .controller('headerCtrl', function($scope, $mdDialog) {
@@ -42,14 +51,7 @@ $scope.showPrerenderedDialog = function(ev) {
 
 .controller('footerCtrl', function($scope, $mdDialog) {
 
-  $scope.showEvent = function(ev) {
-    $mdDialog.show({
-        contentElement: '#getEvent',
-        targetEvent: ev,
-        parent: angular.element(document.body),
-        clickOutsideToClose:true,
-    });
-  }
+
 
 })
 
