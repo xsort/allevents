@@ -43,7 +43,7 @@
         <div class="text-center margin-b-25">
             <h1 class="c-title-card font-black">Корзина</h1>
         </div>
-        
+        <form name="cartForm"  id="cart-form" role="form" method="post" action="index.php?action=main_cart&a=sendcart">
         <table class="shop-container cart">
             <thead>
                 <tr>
@@ -77,6 +77,9 @@
 
                             &nbsp;&nbsp; @{{ item.getQuantity() | number }}&nbsp;&nbsp;
 
+                            <input type="text" value="@{{ item.getQuantity() | number }}" name="">
+                            <input type="text" value="@{{ item.getId() | number }}" name="">
+
                             <span class="glyphicon glyphicon-plus" 
                                   ng-click="item.setQuantity(1, true)">
                             </span>
@@ -103,7 +106,7 @@
         <div class="col-md-12">
             <div class="row" >
 
-                <form name="cartForm"  id="cart-form" role="form" method="post" action="index.php?action=main_cart&a=sendcart">
+                
                     <div class="col-md-5 col-md-offset-1 col-md-push-6 margin-b-30">
                         <div class="row">
 

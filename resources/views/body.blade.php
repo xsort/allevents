@@ -23,7 +23,11 @@
 
     @yield('metaNewsSharing')
     @yield('metaProductSharing')
-
+  <style>
+        .products-page header .headerWrapper {
+            background-image: url('../images/background/main-bg.jpg') ;
+        }
+    </style>
 
    
 </head>
