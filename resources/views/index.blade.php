@@ -22,6 +22,7 @@
                             <a href="{{$category->slug}}" class="main-menu-button"><span>Посмотреть все</span></a>
                         </div>
                     </a>
+                    
                 </div>
             </div>
             
@@ -36,33 +37,38 @@
     <div class="text-center">
         <h2 class="c-block-title">{{ trans('common.recommended') }}</h2>
     </div>
+
     <div class="container-fluid margin-t-50" ng-cloak>
-        <div class="recommended-slider">
+        <div class="recommendedSlider">
             <button type="button" class="recommended-next prev-arrow control-slider hidden-xs"></button>
+
             <div id="recommended">
-				
 				@foreach ($products as $product)
-	        	<a href="{{$product->slug}}" class="category">
-                    
-                        <span class="logo-club">
-                            <img src="uploaded/{{isset($product->photos{0}) ? $product->photos{0}->source : 'nophoto.png'}}" alt="">
-                        </span>
-                    
-                    <h3 class="main-title"><span>{{$product->name}}</span></h3>
-                    <div class="divider-title"></div>
-                    <span class="main-menu-descripton">{{$product->description_short}}</span>
-                    <div class="main-menu-button"><span>Посмотреть</span></div>
+	        	<a href="{{$product->slug}}" class="instItem" layout-align="center center">
+                    <img src="uploaded/{{isset($product->photos{0}) ? $product->photos{0}->source : 'nophoto.png'}}" alt="">
+                    <div layout="column" layout-align="space-between stretch">
+                        <h3 class="instTitle">
+                            <span>{{$product->name}}</span>
+                            <md-tooltip md-direction="top" md-delay="500">
+                                <div class="font-uppercase">{{$product->name}}</div>
+                            </md-tooltip>
+                        </h3>
+                        <span class="instDescrShort">{{ str_limit($product->description_short, $limit = 120, $end = '...') }}</span>
+                        <md-button class="md-rised" md-ink-ripple="false">Посмотреть</md-button>
+                    </div>
                 </a>
 	            @endforeach
             </div>
+
             <button type="button" class="recommended-prev next-arrow control-slider hidden-xs"></button>
         </div>
     </div>
+
 </div>
 
 <div class="c-block-content c-block-content-divider">
     <div class="text-center">
-        <h2 class="c-block-title font-pink">{{ trans('common.reports') }}</h2></div>
+        <h2 class="indexSectionTitle">{{ trans('common.reports') }}</h2></div>
     <div class="container-fluid margin-t-30 ">
         <div class="news-slider">
 
@@ -132,7 +138,7 @@
         </div>
     </div>
 </div>
-
+<!-- 
 <div class="c-block-content">
     <ngcart-addtocart id="1" name="Продукт 1" price="767" quantity="1" quantity-max="30" data="item"></ngcart-addtocart>
     <ngcart-addtocart id="2" name="Продукт 2" price="254" quantity="1" quantity-max="30" data="item"></ngcart-addtocart>
@@ -161,36 +167,40 @@
             </mark>
     </div>
 </script>
-</div>
+</div> -->
 
 
 
 <div class="c-block-content ">
     <div class="text-center">
-        <h2 class="c-block-title font-pink">{{ trans('common.news') }}</h2>
+        <h2 class="indexSectionTitle">{{ trans('common.news') }}</h2>
     </div>
-    <div class="container-fluid margin-t-50">
-        <div class="news-slider" ng-cloak>
-            <button type="button" class="news-next prev-arrow control-slider hidden-xs"></button>
+    <div class="container-fluid margin-t-30">
+        <div class="newsSlider" ng-cloak>
+            <button type="button" class="news-next prev-arrow control-slider hidden-xs md-whiteframe-3dp"></button>
+
             <div id="news">
-@foreach ($newslist as $news)
-                <div class="newsItem" layout="column" layout-align="stretch">
+                @foreach ($newslist as $news)
+                <div class="newsItem" layout="column" layout-align="stretch" >
 
                     <a href="/news/{{$news->slug}}" class="bg-img-center" style="background:url('uploaded/{{isset($news->photos{0}) ? $news->photos{0}->source : 'nophoto.png'}}');">
                     </a>
 
-                    <h2><a href="/news/{{$news->slug}}" class="newsItemTitle">{{$news->name}}</a></h2>
+                    <h2 class="newsItemTitle"><a href="/news/{{$news->slug}}" class="">{{$news->name}}</a></h2>
 
                     <figure>
-                        <span class="text-left">{{ date('d F, Y', strtotime($news->created_at)) }}<!-- 18 февраля 2016 --></span><!-- <span class="pull-right">{{ date('H:i', strtotime($news->created_at)) }}</span> -->
+                        <span class="text-left">{{ date('d', strtotime($news->created_at)) }} {{ ucfirst(Date::parse($news->created_at)->format('M')) }} , {{ date('Y', strtotime($news->created_at)) }}<!-- 18 февраля 2016 --></span><!-- <span class="pull-right">{{ date('H:i', strtotime($news->created_at)) }}</span> -->
                     </figure>
                     <span>{{ str_limit($news->description_short, $limit = 100, $end = '...') }}</span>
-                    <a href="/news/{{$news->slug}}" class="read-more">{{ trans('common.read-more-dot') }}<span class="fa fa-angle-double-right"></span></a>
+
+                    <div>
+                        <md-button ng-href="/news/{{$news->slug}}" class="newsMore md-raised">{{ trans('common.read-more-dot') }} <span class="fa fa-angle-double-right"></span></md-button>
+                    </div>
                 </div>
-@endforeach
-                
+                @endforeach
             </div>
-            <button type="button" class="news-prev next-arrow control-slider hidden-xs"></button>
+
+            <button type="button" class="news-prev next-arrow control-slider hidden-xs md-whiteframe-3dp"></button>
         </div>
     </div>
 </div>

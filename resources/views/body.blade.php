@@ -32,7 +32,7 @@
    
 </head>
 
-<body ng-app="BlankApp"  ng-controller="bodyCtrl" class="remove-bg @yield('productClass') bgFilter3" style="background-image: url('../images/background/main-bg.jpg');">
+<body ng-app="BlankApp"  ng-controller="bodyCtrl" layout="column" class="remove-bg @yield('productClass') bgFilter3" style="background-image: url('../images/background/main-bg.jpg');">
 
 <!-- @yield('loadingPage') -->
 
@@ -97,7 +97,7 @@
    <script src="js/angular-messages.min.js"></script>
    <script src="js/angular-material.min.js"></script>
    <script src="js/ngCart.js"></script>
-
+   <script src="js/angular-masonry.min.js"></script>
     
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.nicescroll.js"></script>

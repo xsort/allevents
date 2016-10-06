@@ -2,7 +2,7 @@
 @section('bgImage','background-image: url(../images/background/main-bg.jpg)')
 @section('productClass','products-page')
 @section('centerbox')
-<div class="layout-page ">
+<div class="layout-page " >
 
     @include('products.top-menu')
 
@@ -54,41 +54,98 @@
                         </ul>
                     </div>
 
-                    @foreach($menu_products as $product)
-                    <div class="col-md-3 col-sm-6">
-                        <a href="javascript:void(0)" class="menu-toggle">
-                            <figure class="menu-item menu-item-{{ random_int(1, 5) }}">
-                                <img src="{{ isset($product->photos{0}) ? 'uploaded/thumbs/' . $product->photos{0}->source : 'images/inst-menu-photo/photo.png'}}" height="180px;" width="100%" alt="{{ $product->name }}">
-                                <div class="price-white"></div>
-                                <div class="price-red"></div>
-                                <div class="price-price">
-                                    @if ($product->price > 0)
-                                        <span>{{ $product->price }}</span>
-                                        <span>{{ trans('common.lei') }}</span>
-                                    @endif
-                                </div>
-                                <figurecaption class="menu">
-                                    <div class="menu-title">{{ $product->name }}</div>
-                                    <div class="menu-text">{{ str_limit(strip_tags($product->description), 100) }}</div>
-                                </figurecaption>
-                            </figure>
-                        </a>
+                    <div class="col-md-9" >
+                        <div class="row" >
 
-                        <div class="menu-order">
-                            <a href="javascript:void(0)" class="order"><span>Добавить в корзину</span></a>
-                            <div class="pull-right">
-                                <a href="javascript:void(0)" class="low"><span>-</span></a>
-                                <input class="menu-input" type="text" value="1">
-                                <a href="javascript:void(0)" class="hight"><span>+</span></a>
+                        <div class="masonry menuPage" data-columns>
+                            @foreach($menu_products as $key=>$product)
+                  
+                                <div class="menuItem " layout="column" layout-align="stretch" ng-controller="menuCtrl">
+                                    <div class="md-whiteframe-2dp">
+                                        <a href="javascript:void(0)" >
+                                            <div class="menuImg">
+                                                <div class="menuPriceWrapper">
+                                                    <div class="menuPriceValue">
+                                                        @if ($product->price > 0)
+                                                        <span>{{ $product->price }}</span>
+                                                        <span>{{ trans('common.lei') }}</span>
+                                                    @endif
+                                                    </div>
+                                                    <div class="menuPrice">
+                                                    </div>
+                                                </div>
+                                                <img src="{{ isset($product->photos{0}) ? 'uploaded/thumbs/' . $product->photos{0}->source : 'images/inst-menu-photo/photo.png'}}"  width="100%" alt="{{ $product->name }}">
+                                            </div>
+                                            <div class="menuDescr">
+                                                
+                                            </div>
+                                        </a>
+                                        <ngcart-addtocart id="{{$key}}" name="{{ $product->name }}" price="{{ $product->price }}" quantity="1" quantity-max="30" data="item" ></ngcart-addtocart>
+                                        
+                                    </div>
+                                </div>
+
+                            @endforeach
                             </div>
-                        </div>
+                         </div>
                     </div>
-                    @endforeach
+
+    
+                    <script type="text/ng-template" id="template/ngCart/addtocart.html">
+
+                                <div class="menuOrder" layout="row"    layout-align="center center">
+                                    <md-button md-ink-ripple="false" ng-click="ngCart.addItem(id, name, price, q, data)" ng-transclude>
+                                        <md-icon md-svg-src="images/icons/shopping-cart.svg"></md-icon>
+                                            Добавить в корзину
+                                    </md-button>
+                                        
+                                    <select name="quantity" id="quantity" ng-model="q" ng-options=" v for v in qtyOpt"></select>
+                                    
+                                </div>
+                                <mark ng-show="inCart()">
+                                        Добавлено. <a ng-click="ngCart.removeItemById(id)" >Удалить из корзины</a>
+                                </mark>
+
+<!--     <div class="col-md-3 col-sm-6">
+        <a href="javascript:void(0)" class="menu-toggle">
+            <figure class="menu-item menu-item-{{ random_int(1, 5) }}">
+                <img src="{{ isset($product->photos{0}) ? 'uploaded/thumbs/' . $product->photos{0}->source : 'images/inst-menu-photo/photo.png'}}" height="180px;" width="100%" alt="{{ $product->name }}">
+                <div class="price-white"></div>
+                <div class="price-red"></div>
+                <div class="price-price">
+                    @if ($product->price > 0)
+                        <span>{{ $product->price }}</span>
+                        <span>{{ trans('common.lei') }}</span>
+                    @endif
                 </div>
+                <figurecaption class="menu">
+                    <div class="menu-title">{{ $product->name }}</div>
+                    <div class="menu-text">{{ str_limit(strip_tags($product->description), 100) }}</div>
+                </figurecaption>
+            </figure>
+        </a>
+
+        <div class="menu-order">
+            <a class="order" ng-click="ngCart.addItem(id, name, price, q, data)" ng-transclude>Добавить в корзину</a>
+                <div class="pull-right">
+                    <span ng-show="quantityMax">
+                    <select name="quantity" id="quantity" ng-model="q" ng-options=" v for v in qtyOpt"></select>
+                    </span>
+                </div>
+        </div>
+
+        <mark ng-show="inCart()">
+                Предмет уже добавлен в корзину. <a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Удалить</a>
+        </mark>
+    </div> -->
+
+
+</script>
+
             </div>
         </div>
     </div>
-</div>
+</div></div>
 
 
 <div class="modal menu-modal">

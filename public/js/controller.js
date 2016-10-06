@@ -1,6 +1,6 @@
 angular
 
-.module('BlankApp', ['ngMaterial','ngMessages','ngCart'])
+.module('BlankApp', ['ngMaterial','ngMessages','ngCart','wu.masonry'])
 
 .controller('bodyCtrl', function($scope,$mdDialog) {
     $scope.isActive = false;
@@ -20,6 +20,11 @@ angular
 .controller('footerCtrl', function($scope, $mdDialog) {
 
 })
+
+.controller('menuCtrl', function($scope, $mdToast) {
+ 
+})
+
 
 .controller('modalCtrl', function($scope, $mdDialog) {
 
