@@ -43,56 +43,59 @@
         <div class="text-center margin-b-25">
             <h1 class="c-title-card font-black">Корзина</h1>
         </div>
+
         <form name="cartForm"  id="cart-form" role="form" method="post" action="index.php?action=main_cart&a=sendcart">
-        <table class="shop-container cart">
+
+        <table class="mainCart">
             <thead>
                 <tr>
-                    <th class="item-name">Продукт</th>
-                    <th class="item-empty">&nbsp;</th>
-                    <th class="item-quantity">Количество</th>
-                    <th class="item-subtotal">Подсчитано</th>
-                    <th class="item-remove">&nbsp;</th>
+                    <th class="itemRemove">&nbsp;</th>
+                    <th class="itemName">&nbsp;</th>
+                    <th class="itemQty"><span>Количество</span></th>
+                    <th class="itemAmount">Цена</th>
+                    <th class="itemTotal">Всего</th>
                 </tr>
             </thead>
                 
             <tbody >
-                <tr class="item-row" ng-repeat="item in ngCart.getCart().items track by $index">
-                    <td class="item-thumb">
-                        <a href="javascript:void(0)">
-                            <img src="img/menu/menu-6.jpg">
-                        </a>
+                <tr class="itemRow" ng-repeat="item in ngCart.getCart().items track by $index">
+
+                    <td class="itemRemove">
+                        <md-button class="md-raised" md-ink-ripple="false" ng-click="ngCart.removeItemById(item.getId())" aria-label="delete">
+                            <md-icon md-svg-src="images/icons/close.svg"></md-icon>
+                        </md-button> 
                     </td>
 
-                    <td class="item-name">
-                        <a href="javascript:void(0)">@{{ item.getName() }}</a><span class="amount" ng-model="price" ng-init="price='12'">@{{item.getPrice()}} лей</span> 
+                    <td class="itemName">
+                        <table>
+                          <tr>
+                            <td>
+                                <span>@{{ item.getName() }}</span>
+                            </td>
+                          </tr>
+                        </table>
                     </td>
                         
-                    <td class="item-quantity">
-                        <div class="quantity">
+                    <td class="itemQty">
+                        <div class="qty ">
 
-                            <span class="glyphicon glyphicon-minus" 
-                                  ng-class="{'disabled':item.getQuantity()==1}" 
-                                  ng-click="item.setQuantity(-1, true)"> 
-                            </span>
+                            <button type="button" ng-class="{'disabled':item.getQuantity()==1}"  ng-click="item.setQuantity(-1, true)"> <i class="fa fa-angle-down"></i> </button>
+                            
+                            <input type="text" value="@{{ item.getQuantity() | number }}" disabled="disabled">
 
-                            &nbsp;&nbsp; @{{ item.getQuantity() | number }}&nbsp;&nbsp;
-
-                            <input type="text" value="@{{ item.getQuantity() | number }}" name="">
-                            <input type="text" value="@{{ item.getId() | number }}" name="">
-
-                            <span class="glyphicon glyphicon-plus" 
-                                  ng-click="item.setQuantity(1, true)">
-                            </span>
-
+                            <button  type="button" ng-click="item.setQuantity(1, true)"><i class="fa fa-angle-up"></i></button>
                         </div>
+
+                        <input type="hidden" value="@{{ item.getQuantity() | number }}" name="">
+                        <input type="hidden" value="@{{ item.getId() | number }}" name="">
                     </td>
 
-                    <td class="item-subtotal">
-                        <span class="amount">@{{ item.getTotal()}} лей</span> 
+                    <td class="itemAmount">
+                        <span >@{{item.getPrice()}} лей</span>
                     </td>
 
-                    <td class="item-remove">
-                        <a  class="remove" ng-click="ngCart.removeItemById(item.getId())" href="javascript:void(0)">×</a> 
+                    <td class="itemTotal">
+                        <span >@{{ item.getTotal()}} лей</span> 
                     </td>
 
                 </tr>
