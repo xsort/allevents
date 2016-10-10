@@ -7,19 +7,21 @@
             <div class="row">
                 <div class="col-md-9">
                     <div class="cartCont">
+
                         <ngcart-cart></ngcart-cart>
                     </div>
                 </div>
-            
-               
-            @include('partials.right-banners')
+
+                @include('partials.right-banners')
             </div>
         </div>
     </div>
 </div>
 
+
+
+
 <script type="text/ng-template" id="template/ngCart/cart.html">
-   
 
     <div ng-show="ngCart.getTotalItems() === 0">
         <div class="text-center margin-b-25">
@@ -44,7 +46,8 @@
             <h1 class="c-title-card font-black">Корзина</h1>
         </div>
 
-        <form name="cartForm"  id="cart-form" role="form" method="post" action="index.php?action=main_cart&a=sendcart">
+        <form name="cartForm"  id="cart-form" role="form" method="post" action="{{route('make-event')}}">
+{!! Form::token() !!}
 
         <table class="mainCart">
             <thead>
@@ -86,8 +89,8 @@
                             <button  type="button" ng-click="item.setQuantity(1, true)"><i class="fa fa-angle-up"></i></button>
                         </div>
 
-                        <input type="hidden" value="@{{ item.getQuantity() | number }}" name="">
-                        <input type="hidden" value="@{{ item.getId() | number }}" name="">
+                        <input type="hidden" value="@{{ item.getQuantity() | number }}" name="name">
+                        <input type="hidden" value="@{{ item.getId() | number }}" name="phone">
                     </td>
 
                     <td class="itemAmount">
@@ -136,57 +139,58 @@
                                 <h3 class="order_review_heading">Личные данные</h3>
 
                                 <div class="cartAuth">
-
-                                    <md-input-container class="md-block">
-                                        <label>Ваше имя</label>
-                                        <input ng-minlength="2" md-maxlength="30" required name="cartName" ng-model="cart.cartName">
-                                        <div ng-messages="cartForm.cartName.$error" role="alert" multiple>
-                                            <div ng-message="required">Это поле обязательно.</div>
-                                            <div ng-message="minlength">Имя должно содержать больше 2 символов.</div>
-                                            <div ng-message="md-maxlength">Имя не должно содержать больше 30 символов.</div>
-                                        </div>
-                                    </md-input-container>
-
-                                    <md-input-container class="md-block">
-                                        <label>Ваш Email</label>
-                                        <input name="cartEmail" ng-model="project.cartEmail" required minlength="5" maxlength="100" ng-pattern="/^.+@.+\..+$/" type="email">
-                                       <div ng-messages="cartForm.cartEmail.$error" role="alert">
-                                          <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                                            Ваш email должен быть между 5 и 50 символов и должен быть похож на e-mail адрес.
-                                          </div>
-                                        </div>
-                                    </md-input-container>
-
-                                    <md-input-container class="md-block">
-                                        <label>Телефон</label>
-                                        <input ng-minlength="2" md-maxlength="30" required name="cartPhone" ng-model="project.cartPhone">
-                                        <div ng-messages="cartForm.cartPhone.$error" role="alert" multiple>
-                                            <div ng-message="required">Это поле обязательно.</div>
-                                            <div ng-message="minlength">Телефон должно содержать больше 2 символов.</div>
-                                            <div ng-message="md-maxlength">Телефон не должен содержать больше 30 символов.</div>
-                                        </div>
-                                    </md-input-container>
-
-                                    <md-input-container class="md-block">
-                                        <label>Адрес</label>
-                                        <input ng-minlength="2" md-maxlength="100" required name="cartAdress" ng-model="project.cartAdress">
-                                        <div ng-messages="cartForm.cartAdress.$error" role="alert" multiple>
-                                            <div ng-message="required">Это поле обязательно.</div>
-                                            <div ng-message="minlength">Адрес должно содержать больше 2 символов.</div>
-                                            <div ng-message="md-maxlength">Адрес не должен содержать больше 100 символов.</div>
-                                        </div>
-                                    </md-input-container>
-
-                                    <md-input-container class="md-block">
-                                      <label>Замечания</label>
-                                      <textarea ng-minlength="5" md-maxlength="150" required name="cartMessage" rows="5" md-select-on-focus placeholder="Пример: Хочу что бы на моем мероприятии было..." ng-model="project.message"></textarea>
-                                        <div ng-messages="cartForm.cartMessage.$error">
+                                    <div class="form-group">
+                                        <md-input-container class="md-block">
+                                            <label>Ваше имя</label>
+                                            <input class="form-control" ng-minlength="2" required name="cartName" ng-model="cart.cartName">
+                                            <div ng-messages="cartForm.cartName.$error" role="alert" multiple>
                                                 <div ng-message="required">Это поле обязательно.</div>
-                                                <div ng-message="minlength">Сообщение должно содержать больше 5 символов.</div>
-                                                <div ng-message="md-maxlength">Сообщение не должен содержать больше 150 символов.</div>
-                                        </div>
-                                    </md-input-container>                                
-
+                                                <div ng-message="minlength">Имя должно содержать не меньше 2 символов.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <div class="form-group">
+                                    <md-input-container class="md-block">
+                                            <label>Ваш Email</label>
+                                            <input class="form-control" name="cartEmail" ng-model="project.cartEmail" required minlength="4" ng-pattern="/^.+@.+\..+$/" type="email">
+                                           <div ng-messages="cartForm.cartEmail.$error" role="alert">
+                                              <div ng-message-exp="['required', 'minlength', 'pattern']">
+                                                Ваш email должен содержать не меньше 4 символов и должен быть похож на e-mail адрес.
+                                              </div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <div class="form-group">
+                                        <md-input-container class="md-block">
+                                            <label>Телефон</label>
+                                            <input class="form-control" ng-pattern="/^[0-9]+$/"  ng-minlength="4" required name="cartPhone" ng-model="project.cartPhone">
+                                            <div ng-messages="cartForm.cartPhone.$error" role="alert" multiple>
+                                                <div ng-message="required">Это поле обязательное</div>
+                                                <div ng-message="minlength">Телефон должен содержать не менее 4 символов</div>
+                                                <div ng-message="pattern">Телефон должно содержать только цифры</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <div class="form-group">
+                                        <md-input-container class="md-block">
+                                            <label>Адрес</label>
+                                            <input class="form-control" ng-minlength="3" required name="cartAdress" ng-model="project.cartAdress">
+                                            <div ng-messages="cartForm.cartAdress.$error" role="alert" multiple>
+                                                <div ng-message="required">Это поле обязательно.</div>
+                                                <div ng-message="minlength">Адрес должно содержать не меньше 3 символов.</div>
+                                            </div>
+                                        </md-input-container>
+                                    </div>
+                                    <div class="form-group">
+                                    <md-input-container class="md-block">
+                                          <label>Замечания</label>
+                                          <textarea class="form-control" ng-minlength="5" required name="cartMessage" rows="5" md-select-on-focus placeholder="Пример: Хочу что бы на моем мероприятии было..." ng-model="project.message"></textarea>
+                                            <div ng-messages="cartForm.cartMessage.$error">
+                                                    <div ng-message="required">Это поле обязательно.</div>
+                                                    <div ng-message="minlength">Сообщение должно содержать больше 5 символов.</div>
+                                            </div>
+                                        </md-input-container>                                
+                                    </div>
                                 </div>
                             </div>
 
@@ -194,78 +198,75 @@
 
                         </div>
                     </div>
-                </form>       
+                       
             </div>
-        </div>
-    </div>
-</script>
-        
-@stop
+        </form>
 
-@section('cardPluginsValidation')
-    <script src="js/formValidation.min.js"></script>
-    <script src="js/validate_bootstrap.js"></script>
-    <script>
-        $('#cart-form') //инициализируем валидатор форм
+<script>
+    
+$('#cart-form')
                 .formValidation({
                     fields: {
-                        email: {
-                            validators: {
-                                notEmpty: {
-                                   message: 'Введите Адрес электронной почты.'
-                                },
-                                emailAddress: {
-                                   message: 'Адрес электронной почты был введен неправильно.'
-                                }
-                            }
-                        },
-                        name: {
+                        cartName: {
                              validators: {
                                 notEmpty: {
-                                    message: 'Введите имя.'
                                 },
                                  stringLength: {
                                  min: 2,
-                                 message: 'Имя должно содержать не меньше 2 символов.'
-                                },
-                                regexp: {
-                                   regexp: /^[a-zA-Zа-яА-Я ]+$/,
-                                   message: 'Имя должно содержать только буквы'
                                 }
                              }
                          },
-                        adress: {
-                            validators: {
+
+                        cartEmail: {
+                             validators: {
                                 notEmpty: {
-                                    message: 'Введите адрес.'
                                 },
                                 stringLength: {
-                                 min: 3,
-                                 message: 'Адрес должен содержать не меньше 3 символов.'
+                                 min: 4,
+                                },
+                                emailAddress: {
+                                    
                                 },
                                 regexp: {
-                                   regexp: /^[a-zA-Zа-яА-Я,0-9. ]+$/,
-                                   message: 'Адресс должен содержать только буквы'
+                                    regexp: '^[^@\\s]+@([^@\\s]+\\.)+[^@\\s]+$',
                                 }
                              }
                          },
-                        tel: {
+                        
+                        cartPhone: {
                             validators: {
                                 notEmpty: {
-                                    message: 'Введите телефон.'
+                                },
+                                 stringLength: {
+                                 min: 4,
                                 },
                                 numeric: {
-                                    message: 'Телефон должен состоять только из цифр.'
+                                },
+                             }
+                         },
+                         cartAdress: {
+                             validators: {
+                                notEmpty: {
+                                },
+                                 stringLength: {
+                                 min: 3,
+                                }
+                             }
+                         },
+
+                        cartMessage: {
+                             validators: {
+                                notEmpty: {
                                 },
                                 stringLength: {
-                                 min: 5,
-                                 message: 'Телефон должен содержать не меньше 5 цифр.'
+                                 min: 5,                                 
                                 }
                             }
-                         }
+                         },
                     }
                 })
-                .on('success.form.fv', function(e) {
+                
+.on('success.form.fv', function(e) {
                     // Prevent form submission
                     e.preventDefault();
         
@@ -281,19 +282,19 @@
                     $.ajax({
                             url: $form.attr('action'),
                             data: formData,
-                            async: false,
+                            async: true,
                             cache: false,
                             contentType: false,
                             processData: false,
                             type: 'POST',
                             success: function(result) {
-//                              alert("Вы подписаны!");
-                                var confirmlink = lg+"/order-confirmed";
-                                window.location.replace(confirmlink);
-                                    
+                                swal("Поздравляем", "Ваше сообщение отправлено", "success");
                             }   
                         });
 
                 });
-    </script>
+</script>
+
+</script>
+        
 @stop

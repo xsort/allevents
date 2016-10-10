@@ -40,7 +40,7 @@
 
     <div class="container-fluid margin-t-50" ng-cloak>
         <div class="recommendedSlider">
-            <button type="button" class="recommended-next prev-arrow control-slider hidden-xs"></button>
+            <button type="button" class="recommended-next prev-arrow control-slider hidden-xs md-whiteframe-3dp"></button>
 
             <div id="recommended">
 				@foreach ($products as $product)
@@ -60,7 +60,7 @@
 	            @endforeach
             </div>
 
-            <button type="button" class="recommended-prev next-arrow control-slider hidden-xs"></button>
+            <button type="button" class="recommended-prev next-arrow control-slider hidden-xs md-whiteframe-3dp"></button>
         </div>
     </div>
 
@@ -138,38 +138,6 @@
         </div>
     </div>
 </div>
-<!-- 
-<div class="c-block-content">
-    <ngcart-addtocart id="1" name="Продукт 1" price="767" quantity="1" quantity-max="30" data="item"></ngcart-addtocart>
-    <ngcart-addtocart id="2" name="Продукт 2" price="254" quantity="1" quantity-max="30" data="item"></ngcart-addtocart>
-
-
-    
-    <ngcart-cart></ngcart-cart>
-    
-        <script type="text/ng-template" id="template/ngCart/addtocart.html">
-        <div ng-hide="attrs.id">
-            <a class="btn btn-lg btn-primary" ng-disabled="true" ng-transclude></a>
-        </div>
-
-    <div ng-show="attrs.id">
-            <div>
-                <span ng-show="quantityMax">
-                    <select name="quantity" id="quantity" ng-model="q"
-                            ng-options=" v for v in qtyOpt"></select>
-                </span>
-                <a class="btn btn-sm btn-primary"
-                   ng-click="ngCart.addItem(id, name, price, q, data)"
-                   ng-transclude></a>
-            </div>
-            <mark  ng-show="inCart()">
-                This item is in your cart. <a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Remove</a>
-            </mark>
-    </div>
-</script>
-</div> -->
-
-
 
 <div class="c-block-content ">
     <div class="text-center">

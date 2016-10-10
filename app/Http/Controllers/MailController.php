@@ -26,8 +26,15 @@ class MailController extends Controller
         Mail::send('emails.make-event', ['name' => $request->name, 'phone' => $request->phone, 'text'=>$request->text], function ($m) {
             $m->from($this->from_mail, $this->from_name)
               ->to($this->to_mail,   $this->to_name)
-              ->subject('Сообщение с сайта ');
+              ->subject('Организация эвента');
         });
     }
 
+    public function putEvent(Request $request){
+        Mail::send('emails.make-event', ['name' => $request->name, 'phone' => $request->phone, 'text'=>$request->text], function ($m) {
+            $m->from($this->from_mail, $this->from_name)
+              ->to($this->to_mail,   $this->to_name)
+              ->subject('Сообщения об эвенте');
+        });
+    }
 }

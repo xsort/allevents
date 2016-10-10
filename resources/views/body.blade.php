@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="css/slick-theme.css">
 	<link rel="stylesheet" href="css/lightbox.min.css">
     <link rel="stylesheet" href="css/loading.css">
+    <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
 	<link rel="stylesheet" href="css/main.css?ver=4">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
@@ -70,6 +71,10 @@
 
 </div>
 
+<div class="scroll-to-top hidden-xs">
+    <span class="fa fa-angle-up"></span>
+</div>
+
 <!-- 
     
     <script>
@@ -89,16 +94,20 @@
     <!-- /Chatra-->
 
 
-   <script src="js/jquery.min.js"></script>
-   <script src="js/bootstrap.min.js"></script>
-   <script src="js/angular.min.js"></script>
-   <script src="js/angular-animate.min.js"></script>
-   <script src="js/angular-aria.min.js"></script>
-   <script src="js/angular-messages.min.js"></script>
-   <script src="js/angular-material.min.js"></script>
-   <script src="js/ngCart.js"></script>
-   <script src="js/angular-masonry.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="js/angular-aria.min.js"></script>
+    <script src="js/angular-messages.min.js"></script>
+    <script src="js/angular-material.min.js"></script>
+    <script src="js/ngCart.js"></script>
+    <script src="js/angular-masonry.min.js"></script>
     
+    <script src="js/formValidation.min.js"></script>
+    <script src="js/validate_bootstrap.js"></script>
+    <script src="js/sweetalert.min.js"></script>
+    <script src="js/validation.js"></script>
     <script src="js/slick.min.js"></script>
     <script src="js/jquery.nicescroll.js"></script>
     <script src="js/jquery.jscroll.min.js"></script>
@@ -106,7 +115,6 @@
     <script src="js/salvattore.min.js"></script>
     <script src="js/lightbox.min.js"></script>
     <script src="js/plugins-scroll.js"></script>
-    @yield('cardPluginsValidation')
     <script src="js/sliders.js" ></script>
     <script src="js/components.js?ver=4"></script>
     <script src="js/controller.js?ver=4"></script>
@@ -114,6 +122,7 @@
     @yield('jsonProductSharing')
     @yield('jsonIndexMicrodata')
     @yield('productPageScripts')
+
 
 
 </body>

@@ -66,6 +66,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::post('make-event',    ['uses'=>'MailController@makeEvent', 'as'=>'make-event']);
 
+    Route::post('put-event',    ['uses'=>'MailController@putEvent', 'as'=>'put-event']);
+
 });
 
 
