@@ -420,7 +420,7 @@ header .headerWrapper { background-image: none; margin-top: 15px; margin-bottom:
 
     header .headerWrapper .xs-div-66{ -webkit-box-flex: 1; -webkit-flex: 1 1 45%; flex: 1 1 45%; box-sizing: border-box; max-width: 45%; }
 
-    header { height: 145px;}
+    header { height: 155px;}
 
     header .headerLg,header .search { padding-right: 0px;    width: 100%; }
 
@@ -442,7 +442,7 @@ header .headerWrapper { background-image: none; margin-top: 15px; margin-bottom:
 
     .page-on-scroll header.open .headerWrapper { height: 80px; }
 
-    
+    .indexPage { margin-top: 10px; }
 
     .products-page header .headerWrapper{ background-image: none !important; }
 
@@ -1066,7 +1066,7 @@ h3.order_review_heading { margin-top: 0; font-size: 14px; color: #685e52; text-t
 
 .productsWrapper a{transition: all 200ms linear; -webkit-transition: all 200ms linear; margin-right: 0; margin-left: 0; }
 
-.productsWrapper a:hover { box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12); }
+/*.productsWrapper a:hover { box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12); }*/
 
 
 /*-----------------------------END PRODUCTS LIST---------------------------*/
@@ -1508,7 +1508,7 @@ section.sectionDivider { background: url(../images/divider-block.png) no-repeat 
 
 .galleryPhotoWrapper .galleryPhoto a { transition: all 200ms linear; position: absolute; left: 15px; right: 15px; top: 15px; bottom: 15px; }
 
-.galleryPhotoWrapper .galleryPhoto a:hover {     box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 5px 8px 0 rgba(0,0,0,.14),0 1px 14px 0 rgba(0,0,0,.12); }
+/*.galleryPhotoWrapper .galleryPhoto a:hover {     box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 5px 8px 0 rgba(0,0,0,.14),0 1px 14px 0 rgba(0,0,0,.12); }*/
 
 .galleryDescription * {     padding: 0; font-size: 14px; letter-spacing: 0.5px; line-height: 25px; color: #777; }
 
