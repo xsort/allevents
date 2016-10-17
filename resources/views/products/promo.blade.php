@@ -23,14 +23,14 @@
             <div class="row">
                 <div class="col-md-9">
                     <div class="row">
-                        <div class="text-center margin-b-50 margin-t-15">
+                        <div class="text-center newsListTitle">
                             <h1 class="page-title rowed">Акции</h1>
                         </div>
                             <div class="masonry" data-columns>
                                 @foreach($data->news as $d)
                                     <div class="newsWrapper" layout="column" layout-align="stretch" itemscope itemtype="http://schema.org/Article">
                                     <meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="https://google.com/article"/>
-                                    <a class="newsImage" href="{{ route('get-news', $d->slug) }}" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                                    <a class="newsImage md-whiteframe-1dp" href="{{ route('get-news', $d->slug) }}" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
                                         <img src="uploaded/{{isset($d->photos{0}) ? $d->photos{0}->source : 'nophoto.png'}}">
                                         <div class="date">
                                             <span>{{ ucfirst(Date::parse($d->created_at)->format('M')) }}</span>

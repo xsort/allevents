@@ -3,21 +3,22 @@
 @section('productClass','products-page')
 @section('centerbox')
 
-<div class="layout-page ">
+<div class="layout-page instPage">
     
     <div class="container-fluid">
-        <div class="club-head-image">
-            <div class="button club-main-prev"><span class="fa fa-angle-left"></span> </div>
+        <div class="instHeadImageContainer">
+            <div class="button club-main-prev control-slider prev-arrow md-whiteframe-1dp"></div>
             <div class="club-main-gallery" >
                 @foreach ($data->photos as $key => $photo)
                 @if ($key == 0) @continue; @endif
-                <!-- <div class="club-main-photo" style="background:url('')"></div> -->
-                <div class="club-main-photo" layout-align="center center"> 
+                <a href="/uploaded/{{$photo->source}}" data-lightbox="instTopImage" class="instHeadPhoto" layout-align="center center"> 
+
                   <img src="/uploaded/{{$photo->source}}" alt="">
-                </div>
+
+                </a>
                 @endforeach
             </div>
-            <div class="button club-main-next"><span class="fa fa-angle-right"></span></div>
+            <div class="button club-main-next control-slider next-arrow md-whiteframe-1dp"></div>
         </div>
     </div>
     
@@ -27,133 +28,135 @@
     <div class="layout-content" >
 
         <div class="container-fluid">
-            <div class="inst-video" id="ytplayer">
-               <!--  <iframe width="100%" height="550" src="https://www.youtube.com/embed/HuAxVfZasUk?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
-            </div>
 
-            <div class="col-lg-12 inst-square-menu margin-t-25">
+          <div class="instVideoContainer md-whiteframe-2dp">
+            <div class="instVideo" id="ytplayer"></div>
+          </div>
+
+            <div class="col-lg-12 instMenu md-whiteframe-2dp">
                 <div class="row">
+                    
+
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="row">
-                            <a href="{{$data->slug}}/photo">
-                                <div class="menu block-1">
-                                    <div class="main-menu-image" style="background: url(images/inst-menu-photo/photo.png);"></div>
-                                    <div class="main-menu-filter"></div>
-                                    <h3 class="main-menu-title"><span>Фото</span></h3>
-                                    <div class="divider-title"></div>
-                                    <span class="main-menu-descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
-                                    <a href="{{$data->slug}}/photo" class="main-menu-button"><span>Подробнее</span></a>
+
+                            <a href="{{$data->slug}}/photo" class="instMenuItem filterBlock-0 c-bg-center" style="background-image: url(images/inst-menu-photo/photo.png);">
+
+                                <div class="c-bg-center" layout="column" layout-align="space-between stretch">
+                                    <h3 class="instMenuTitle" layout="column" layout-align="end center" >Фото</h3>
+                                    <span class="instMenuDescrShort">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
+                                    <md-button>Подробнее</md-button>
                                 </div>
                             </a>
+
                         </div>
                     </div>
 
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="row">
-                            <a href="{{$data->slug}}/video">
-                                <div class="menu block-2 xs-margin-menu">
-                                    <div class="main-menu-image" style="background: url(images/inst-menu-photo/video.png);"></div>
-                                    <div class="main-menu-filter"></div>
-                                    <h3 class="main-menu-title"><span>Видео</span></h3>
-                                    <div class="divider-title"></div>
-                                    <span class="main-menu-descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
-                                    <a href="{{$data->slug}}/video" class="main-menu-button"><span>Подробнее</span></a>
+
+                            <a href="{{$data->slug}}/video" class="instMenuItem filterBlock-1 c-bg-center" style="background-image: url(images/inst-menu-photo/video.png);" >
+
+                                <div class="c-bg-center" layout="column" layout-align="space-between stretch">
+                                    <h3 class="instMenuTitle" layout="column" layout-align="end center" >Видео</h3>
+                                    <span class="instMenuDescrShort">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
+                                    <md-button>Подробнее</md-button>
                                 </div>
                             </a>
+
                         </div>
                     </div>
 
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="row">
-                            <a href="{{$data->slug}}/plan">
-                                <div class="menu block-3 xs-margin-menu">
-                                    <div class="main-menu-image" style="background: url(images/inst-menu-photo/plan.png);"></div>
-                                    <div class="main-menu-filter"></div>
-                                    <h3 class="main-menu-title"><span>План зала</span></h3>
-                                    <div class="divider-title"></div>
-                                    <span class="main-menu-descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
-                                    <a href="{{$data->slug}}/plan" class="main-menu-button"><span>Подробнее</span></a>
+
+                            <a href="{{$data->slug}}/plan" class="instMenuItem filterBlock-2 c-bg-center" style="background-image: url(images/inst-menu-photo/plan.png);">
+
+                                <div class="instMenuBlock-2 c-bg-center" layout="column" layout-align="space-between stretch" >
+                                    <h3 class="instMenuTitle" layout="column" layout-align="end center" >План зала</h3>
+                                    <span class="instMenuDescrShort">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
+                                    <md-button>Подробнее</md-button>
                                 </div>
                             </a>
+
                         </div>
                     </div>
 
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="row">
-                            <a href="{{$data->slug}}/menu">
-                                <div class="menu block-4 xs-margin-menu">
-                                    <div class="main-menu-image" style="background: url(images/inst-menu-photo/menu.png);"></div>
-                                    <div class="main-menu-filter"></div>
-                                    <h3 class="main-menu-title"><span>Меню</span></h3>
-                                    <div class="divider-title"></div>
-                                    <span class="main-menu-descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
-                                    <a href="{{$data->slug}}/menu" class="main-menu-button"><span>Подробнее</span></a>
+
+                            <a href="{{$data->slug}}/menu" class="instMenuItem filterBlock-3 c-bg-center" style="background-image: url(images/inst-menu-photo/menu.png);">
+
+                                <div class="c-bg-center" layout="column" layout-align="space-between stretch">
+                                    <h3 class="instMenuTitle" layout="column" layout-align="end center" >Меню</h3>
+                                    <span class="instMenuDescrShort">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
+                                    <md-button>Подробнее</md-button>
                                 </div>
                             </a>
+
                         </div>
                     </div>
 
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="row">
-                            <a href="{{$data->slug}}/promo">
-                                <div class="menu block-5 xs-margin-menu">
-                                    <div class="main-menu-image" style="background: url(images/inst-menu-photo/actii.png);"></div>
-                                    <div class="main-menu-filter"></div>
-                                    <h3 class="main-menu-title"><span>Акции</span></h3>
-                                    <div class="divider-title"></div>
-                                    <span class="main-menu-descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
-                                    <a href="{{$data->slug}}/promo" class="main-menu-button"><span>Подробнее</span></a>
+
+                            <a href="{{$data->slug}}/promo" class="instMenuItem filterBlock-4 c-bg-center" style="background-image: url(images/inst-menu-photo/actii.png);">
+
+                                <div class=" c-bg-center" layout="column" layout-align="space-between stretch" >
+                                    <h3 class="instMenuTitle" layout="column" layout-align="end center" >Акции</h3>
+                                    <span class="instMenuDescrShort">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
+                                    <md-button>Подробнее</md-button>
                                 </div>
                             </a>
+
                         </div>
                     </div>
 
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="row">
-                            <a href="{{$data->slug}}/interier">
-                                <div class="menu block-6 xs-margin-menu">
-                                    <div class="main-menu-image" style="background: url(images/inst-menu-photo/interier.png);"></div>
-                                    <div class="main-menu-filter"></div>
-                                    <h3 class="main-menu-title"><span>Интерьер</span></h3>
-                                    <div class="divider-title"></div>
-                                    <span class="main-menu-descripton">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
-                                    <a href="{{$data->slug}}/interier" class="main-menu-button"><span>Подробнее</span></a>
+
+                            <a href="{{$data->slug}}/interier" class="instMenuItem filterBlock-5 c-bg-center" style="background-image: url(images/inst-menu-photo/interier.png);">
+                                <div class=" c-bg-center" layout="column" layout-align="space-between stretch">
+                                    <h3 class="instMenuTitle" layout="column" layout-align="end center" >Интерьер</h3>
+                                    <span class="instMenuDescrShort">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
+                                    <md-button>Подробнее</md-button>
                                 </div>
                             </a>
+
                         </div>
-                    </div>
+                    </div>               
 
                 </div>
             </div>
-            <div class="col-lg-12 inst-description margin-t-50 text-center">
-                <h1 class="inst-title text-center rowed">{{$data->name}}</h1>
+
+            <div class="col-lg-12 text-center">
+                <div class="galleryTitle"><h1 class=" rowed">{{$data->name}}</h1></div>
             </div>
 
 
 
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 margin-t-30 inst-description-text">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-xs-12  instDescription">
                 {!!$data->description!!}
             </div>
 
-            <div class="col-lg-12 inst-description margin-t-50 text-center">
-                <h2 class="inst-title text-center rowed">Контакты</h2>
+            <div class="col-lg-12 text-center">
+                <div class="galleryTitle"><h2 class=" rowed">Контакты</h2></div>
             </div>
 
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-xs-12 margin-t-25 inst-contacts ">
-@foreach($data->contacts as $contact)
-                <div class="col-sm-6 ">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-xs-12 margin-t-25 instContactsContainer">
+            @foreach($data->contacts as $contact)
+                <div class="col-sm-6 " >
                     
-                    <div class="row inst-tel">
-
-                        <div class="col-sm-3 text-right">
-                            <div class="row">
-                                <span>
-                                    <b class="text-uppercase">{{$contact->name}}</b>
-                                </span>
-                            </div>
+                    <div class="row instContacts" layout="row" layout-align="center">
+                        <div class="col-sm-3 text-right" layout="row" layout-align="end center">
+                           
+                                <span class="instContactsName">{{$contact->name}}</span>
+                           
                         </div>
                         <div class="col-sm-6 col-sm-offset-1">
-                            <a href="tel:+37360192969" ><span> {{$contact->pivot->name}}</span></a><br>
+                        <div class="row">
+                            <span class="instContactsContent md-whiteframe-1dp"> {{$contact->pivot->name}}</span>
+                            </div>
                         </div>
 
                     </div>
@@ -163,7 +166,7 @@
                     
             </div>
 
-            <div class="col-lg-12 inst-social text-center margin-t-50">
+            <div class="col-lg-12 instSocialShare text-center ">
                     <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
                     <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
                     <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,gplus,twitter" data-counter=""></div>
@@ -171,27 +174,44 @@
             
 @if(isset($data->map) && ($data->map!=''))
 
-            <div class="col-lg-12 margin-t-40 inst-map">
+            <div class="col-lg-12 instMap md-whiteframe-2dp">
                 <div class="row">
                     <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox={{$data->map->Y}}%2C{{$data->map->X}}%2C{{$data->map->Y}}%2C{{$data->map->X}}&amp;layer=mapnik&amp;marker={{$data->map->X}}%2C{{$data->map->Y}}"></iframe>
-                    <br/>
+
                 </div>
             </div>
 @endif
 
 
-            <div class="col-lg-12  inst-pub hidden-xs">
+            <div class="col-lg-12 hidden-sm  hidden-xs instBanner">
                 <div class="row">
-                    <div class="col-md-6 margin-t-25">
+                    <div class="col-md-6 ">
                         <div class="row">
+
+                          <div class="col-md-7">
                             <div class="banner inst-pub-big" style="background:url(img/public/third-pub.png)"></div>
-                            <div class="banner inst-pub-small pull-right" style="background:url(img/public/ad.jpg)"></div>
+                          </div>
+
+                          <div class="col-md-5">
+                            <div class="banner instBannerSmall bannersRight md-whiteframe-1dp" layout="column" layout-align="space-between stretch">
+                              <span>Рекламное место свободно</span>
+                              <span>для информации обращаться на email <a href="mailto:info@allevents.md" class="bannerEmail">info@allevents.md</a></span>
+                            </div>
+                          </div>
+
                         </div>
                     </div>
-                    <div class="col-md-6 margin-t-25">
+                    <div class="col-md-6">
                         <div class="row">
-                            <div class="banner inst-pub-small" style="background:url(img/public/ad.jpg)"></div>
-                            <div class="banner inst-pub-big pull-right" style="background:url(img/public/third-pub.png)"></div>
+                          <div class="col-md-5">
+                            <div class="banner instBannerSmall bannersRight md-whiteframe-1dp" layout="column" layout-align="space-between stretch">
+                              <span>Рекламное место свободно</span>
+                              <span>для информации обращаться на email <a href="mailto:info@allevents.md" class="bannerEmail">info@allevents.md</a></span>
+                            </div>
+                          </div>
+                          <div class="col-md-7">
+                            <div class="banner inst-pub-big" style="background:url(img/public/third-pub.png)"></div>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -214,6 +234,7 @@
       function onYouTubePlayerAPIReady() {
         player = new YT.Player('ytplayer', {
           width: '100%',
+          height: '100%',
           playerVars : {
                 autoplay : 0
             },

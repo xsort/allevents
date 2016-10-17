@@ -1,3 +1,4 @@
+$(document).ready(function(){
 $('#recommended').slick({
     dots: false,
     infinite: true,
@@ -45,6 +46,8 @@ $('#recommended').slick({
         }
     ]
 });
+
+
 
 $('#notice').slick({
     dots: false,
@@ -187,6 +190,8 @@ $('.club-main-gallery').slick({
     swipeToSlide: true,
     autoplay: true,
     autoplaySpeed: 4000,
+      fade: true,
+  cssEase: 'linear',
 });
 
 
@@ -203,8 +208,8 @@ $('.slider-nav').slick({
     slidesToShow: 4,
     slidesToScroll: 1,
     asNavFor: '.slider-for',
-    dots: true,
-    centerMode: false,
+    dots: false,
+    centerMode: true,
     focusOnSelect: true,
     arrows: false,
     accessibility: true,
@@ -234,7 +239,7 @@ $('.plan-slider-nav').slick({
     slidesToScroll: 1,
     asNavFor: '.plan-slider-for',
     dots: false,
-    centerMode: true,
+    centerMode: false,
     focusOnSelect: true,
     nextArrow: '.plan-next',
     prevArrow: '.plan-prev',
@@ -248,7 +253,7 @@ $('.plan-slider-nav').slick({
 
         }
     }, {
-        breakpoint: 1024,
+        breakpoint: 991,
         settings: {
             slidesToShow: 3,
             slidesToScroll: 1,
@@ -265,12 +270,6 @@ $('.plan-slider-nav').slick({
     }, {
         breakpoint: 767,
         settings: {
-            slidesToShow: 2,
-            slidesToScroll: 1,
-        }
-    }, {
-        breakpoint: 550,
-        settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
         }
@@ -278,12 +277,13 @@ $('.plan-slider-nav').slick({
 });
 
 $('.other-category').slick({
-    slidesToShow: 4,
+    slidesToShow: 3,
     slidesToScroll: 1,
 
     dots: false,
-    centerMode: true,
-
+    centerMode: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
     nextArrow: '.other-next',
     prevArrow: '.other-prev',
     responsive: [{
@@ -295,17 +295,8 @@ $('.other-category').slick({
             dots: true,
 
         }
-    }, {
-        breakpoint: 1024,
-        settings: {
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            infinite: true,
-            dots: true,
-
-        }
-    }, {
-        breakpoint: 976,
+    },  {
+        breakpoint: 992,
         settings: {
             slidesToShow: 2,
             slidesToScroll: 1,
@@ -379,4 +370,6 @@ $('.modal-slider-nav').slick({
             slidesToScroll: 1,
         }
     }]
+});
+
 });

@@ -7,7 +7,6 @@
             <div class="row">
                 <div class="col-md-9">
                     <div class="cartCont">
-
                         <ngcart-cart></ngcart-cart>
                     </div>
                 </div>
@@ -24,8 +23,8 @@
 <script type="text/ng-template" id="template/ngCart/cart.html">
 
     <div ng-show="ngCart.getTotalItems() === 0">
-        <div class="text-center margin-b-25">
-            <h1 class="c-title-card font-black">Корзина</h1>
+        <div class="text-center newsListTitle">
+            <h1 class="page-title  rowed">Корзина</h1>
         </div>
 
         <md-toolbar class="md-warn cartWarning">
@@ -42,8 +41,8 @@
 
     <div ng-show="ngCart.getTotalItems() > 0">
 
-        <div class="text-center margin-b-25">
-            <h1 class="c-title-card font-black">Корзина</h1>
+        <div class="text-center newsListTitle">
+            <h1 class="page-title  rowed">Корзина</h1>
         </div>
 
         <form name="cartForm"  id="cart-form" role="form" method="post" action="{{route('make-event')}}">
@@ -105,7 +104,7 @@
             </tbody>
         </table>
 
-        <div class="text-center margin-b-25 margin-t-30">
+        <div class="text-center">
             <div class="c-title-divider"></div>
         </div>
 
@@ -113,7 +112,7 @@
             <div class="row" >
 
                 
-                    <div class="col-md-5 col-md-offset-1 col-md-push-6 margin-b-30">
+                    <div class="col-md-5 col-md-offset-1 col-md-push-6 cartCheckout">
                         <div class="row">
 
                             <div id="order_review">

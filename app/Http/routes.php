@@ -68,6 +68,10 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::post('put-event',    ['uses'=>'MailController@putEvent', 'as'=>'put-event']);
 
+    Route::post('make-contact',    ['uses'=>'MailController@makeContact', 'as'=>'make-contact']);
+
+    Route::post('inst-reservation',    ['uses'=>'MailController@reservation', 'as'=>'inst-reservation']);
+
 });
 
 

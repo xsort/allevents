@@ -3,10 +3,10 @@
 @section('centerbox')
 <div class="layout-page ">
 
-    <div class="layout-breadcrumbs" itemscope itemtype="http://schema.org/ItemList">
+    <div class="layout-breadcrumbs " itemscope itemtype="http://schema.org/ItemList">
         <div class="container-fluid">
      
-                <div class="container-breadcrumbs">
+                <div class="container-breadcrumbs md-whiteframe-1dp">
                     <ol class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                         <meta itemprop="itemListOrder" content="http://schema.org/ItemListOrderDescending"/>
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/" itemprop="url">Allevents</a></li>

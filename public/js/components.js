@@ -57,7 +57,7 @@ var ScrollToTop = function() {
 var LayoutHeader = function() {
 
     var _handleHeaderOnScroll = function() {
-        if ($(window).scrollTop() > $(".topbar").height() + $("header").height() + $(".layout-breadcrumbs").height() + $(".club-main-photo").height()) {
+        if ($(window).scrollTop() > $(".topbar").height() + $("header").height() +$(".layoutInstMenu").height() + $(".instHeadImageContainer").height()) {
             $("body").addClass("page-on-scroll");
             $("body").removeClass("remove-bg");
             $(".top-sm-logo").css({

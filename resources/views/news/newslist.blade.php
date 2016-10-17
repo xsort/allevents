@@ -3,9 +3,9 @@
 
 <div class="layout-page ">
 
-    <div class="layout-breadcrumbs itemscope itemtype="http://schema.org/ItemList">
+    <div class="layout-breadcrumbs"  itemscope itemtype="http://schema.org/ItemList">
         <div class="container-fluid">
-            <div class="container-breadcrumbs">
+            <div class="container-breadcrumbs  md-whiteframe-1dp">
                 <ol class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <meta itemprop="itemListOrder" content="http://schema.org/ItemListOrderDescending"/>
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/" itemprop="url">Allevents</a></li>
@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col-md-9">
                     <div class="row">
-                        <div class="text-center margin-b-50 margin-t-15">
+                        <div class="text-center newsListTitle">
                             <h1 class="page-title rowed">Все новости</h1>
                         </div>
 
@@ -40,7 +40,7 @@
                                 <div class="newsWrapper" layout="column" layout-align="stretch" itemscope itemtype="http://schema.org/Article">
                                     <meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="https://google.com/article"/>
 
-                                    <a class="newsImage" href="news/{{$news->slug}}" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                                    <a class="newsImage md-whiteframe-1dp" href="news/{{$news->slug}}" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
                                         <img src="uploaded/{{isset($news->photos{0}) ? $news->photos{0}->source : 'nophoto.png'}}" alt="{{$news->name}}">
                                         <div class="date">
                                             <span>{{ ucfirst(Date::parse($news->created_at)->format('M')) }}</span>

@@ -3,15 +3,15 @@
     height: 100%;
     width: 100%;
     position: fixed;
-    z-index: 9999;
-    margin-top: 0px;
+    z-index: 7;
+    margin-top: -4px;
     top: 0px;
 }
 
 #loading.page{
     position: absolute !important;
     background-color: white;
-    z-index: 100;
+    z-index: 7;
 }
 
 @media(max-width: 767px) {

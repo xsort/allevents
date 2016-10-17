@@ -10,6 +10,7 @@
     <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=.5, user-scalable=no">
    
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/angular-material.min.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/simple-line-icons.css">
@@ -18,7 +19,7 @@
 	<link rel="stylesheet" href="css/lightbox.min.css">
     <link rel="stylesheet" href="css/loading.css">
     <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
-	<link rel="stylesheet" href="css/main.css?ver=4">
+	<link rel="stylesheet" href="css/main.css?ver=5">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 
@@ -33,7 +34,7 @@
    
 </head>
 
-<body ng-app="BlankApp"  ng-controller="bodyCtrl" layout="column" class="remove-bg @yield('productClass') bgFilter3" style="background-image: url('../images/background/main-bg.jpg');">
+<body ng-app="BlankApp"  ng-controller="bodyCtrl" layout="column" class="remove-bg @yield('productClass') bgFilter bgFilter3" style="background-image: url('../images/background/main-bg.jpg');">
 
 <!-- @yield('loadingPage') -->
 
@@ -71,9 +72,9 @@
 
 </div>
 
-<div class="scroll-to-top hidden-xs">
-    <span class="fa fa-angle-up"></span>
-</div>
+<md-button class="scroll-to-top hidden-xs md-fab" aria-label="up">
+    <md-icon md-svg-icon="images/icons/arrow-top.svg"></md-icon>
+</md-button>
 
 <!-- 
     

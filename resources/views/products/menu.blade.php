@@ -18,7 +18,6 @@
                         </div>
 
                         <ul class="menu-left">
-                        
                             <li class="has-sub"><a href="javascript:void(0)" class="left-a">Холодные закуски<span class="fa"></span></a>
                                 <ul class="sub-menu-left">
                                     <li><a href="#">Закуска "Рафаэлки"</a></li>

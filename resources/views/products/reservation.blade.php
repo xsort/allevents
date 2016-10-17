@@ -10,24 +10,59 @@
     <div class="layout-content" >
         <div class="container-fluid">
             <div class="section">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="row">
-                        <a href="{{ route('get_menu', $data->slug) }}"><img src="images/plan-menu-img1.png" alt="" class="form-plan-label"></a>
+                        <a href="{{ route('get_menu', $data->slug) }}" class="reservLabel"><img src="images/plan-menu-img1.png" alt=""></a>
                     </div>
                 </div>
 
-                <div class="col-md-8 col-md-offset-1">
+                <div class="col-md-8">
                     <div class="row">
-                        <div class="plan-input">
-                           <form action="">
-                            <input type="text" placeholder="Ваше имя" required>
-                            <input type="text"  placeholder="Ваш телефон" required>
-
-                            <textarea name="" id="" placeholder="Пример: Хочу сделать заказ на 01.01.2017. Краткое описание пожеланий "></textarea>
-
-                            <button type="submit" class="enter ">Отправить</button>
-                            </form>
+                    <span class="reservTitle">Оставте завку на резервацию, наши специалисты с вами свяжутся</span>
+                        <div id="instReservation" class="md-whiteframe-1dp">
+    
+            <div class="modalContainer">
+                
+                <form id="reservationForm" validate="novalidate" role="form" method="post" action="{{route('inst-reservation')}}" name="reservationForm">
+                    {!! Form::token() !!}
+                        <div class="b-input" layout-gt-xs="row " layout-align="space-between start" layout-xs="column">
+                        <div class="form-group">
+                            <md-input-container class="md-block">
+                                <label>Ваше имя</label>
+                                <input class="form-control" ng-minlength="3" required name="name" ng-model="reserv.name">
+                                <div ng-messages="reservationForm.name.$error">
+                                    <div ng-message="required">Это поле обязательное</div>
+                                    <div ng-message="minlength">Имя должно содержать больше 3 символов.</div>
+                                </div>
+                            </md-input-container>
                         </div>
+                        <div class="form-group">
+                            <md-input-container class="md-block">
+                                <label>Ваш телефон</label>
+                                <input class="form-control" ng-pattern="/^[0-9]+$/" ng-minlength="4" type="text" required name="phone" ng-model="reserv.phone">
+                                <div ng-messages="reservationForm.phone.$error" role="alert" multiple>
+                                    <div ng-message="required">Это поле обязательное</div>
+                                    <div ng-message="minlength">Телефон должен содержать не менее 4 символов</div>
+                                    <div ng-message="pattern">Телефон должно содержать только цифры</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <md-input-container class="md-block">
+                          <label>Сообщение</label>
+                          <textarea class="form-control" ng-minlength="5" required name="text" rows="5" md-select-on-focus placeholder="Пример: Хочу заказать заказ на 01.01.2017. Краткое описание пожеланий" ng-model="reserv.text"></textarea>
+                            <div ng-messages="reservationForm.text.$error">
+                                    <div ng-message="required">Это поле обязательное</div>
+                                    <div ng-message="minlength">Сообщение должно содержать больше 5 символов.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                    <md-button type="submit"  class="md-raised md-warn md-block redButton">Отправить заявку</md-button>
+                </form>
+            </div>
+    </div>
+
                     </div>
                 </div>
             </div>

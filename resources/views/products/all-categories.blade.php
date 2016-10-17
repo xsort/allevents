@@ -12,7 +12,7 @@
                     <div class="categoryContainer" layout="row" layout-wrap layout-align="start stretch" >
         			@foreach ($data as $subcat)
         			    <div class="categoryWrapper" flex="20">
-                            <a href="{{$subcat->slug}}" layout="column" layout-align="space-between stretch" class="md-whiteframe-2dp">
+                            <a href="{{$subcat->slug}}" layout="column" layout-align="space-between stretch" class="md-whiteframe-1dp">
                                 <div class="categoryImg" layout="row" layout-align="center center" >
                                     <img src="/uploaded/{{isset($subcat->photos{0}) ? $subcat->photos{0}->source : 'nophoto.png'}}" alt="">
                                 </div>

@@ -225,6 +225,9 @@
             <li class="active">
                 <a href="#ru" data-toggle="tab">Описание</a>
             </li>
+            <li>
+                <a href="#contacts" data-toggle="tab">Контакты</a>
+            </li>
 
             <li>
                 <a href="#plan" data-toggle="tab">План зала</a>
@@ -244,9 +247,7 @@
                 <a href="#background" data-toggle="tab">Обложка</a>
             </li>
 
-            <li>
-                <a href="#contacts" data-toggle="tab">Контакты</a>
-            </li>
+            
 
             @if (isset($data))
                 <li>

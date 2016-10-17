@@ -9,31 +9,36 @@
 
     <div class="layout-content" >
         <div class="container-fluid">
-            @foreach($data->visible_galleries as $gallery)
-            <div class="col-md-4 col-sm-6 col-xs-12 gallery-container">
-                <div class="row">
-                    <a href="{{ route('get_gallery',[$data->slug, $gallery->slug]) }}">
-                        <figure class="categories-gallery-container c-bg-center" style="background-image:url({{isset($gallery->photos{0}) ? 'uploaded/' . $gallery->photos{0}->source : 'images/inst-menu-photo/photo.png'}})">
+            <div class="row">
+                @foreach($data->visible_galleries as $gallery)
+                    <div class="col-md-4 col-sm-6 col-xs-12 photoWrapper">
 
-                            <figurecaption class="categories-{{rand(1,5)}}">
-                               <div class="figurecaption-container">
-                                    <div class="title-container text-right">
-                                    <h2 class="category-gallery-title">{{ $gallery->name }}</h2>
-                                    <span class="date">{{ $gallery->created_date }}</span>
-                                </div>
-                                <div class="count-container">
-                                    <span>{{ $gallery->views }} <i class="icon-user"></i></span>
-                                    <span>{{ $gallery->photos->count() }} <i class="icon-camera"></i></span>
-                                </div>
-                               </div>
+                        <a href="{{ route('get_gallery',[$data->slug, $gallery->slug]) }}" class="md-whiteframe-5dp c-bg-center photoContainer" style="background-image:url({{isset($gallery->photos{0}) ? 'uploaded/' . $gallery->photos{0}->source : 'images/inst-menu-photo/photo.png'}})">
 
-                            </figurecaption>
-                            <div class="gallery-read-more"></div>
-                        </figure>
-                    </a>
-                </div>
+                            <md-tooltip md-direction="bottom" md-delay="200" class="hidden-xs">
+                                      {{ $gallery->name }}
+                            </md-tooltip>
+
+                            <div class="photoCategories-{{rand(1,5)}}">
+
+                                <div layout="row" layout-align="end stretch" flex="100">
+                                    
+                                    <div layout="column" layout-align="space-around stretch" flex>
+                                        <h2 class="photoTitle">{{ $gallery->name }}</h2>
+                                        <span class="photoDate">{{ $gallery->created_at }}</span>
+                                    </div>
+
+                                    <div layout="column" layout-align="space-around stretch" >
+                                        <div><span>{{ $gallery->views }}</span> <i class="icon-user"></i></div>
+                                        <div><span>{{ $gallery->photos->count() }}</span> <i class="icon-camera"></i></div>    
+                                    </div>
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
     </div>         
 </div>
