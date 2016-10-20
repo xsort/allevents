@@ -15,10 +15,8 @@
         </ul>
 </div>
 
-@if (!isset($div_id))
 {{ HTML::script('ace/assets/js/uploadifive/jquery.uploadifive.min.js') }}
 {{ HTML::style('ace/assets/js/uploadifive/uploadifive.css') }}
-@endif
 
 <script>
     $(document).ready(function(){

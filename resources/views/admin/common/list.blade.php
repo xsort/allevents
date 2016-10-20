@@ -47,7 +47,7 @@
                             <?php $i++; ?>
                             @if($i == 1)
                                 <td align="left">
-                                    <a title="Редактирование" href="{{ URL::to('admin/'.$model.'/'.$d->id.'/edit') }}">{{ $d->$key }}</a>
+                                    <a title="Редактирование" href="{{ URL::to('admin/'.$model.'/'.$d->id.'/edit') }}" class="@if(isset($modalbox) && $modalbox) modalbox @endif">{{ $d->$key }}</a>
                                 </td>
                                 @continue
                             @endif
@@ -64,7 +64,7 @@
                         </td>
                         <td align="center">
                             <div class="action-buttons">
-                                <a href="{{ URL::to('admin/'.$model.'/'.$d->id.'/edit') }}" class="yellow"><i class="ace-icon fa fa-pencil bigger-130"></i></a>
+                                <a href="{{ URL::to('admin/'.$model.'/'.$d->id.'/edit') }}" class="yellow @if(isset($modalbox) && $modalbox) modalbox @endif"><i class="ace-icon fa fa-pencil bigger-130"></i></a>
                                 {{ Form::open(array('url' => 'admin/' . $model . '/' . $d->id, 'class' => 'pull-right')) }}
                                 {{ Form::hidden('_method', 'DELETE') }}
                                 {{ Form::button('<i class="ace-icon fa fa-trash-o bigger-130"></i>', ['type' => 'submit', 'class' => 'red deletebutton']) }}
@@ -89,4 +89,4 @@
 
 @include('admin.partials.visibility')
 
-@endsection
+@append
