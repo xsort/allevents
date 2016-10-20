@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -45,9 +46,41 @@ class CommonController extends Controller
 		return view('products.product')->with('data', $product);
     }
 
-    public function getSearch()
-    { 
-    	return view('search');
+    public function getSearch(Request $request)
+    {
+		$searchword = $request->searchword;
+
+		$data = [];
+
+		//searching news and reports
+		$allnews = News::enabled()->searchByKeyword($searchword)->with('products')->get();
+		$news    = new Collection();
+		$reports = new Collection();
+		foreach($allnews as $value){
+			if ($value->products->count() > 0){
+				$reports->add($value);
+			}else{
+				$news->add($value);
+			}
+		}
+
+		$data['news']    = $news;
+		$data['reports'] = $reports;
+
+		//searching products
+		$data['products'] = Products::enabled()->searchByKeyword($searchword)->get();
+
+		//searching afisha
+		//TODO
+		$data['posters'] = new Collection();
+
+
+		$num_results = 0;
+		foreach($data as $arr){
+			$num_results += count($arr);
+		}
+
+    	return view('search')->with(compact('searchword', 'data', 'num_results'));
     }
     
 }

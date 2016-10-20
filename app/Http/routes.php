@@ -36,8 +36,10 @@ Route::group(['middleware' => ['web']], function () {
         'uses'  => 'NewsController@getNews'
     ]);
     
-    Route::get('news', 'NewsController@getNewsList');
-    
+    Route::get('news', ['uses' => 'NewsController@getNewsList', 'as' => 'news']);
+
+    Route::get('reports', ['uses' => 'NewsController@getNewsList', 'as' => 'reports']);
+
     Route::get('categories', 'CategoriesController@getCategoriesList');
     
     Route::get('{slug}/photo', ['uses'=>'ProductsController@getPhotos', 'as' => 'get_galleries']);
@@ -56,11 +58,9 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('card', 'ProductsController@getCard');
 
-    Route::get('search', 'CommonController@getSearch');
+    Route::get('search', ['uses'=>'CommonController@getSearch', 'as'=>'search']);
     
     Route::get('admin', 'Admin\AdminController@index');
-    
-    Route::get('{slug}', ['uses'=>'CommonController@getSlug', 'as'=>'get_slug']);
 
     Route::get('tag/{id}', 'NewsController@getNewsByTagID');
 
@@ -71,6 +71,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('make-contact',    ['uses'=>'MailController@makeContact', 'as'=>'make-contact']);
 
     Route::post('inst-reservation',    ['uses'=>'MailController@reservation', 'as'=>'inst-reservation']);
+
+    Route::get('{slug}', ['uses'=>'CommonController@getSlug', 'as'=>'get_slug']);
 
 });
 

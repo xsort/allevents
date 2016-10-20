@@ -25,5 +25,9 @@ class News extends BaseModel
         $this->attributes['top'] = $value;
     }
 
+    public function products(){
+        return $this->belongsToMany('App\Models\Products', 'products_news');
+    }
+
 
 }

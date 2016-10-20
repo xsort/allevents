@@ -149,6 +149,21 @@ class BaseModel extends Model
         return $query->where('enabled', 0);
     }
 
+    public function scopeSearchByKeyword($query, $keyword)
+    {
+        if ($keyword!='') {
+            $query->where(function ($query) use ($keyword) {
+                $query->where("name",    "LIKE", "%$keyword%")
+                    ->orWhere("name_ro", "LIKE", "%$keyword%")
+                    ->orWhere("name_en", "LIKE", "%$keyword%")
+                    ->orWhere("description", "LIKE", "%$keyword%")
+                    ->orWhere("description_ro", "LIKE", "%$keyword%")
+                    ->orWhere("description_en", "LIKE", "%$keyword%");
+            });
+        }
+        return $query;
+    }
+
     private function saveMeta($values, $type){
         $table    = $this->getTable();
         //save model before saving meta
@@ -169,6 +184,16 @@ class BaseModel extends Model
         $meta->table            = $table;
         $meta->table_id         = $table_id;
         $meta->save();
+    }
+
+    public function mainPhoto()
+    {
+        $fileName = "nophoto.png";
+        if (isset($this->photos{0})){
+            $fileName = $this->photos{0}->source;
+        }
+
+        return $fileName;
     }
 
 }
