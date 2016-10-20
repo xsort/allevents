@@ -12,10 +12,10 @@
         <div class="col-lg-12">
 
             <div class="text-center newsListTitle">
-                <h1 class="page-title rowed">Клубы</h1>
+                <h1 class="page-title rowed">{{ $category->name }}</h1>
             </div>
 
-            @foreach ($data as $product)
+            @forelse ($data as $product)
             <div class="col-md-3 col-sm-6 productsWrapper">
                     <a href="{{$product->slug}}" class="instItem md-whiteframe-1dp" layout-align="center center">
                     
@@ -32,7 +32,10 @@
                     </div>
                 </a>
             </div>
-            @endforeach
+
+            @empty
+                <p align="center">Объекты пока не добавлены в этот раздел</p>
+            @endforelse
      
 
         </div>

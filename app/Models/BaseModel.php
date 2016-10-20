@@ -142,6 +142,12 @@ class BaseModel extends Model
         return $this->hasOne('App\Models\Meta','table_id')->where('table', $this->getTable());
     }
 
+    public function scopeEnabled($query){
+        return $query->where('enabled', 1);
+    }
+    public function scopeUnenabled($query){
+        return $query->where('enabled', 0);
+    }
 
     private function saveMeta($values, $type){
         $table    = $this->getTable();

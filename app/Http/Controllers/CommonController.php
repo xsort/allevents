@@ -19,26 +19,29 @@ use View;
 
 class CommonController extends Controller
 {
-	
-	  
-	  
     public function getSlug($slug)
     {
-	    $content = Content::where('slug',$slug)->where('enabled',true)->first();
+		//show content if slug exists
+	    $content = Content::where('slug', $slug)->enabled()->first();
 	    if (isset($content)) return view('content.content')->with('data', $content);
-	    
-	    $category = Categories::where('slug',$slug)->where('enabled',true)->first();
-	    $products = Products::where('enabled',true)->get();
+
+		//get category if slug exists
+	    $category = Categories::where('slug', $slug)->enabled()->first();
 	    if (isset($category)) {
-		    
+			//if exists children categories
 		    if ($category->children->count() > 0) {
 			    return view('products.categories')->with('data', $category);
-			} else { 
-				return view('products.products')->with('data', $products);
+			} else {
+				$category_id = $category->id;
+				$products = Products::enabled()->whereHas('parents', function($query) use ($category_id){
+								$query->where('categories_id', $category_id);
+							})->get();
+				return view('products.products')->with('data', $products)->with('category', $category);
 			}
 	    }
-	    
-	    $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
+
+	    //show product if slug exists
+	    $product = Products::where('slug',$slug)->enabled()->firstOrFail();
 		return view('products.product')->with('data', $product);
     }
 
