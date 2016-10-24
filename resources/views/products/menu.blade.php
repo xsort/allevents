@@ -18,38 +18,17 @@
                         </div>
 
                         <ul class="menu-left">
-                            <li class="has-sub"><a href="javascript:void(0)" class="left-a">Холодные закуски<span class="fa"></span></a>
+                            @foreach($menu_categories as $cat)
+                            <li @if($cat->children->count()>0) class="has-sub" @endif><a href="javascript:void(0)" class="left-a">{{ $cat->name }}<span class="fa"></span></a>
+                                @if($cat->children->count()>0)
                                 <ul class="sub-menu-left">
-                                    <li><a href="#">Закуска "Рафаэлки"</a></li>
-                                    <li><a href="#">Тарталетки "Казанова"</a></li>
-                                    <li><a href="#">Бутерброды</a></li>
+                                    @foreach($cat->children as $subcat)
+                                    <li><a href="{{ route('get_menu_products', ['slug' => $data->slug, 'slug-menu' => $subcat->slug]) }}">{{ $subcat->name }}</a></li>
+                                    @endforeach
                                 </ul>
+                                @endif
                             </li>
-                            <li class="has-sub"><a href="javascript:void(0)" class="left-a">Горячие закуски<span class="fa"></span></a>
-                                <ul class="sub-menu-left">
-                                    <li><a href="#" >Закуска "Рафаэлки"</a></li>
-                                    <li><a href="#" class="active">Тарталетки "Казанова"</a></li>
-                                    <li><a href="#">Бутерброды </a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Супы</a></li>
-                            <li><a href="#">Блюда из рыбы</a></li>
-                            <li><a href="#">Морепродукты</a></li>
-                            <li><a href="javascript:void(0)">Блюда из мяса и птицы</a></li>
-                            <li><a href="javascript:void(0)">Сыры и десерты</a></li>
-                            <li><a href="javascript:void(0)">Кофе и чай</a></li>
-                            <li><a href="javascript:void(0)">Безалкогольные напитки</a></li>
-                            <li><a href="javascript:void(0)">Ночь и завтрак</a></li>
-                            <li class="has-sub"><a href="javascript:void(0)">Блюда на заказ<span class="fa"></span></a>
-                             <ul class="sub-menu-left">
-                                    <li><a href="#">Закуска "Рафаэлки"</a></li>
-                                    <li><a href="#">Тарталетки "Казанова"</a></li>
-                                    <li><a href="#">Бутерброды на праздничный стол</a></li>
-                                </ul></li>
-                            <li><a href="javascript:void(0)">Обеденная формула</a></li>
-                            <li><a href="javascript:void(0)">Закуски и блюда дня</a></li>
-                            <li><a href="javascript:void(0)">Вино и бар</a></li>
-                            <li><a href="javascript:void(0)">Табак</a></li>
+                            @endforeach
                         </ul>
                     </div>
 
@@ -57,8 +36,8 @@
                         <div class="row" >
 
                         <div class="masonry menuPage" data-columns>
-                            @foreach($menu_products as $key=>$product)
-                  
+                            @foreach($menu_products as $key => $product)
+
                                 <div class="menuItem " layout="column" layout-align="stretch" ng-controller="menuCtrl">
                                     <div class="md-whiteframe-2dp">
                                         <a href="javascript:void(0)" >
@@ -104,40 +83,6 @@
                                 <mark ng-show="inCart()">
                                         Добавлено. <a ng-click="ngCart.removeItemById(id)" >Удалить из корзины</a>
                                 </mark>
-
-<!--     <div class="col-md-3 col-sm-6">
-        <a href="javascript:void(0)" class="menu-toggle">
-            <figure class="menu-item menu-item-{{ random_int(1, 5) }}">
-                <img src="{{ isset($product->photos{0}) ? 'uploaded/thumbs/' . $product->photos{0}->source : 'images/inst-menu-photo/photo.png'}}" height="180px;" width="100%" alt="{{ $product->name }}">
-                <div class="price-white"></div>
-                <div class="price-red"></div>
-                <div class="price-price">
-                    @if ($product->price > 0)
-                        <span>{{ $product->price }}</span>
-                        <span>{{ trans('common.lei') }}</span>
-                    @endif
-                </div>
-                <figurecaption class="menu">
-                    <div class="menu-title">{{ $product->name }}</div>
-                    <div class="menu-text">{{ str_limit(strip_tags($product->description), 100) }}</div>
-                </figurecaption>
-            </figure>
-        </a>
-
-        <div class="menu-order">
-            <a class="order" ng-click="ngCart.addItem(id, name, price, q, data)" ng-transclude>Добавить в корзину</a>
-                <div class="pull-right">
-                    <span ng-show="quantityMax">
-                    <select name="quantity" id="quantity" ng-model="q" ng-options=" v for v in qtyOpt"></select>
-                    </span>
-                </div>
-        </div>
-
-        <mark ng-show="inCart()">
-                Предмет уже добавлен в корзину. <a ng-click="ngCart.removeItemById(id)" style="cursor: pointer;">Удалить</a>
-        </mark>
-    </div> -->
-
 
 </script>
 

@@ -25,7 +25,8 @@ class BaseModel extends Model
     /**
      * Create the slug from the title
      */
-    public function setSlugAttribute($value) {
+    public function setSlugAttribute($value)
+    {
         if ($value == "") {
             // grab the title and slugify it
             $this->attributes['slug'] = str_slug($this->name);
@@ -34,21 +35,25 @@ class BaseModel extends Model
         }
     }
     
-    public function setMetaDescriptionAttribute($values) {
+    public function setMetaDescriptionAttribute($values)
+    {
         $this->saveMeta($values, "meta_description");
     }
 
-    public function setMetaKeywordsAttribute($values) {
+    public function setMetaKeywordsAttribute($values)
+    {
         $this->saveMeta($values, "meta_keywords");
     }
 
-    public function setTitleAttribute($values) {
+    public function setTitleAttribute($values)
+    {
         $this->saveMeta($values, "title");
     }
 
 
 
-    public function setNameAttribute($values) {
+    public function setNameAttribute($values)
+    {
         foreach($values as $key=>$value){
             if ($key == "ru") {
                 $this->attributes['name'] = $value;
@@ -58,7 +63,8 @@ class BaseModel extends Model
         }
     }
 
-    public function setDescriptionAttribute($values) {
+    public function setDescriptionAttribute($values)
+    {
         foreach($values as $key=>$value){
             if ($key == "ru") {
                 $this->attributes['description'] = $value;
@@ -118,7 +124,8 @@ class BaseModel extends Model
         }
     }
 
-    public function photos(){
+    public function photos()
+    {
         return $this->hasMany('App\Models\Photos','table_id')->where('table', $this->getTable())->orderBy('sort');
     }
 
@@ -126,27 +133,39 @@ class BaseModel extends Model
         return $this->belongsToMany('App\Models\Galleries', 'galleries_xref', 'table_id', 'galleries_id')->where('table', $this->getTable());
     }
 
-    public function getVisibleGalleriesAttribute(){
+    public function getVisibleGalleriesAttribute()
+    {
         return $this->galleries()->where("enabled", true)->get();
     }
 
-    public function videos() {
+    public function videos()
+    {
         return $this->belongsToMany('App\Models\Videos', 'videos_xref', 'table_id', 'videos_id')->where('table', $this->getTable());
     }
 
-    public function getVisibleVideosAttribute(){
+    public function getVisibleVideosAttribute()
+    {
         return $this->videos()->where("enabled", true)->get();
     }
 
-    public function meta(){
+    public function meta()
+    {
         return $this->hasOne('App\Models\Meta','table_id')->where('table', $this->getTable());
     }
 
-    public function scopeEnabled($query){
+    public function scopeEnabled($query)
+    {
         return $query->where('enabled', 1);
     }
-    public function scopeUnenabled($query){
+
+    public function scopeUnenabled($query)
+    {
         return $query->where('enabled', 0);
+    }
+
+    public function scopeTop($query)
+    {
+        return $query->where('top', 1);
     }
 
     public function scopeSearchByKeyword($query, $keyword)

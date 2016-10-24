@@ -19,46 +19,55 @@ class ProductsController extends Controller
         return view('products.photo')->with('data', $product);
     }
 
-        public function getVideos($slug)
+    public function getVideos($slug)
     {
         $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
 		return view('products.video')->with('data', $product);
     }
 
-    	public function getPlan($slug)
+    public function getPlan($slug)
     {
         $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
 		return view('products.plan')->with('data', $product);
     }
 
-        public function getMenu($slug)
+    public function getMenu($slug)
     {
-        $data          = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
+        $data            = Products::where('slug', $slug)->enabled()->firstOrFail();
+        $menu_products   = $data->menu()->enabled()->top()->get();
+        $menu_categories = MenuCategories::enabled()->with('children')->where('parent_id', 0)->get();
 
-        $menu_products = $data->menu()->where('enabled', true)->orderByRaw("RAND()")->limit(16)->get();
-
-        return view('products.menu')->with(compact('data','menu_products'));
+        return view('products.menu')->with(compact('data', 'menu_products', 'menu_categories'));
     }
 
-        public function getInterier($slug)
+    public function getMenuProducts($slug, $slug_menu)
+    {
+        $data            = Products::where('slug', $slug)->enabled()->firstOrFail();
+        $cur_cat         = MenuCategories::where('slug', $slug_menu)->firstOrFail();
+        $menu_products   = $data->menu()->enabled()->where('category_id', $cur_cat->id)->get();
+        $menu_categories = MenuCategories::enabled()->with('children')->where('parent_id', 0)->get();
+        return view('products.menu')->with(compact('data', 'menu_products', 'menu_categories', 'cur_cat'));
+    }
+
+    public function getInterier($slug)
     {
         $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
 
         return view('products.interier')->with('data', $product);
     }
 
-        public function getCard()
+    public function getCard()
     {
         return view('products.card');
     }
 
-        public function getReservation($slug)
+    public function getReservation($slug)
     {
         $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
         return view('products.reservation')->with('data', $product);
     }
 
-        public function getPromo($slug)
+    public function getPromo($slug)
     {
         $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
         return view('products.promo')->with('data',$product);
@@ -66,7 +75,7 @@ class ProductsController extends Controller
 
     public function getGallery($slug, $name)
     {
-        $data    = Products::where('slug',  $slug)->where('enabled',true)->firstOrFail();
+        $data    = Products::where('slug',  $slug)->where('enabled', true)->firstOrFail();
         $gallery = Galleries::where('slug', $name)->where('enabled', true)->firstOrFail();
         $gallery->increment('views');
 

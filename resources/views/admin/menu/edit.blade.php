@@ -21,6 +21,13 @@
                 <button id="submit_button1" type="submit" class="btn  btn-success btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить </button>
             </div>
 
+            <div class="col-sm-2 ">
+                <label>
+                    {{ Form::checkbox('top',  1, (isset($data) && $data->top == 1 ? true : false), ['class' => 'ace']) }}
+                    <span class="lbl"> На главную меню</span>
+                </label>
+            </div>
+
             <div class="col-sm-4">
                 <div class="profile-contact-info">
                     <div class="profile-links align-left">

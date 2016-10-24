@@ -47,6 +47,7 @@ class MenuProductsController extends Controller
 
         $data->name              = $request->name;
         $data->created_at        = $request->date;
+        $data->top               = $request->top;
         $data->description       = $request->description;
         $data->price             = $request->price;
         $data->product_id        = $product_id;

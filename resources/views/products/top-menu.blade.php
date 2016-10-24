@@ -18,11 +18,8 @@
                     <tr>
                         <th><md-button  ng-href="{{ route('get_plan',       $data->slug) }}">{{ trans('common.plan') }}</md-button></th>
                         
-                        <th><md-button ng-disabled="true" class="disabled" ng-href="{{ route('get_menu',       $data->slug) }}">
+                        <th><md-button ng-href="{{ route('get_menu',       $data->slug) }}">
                                 {{ trans('common.menu') }}
-                                <md-tooltip md-direction="bottom" md-delay="100">
-                                      Временно не заполнено
-                                </md-tooltip>
                             </md-button>
                         </th>
                         <th><md-button ng-href="{{ route('get_reservation',$data->slug) }}">{{ trans('common.reservation')}}</md-button></tr>

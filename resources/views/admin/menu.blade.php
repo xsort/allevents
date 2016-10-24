@@ -17,7 +17,7 @@
     </li>
     <li class="">
         <a href="admin/products">
-            <i class="menu-icon fa fa-film"></i>
+            <i class="menu-icon fa fa-cube"></i>
             <span class="menu-text"> Объекты </span>
         </a>
 

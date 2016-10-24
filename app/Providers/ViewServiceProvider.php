@@ -21,20 +21,20 @@ class ViewServiceProvider extends ServiceProvider
         //проверяем если есть таблица миграций
         if (!Schema::hasTable('migrations')) return;
 
-        $latest_news = News::orderBy('created_at','desc')->limit(3)->get();
+        $latest_news = News::orderBy('created_at','desc')->limit(3)->with('photos')->get();
         view()->share('latest_news', $latest_news);
 
-        $popular_news = News::orderBy('views','desc')->limit(3)->get();
+        $popular_news = News::orderBy('views','desc')->limit(3)->with('photos')->get();
         view()->share('popular_news', $popular_news);
 
         $tags = Tags::all();
         $tags = Tags::has('news')->limit(config('site.num_tags'))->get();
         view()->share('tags', $tags);
 
-        $categories = Categories::where('top',false)->get();
+        $categories = Categories::where('top',false)->with('photos')->get();
         view()->share('categoriesList', $categories);
 
-        $news = News::get();
+        $news = News::with('photos')->get();
         view()->share('newsList', $news);
 
     }

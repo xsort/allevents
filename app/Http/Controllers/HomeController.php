@@ -20,10 +20,10 @@ class HomeController extends Controller
     {
         //$news  = News::orderBy('created_at', 'desc')->paginate(5);
         //return view('news.list')->with('news', $news);
-		$categories = Categories::where('top',true)->get();
-		$products = Products::where('enabled',true)->where('top',true)->get();
-		$tags = Products::where('top',true)->get();
-		$news = News::where('top',true)->get();
+		$categories = Categories::where('top',true)->with('photos')->get();
+		$products = Products::where('enabled',true)->where('top',true)->with('photos')->get();
+		//$tags = Products::where('top',true)->get();
+		$news = News::where('top', true)->with('photos')->get();
 		return view('index')->with('categories', $categories)->with('products', $products)->with('newslist',$news);
     }
 
