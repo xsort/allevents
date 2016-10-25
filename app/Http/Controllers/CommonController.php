@@ -36,7 +36,7 @@ class CommonController extends Controller
 				$category_id = $category->id;
 				$products = Products::enabled()->whereHas('parents', function($query) use ($category_id){
 								$query->where('categories_id', $category_id);
-							})->get();
+							})->with('photos')->get();
 				return view('products.products')->with('data', $products)->with('category', $category);
 			}
 	    }

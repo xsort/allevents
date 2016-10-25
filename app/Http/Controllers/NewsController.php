@@ -27,7 +27,7 @@ class NewsController extends Controller
     
     public function getNewsList()
     {
-	    $news = News::get(); 
+	    $news = News::with('photos')->get();
 		return view('news.newslist')->with('data',$news);
     }
 }
