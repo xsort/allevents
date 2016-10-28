@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Content;
 use App\Models\News;
 use App\Models\Tags;
+use App\Models\Types;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -15,13 +16,15 @@ use Validator;
 class NewsController extends Controller
 {
     public function index(){
-        $data = News::all();
+        $data     = News::all();
         return view('admin.news.index')->with(compact('data'));
     }
 
     public function create(){
-        $tags = Tags::all();
-        return view('admin.news.edit')->with(compact('tags'));
+        $tags     = Tags::all();
+        $types    = Types::lists('name','id')->toArray();
+        $seltypes = [1]; //default - news
+        return view('admin.news.edit')->with(compact('tags', 'types', 'seltypes'));
     }
 
     public function store(Request $request)
@@ -96,10 +99,11 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        $data = News::find($id);
-        $tags = Tags::all();
-        return view('admin.news.edit')->with(compact('data'))
-                                      ->with(compact('tags'));
+        $data     = News::find($id);
+        $tags     = Tags::all();
+        $types    = Types::lists('name','id')->toArray();
+        $seltypes = $data->types->pluck('id')->toArray();
+        return view('admin.news.edit')->with(compact('data','tags','types', 'seltypes'));
     }
 
     /**

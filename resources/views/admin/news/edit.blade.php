@@ -54,6 +54,12 @@
                     {{ Form::text('slug', (isset($data->slug) ? $data->slug : old('slug')), array('class' => 'col-sm-11 col-xs-12')) }}
                 </div>
             </div>
+            <div class="form-group">
+                {{ Form::label('types', 'Тип', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-9">
+                    {{ Form::select('types[]', $types, $seltypes, ['multiple'=>'multiple','id'=>'chosentypes','class'=>'tag-input-style col-sm-11 control-label no-padding-right']) }}
+                </div>
+            </div>
         </div><!-- /.col-sm-6 -->
     </div><!-- /.row -->
     <hr>
@@ -207,6 +213,7 @@
     {!! HTML::script('ace/assets/js/chosen.jquery.min.js') !!}
     <script>
         $("#chosentags").chosen();
+        $("#chosentypes").chosen();
     </script>
 
 

@@ -14,6 +14,14 @@ class News extends BaseModel
         return $this->belongsToMany('App\Models\Tags');
     }
 
+    /**
+     * Many to Many relation
+     */
+    public function types()
+    {
+        return $this->belongsToMany('App\Models\Types');
+    }
+
     public function getTagsIdsArray(){
         return $this->tags->pluck('id')->toArray();
     }
