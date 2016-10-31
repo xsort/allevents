@@ -72,6 +72,12 @@
                     {{ Form::text('name[en]', (isset($data->name_en) ? $data->name_en : old('name_en')), array('class' => 'col-sm-11 col-xs-12')) }}
                 </div>
             </div>
+            <div class="form-group">
+                {{ Form::label('type', 'Тип', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-9">
+                    {{ Form::select('type', config('allevents.types'), ((isset($data->type)) ? $data->type : 0), ['class' => 'col-sm-11 col-xs-12']) }}
+                </div>
+            </div>
 
             
         </div><!-- /.col-sm-6 -->
@@ -96,7 +102,6 @@
                             <i class="fa fa-calendar bigger-110"></i>
                         </span>
                     </div>
-
                 </div>
             </div>
 
@@ -501,9 +506,6 @@
             </div>
         </div>
     </div><!-- /popup map insert-->
-
-
-
 
 @endsection
 

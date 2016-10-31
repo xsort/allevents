@@ -15,19 +15,19 @@ class ProductsController extends Controller
 {
     public function getPhotos($slug)
     {
-        $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
+        $product = Products::where('slug', $slug)->enabled()->firstOrFail();
         return view('products.photo')->with('data', $product);
     }
 
     public function getVideos($slug)
     {
-        $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
+        $product = Products::where('slug',$slug)->enabled()->firstOrFail();
 		return view('products.video')->with('data', $product);
     }
 
     public function getPlan($slug)
     {
-        $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
+        $product = Products::where('slug',$slug)->enabled()->firstOrFail();
 		return view('products.plan')->with('data', $product);
     }
 
@@ -51,7 +51,7 @@ class ProductsController extends Controller
 
     public function getInterier($slug)
     {
-        $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
+        $product = Products::where('slug',$slug)->enabled()->firstOrFail();
 
         return view('products.interier')->with('data', $product);
     }
@@ -63,20 +63,20 @@ class ProductsController extends Controller
 
     public function getReservation($slug)
     {
-        $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
+        $product = Products::where('slug',$slug)->enabled()->firstOrFail();
         return view('products.reservation')->with('data', $product);
     }
 
     public function getPromo($slug)
     {
-        $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
+        $product = Products::where('slug',$slug)->enabled()->firstOrFail();
         return view('products.promo')->with('data',$product);
     }
 
     public function getGallery($slug, $name)
     {
-        $data    = Products::where('slug',  $slug)->where('enabled', true)->firstOrFail();
-        $gallery = Galleries::where('slug', $name)->where('enabled', true)->firstOrFail();
+        $data    = Products::where('slug',  $slug)->enabled()->firstOrFail();
+        $gallery = Galleries::where('slug', $name)->enabled()->firstOrFail();
         $gallery->increment('views');
 
         //get related galleries

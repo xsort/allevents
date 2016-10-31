@@ -4,7 +4,7 @@
 @section('centerbox')
 
 <div class="layout-page instPage">
-    
+    @if($data->photos->count() > 1)
     <div class="container-fluid">
         <div class="instHeadImageContainer">
             <div class="button club-main-prev control-slider prev-arrow md-whiteframe-1dp"></div>
@@ -21,110 +21,27 @@
             <div class="button club-main-next control-slider next-arrow md-whiteframe-1dp"></div>
         </div>
     </div>
-    
+    @endif
 
     @include('products.top-menu')
 
     <div class="layout-content" >
 
         <div class="container-fluid">
-
-          <div class="instVideoContainer md-whiteframe-2dp">
-            <div class="instVideo" id="ytplayer"></div>
-          </div>
+            @if ($data->video != '')
+                <div class="instVideoContainer md-whiteframe-2dp">
+                    <div class="instVideo" id="ytplayer"></div>
+                </div>
+            @endif
 
             <div class="col-lg-12 instMenu md-whiteframe-2dp">
                 <div class="row">
-                    
 
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="row">
-
-                            <a href="{{$data->slug}}/photo" class="instMenuItem filterBlock-0 c-bg-center" style="background-image: url(images/inst-menu-photo/photo.png);">
-
-                                <div class="c-bg-center" layout="column" layout-align="space-between stretch">
-                                    <h3 class="instMenuTitle" layout="column" layout-align="end center" >Фото</h3>
-                                    <span class="instMenuDescrShort">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
-                                    <md-button>Подробнее</md-button>
-                                </div>
-                            </a>
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="row">
-
-                            <a href="{{$data->slug}}/video" class="instMenuItem filterBlock-1 c-bg-center" style="background-image: url(images/inst-menu-photo/video.png);" >
-
-                                <div class="c-bg-center" layout="column" layout-align="space-between stretch">
-                                    <h3 class="instMenuTitle" layout="column" layout-align="end center" >Видео</h3>
-                                    <span class="instMenuDescrShort">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
-                                    <md-button>Подробнее</md-button>
-                                </div>
-                            </a>
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="row">
-
-                            <a href="{{$data->slug}}/plan" class="instMenuItem filterBlock-2 c-bg-center" style="background-image: url(images/inst-menu-photo/plan.png);">
-
-                                <div class="instMenuBlock-2 c-bg-center" layout="column" layout-align="space-between stretch" >
-                                    <h3 class="instMenuTitle" layout="column" layout-align="end center" >План зала</h3>
-                                    <span class="instMenuDescrShort">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
-                                    <md-button>Подробнее</md-button>
-                                </div>
-                            </a>
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="row">
-
-                            <a href="{{$data->slug}}/menu" class="instMenuItem filterBlock-3 c-bg-center" style="background-image: url(images/inst-menu-photo/menu.png);">
-
-                                <div class="c-bg-center" layout="column" layout-align="space-between stretch">
-                                    <h3 class="instMenuTitle" layout="column" layout-align="end center" >Меню</h3>
-                                    <span class="instMenuDescrShort">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
-                                    <md-button>Подробнее</md-button>
-                                </div>
-                            </a>
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="row">
-
-                            <a href="{{$data->slug}}/promo" class="instMenuItem filterBlock-4 c-bg-center" style="background-image: url(images/inst-menu-photo/actii.png);">
-
-                                <div class=" c-bg-center" layout="column" layout-align="space-between stretch" >
-                                    <h3 class="instMenuTitle" layout="column" layout-align="end center" >Акции</h3>
-                                    <span class="instMenuDescrShort">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
-                                    <md-button>Подробнее</md-button>
-                                </div>
-                            </a>
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="row">
-
-                            <a href="{{$data->slug}}/interier" class="instMenuItem filterBlock-5 c-bg-center" style="background-image: url(images/inst-menu-photo/interier.png);">
-                                <div class=" c-bg-center" layout="column" layout-align="space-between stretch">
-                                    <h3 class="instMenuTitle" layout="column" layout-align="end center" >Интерьер</h3>
-                                    <span class="instMenuDescrShort">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </span>
-                                    <md-button>Подробнее</md-button>
-                                </div>
-                            </a>
-
-                        </div>
-                    </div>               
+                    @if($data->type == 0)       {{-- menu for default object type --}}
+                        @include('products.tiles.default')
+                    @elseif($data->type == 1)   {{-- menu for photographers --}}
+                        @include('products.tiles.photographers')
+                    @endif
 
                 </div>
             </div>
@@ -145,23 +62,24 @@
 
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-xs-12 margin-t-25 instContactsContainer">
             @foreach($data->contacts as $contact)
-                <div class="col-sm-6 " >
-                    
-                    <div class="row instContacts" layout="row" layout-align="center">
-                        <div class="col-sm-3 text-right" layout="row" layout-align="end center">
-                           
-                                <span class="instContactsName">{{$contact->name}}</span>
-                           
-                        </div>
-                        <div class="col-sm-6 col-sm-offset-1">
-                        <div class="row">
-                            <span class="instContactsContent md-whiteframe-1dp"> {{$contact->pivot->name}}</span>
-                            </div>
-                        </div>
+                    @if($contact->pivot->name == "") @continue @endif
+                    <div class="col-sm-6" >
 
+                        <div class="row instContacts" layout="row" layout-align="center">
+                            <div class="col-sm-3 text-right" layout="row" layout-align="end center">
+
+                                    <span class="instContactsName">{{$contact->name}}</span>
+
+                            </div>
+                            <div class="col-sm-6 col-sm-offset-1">
+                            <div class="row">
+                                <span class="instContactsContent md-whiteframe-1dp"> {{$contact->pivot->name}}</span>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
-                </div>
- @endforeach
+            @endforeach
                
                     
             </div>
@@ -172,15 +90,13 @@
                     <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,gplus,twitter" data-counter=""></div>
             </div>
             
-@if(isset($data->map) && ($data->map!=''))
-
-            <div class="col-lg-12 instMap md-whiteframe-2dp">
-                <div class="row">
-                    <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox={{$data->map->Y}}%2C{{$data->map->X}}%2C{{$data->map->Y}}%2C{{$data->map->X}}&amp;layer=mapnik&amp;marker={{$data->map->X}}%2C{{$data->map->Y}}"></iframe>
-
+            @if(isset($data->map) && ($data->map!='') && (($data->map->X != 0) || ($data->map->Y != 0)) )
+                <div class="col-lg-12 instMap md-whiteframe-2dp">
+                    <div class="row">
+                        <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox={{$data->map->Y}}%2C{{$data->map->X}}%2C{{$data->map->Y}}%2C{{$data->map->X}}&amp;layer=mapnik&amp;marker={{$data->map->X}}%2C{{$data->map->Y}}"></iframe>
+                    </div>
                 </div>
-            </div>
-@endif
+            @endif
 
 
             <div class="col-lg-12 hidden-sm  hidden-xs instBanner">
@@ -224,6 +140,7 @@
     </div>         
 </div>
 
+@if ($data->video != '')
 <script>
       var tag = document.createElement('script');
       tag.src = "https://www.youtube.com/player_api";
@@ -242,6 +159,8 @@
         });
       }
 </script>
+@endif
+
 @stop
 
 @section('productPageScripts')

@@ -57,6 +57,7 @@ class ProductsController extends Controller
         $data->title             = $request->title;
         $data->video             = $request->video;
         $data->map               = $request->map;
+        $data->type              = $request->type;
         $data->save();
         
         $this->UpdatePhotos($request, $data->id);
@@ -158,6 +159,9 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
+        $product = Products::find($id);
+        $product->contacts()->detach();
+        $product->parents()->detach();
         Products::destroy($id);
         Session::flash('message', trans('common.deleted'));
         return back();
