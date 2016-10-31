@@ -10,7 +10,9 @@
                     <ol class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                         <meta itemprop="itemListOrder" content="http://schema.org/ItemListOrderDescending"/>
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/" itemprop="url">Allevents</a></li>
-                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/news" itemprop="url">Новости</a></li>
+                        @foreach($data->types as $type)
+                        <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="{{ route($type->slug) }}" itemprop="url">{{ $type->name }}</a></li>
+                        @endforeach
                         <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">{{ str_limit($data->name, $limit = 25, $end = '...') }}</li>
                     </ol>
                 </div>

@@ -33,9 +33,34 @@ class News extends BaseModel
         $this->attributes['top'] = $value;
     }
 
-    public function products(){
+    public function products()
+    {
         return $this->belongsToMany('App\Models\Products', 'products_news');
     }
 
+    public function scopeNews($query)
+    {
+        return $query->whereHas('types', function($q){
+            $q->where('types.id', 1); //only news
+        });
+    }
+
+    public function scopeReports($query)
+    {
+        return $query->whereHas('types', function($q){
+            $q->where('types.id', 2); //only reports
+        });
+    }
+
+    public function scopePromo($query)
+    {
+        return $query->whereHas('types', function($q){
+            $q->where('types.id', 3); //only promo
+        });
+    }
+
+    public function scopeVisible($query){
+        return $query->where('enabled', true);
+    }
 
 }

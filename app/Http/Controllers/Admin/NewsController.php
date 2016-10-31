@@ -73,6 +73,11 @@ class NewsController extends Controller
             $data->tags()->sync($request->chosencat);
         }
 
+        //types
+        if ($request->chosencat) {
+            $data->types()->sync($request->chosentypes);
+        }
+
         $this->UpdatePhotos($request, $data->id);
 
         return response()->json([
@@ -137,11 +142,19 @@ class NewsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-        Content::destroy($id);
-        Session::flash('message', trans('common.deleted'));
-        return back();
+        $news = News::find($id);
+        $news->tags()->detach();
+        $news->types()->detach();
+        $news->products()->detach();
+        News::destroy($id);
+        if (!$request->ajax()){
+            Session::flash('message', trans('common.deleted'));
+            return back();
+        }else{
+            return response()->json(['success' => 'true']);
+        }
     }
 
 }

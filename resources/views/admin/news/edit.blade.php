@@ -57,7 +57,7 @@
             <div class="form-group">
                 {{ Form::label('types', 'Тип', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-9">
-                    {{ Form::select('types[]', $types, $seltypes, ['multiple'=>'multiple','id'=>'chosentypes','class'=>'tag-input-style col-sm-11 control-label no-padding-right']) }}
+                    {{ Form::select('chosentypes[]', $types, $seltypes, ['multiple'=>'multiple','id'=>'chosentypes','class'=>'chosencat col-sm-11 control-label no-padding-right', 'data-placeholder' => "Выберите тип"]) }}
                 </div>
             </div>
         </div><!-- /.col-sm-6 -->
@@ -69,7 +69,7 @@
             <div class="form-group">
                 {{ Form::label('categories', 'Теги', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-7">
-                    <select multiple data-placeholder="выберите категорию" id="chosentags" name="chosencat[]" class="tag-input-style col-xs-12">
+                    <select multiple data-placeholder="Выберите категорию" id="chosentags" name="chosencat[]" class="tag-input-style col-xs-12 chosencat">
                         @foreach($tags as $tag)
                         <option value="{{$tag->id}}" @if (in_array($tag->id, isset($data) ? $data->getTagsIdsArray() : array())) selected="selected" @endif>
                             {{ $tag->name }}
@@ -77,8 +77,14 @@
                         @endforeach
                     </select>
                 </div>
+            </div>
+            <div class="form-group">
+                {{ Form::label('add-tag-input', 'добавить тег', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-7">
+                    {{ Form::text('', '', ['class' => 'col-sm-11 col-xs-12', 'id' => 'add-tag-input']) }}
+                </div>
                 <div class="col-sm-1">
-                     <a href="javascript:AddTag();" class="btn btn-sm btn-primary"><i class="ace-icon fa fa-plus-circle"></i></a>
+                    <a href="javascript:void(0);" class="btn btn-sm" id="add-tag"><i class="ace-icon fa fa-plus-circle"></i></a>
                 </div>
             </div>
         </div>
@@ -176,6 +182,7 @@
 
 </div>
 
+    @include('admin.partials.chosen')
 
     @include('admin.partials.ckeditor', ['form_id' => 'news'])
 
@@ -184,61 +191,24 @@
     @include('admin.partials.datepicker')
 
     <script type="text/javascript">
-         function AddTag(){
-             var modal = $('#add-tag-modal');
-             modal.modal();
-             modal.find('button.btn-default').click(function(){
-                 var value = modal.find('input[name=tag_name]').val();
-                 $.get("admin/json/addtag",
-                         {
-                             'value': value
-                         },
-                         function(response){
-                             if (response.success=="false"){
-                                 toastr.error(response.data);
-                                 return;
-                             }
- 
-                             var id = response.data;
-                             $('#chosentags').append('<option value="' + id + '" selected="selected">' + value + '</option>');
-                             $("#chosentags").trigger("chosen:updated");
-                             toastr.success("Тег добавлен");
-                             modal.modal('toggle');
-                         }
-                 ), "json";
-             });
-         }
+        $('#add-tag').click(function(e){
+            e.preventDefault();
+            var $input = $('input#add-tag-input');
+            var value  = $input.val();
+            $.get("admin/json/addtag",
+                {
+                     'value': value
+                }, function(response){
+                     if (response.success=="false"){
+                         toastr.error(response.data);
+                         return;
+                     }
+                     var id = response.data;
+                     $('#chosentags').append('<option value="' + id + '" selected="selected">' + value + '</option>');
+                     $("#chosentags").trigger("chosen:updated");
+                     toastr.success("Тег добавлен");
+                     $input.val('');
+                 }
+            ), "json";
+        });
     </script>
-
-    {!! HTML::script('ace/assets/js/chosen.jquery.min.js') !!}
-    <script>
-        $("#chosentags").chosen();
-        $("#chosentypes").chosen();
-    </script>
-
-
-    <!--! popup tag insert -->
-    <div aria-hidden="true" aria-labelledby="mySmallModalLabel" role="dialog" tabindex="-1" data-show="true" data-backdrop="true" data-keyboard="true" class="modal fade" id="add-tag-modal" >
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <label>Введите новый тег</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <input class="form-control" type="text" name="tag_name" />
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <button class="btn btn-default" >Сохранить</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><!-- /popup tag insert-->

@@ -126,13 +126,13 @@
    <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                {{ Form::label('parent', 'родитель', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                {{ Form::label('parent', 'Категории', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 
                 <div class="col-sm-9">
                     @if(isset($categories))
                     @if(isset($parents))
                     
-                    {{ Form::select('parent[]', array("null" => "Нет родителя") + $categories, $parents, ['multiple'=>'multiple','id'=>'chosencat','class'=>'tag-input-style col-sm-11 control-label no-padding-right']) }}
+                    {{ Form::select('parent[]', array("null" => "Нет категории") + $categories, $parents, ['multiple'=>'multiple','id'=>'chosencat','class'=>'tag-input-style col-sm-11 control-label no-padding-right']) }}
                     @else
                     {{ Form::select('parent[]', $categories, '', ['multiple'=>'multiple','id'=>'chosencat','class'=>'tag-input-style col-sm-11 control-label no-padding-right']) }}
                     @endif
@@ -490,7 +490,7 @@
     <div class="form-actions">
         {{ Form::submit('Сохранить', array('class' => 'btn btn-success')) }}
     </div>
-
+    {{ Form::close() }}
 
     <div aria-hidden="true" aria-labelledby="mySmallModalLabel" role="dialog" tabindex="-1" data-show="true" data-backdrop="true" data-keyboard="true" class="modal fade" id="add-map-modal" >
         <div class="modal-dialog modal-md">
@@ -504,7 +504,7 @@
 
 
 
-    {{ Form::close() }}
+
 @endsection
 
 @section('scripts')
@@ -533,8 +533,18 @@
     <script src="https://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"> </script>
 
     <script type="text/javascript">
-        var x = '{{ $data->map->X or 47.02615918 }}';
-        var y = '{{ $data->map->Y or 28.83406047 }}';
+        @if(isset($data->map->X) && $data->map->X != 0)
+            var x = '{{ $data->map->X }}';
+        @else
+            var x = '47.02615918';
+        @endif
+
+        @if(isset($data->map->Y) && $data->map->Y != 0)
+            var y = '{{ $data->map->Y }}';
+        @else
+            var y = '28.83406047';
+        @endif
+
         ymaps.ready(function () {
             var myMap = new ymaps.Map('YMapsID', {
                 center: [x, y],
@@ -543,11 +553,13 @@
                 behaviors: ['default', 'scrollZoom']
             });
 
+            var searchControl = new ymaps.control.SearchControl({ noPlacemark: true });
+
             myMap.controls
                     .add('mapTools')
                     .add('zoomControl')
                     .add('typeSelector', { top: 5, right: 5 })
-                    .add(new ymaps.control.SearchControl({ noPlacemark: true }), { top: 5, left: 200 });
+                    .add(searchControl, { top: 5, left: 200 });
 
             // Создаем геообъект с типом геометрии "Точка".
             myPlacemark = new ymaps.Placemark([x, y]);
@@ -557,8 +569,22 @@
                 $('input#mapX').val(coords[0]);
                 $('input#mapY').val(coords[1]);
             });
+
             myMap.geoObjects.add(myPlacemark);
+
+            searchControl.events.add("resultselect", function (e) {
+                var coordsObj = searchControl.getResultsArray()[0].geometry.getCoordinates();
+                var coords = coordsObj.toString().split(",");
+                $('input#mapX').val(coords[0]);
+                $('input#mapY').val(coords[1]);
+                myPlacemark.getOverlay().getData().geometry.setCoordinates(coordsObj);
+            });
+
         });
+
+        function changeCoords(coords){
+
+        }
 
         function DoneClick(){
             var str = $("#markerPosition").val();

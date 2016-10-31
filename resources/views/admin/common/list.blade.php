@@ -9,7 +9,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <a class="btn  btn-success" href="{{ URL::to('admin/' . $model . '/create') }}">
+            <a class="btn btn-success @if(isset($modalbox) && $modalbox) modalbox @endif" href="{{ URL::to('admin/' . $model . '/create') }}">
                 <i class="ace-icon fa fa-plus-square-o  bigger-120"></i>
                 Создать
             </a>

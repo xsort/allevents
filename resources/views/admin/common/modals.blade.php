@@ -67,7 +67,7 @@
 </script>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade modal-fullscreen" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     {!! HTML::script('ace/assets/js/jquery.form.js') !!}
     <div class="modal-dialog modal-lg">
         <div class="modal-content">

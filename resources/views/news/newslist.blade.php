@@ -9,7 +9,7 @@
                 <ol class="breadcrumbs" itemscope itemtype="http://schema.org/BreadcrumbList">
                     <meta itemprop="itemListOrder" content="http://schema.org/ItemListOrderDescending"/>
                     <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/" itemprop="url">Allevents</a></li>
-                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="" itemprop="url">Новости</a></li>
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="{{ route($type->slug) }}" itemprop="url">{{ $type->name }}</a></li>
                 </ol>
             </div>
         </div>
@@ -32,7 +32,7 @@
                 <div class="col-md-9">
                     <div class="row">
                         <div class="text-center newsListTitle">
-                            <h1 class="page-title rowed">Все новости</h1>
+                            <h1 class="page-title rowed">{{ $type->name }}</h1>
                         </div>
 
                         <div class="masonry" data-columns>

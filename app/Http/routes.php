@@ -31,14 +31,13 @@ Route::group(['middleware' => ['web']], function () {
         'uses'  => 'HomeController@index'
     ]);
 
-    Route::get('news/{slug}', [
-        'as'    => 'get-news',
-        'uses'  => 'NewsController@getNews'
-    ]);
+    Route::get('news/{slug}', ['uses'  => 'NewsController@getNews', 'as' => 'get-news']);
     
     Route::get('news', ['uses' => 'NewsController@getNewsList', 'as' => 'news']);
 
-    Route::get('reports', ['uses' => 'NewsController@getNewsList', 'as' => 'reports']);
+    Route::get('reports', ['uses' => 'NewsController@getReportsList', 'as' => 'reports']);
+
+    Route::get('promo', ['uses' => 'NewsController@getPromoList', 'as' => 'promo']);
 
     Route::get('categories', 'CategoriesController@getCategoriesList');
     
