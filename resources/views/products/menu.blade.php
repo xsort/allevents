@@ -58,7 +58,7 @@
                                                 
                                             </div>
                                         </a>
-                                        <ngcart-addtocart id="{{$key+2}}" name="{{ $product->name }}" price="{{ $product->price }}" quantity="1" quantity-max="30" data="item" ></ngcart-addtocart>
+                                        <ngcart-addtocart id="{{$product->id}}" name="{{ $product->name }}" price="{{ $product->price }}" quantity="1" quantity-max="30" data="item" ></ngcart-addtocart>
                                         
                                     </div>
                                 </div>

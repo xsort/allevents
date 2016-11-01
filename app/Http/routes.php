@@ -71,6 +71,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::post('make-contact',    ['uses'=>'MailController@makeContact', 'as'=>'make-contact']);
 
+    Route::post('send-card',    ['uses'=>'MailController@sendCard', 'as'=>'send-card']);
+
     Route::post('inst-reservation',    ['uses'=>'MailController@reservation', 'as'=>'inst-reservation']);
 
     Route::get('{slug}', ['uses'=>'CommonController@getSlug', 'as'=>'get_slug']);

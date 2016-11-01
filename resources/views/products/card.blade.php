@@ -45,8 +45,8 @@
             <h1 class="page-title  rowed">Корзина</h1>
         </div>
 
-        <form name="cartForm"  id="cart-form" role="form" method="post" action="{{route('make-event')}}">
-{!! Form::token() !!}
+        <form name="cartForm2"  id="cart-form2" role="form" method="post" action="{{ route('send-card') }}">
+        {!! Form::token() !!}
 
         <table class="mainCart">
             <thead>
@@ -88,8 +88,8 @@
                             <button  type="button" ng-click="item.setQuantity(1, true)"><i class="fa fa-angle-up"></i></button>
                         </div>
 
-                        <input type="hidden" value="@{{ item.getQuantity() | number }}" name="name">
-                        <input type="hidden" value="@{{ item.getId() | number }}" name="phone">
+                        <input type="hidden" value="@{{ item.getQuantity() | number }}" name="data[@{{ item.getId() | number }}]">
+
                     </td>
 
                     <td class="itemAmount">
@@ -292,8 +292,8 @@ $('#cart-form')
                         });
 
                 });
-</script>
 
 </script>
+
         
 @stop
