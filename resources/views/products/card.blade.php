@@ -45,7 +45,8 @@
             <h1 class="page-title  rowed">Корзина</h1>
         </div>
 
-        <form name="cartForm2"  id="cart-form2" role="form" method="post" action="{{ route('send-card') }}">
+        <form name="cartForm"  id="cart-form" role="form" method="post" action="{{ route('send-card') }}">
+
         {!! Form::token() !!}
 
         <table class="mainCart">
