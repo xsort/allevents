@@ -15,7 +15,7 @@
     {{ Form::open(['url' => 'admin/products/' . $data->id, 'method' => 'put', 'class' => 'form-horizontal']) }}
     @endif
     
-        <div class="form-actions">
+    <div class="form-actions">
         <div class="row center">
             <div class="col-sm-2">
                 <button id="submit_button1" type="submit" class="btn  btn-success btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить </button>
@@ -33,22 +33,14 @@
             <div class="col-sm-4">
                 <div class="profile-contact-info">
                     <div class="profile-links align-left">
-                        
                         @if (isset($data))
-                        <div class="btn btn-link">
-                            <i class="ace-icon fa fa- bigger-120 green"></i>
-                            ID: {{ $data->id }}
-                        </div>
-                        
-                        <div class="btn btn-link">
-                            <i class="ace-icon fa fa-calendar bigger-120 green"></i>
-                             Изменен: {{ $data->updated_at }}
-                        </div>
+                            <span class="label label-success">ID: {{ $data->id }}</span>
+                            <span class="label label-success"><i class="ace-icon fa fa-calendar bigger-120 white"></i> Изменен: {{ $data->updated_at }}</span>
+                            <a class="label label-info" href="/{{ $data->slug }}" target="_blank">Посмотреть на сайте</a>
                         @endif
                     </div>
                 </div>
             </div>
-
         </div><!-- /.row -->
     </div><!-- /.form-actions -->
     
@@ -121,12 +113,9 @@
             </div>
             
         </div><!-- /.col-sm-6 -->
-        
-    </div><!-- /.row -->
+   </div><!-- /.row -->
 
-
-
-    <hr>
+   <hr>
 
    <div class="row">
         <div class="col-sm-6">

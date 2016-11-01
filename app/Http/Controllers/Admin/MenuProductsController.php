@@ -22,7 +22,7 @@ class MenuProductsController extends Controller
 
     public function create($id){
         $product    = Products::find($id);
-        $categories = MenuCategories::lists('name', 'id')->toArray();
+        $categories = $this->getTreeCategories();
         return view('admin.menu.edit')->with(compact('categories', 'product'));
     }
 
@@ -47,7 +47,7 @@ class MenuProductsController extends Controller
 
         $data->name              = $request->name;
         $data->created_at        = $request->date;
-        $data->top               = $request->top;
+        $data->top               = ($request->top == 1) ? 1 : 0;
         $data->description       = $request->description;
         $data->price             = $request->price;
         $data->product_id        = $product_id;
@@ -75,7 +75,7 @@ class MenuProductsController extends Controller
     public function edit($id)
     {
         $data       = MenuProducts::find($id);
-        $categories = MenuCategories::lists('name','id')->toArray();
+        $categories = $this->getTreeCategories();
         $product    = Products::find($data->product_id);
 
         return view('admin.menu.edit')->with(compact('data', 'categories', 'product'));
@@ -116,6 +116,19 @@ class MenuProductsController extends Controller
         MenuProducts::destroy($id);
         Session::flash('message', trans('common.deleted'));
         return back();
+    }
+
+    public function getTreeCategories()
+    {
+        $categories = MenuCategories::root()->with('children')->get();
+        $out        = [];
+        foreach($categories as $category){
+            $out[$category->id] = $category->name;
+            foreach($category->children as $child){
+                $out[$child->id] = '|--- ' . $child->name;
+            }
+        }
+        return $out;
     }
 
 }

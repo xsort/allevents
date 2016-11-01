@@ -158,7 +158,7 @@ class BaseModel extends Model
         return $query->where('enabled', 1);
     }
 
-    public function scopeUnenabled($query)
+    public function scopeDisabled($query)
     {
         return $query->where('enabled', 0);
     }

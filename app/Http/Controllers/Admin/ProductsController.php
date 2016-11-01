@@ -37,7 +37,8 @@ class ProductsController extends Controller
         return $this->save($request, null);
     }
 
-    private function save(Request $request, $id){
+    private function save(Request $request, $id)
+    {
         // store
         if (!isset($id)) {
             $data = new Products();
@@ -47,7 +48,7 @@ class ProductsController extends Controller
 
 
         $data->name              = $request->name;
-        $data->top               = $request->top;
+        $data->top               = ($request->top == 1) ? 1 : 0;
         $data->created_at        = $request->date;
         $data->slug              = $request->slug;
         $data->description       = $request->description;

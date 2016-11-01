@@ -2116,3 +2116,147 @@ a
     }
 }
 
+
+/* menu restaurant */ 
+
+.menu-order {
+    width: 100%;
+    margin-bottom: 30px;
+    height: 40px;
+    border: 1px solid #b5b5b5;
+    margin-top: -1px;
+}
+
+.menu-input,
+.modal-input {
+    width: 27px;
+    margin-left: 1px;
+    font-weight: bold;
+    color: #f94545;
+    float: left;
+    margin-top: 6px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.menu-list {
+    width: 25%;
+    float: left;
+    height: 10px;
+}
+
+.menu-left-title {
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    font-size: 25px;
+    line-height: 29px;
+}
+
+@media(max-width:991px) {
+    .menu-left-container {
+        margin-bottom: 40px;
+    }
+}
+
+.menu-left-container ul {
+    padding: 0;
+}
+
+.menu-left-container ul li {
+    list-style-type: none;
+}
+
+.menu-left-container a {
+    width: 100%;
+    display: block;
+    padding: 10px 20px;
+    font-size: 17px;
+    color: #666666;
+    border: 1px solid #b5b5b5;
+    margin-top: 10px;
+    float: left;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+    color: #5b5b5b;
+}
+
+.menu-left-container a span {
+    float: right;
+}
+
+.menu-left-container li > a {
+    cursor: pointer;
+}
+
+.menu-left-container li > ul li a.active {
+    background: #f6705a;
+    color: white;
+}
+
+.menu-left-container a span:before {
+    float: right;
+    margin-top: 4px;
+    content: "\f105";
+}
+
+.menu-left-container li.active > a span:before {
+    float: right;
+    margin-top: 4px;
+    content: "\f107";
+}
+
+.menu-left-container li ul li a {
+    width: 95%;
+    float: right;
+    padding: 4px 20px;
+}
+
+.menu-left-container .sub-menu-left {
+    display: none;
+}
+
+.menu-left-container li.active > a {
+    background: #f6705a;
+    color: white !important;
+}
+
+.menu-left-container a:hover {
+    color: black;
+}
+
+.layout-inst-menu {
+    margin-left: -15px !important;
+    margin-top: 1px;
+    margin-bottom: 25px;
+    float: left;
+        z-index: 1;
+    position: relative;
+}
+
+.layout-inst-menu + .layout-breadcrumbs {
+    margin-top: 45px;
+}
+
+@media(max-width:991px) {
+    .page-on-scroll .layout-inst-menu {
+        top: 39px !important;
+    }
+    .menu-left {
+        display: none;
+    }
+}
+
+@media(min-width:992px) {
+    .menu-left {
+        display: block !important;
+    }
+}
+
+
+/* end of menu restaurant */
+

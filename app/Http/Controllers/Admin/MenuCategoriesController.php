@@ -17,9 +17,8 @@ class MenuCategoriesController extends Controller
     }
 
     public function create(){
-        $categories = MenuCategories::lists('name','id')->toArray();
+        $categories = MenuCategories::root()->lists('name','id')->toArray();
         return view('admin.menu.categories.edit')->with('categories', $categories);
-
     }
 
     public function store(Request $request)
@@ -77,7 +76,7 @@ class MenuCategoriesController extends Controller
     public function edit($id)
     {
 
-        $categories = MenuCategories::lists('name','id')->toArray();
+        $categories = MenuCategories::root()->lists('name','id')->toArray();
         $data       = MenuCategories::find($id);
 
         return view('admin.menu.categories.edit')->with(compact('data', 'categories'));
