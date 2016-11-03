@@ -53,6 +53,29 @@ body > div.content{ width:100%; background-color: transparent; position: relativ
 
 .c-title-divider { background: url('../images/deliteli.png') no-repeat center; height: 60px; width: 100%; display: block; margin-top: 40px; margin-bottom: 40px; }
 
+.newsListTitle { margin-top: 15px; margin-bottom: 50px; }
+
+.galleryTitle { display: block; margin-bottom: 25px;}
+
+.galleryTitle * {     display: inline-block; line-height: 1.3; font-weight: 500; color: #777; font-size: 30px; margin:0; position: relative; max-width: 50%; }
+
+@media ( min-width: 992px ) and ( max-width: 1199px ){
+    .galleryTitle * { max-width: 40%; font-size: 26px; }
+}
+
+@media ( min-width: 768px ) and ( max-width: 991px) { 
+    .galleryTitle *{ max-width: 80% }
+}
+
+@media ( max-width: 767px ) { 
+    .galleryTitle * { max-width: 100%; }
+}
+
+@media( max-width: 991px){
+    .galleryTitle * { font-size: 27px; }
+    .galleryTitle { margin-bottom: 20px; }
+}
+
 
 /*-----------MAILER-----------*/
 

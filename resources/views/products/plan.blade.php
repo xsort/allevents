@@ -136,7 +136,9 @@ $('.plan-slider-nav').slick({
 
 .plan-next { left: 15px; }
 
-.plan-prev { right: 15px; } 
+.plan-prev { right: 15px; }
+
+.control-slider { display: block; height: 100px; background-repeat: no-repeat; width: 35px; position: absolute; cursor: pointer; -webkit-transition: all 0.2s;transition: all 0.2s; border: none; } 
 
 .plan-prev,.plan-next { top: 50%; transform: translate3d(0,-50%,0); background-color: white; background-size:45%; background-position: center; opacity: 0;}
 

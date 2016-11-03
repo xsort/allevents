@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="menu-container">
                     <div class="col-md-3  menu-left-container">
-                        <div class="menu-left-title">{{ trans('common.menu') }} {{ $data->name }}
+                        <div class="menuLeftTitle">{{ trans('common.menu') }} {{ $data->name }}
                             <button type="button" class="visible-xs visible-sm menu-left-btn "><i class="fa fa-reorder "></i></button>
                         </div>
 
@@ -53,10 +53,11 @@
                                                     <div class="menuPrice">
                                                     </div>
                                                 </div>
-                                                <img src="{{ isset($product->photos{0}) ? 'uploaded/thumbs/' . $product->photos{0}->source : 'images/inst-menu-photo/photo.png'}}"  width="100%" alt="{{ $product->name }}">
+                                                <img src="{{ isset($product->photos{0}) ? 'uploaded/' . $product->photos{0}->source : 'images/inst-menu-photo/photo.png'}}"  width="100%" alt="{{ $product->name }}">
                                             </div>
                                             <div class="menuDescr">
-                                                
+                                                <span class="menuTitle">{{$product->name}}</span>
+                                                <div class="menuDescrShort"  layout="row" layout-align="start center"> <span>{!!$product->description!!}</span></div>
                                             </div>
                                         </a>
                                         <ngcart-addtocart id="{{$product->id}}" name="{{ $product->name }}" price="{{ $product->price }}" quantity="1" quantity-max="30" data="item" ></ngcart-addtocart>
@@ -196,7 +197,9 @@
 
 .menuItem > div { padding-bottom: 5px; }
 
-.menuItem > div > a { display: block; height: 80%; }
+.menuItem > div > a { display: block; height: 80%; position: relative; overflow: hidden;}
+
+.menuItem > div > a:hover .menuDescr { transform: translate3d( 0,0,0); }
 
 .menuItem > div .menuOrder { height: 20%; display: flex; padding:5px; padding-bottom: 0;}
 
@@ -230,6 +233,22 @@
 
 .menuItem mark a {     cursor: pointer; font-size: 13px; color: #e3605b; margin: 0 5px; }
 
+.menuItem .menuDescr { transition: all 200ms ease; position: absolute; left: 0; right: 0; bottom: 0; background: rgba(95, 158, 160, 0.8); color: white; transform: translate3d( 0, 60px,0 ); }
+
+.menuItem .menuDescr .menuTitle, .menuItem .menuDescr .menuDescrShort {     padding: 8px 10px; display: block; font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;}
+
+.menuItem .menuDescr .menuDescrShort { height: 60px; display: flex }
+
+.menuItem .menuDescr .menuDescrShort * { font-size: 9px; margin-bottom: 0;}
+
+.menuLeftTitle{ text-align: center; text-transform: uppercase; letter-spacing: .5px; font-weight: bold; font-size: 21px; margin-bottom: 20px; color: rgb(91, 91, 91); }
+
+.menu-left { padding: 0; margin:0; }
+
+.menu-left li { list-style-type: none; float: left; width: 100%; box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);     padding: 8px 15px; text-transform: uppercase; letter-spacing: 1px; font-size: 15px;}
+
+.menu-left li a { color: rgb(131, 131, 131); }
+
 
 @media screen and (max-width:767px) {
     .masonry.menuPage[data-columns]::before { content: '1 .col-xs-12'; }
@@ -247,150 +266,9 @@
     .masonry.menuPage[data-columns]::before { content: '3 .col-xs-4'; }
 }
 
+
 /*----------------------------END INST MENU--------------------------------*
 
-/* menu restaurant */ 
-
-.menu-order {
-    width: 100%;
-    margin-bottom: 30px;
-    height: 40px;
-    border: 1px solid #b5b5b5;
-    margin-top: -1px;
-}
-
-.menu-input,
-.modal-input {
-    width: 27px;
-    margin-left: 1px;
-    font-weight: bold;
-    color: #f94545;
-    float: left;
-    margin-top: 6px;
-    text-align: center;
-    margin-right: 5px;
-}
-
-.menu-list {
-    width: 25%;
-    float: left;
-    height: 10px;
-}
-
-.menu-left-title {
-    font-weight: bold;
-    text-align: center;
-    width: 100%;
-    display: block;
-    margin-bottom: 15px;
-    margin-top: 15px;
-    font-size: 25px;
-    line-height: 29px;
-}
-
-@media(max-width:991px) {
-    .menu-left-container {
-        margin-bottom: 40px;
-    }
-}
-
-.menu-left-container ul {
-    padding: 0;
-}
-
-.menu-left-container ul li {
-    list-style-type: none;
-}
-
-.menu-left-container a {
-    width: 100%;
-    display: block;
-    padding: 10px 20px;
-    font-size: 17px;
-    color: #666666;
-    border: 1px solid #b5b5b5;
-    margin-top: 10px;
-    float: left;
-    -webkit-border-radius: 40px;
-    -moz-border-radius: 40px;
-    border-radius: 40px;
-    color: #5b5b5b;
-}
-
-.menu-left-container a span {
-    float: right;
-}
-
-.menu-left-container li > a {
-    cursor: pointer;
-}
-
-.menu-left-container li > ul li a.active {
-    background: #f6705a;
-    color: white;
-}
-
-.menu-left-container a span:before {
-    float: right;
-    margin-top: 4px;
-    content: "\f105";
-}
-
-.menu-left-container li.active > a span:before {
-    float: right;
-    margin-top: 4px;
-    content: "\f107";
-}
-
-.menu-left-container li ul li a {
-    width: 95%;
-    float: right;
-    padding: 4px 20px;
-}
-
-.menu-left-container .sub-menu-left {
-    display: none;
-}
-
-.menu-left-container li.active > a {
-    background: #f6705a;
-    color: white !important;
-}
-
-.menu-left-container a:hover {
-    color: black;
-}
-
-.layout-inst-menu {
-    margin-left: -15px !important;
-    margin-top: 1px;
-    margin-bottom: 25px;
-    float: left;
-        z-index: 1;
-    position: relative;
-}
-
-.layout-inst-menu + .layout-breadcrumbs {
-    margin-top: 45px;
-}
-
-@media(max-width:991px) {
-    .page-on-scroll .layout-inst-menu {
-        top: 39px !important;
-    }
-    .menu-left {
-        display: none;
-    }
-}
-
-@media(min-width:992px) {
-    .menu-left {
-        display: block !important;
-    }
-}
-
-
-/* end of menu restaurant */
 
 
 </style>

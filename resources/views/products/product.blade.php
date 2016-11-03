@@ -47,7 +47,7 @@
             </div>
 
             <div class="col-lg-12 text-center">
-                <div class="galleryTitle"><h1 class=" rowed">{{$data->name}}</h1></div>
+                <div class="galleryTitle"><h1 class="page-title rowed">{{$data->name}}</h1></div>
             </div>
 
 
@@ -57,7 +57,7 @@
             </div>
 
             <div class="col-lg-12 text-center">
-                <div class="galleryTitle"><h2 class=" rowed">Контакты</h2></div>
+                <div class="galleryTitle"><h2 class="page-title rowed">Контакты</h2></div>
             </div>
 
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-xs-12 margin-t-25 instContactsContainer">
@@ -324,6 +324,39 @@ $('.club-main-gallery').slick({
 
 @section('styleProductPage')
 <style>
+
+
+/*------------------------BANNERS----------------------------*/
+
+.bannerBlockRight { height: 824.95px; }
+
+.banner.bannersRight {height: 48%; width: 100%; padding: 40px 20px;    -webkit-filter: brightness(0.9); background: url('../images/banners/bannerVertical.jpg');}
+
+.banner.bannersRight span:first-child { font-size: 32px; text-align: center; color: white; line-height: 55px; font-weight: bold; text-shadow: 1px 1px 6px black; }
+
+.banner.bannersRight span:last-child{ color: white; text-shadow: 1px 1px 1px black; font-weight: bold; text-align: center; font-size: 13px; letter-spacing: .7px; text-transform: uppercase; line-height: 22px; }
+
+.banner.bannersRight .bannerEmail { transition: all 100ms linear; color: white }
+
+.instBanner { margin-top: 30px; float: left; width: 100%;}
+
+ .instBanner .banner.bannersRight.instBannerSmall { height: 260px; padding: 30px 20px; }
+
+.instBanner .banner.bannersRight.instBannerSmall span:first-child{ line-height: 30px; font-size: 22px;}
+
+.instBanner .banner.bannersRight.instBannerSmall span:last-child{     font-size: 11px;line-height: 22px; }
+
+@media ( min-width: 992px) and (max-width: 1199px){
+    .banner.bannersRight{     padding: 35px 20px; }
+    .banner.bannersRight span:first-child { font-size: 25px;line-height: 39px; }
+    .banner.bannersRight span:last-child {     font-size: 11px; line-height: 20px}
+    .bannerBlockRight { height: 675px; }
+
+    .instBanner .banner.bannersRight.instBannerSmall { height: 245px }
+    .instBanner .banner.bannersRight.instBannerSmall span:first-child{ line-height: 25px; font-size: 20px;}
+    .instBanner .banner.bannersRight.instBannerSmall span:last-child{     font-size: 9px;line-height: 18px; }
+}
+/*-----------------------------------------------------------*/
 
 .next-arrow, .prev-arrow { z-index: 6; position: absolute; }
 
