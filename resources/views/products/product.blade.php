@@ -418,7 +418,7 @@ $('.club-main-gallery').slick({
 
 .instVideoContainer:before { display: block; content: ''; padding-top: 50%; }
 
-.instVideoContainer .instVideo { position: absolute; left: 0; right: 0; bottom: 0; left: 0; }
+.instVideoContainer .instVideo { position: absolute; top: 0; right: 0; bottom: 0; left: 0; }
 
 .instPage .galleryTitle { margin-top: 50px;    float: left; width: 100%; }
 
@@ -482,6 +482,8 @@ $('.club-main-gallery').slick({
 @media ( max-width: 767px){
     .instMenuItem > div { padding: 14%; }
     .instMenu { box-shadow: none; }
+    .instHeadImageContainer .club-main-gallery .instHeadPhoto:before {     padding-top: 100%; }
+    .instVideoContainer:before{ padding-top: 100%; }
 }
 
 @media ( max-width: 991px ){
