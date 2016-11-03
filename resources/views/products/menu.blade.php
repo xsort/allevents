@@ -2,6 +2,7 @@
 @section('bgImage','background-image: url(../images/background/main-bg.jpg)')
 @section('productClass','products-page')
 @section('centerbox')
+
 <div class="layout-page " >
 
     @include('products.top-menu')
@@ -179,5 +180,219 @@
      });
 
 </script>
+
+@stop
+
+
+
+@section('styleProductMenuPage')
+
+<style>
+    
+/*----------------------------NEW INST MENU--------------------------------*/
+
+
+.menuItem{ position: relative; margin-bottom: 30px; }
+
+.menuItem > div { padding-bottom: 5px; }
+
+.menuItem > div > a { display: block; height: 80%; }
+
+.menuItem > div .menuOrder { height: 20%; display: flex; padding:5px; padding-bottom: 0;}
+
+.menuItem .menuOrder button {     margin: 0; margin-right:10px; border-radius: 0; font-size: 13px; color: rgb(120, 120, 120); text-transform: inherit; }
+
+.menuItem .menuOrder button span { margin-left: 5px; }
+
+.menuItem .menuOrder button md-icon { margin-top: -2px; }
+
+.menuItem .menuOrder button:hover { background-color: white;     color: #e3605b;  }
+
+.menuItem .menuOrder button:hover md-icon { color: #e3605b }
+
+.menuItem .menuImg { position: relative; overflow: hidden;     height: 200px;}
+
+.menuItem .menuImg .menuPriceWrapper {  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, rgba(0, 0, 0, 0.137255) 0px 5px 8px 0px, rgba(0, 0, 0, 0.117647) 0px 1px 14px 0px; position: absolute; right: 0; top: 0; overflow: hidden; width: 70px; height: 65px }
+
+.menuItem .menuImg .menuPriceWrapper .menuPriceValue { position: absolute; top: 2px; right: 4px; z-index: 7; color: white; width: 40px; text-align: right; }
+
+.menuItem .menuImg .menuPriceWrapper .menuPriceValue span { width: 100%; }
+
+.menuItem .menuImg .menuPriceWrapper .menuPriceValue span:first-child{ font-size: 17px; font-weight: bold; }
+
+.menuItem .menuImg .menuPriceWrapper .menuPriceValue span:last-child{ font-size: 12px; margin-top: -7px; display: block; }
+
+.menuItem .menuImg .menuPrice { box-shadow: inset 0px -1px 20px 0px grey; position: relative; width: 99px; display: block; height: 65px; margin-left: 6px; z-index: 2; margin-top: -26px; background-color: #f94545; transform: rotate(43deg); }
+
+.menuItem .menuImg .menuPrice:before { position: absolute; position: absolute; content: ''; background-color: rgba(255, 255, 255, 0.95); height: 50px; width: 100%; top: 100%; left: 0; }
+
+.menuItem mark{ background: white; font-size: 13px; text-align: center; width: 100%; display: block; color: rgb(120, 120, 120); }
+
+.menuItem mark a {     cursor: pointer; font-size: 13px; color: #e3605b; margin: 0 5px; }
+
+
+@media screen and (max-width:767px) {
+    .masonry.menuPage[data-columns]::before { content: '1 .col-xs-12'; }
+}
+
+@media screen and (min-width:768px) and (max-width:991px) {
+    .masonry.menuPage[data-columns]::before { content: '2 .col-sm-6'; }
+}
+
+@media screen and (min-width:992px) and (max-width:1199px) {
+    .masonry.menuPage[data-columns]::before { content: '3 .col-md-4'; }
+}
+
+@media screen and (min-width:1200px) {
+    .masonry.menuPage[data-columns]::before { content: '3 .col-xs-4'; }
+}
+
+/*----------------------------END INST MENU--------------------------------*
+
+/* menu restaurant */ 
+
+.menu-order {
+    width: 100%;
+    margin-bottom: 30px;
+    height: 40px;
+    border: 1px solid #b5b5b5;
+    margin-top: -1px;
+}
+
+.menu-input,
+.modal-input {
+    width: 27px;
+    margin-left: 1px;
+    font-weight: bold;
+    color: #f94545;
+    float: left;
+    margin-top: 6px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.menu-list {
+    width: 25%;
+    float: left;
+    height: 10px;
+}
+
+.menu-left-title {
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    font-size: 25px;
+    line-height: 29px;
+}
+
+@media(max-width:991px) {
+    .menu-left-container {
+        margin-bottom: 40px;
+    }
+}
+
+.menu-left-container ul {
+    padding: 0;
+}
+
+.menu-left-container ul li {
+    list-style-type: none;
+}
+
+.menu-left-container a {
+    width: 100%;
+    display: block;
+    padding: 10px 20px;
+    font-size: 17px;
+    color: #666666;
+    border: 1px solid #b5b5b5;
+    margin-top: 10px;
+    float: left;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+    color: #5b5b5b;
+}
+
+.menu-left-container a span {
+    float: right;
+}
+
+.menu-left-container li > a {
+    cursor: pointer;
+}
+
+.menu-left-container li > ul li a.active {
+    background: #f6705a;
+    color: white;
+}
+
+.menu-left-container a span:before {
+    float: right;
+    margin-top: 4px;
+    content: "\f105";
+}
+
+.menu-left-container li.active > a span:before {
+    float: right;
+    margin-top: 4px;
+    content: "\f107";
+}
+
+.menu-left-container li ul li a {
+    width: 95%;
+    float: right;
+    padding: 4px 20px;
+}
+
+.menu-left-container .sub-menu-left {
+    display: none;
+}
+
+.menu-left-container li.active > a {
+    background: #f6705a;
+    color: white !important;
+}
+
+.menu-left-container a:hover {
+    color: black;
+}
+
+.layout-inst-menu {
+    margin-left: -15px !important;
+    margin-top: 1px;
+    margin-bottom: 25px;
+    float: left;
+        z-index: 1;
+    position: relative;
+}
+
+.layout-inst-menu + .layout-breadcrumbs {
+    margin-top: 45px;
+}
+
+@media(max-width:991px) {
+    .page-on-scroll .layout-inst-menu {
+        top: 39px !important;
+    }
+    .menu-left {
+        display: none;
+    }
+}
+
+@media(min-width:992px) {
+    .menu-left {
+        display: block !important;
+    }
+}
+
+
+/* end of menu restaurant */
+
+
+</style>
 
 @stop

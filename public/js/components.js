@@ -9,23 +9,6 @@ var LoadingPage = function() {
     }
 }();
 
-var SmoothScroll = function() {
-    var _smoothscroll = function() {
-        try {
-            $.browserSelector();
-            if ($("html").hasClass("chrome")) {
-                $.smoothScroll();
-            }
-        } catch (err) {
-
-        };
-    }
-    return {
-        init: function() {
-            _smoothscroll();
-        }
-    }
-}();
 
 var ScrollToTop = function() {
     var _scrolltotop = function() {
@@ -86,67 +69,11 @@ var LayoutHeader = function() {
     };
 }();
 
-
-
 $(document).ready(function() {
     LayoutHeader.init();
     LoadingPage.init();
     ScrollToTop.init();
-    // SmoothScroll.init();
 });
-
-
-// $(document).ready(
-//     function() {
-//         $("#sidebar md-content").niceScroll({
-//             cursorwidth: 0,
-//             scrollspeed: 60,
-//             mousescrollstep: 40,
-//         });
-//     }
-// );
-
-
-
-
-$(document).ready(function() {
-    $('.menu-left-container li.has-sub > a').on('click', function() {
-        $(this).removeAttr('href');
-        var element = $(this).parent('li');
-        if (element.hasClass('active')) {
-            element.removeClass('active');
-            element.find('li').removeClass('active');
-            element.find('ul').slideUp();
-        } else {
-            element.addClass('active');
-            element.children('ul').slideDown();
-            element.siblings('li').children('ul').slideUp();
-            element.siblings('li').removeClass('active');
-            element.siblings('li').find('li').removeClass('active');
-            element.siblings('li').find('ul').slideUp();
-        }
-    });
-});
-
-$(document).ready(function() {
-    $('.xs-menu li.has-sub > a').on('click', function() {
-        $(this).removeAttr('href');
-        var element = $(this).parent('li');
-        if (element.hasClass('active')) {
-            element.removeClass('active');
-            element.find('li').removeClass('active');
-            element.find('ul').slideUp();
-        } else {
-            element.addClass('active');
-            element.children('ul').slideDown();
-            element.siblings('li').children('ul').slideUp();
-            element.siblings('li').removeClass('active');
-            element.siblings('li').find('li').removeClass('active');
-            element.siblings('li').find('ul').slideUp();
-        }
-    });
-});
-
 
 $(function() {
     $('[data-toggle="tooltip"]').tooltip()

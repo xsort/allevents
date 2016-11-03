@@ -1,1 +1,1 @@
-<div class="topbar container hidden-xs">   	<div class="row">		<a href="javascript:void(0)"><img src="img/banner-header.jpg" alt="banner" /></a>	</div></div>
+<style>	/*--------------------------NEW TOPBAR-------------------------------------*/.topbar a{ display: block; width: 100%; }.topbar img{ width: 100%; }/*------------------------END TOPBAR---------------------------------------*/</style><div class="topbar container hidden-xs">   	<div class="row">		<a href="javascript:void(0)"><img src="img/banner-header.jpg" alt="banner" /></a>	</div></div>

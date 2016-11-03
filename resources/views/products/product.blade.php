@@ -284,3 +284,185 @@
 }
 </script>
 @stop
+
+
+
+@section('linkStyleProductPage')
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/slick-theme.css">
+    <link rel="stylesheet" href="css/lightbox.min.css">
+@stop
+
+@section('scriptProductPage')
+  <script src="js/lightbox.min.js"></script>
+  <script src="js/slick.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+
+
+
+$('.club-main-gallery').slick({
+    dots: false,
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    nextArrow: '.club-main-next',
+    prevArrow: '.club-main-prev',
+    swipeToSlide: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+      fade: true,
+  cssEase: 'linear',
+});
+});
+  </script>
+@stop
+
+
+
+@section('styleProductPage')
+<style>
+
+.next-arrow, .prev-arrow { z-index: 6; position: absolute; }
+
+.next-arrow { background: url(../images/slider-notice/arrow-right.png); right: 0; }
+
+.prev-arrow { background: url(../images/slider-notice/arrow-left.png); left: 0;}
+
+.club-main-next,.club-main-prev { background-size:40%; background-position: center; width: 45px; position: absolute; top: 50%; transform: translate3d(0,-50%,0); background-color: rgba(255, 255, 255, 0.9); }
+
+
+.control-slider { display: block; height: 100px; background-repeat: no-repeat; width: 35px; position: absolute; cursor: pointer; -webkit-transition: all 0.2s;transition: all 0.2s; border: none; }
+
+.filterBlock-0:before {  background: #83c550 }
+.filterBlock-0 button span { color: #83c550 }
+.filterBlock-0 > div  { background-image: url(../images/main-menu/filter1.png); }
+
+.filterBlock-1:before { background: slateblue }
+.filterBlock-1 button span { color: slateblue }
+.filterBlock-1 > div  { background-image: url(../images/main-menu/filter2.png); }
+
+.filterBlock-2:before { background: cadetblue }
+.filterBlock-2 button span { color: cadetblue }
+.filterBlock-2 > div  { background-image: url(../images/main-menu/filter3.png); }
+
+.filterBlock-3:before { background: orangered }
+.filterBlock-3 button span { color:  orangered}
+.filterBlock-3 > div  { background-image: url(../images/main-menu/filter4.png); }
+
+.filterBlock-4:before { background: yellowgreen }
+.filterBlock-4 button span { color:  yellowgreen}
+.filterBlock-4 > div  { background-image: url(../images/main-menu/filter5.png); }
+
+.filterBlock-5:before { background: rgba(184, 134, 11, 1); }
+.filterBlock-5 button span { color:  rgba(184, 134, 11, 1);}
+.filterBlock-5 > div  { background-image: url(../images/main-menu/filter6.png); }
+
+.filterBlock-6:before { background: darkgoldenrod }
+.filterBlock-6 button span { color:  darkgoldenrod}
+.filterBlock-6 > div  { background-image: url(../images/main-menu/filter7.png); }
+
+  /*----------------------------NEW INSTANS PAGE-----------------------------*/
+
+
+.club-main-gallery { margin-bottom: 0px; }
+
+.club-main-prev, .club-main-next {opacity: 0; }
+
+.instHeadImageContainer:hover .club-main-prev, .instHeadImageContainer:hover .club-main-next{ opacity: 1 }
+
+.instHeadImageContainer { margin-bottom: 25px; margin-top: 10px; position: relative;}
+
+.instHeadImageContainer .club-main-gallery .instHeadPhoto { position: relative; }
+
+.instHeadImageContainer .club-main-gallery .instHeadPhoto:before { padding-top: 36%; display: block; content: ''; }
+
+.instHeadImageContainer .club-main-gallery .instHeadPhoto img { max-width:100%; max-height:100%; position: absolute; top: 50%; left: 50%; transform: translate3d(-50%,-50%,0); }
+
+.instVideoContainer { position: relative;     margin-top: -40px; z-index: 2;}
+
+.instVideoContainer:before { display: block; content: ''; padding-top: 50%; }
+
+.instVideoContainer .instVideo { position: absolute; left: 0; right: 0; bottom: 0; left: 0; }
+
+.instPage .galleryTitle { margin-top: 50px;    float: left; width: 100%; }
+
+.instDescription { letter-spacing: .4px; color: rgb(91,91,91) }
+
+.instSocialShare { margin-top: 50px;    float: left; width: 100%; }
+
+.instMap { margin-top: 40px;     float: left; width: 100%;}
+
+.instMenu { margin-top: 30px; }
+
+.instContacts { margin-top: 10px; margin-bottom: 10px; }
+
+.instContactsName { font-weight: bold; letter-spacing: .5px; font-size: 11px; color: rgb(91,91,91);text-transform: uppercase;}
+
+.instContactsContent {padding: 5px 10px; letter-spacing: .5px; font-size: 13px; display: inline-block;}
+
+
+.instMenuItem { position: relative; display: block;}
+
+.instMenuItem:before {display: block; content: ''; padding-top: 80%;opacity: 0}
+
+.instMenuItem > div { position: absolute; left: 0; right: 0; bottom: 0; top: 0; padding: 20% 25%;     background-size: 102%;}
+
+.instMenuItem > div * { color: white; z-index: 2 }
+
+.instMenuItem > div .instMenuTitle { transition: all 0.25s ease; border-bottom: 2px solid white; padding-bottom: 10px; margin: 0; text-align: center; margin-bottom: 10px; letter-spacing: 0.5px; font-weight: bold; min-height: 64px; font-size: 22px; }
+
+.instMenuItem > div .instMenuDescrShort {text-align:center;opacity: 1; transition: all 0.35s ease; margin-bottom: 10px; font-size: 12px; font-weight: normal; letter-spacing: 0.5px; line-height: 15px;}
+
+.instMenuItem > div button { opacity: 0; transition: all 0.45s ease; font-weight: bold; min-height: 30px; height: 30px; margin: 0; color: rgba(193, 222, 151, 1); border-radius: 0; background-color: white; width: 70%; margin-left: 15%; border-radius: 20px; line-height: 1px; font-size: 12px; }
+
+.instMenuItem > div button:hover {background-color: transparent; border:2px solid white; }
+
+.instMenuItem > div button:hover span { color: white; }
+
+.instMenuItem > div .instMenuTitle, .instMenuItem > div .instMenuDescrShort, .instMenuItem > div button { -webkit-transform: translate3d(0,30px,0); transform: translate3d(0,0px,0); }
+
+.instMenuItem > div:hover .instMenuTitle, .instMenuItem > div:hover .instMenuDescrShort, .instMenuItem > div:hover button { -webkit-transform: translate3d(0,0,0); transform: translate3d(0,-20px,0); }
+
+.instMenuItem > div:hover button { opacity: 1 }
+
+
+
+.instMenuItem:hover > div { background-image: none !important }
+
+.instMenuItem:hover:before { opacity: 1 }
+
+@media (min-width: 992px) and ( max-width: 1199px){
+    .instMenuItem > div { padding: 18% 20%; }
+    .instMenuItem > div .instMenuTitle { font-size: 19px; }
+    .instMenuItem > div .instMenuDescrShort{ font-size: 11px; }
+}
+
+@media ( min-width: 768px) and ( max-width: 991px){
+    .instMenuItem > div { padding: 13%; }
+    .instMenuItem > div .instMenuTitle { font-size: 17px; margin-bottom: 5px; }
+    .instMenuItem > div .instMenuDescrShort{ font-size: 10px; }
+}
+
+@media ( max-width: 767px){
+    .instMenuItem > div { padding: 14%; }
+    .instMenu { box-shadow: none; }
+}
+
+@media ( max-width: 991px ){
+    .instVideoContainer { margin-top:0px;}
+    .instHeadImageContainer { margin-bottom: 20px; margin-top: 10px; }
+    .club-main-prev, .club-main-next { display: none !important }
+}
+
+@media( max-width: 767px ) {
+    .instHeadImageContainer { margin-top: 20px; }
+    .instMenuItem { margin-bottom: 30px;     box-shadow: 0 1px 8px 0 rgba(0,0,0,.2),0 3px 4px 0 rgba(0,0,0,.14),0 3px 3px -2px rgba(0,0,0,.12); }
+}
+
+
+/*----------------------------END INSTANS PAGE-----------------------------*/
+</style>
+@stop

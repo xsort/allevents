@@ -6,7 +6,7 @@ $('#getEventForm')
                                 notEmpty: {
                                 },
                                  stringLength: {
-                                 min: 3,
+                                 min: 2,
                                 }
                              }
                          },
@@ -18,8 +18,9 @@ $('#getEventForm')
                                  stringLength: {
                                  min: 4,
                                 },
-                                numeric: {
-                                },
+                                regexp: { 
+                                    regexp: '[0-9 ]+', 
+                                } 
                              }
                          },
                         
@@ -70,7 +71,7 @@ $('#putEventForm')
                                 notEmpty: {
                                 },
                                  stringLength: {
-                                 min: 3,
+                                 min: 2,
                                 }
                              }
                          },
@@ -82,8 +83,9 @@ $('#putEventForm')
                                  stringLength: {
                                  min: 4,
                                 },
-                                numeric: {
-                                },
+                                regexp: { 
+                                    regexp: '[0-9 ]+', 
+                                } 
                              }
                          },
                         
@@ -135,7 +137,7 @@ $('#makeContactForm')
                                 notEmpty: {
                                 },
                                  stringLength: {
-                                 min: 3,
+                                 min: 2,
                                 }
                              }
                          },
@@ -217,6 +219,7 @@ $('.mailerForm')
                 })
                 .on('success.form.fv', function(e) {
                     e.preventDefault();
+                    swal("Поздравляем", "Ваше подписались на рассылку", "success");
                 });
 
 $('#reservationForm')
@@ -227,7 +230,7 @@ $('#reservationForm')
                                 notEmpty: {
                                 },
                                  stringLength: {
-                                 min: 3,
+                                 min: 2,
                                 }
                              }
                          },
@@ -239,8 +242,9 @@ $('#reservationForm')
                                  stringLength: {
                                  min: 4,
                                 },
-                                numeric: {
-                                },
+                                regexp: { 
+                                    regexp: '[0-9 ]+', 
+                                } 
                              }
                          },
                         

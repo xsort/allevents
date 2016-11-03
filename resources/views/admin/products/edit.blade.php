@@ -487,7 +487,9 @@
     {{ Form::close() }}
 
     <div aria-hidden="true" aria-labelledby="mySmallModalLabel" role="dialog" tabindex="-1" data-show="true" data-backdrop="true" data-keyboard="true" class="modal fade" id="add-map-modal" >
+
         <div class="modal-dialog modal-md">
+         <div class="close-modal" data-dismiss="modal"><i class="fa fa-close"></i></div>
             <div class="modal-content">
                 <div class="modal-body">
                     <div id="YMapsID" style="width:100%;height:500px;"></div>

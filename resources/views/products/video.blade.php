@@ -58,3 +58,57 @@
     </div>         
 </div>
 @stop
+
+@section('styleProductVideoPage')
+
+<style>
+/*------------------------------NEW VIDEO PAGE-----------------------------*/
+
+.videoItem { margin-bottom: 35px; }
+
+.videoItem .videoPlayer { position: relative; }
+
+.videoItem .videoPlayer:before { display:block; content: ''; padding-top: 55%}
+
+.videoItem .videoPlayer iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100% }
+
+.videoItem .videoTitle {    margin-top: 20px; padding-left: 20px; padding-right: 20px; position: relative; transition: all 300ms linear; -webkit-transition: all 300ms linear; overflow: hidden; letter-spacing: 1px; line-height: 1.5;font-weight: 500; color: #3e3e3e; font-size: 20px; }
+
+.videoItem .videoDiscription { padding: 0 20px; margin-top: 10px; }
+
+.videoItem .videoDiscription * {      font-size: 13px !important; margin: 0; font-weight: normal; letter-spacing: 0.5px; line-height: 24px; color: #777; }
+
+.videoItem .videoShareWrapper { padding: 0 20px; margin-top: 10px; margin-bottom: 20px;}
+
+.videoItem .videoDate { font-size: 13px; color: #616060; }
+
+@media  ( max-width: 991px) { 
+    .videoItem .videoTitle { margin-top: 15px;  font-size:16px; padding-left: 15px; padding-right: 15px; }
+    .videoItem .videoDiscription,.videoItem .videoShareWrapper { padding: 0 15px; margin-top: 5px; }
+    .videoItem .videoDiscription * { font-size: 11px !important; }
+    .videoItem .videoShareWrapper { margin-bottom: 15px; }
+    .videoItem .videoDate { font-size: 11px; }
+}
+
+/*------------------------------END VIDEO PAGE-----------------------------*/
+
+@media screen and (max-width:767px) {
+    .masonry[data-columns]::before { content: '1 .col-xs-12'; }
+}
+
+@media screen and (min-width:768px) and (max-width:991px) {
+    .masonry[data-columns]::before { content: '2 .col-xs-6'; }
+}
+
+@media screen and (min-width:992px) and (max-width:1199px) {
+    .masonry[data-columns]::before { content: '2 .col-xs-6'; }
+}
+
+@media screen and (min-width:1200px) {
+    .masonry[data-columns]::before { content: '2 .col-xs-6'; }
+}
+
+
+</style>
+
+@stop
