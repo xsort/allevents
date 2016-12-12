@@ -75,6 +75,7 @@
 
 @include('partials.sidebar')
 
+<md-content layout-fill>
 <div class="content">
         
     @include('partials.modals')
@@ -91,6 +92,7 @@
     
 
 </div>
+</md-content>
 
 <md-button class="scroll-to-top hidden-xs md-fab" aria-label="up">
     <md-icon md-svg-icon="images/icons/arrow-top.svg"></md-icon>

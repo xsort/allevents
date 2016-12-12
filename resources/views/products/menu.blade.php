@@ -23,32 +23,34 @@
                             @foreach($menu_categories as $cat)
 
                             @if($cat->children->count()>0)
-                            <md-menu>
-                                  
-                                  <li><a href="javascript:void(0)" ng-click="$mdOpenMenu($event)">{{ $cat->name }}</a></li>
+                           
+                                <li layout="column" layout-align="start stretch"  class="hasSub">
+                                    <md-button ng-href="javascript:void(0)" layout-align="space-between center">
+                                        <span>{{ $cat->name }}</span>
+                                        <i class="icon-arrow-down"></i>
+                                    </md-button>
+                                    
+                                    <ul>
+                                        @foreach($cat->children as $subcat)
+                                        <li>
+                                            <a href="{{ route('get_menu_products', ['slug' => $data->slug, 'slug-menu' => $subcat->slug]) }}" > 
+                                                <span>{{ $subcat->name }}</span>
+                                            </a>
+                                        </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
 
-                                  
-                                  <md-menu-content width="4">
-                                      @foreach($cat->children as $subcat)
-                                        <md-menu-item>
-                                          <md-button ng-href="{{ route('get_menu_products', ['slug' => $data->slug, 'slug-menu' => $subcat->slug]) }}" > 
-                                            <span>{{ $subcat->name }}</span> 
-                                        </md-button>
-                                        </md-menu-item>
-                                      @endforeach
-                                  </md-menu-content>
-
-                                
-
-                            </md-menu>
                             
 
                             @else
 
                             <li>
-                                <a href="{{ route('get_menu_products', ['slug' => $data->slug, 'slug-menu' => $cat->slug]) }} " class="left-a">{{ $cat->name }}
+                                <md-button ng-href="{{ route('get_menu_products', ['slug' => $data->slug, 'slug-menu' => $cat->slug]) }} " class="left-a">
+                                    {{ $cat->name }}
                                     <span class="fa"></span>
-                                </a>
+                                </md-button>
+                                
                             </li>
 
                             @endif
@@ -67,7 +69,7 @@
                             @foreach($menu_products as $key => $product)
 
                                 <div class="menuItem " layout="column" layout-align="stretch" ng-controller="menuCtrl">
-                                    <div class="md-whiteframe-2dp">
+                                    <div class="md-whiteframe-2dp" layout-align="start stretch" layout="column" ng-controller="menuCtrl">
                                         <a href="javascript:void(0)" >
                                             <div class="menuImg" layout="row" layout-align="center center">
                                                 <div class="menuPriceWrapper">
@@ -84,7 +86,7 @@
                                             </div>
                                             <div class="menuDescr menuDescr-{{rand(0,5)}}">
                                                 <span class="menuTitle">{{$product->name}}</span>
-                                                <div class="menuDescrShort"  layout="row" layout-align="start center"> <span>{!!$product->description!!}</span></div>
+                                                <div class="menuDescrShort"  layout="row" layout-align="start center"> <span>{!! str_limit($product->description, $limit = 120, $end = '...') !!}</span></div>
                                             </div>
                                         </a>
                                         <ngcart-addtocart id="{{$product->id}}" name="{{ $product->name }}" price="{{ $product->price }}" quantity="1" quantity-max="30" data="item" ></ngcart-addtocart>
@@ -99,8 +101,10 @@
 
     
                     <script type="text/ng-template" id="template/ngCart/addtocart.html">
-
-                                <div class="menuOrder" layout="row"    layout-align="center center">
+                        <div layout="column" layout-align="start center">
+                            
+                        
+                                <div class="menuOrder" layout="row" layout-align="space-around center">
                                     <md-button md-ink-ripple="false" ng-click="ngCart.addItem(id, name, price, q, data)" ng-transclude>
                                         <md-icon md-svg-src="images/icons/shopping-cart.svg"></md-icon>
                                             Добавить в корзину
@@ -112,8 +116,8 @@
                                 <mark ng-show="inCart()">
                                         Добавлено. <a ng-click="ngCart.removeItemById(id)" >Удалить из корзины</a>
                                 </mark>
-
-</script>
+</div>
+                    </script>
 
             </div>
         </div>
@@ -220,7 +224,7 @@
 /*----------------------------NEW INST MENU--------------------------------*/
 
 
-.menuItem{ position: relative; margin-bottom: 30px; }
+.menuItem{ position: relative; margin-bottom: 30px; display: block; }
 
 .menuItem > div { padding-bottom: 5px; }
 
@@ -228,7 +232,7 @@
 
 .menuItem > div > a:hover .menuDescr { transform: translate3d( 0,0,0); }
 
-.menuItem > div .menuOrder { height: 20%; display: flex; padding:5px; padding-bottom: 0;}
+.menuItem > div .menuOrder { height: 20%; padding:5px; padding-bottom: 0;}
 
 .menuItem .menuOrder button {     margin: 0; margin-right:10px; border-radius: 0; font-size: 13px; color: rgb(120, 120, 120); text-transform: inherit; }
 
@@ -242,7 +246,7 @@
 
 .menuItem .menuImg { position: relative; overflow: hidden; }
 
-.menuItem .menuImg:before { display: block; content: ''; padding-top: 80%; }
+.menuItem .menuImg:before { display: block;  padding-top: 80%; content: '';}
 
 .menuItem .menuImg .menuPriceWrapper {  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, rgba(0, 0, 0, 0.137255) 0px 5px 8px 0px, rgba(0, 0, 0, 0.117647) 0px 1px 14px 0px; position: absolute; right: 0; top: 0; overflow: hidden; width: 70px; height: 65px }
 
@@ -288,9 +292,27 @@
 
 md-menu-content{ padding: 0; }
 
-.menu-left li { list-style-type: none; float: left; width: 100%; box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);     padding: 8px 15px; text-transform: uppercase; letter-spacing: 1px; font-size: 15px; margin-bottom: 10px;}
+.menu-left li { list-style-type: none; float: left; width: 100%; box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12); text-transform: uppercase; letter-spacing: 1px; font-size: 15px; margin-bottom: 15px;}
 
-.menu-left li a { color: rgb(131, 131, 131); }
+.menu-left li a { color: rgb(131, 131, 131); padding: 12px 20px; display: block; margin: 0; line-height: 20px; text-align: left; border-radius: 0px; letter-spacing: .7px; font-size: 14px;}
+
+.menu-left li a.md-button .md-ripple-container{border-radius: 0px;}
+
+.menu-left li a:hover { color: white !important; background-color: rgba(227, 96, 91, 0.71) !important; }
+
+.menu-left li a:hover i { color: white }
+
+.menu-left li i { color: rgba(102, 102, 102, 0.87); font-size: 13px; margin-right: 5px; margin-left: 15px; }
+
+.menu-left li.hasSub.active > a { background: rgba(227, 96, 91, 0.78); color: white;}
+
+.menu-left li.hasSub.active > a i { color: white; }
+
+.menu-left li.hasSub ul { padding:0; width: 90%; margin-left: 5%; padding: 10px 0; display: none }
+
+.menu-left li.hasSub ul li:last-child{ margin-bottom: 0px; }
+
+.menu-left li.hasSub.active ul { display: block; }
 
 
 @media screen and (max-width:767px) {

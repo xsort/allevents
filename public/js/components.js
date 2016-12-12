@@ -78,3 +78,8 @@ $(document).ready(function() {
 $(function() {
     $('[data-toggle="tooltip"]').tooltip()
 });
+
+$( "li.hasSub" ).click(function() {
+    $( "li.hasSub" ).toggleClass( "active" );
+});
+
