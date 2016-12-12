@@ -15,21 +15,48 @@
                 <div class="menu-container">
                     <div class="col-md-3  menu-left-container">
                         <div class="menuLeftTitle">{{ trans('common.menu') }} {{ $data->name }}
-                            <button type="button" class="visible-xs visible-sm menu-left-btn "><i class="fa fa-reorder "></i></button>
+                            
                         </div>
 
                         <ul class="menu-left">
+
                             @foreach($menu_categories as $cat)
-                            <li @if($cat->children->count()>0) class="has-sub" @endif><a href="javascript:void(0)" class="left-a">{{ $cat->name }}<span class="fa"></span></a>
-                                @if($cat->children->count()>0)
-                                <ul class="sub-menu-left">
-                                    @foreach($cat->children as $subcat)
-                                    <li><a href="{{ route('get_menu_products', ['slug' => $data->slug, 'slug-menu' => $subcat->slug]) }}">{{ $subcat->name }}</a></li>
-                                    @endforeach
-                                </ul>
-                                @endif
+
+                            @if($cat->children->count()>0)
+                            <md-menu>
+                                  
+                                  <li><a href="javascript:void(0)" ng-click="$mdOpenMenu($event)">{{ $cat->name }}</a></li>
+
+                                  
+                                  <md-menu-content width="4">
+                                      @foreach($cat->children as $subcat)
+                                        <md-menu-item>
+                                          <md-button ng-href="{{ route('get_menu_products', ['slug' => $data->slug, 'slug-menu' => $subcat->slug]) }}" > 
+                                            <span>{{ $subcat->name }}</span> 
+                                        </md-button>
+                                        </md-menu-item>
+                                      @endforeach
+                                  </md-menu-content>
+
+                                
+
+                            </md-menu>
+                            
+
+                            @else
+
+                            <li>
+                                <a href="{{ route('get_menu_products', ['slug' => $data->slug, 'slug-menu' => $cat->slug]) }} " class="left-a">{{ $cat->name }}
+                                    <span class="fa"></span>
+                                </a>
                             </li>
+
+                            @endif
+
                             @endforeach
+
+                           
+                            
                         </ul>
                     </div>
 
@@ -42,7 +69,7 @@
                                 <div class="menuItem " layout="column" layout-align="stretch" ng-controller="menuCtrl">
                                     <div class="md-whiteframe-2dp">
                                         <a href="javascript:void(0)" >
-                                            <div class="menuImg">
+                                            <div class="menuImg" layout="row" layout-align="center center">
                                                 <div class="menuPriceWrapper">
                                                     <div class="menuPriceValue">
                                                         @if ($product->price > 0)
@@ -55,7 +82,7 @@
                                                 </div>
                                                 <img src="{{ isset($product->photos{0}) ? 'uploaded/' . $product->photos{0}->source : 'images/inst-menu-photo/photo.png'}}"  width="100%" alt="{{ $product->name }}">
                                             </div>
-                                            <div class="menuDescr">
+                                            <div class="menuDescr menuDescr-{{rand(0,5)}}">
                                                 <span class="menuTitle">{{$product->name}}</span>
                                                 <div class="menuDescrShort"  layout="row" layout-align="start center"> <span>{!!$product->description!!}</span></div>
                                             </div>
@@ -213,7 +240,9 @@
 
 .menuItem .menuOrder button:hover md-icon { color: #e3605b }
 
-.menuItem .menuImg { position: relative; overflow: hidden;     height: 200px;}
+.menuItem .menuImg { position: relative; overflow: hidden; }
+
+.menuItem .menuImg:before { display: block; content: ''; padding-top: 80%; }
 
 .menuItem .menuImg .menuPriceWrapper {  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 5px -1px, rgba(0, 0, 0, 0.137255) 0px 5px 8px 0px, rgba(0, 0, 0, 0.117647) 0px 1px 14px 0px; position: absolute; right: 0; top: 0; overflow: hidden; width: 70px; height: 65px }
 
@@ -233,11 +262,23 @@
 
 .menuItem mark a {     cursor: pointer; font-size: 13px; color: #e3605b; margin: 0 5px; }
 
-.menuItem .menuDescr { transition: all 200ms ease; position: absolute; left: 0; right: 0; bottom: 0; background: rgba(95, 158, 160, 0.8); color: white; transform: translate3d( 0, 60px,0 ); }
+.menuItem .menuDescr { transition: all 200ms ease; position: absolute; left: 0; right: 0; bottom: 0; color: white; transform: translate3d( 0, 60px,0 ); }
+
+.menuItem .menuDescr.menuDescr-0 { background: rgba(95, 158, 160, 0.9);}
+
+.menuItem .menuDescr.menuDescr-1 { background: rgba(131, 197, 80, 0.9); }
+
+.menuItem .menuDescr.menuDescr-2 { background: rgba(184, 134, 11, 0.9); }
+
+.menuItem .menuDescr.menuDescr-3 { background: rgba(154, 205, 50, 0.9); }
+
+.menuItem .menuDescr.menuDescr-4 { background: rgba(255, 69, 0, 0.9); }
+
+.menuItem .menuDescr.menuDescr-5 { background: rgba(100, 149, 237, 0.9); }
 
 .menuItem .menuDescr .menuTitle, .menuItem .menuDescr .menuDescrShort {     padding: 8px 10px; display: block; font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase;}
 
-.menuItem .menuDescr .menuDescrShort { height: 60px; display: flex }
+.menuItem .menuDescr .menuDescrShort { height: 60px; display: flex;padding: 0px 10px 8px; }
 
 .menuItem .menuDescr .menuDescrShort * { font-size: 9px; margin-bottom: 0;}
 
@@ -245,7 +286,9 @@
 
 .menu-left { padding: 0; margin:0; }
 
-.menu-left li { list-style-type: none; float: left; width: 100%; box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);     padding: 8px 15px; text-transform: uppercase; letter-spacing: 1px; font-size: 15px;}
+md-menu-content{ padding: 0; }
+
+.menu-left li { list-style-type: none; float: left; width: 100%; box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);     padding: 8px 15px; text-transform: uppercase; letter-spacing: 1px; font-size: 15px; margin-bottom: 10px;}
 
 .menu-left li a { color: rgb(131, 131, 131); }
 
