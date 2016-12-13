@@ -54,7 +54,8 @@
    
 </head>
 
-<body ng-app="BlankApp"  ng-controller="bodyCtrl" layout="column" class="remove-bg @yield('productClass') bgFilter bgFilter3" style="background-image: url('../images/background/main-bg.jpg');">
+<body ng-app="BlankApp"  ng-controller="bodyCtrl" layout="column" class="remove-bg @yield('productClass') bgFilter bgFilter3" 
+    style="background-image: url('../images/background/main-bg.jpg');">
 
 <!-- @yield('loadingPage') -->
 

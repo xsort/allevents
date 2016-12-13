@@ -44,4 +44,9 @@ class Products extends BaseModel
 		$this->attributes['map'] = json_encode( $val );
 	}
 
+	 public function background()
+	 {
+	  return $this->hasOne('App\Models\Photos', 'table_id')->where('table', 'background');
+	 }
+
 }

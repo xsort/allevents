@@ -239,7 +239,7 @@ h3.order_review_heading { margin-top: 0; font-size: 14px; color: #685e52; text-t
                             </div>
 
                         </div>
-                        <md-button type="submit" class="check-accept visible-md visible-lg md-raised md-warn md-block">Отправить</md-button>
+                        <md-button type="submit"  class="check-accept visible-md visible-lg md-raised md-warn md-block">Отправить</md-button>
                     </div>
                         
                     <div class="col-md-6 col-md-pull-6">
@@ -304,8 +304,7 @@ h3.order_review_heading { margin-top: 0; font-size: 14px; color: #685e52; text-t
                                 </div>
                             </div>
 
-                            <md-button type="submit" class="check-accept visible-sm visible-xs md-raised md-warn md-block">Отправить</md-button>
-
+                            <md-button type="submit"  class="check-accept visible-sm visible-xs md-raised md-warn md-block">Отправить</md-button>
                         </div>
                     </div>
                        
@@ -313,7 +312,7 @@ h3.order_review_heading { margin-top: 0; font-size: 14px; color: #685e52; text-t
         </form>
 
 <script>
-    
+
 $('#cart-form')
                 .formValidation({
                     fields: {
@@ -400,6 +399,7 @@ $('#cart-form')
                             type: 'POST',
                             success: function(result) {
                                 swal("Поздравляем", "Ваше сообщение отправлено", "success");
+
                             }   
                         });
 

@@ -3,6 +3,77 @@
 @section('productClass','products-page')
 @section('centerbox')
 
+
+<div id="getMenu" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <md-dialog ng-cloak>
+            <div class="modalContainer">
+            <md-button class="modalClose md-icon-button" data-dismiss="modal" aria-label="close">
+                <md-icon md-svg-src="images/icons/close.svg"></md-icon> 
+            </md-button>
+                
+            <div 
+                layout="row" layout-align="stretch"
+                layout-xs="column" layout-align-xs="start stretch">
+                <div flex=50>ds</div>
+                <div flex=50 layout="column" layout-align="start stretch"
+                flex-xs=100>
+                    <span class="menuTitle">Lorem ipsum dolor.</span>
+                    <span class="menuDescription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In eum maiores officiis laudantium consequuntur iste harum nulla, nihil recusandae, molestias distinctio assumenda iure doloremque. Recusandae alias unde omnis. At, voluptatibus.</span>
+                    <span class="menuDivider"></span>
+                    <ngcart-addtocartmodal id="1" name="1" price="1" quantity="1" quantity-max="30" data="item" ></ngcart-addtocartmodal>
+
+                    <script type="text/ng-template" id="template/ngCart/addtocartmodal.html">
+                        <div layout="column" layout-align="start stretch" class="menuAddtocart">
+
+                                <div layout="column" layout-align="start start" class="menuPrice">
+                                    <span class="menuPrice">
+                                        Цена: 480 лей
+                                    </span>
+                                    <span>
+                                        Количество: <select name="quantity" id="quantity" ng-model="q" ng-options=" v for v in qtyOpt"></select>
+                                    </span>
+                                    <span>
+                                        Сумма: 480 лей
+                                    </span>
+                                </div>
+                                
+                                <div class="menuOrder" layout="column" layout-align="start stretch">
+                                   
+                                    <md-button ng-click="ngCart.addItem(id, name, price, q, data)" ng-transclude class="md-raised md-warn md-block redButton"> 
+                                            Заказать
+                                    </md-button>
+                                        
+                                </div>
+
+                                <mark ng-show="inCart()">
+                                        Добавлено1. <a ng-click="ngCart.removeItemById(id)" >Удалить из корзины</a>
+                                </mark>
+                        </div>
+                    </script>
+
+                </div>
+            </div>
+            </div>
+        </md-dialog>
+    </div>
+</div>
+
+<style type="text/css">
+    #getMenu .menuTitle{ text-align: center; font-size: 24px; margin-top: 10px; margin-bottom: 10px;color: #5B5B5B; }
+    #getMenu .menuDescription { font-size: 16px; margin-bottom: 15px; margin-top: 10px; letter-spacing: .7px; word-spacing: 2px; font-weight: 300; line-height: 21px; }
+    #getMenu .menuDivider { background: url(../images/separator.png) no-repeat; -webkit-background-size: 100% 1px; -moz-background-size: 100% 1px; -o-background-size: 100% 1px; background-size: 100% 1px; height: 2px; width: 100%; margin-top: 15px;}
+
+    #getMenu .menuAddtocart { margin-top: 30px; }
+
+    #getMenu .menuAddtocart .menuPrice span{ color: #5b5b5b; font-size: 17px; line-height: 28px; }
+
+    #getMenu .menuAddtocart .menuPrice span select { margin-left: 20px; }
+
+    #getMenu .menuAddtocart .menuOrder{ margin:10px 0; }
+</style>
+
+
 <div class="layout-page " >
 
     @include('products.top-menu')
@@ -25,9 +96,9 @@
                             @if($cat->children->count()>0)
                            
                                 <li layout="column" layout-align="start stretch"  class="hasSub">
-                                    <md-button ng-href="javascript:void(0)" layout-align="space-between center">
-                                        <span>{{ $cat->name }}</span>
-                                        <i class="icon-arrow-down"></i>
+                                    <md-button ng-href="" layout-align="space-between stretch">
+                                        <span flex=80>{{ $cat->name }}</span>
+                                        <i flex=20 class="icon-arrow-down"></i>
                                     </md-button>
                                     
                                     <ul>
@@ -48,7 +119,7 @@
                             <li>
                                 <md-button ng-href="{{ route('get_menu_products', ['slug' => $data->slug, 'slug-menu' => $cat->slug]) }} " class="left-a">
                                     {{ $cat->name }}
-                                    <span class="fa"></span>
+                                   
                                 </md-button>
                                 
                             </li>
@@ -70,7 +141,7 @@
 
                                 <div class="menuItem " layout="column" layout-align="stretch" ng-controller="menuCtrl">
                                     <div class="md-whiteframe-2dp" layout-align="start stretch" layout="column" ng-controller="menuCtrl">
-                                        <a href="javascript:void(0)" >
+                                        <a href="javascript:void(0)" data-toggle="modal" data-target="#getMenu">
                                             <div class="menuImg" layout="row" layout-align="center center">
                                                 <div class="menuPriceWrapper">
                                                     <div class="menuPriceValue">
@@ -116,7 +187,7 @@
                                 <mark ng-show="inCart()">
                                         Добавлено. <a ng-click="ngCart.removeItemById(id)" >Удалить из корзины</a>
                                 </mark>
-</div>
+                        </div>
                     </script>
 
             </div>
@@ -294,7 +365,7 @@ md-menu-content{ padding: 0; }
 
 .menu-left li { list-style-type: none; float: left; width: 100%; box-shadow: 0 1px 3px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12); text-transform: uppercase; letter-spacing: 1px; font-size: 15px; margin-bottom: 15px;}
 
-.menu-left li a { color: rgb(131, 131, 131); padding: 12px 20px; display: block; margin: 0; line-height: 20px; text-align: left; border-radius: 0px; letter-spacing: .7px; font-size: 14px;}
+.menu-left li a { color: rgb(131, 131, 131); padding: 12px 20px; display: flex; margin: 0; line-height: 20px; text-align: left; border-radius: 0px; letter-spacing: .7px; font-size: 14px;}
 
 .menu-left li a.md-button .md-ripple-container{border-radius: 0px;}
 
@@ -302,7 +373,7 @@ md-menu-content{ padding: 0; }
 
 .menu-left li a:hover i { color: white }
 
-.menu-left li i { color: rgba(102, 102, 102, 0.87); font-size: 13px; margin-right: 5px; margin-left: 15px; }
+.menu-left li i { color: rgba(102, 102, 102, 0.87); font-size: 13px; margin-right: 5px; margin-left: 15px; line-height: 20px; }
 
 .menu-left li.hasSub.active > a { background: rgba(227, 96, 91, 0.78); color: white;}
 

@@ -3,13 +3,13 @@ a:focus, a:hover, a:active, a:visited{outline:none !important;}
 a:focus{text-decoration:none;outline:none;}
 a:hover{text-decoration:none}
 md-content{ background-color: transparent;}
-body{font-family:'Open Sans', sans-serif;position:relative;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;background-repeat:no-repeat;background-position:center;background-attachment:fixed;}
+body{font-family:'Open Sans', sans-serif;position:relative;height:auto;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;background-repeat:no-repeat;background-position:center;background-attachment:fixed;}
 body:before{content:'';position:absolute;}
 body.products-page{background-image:url(../images/background/club-bg.jpg);}
-.bgFilter:before{position:absolute;content:'';width:100%;height:100%;opacity:0.6;}
+.bgFilter:before{position:absolute;content:'';width:100%;height:100%;opacity:0.7;}
 .bgFilter1:before{background:url('../images/bg-filter/filter1.png');}
 .bgFilter2:before{background:url('../images/bg-filter/filter2.png');}
-.bgFilter3:before{background:url('../images/bg-filter/filter3.png');}
+.bgFilter3:before{/*background:url('../images/bg-filter/filter3.png');*/ background-color: white;}
 .bgFilter4:before{background:url('../images/bg-filter/filter4.png');}
 body > div.content{width:100%;background-color:transparent;position:relative;}
 .wrapper{background:white;position:relative;overflow:hidden;}
@@ -238,13 +238,21 @@ header .div-75{position:initial;}
 header .search button.headSearch:hover{background-color:transparent;}
 header .search button.headSearch:hover md-icon{color:rgba(0,0,0,0.54);}
 }
-#getEvent md-dialog, #getAuth md-dialog,#putEvent md-dialog, #makeContact md-dialog, #getRegister md-dialog{max-width:100%;opacity:1;border-radius:0;max-width:600px;width:100%;max-height:100%;}
+#getEvent md-dialog, #getAuth md-dialog,#putEvent md-dialog, #makeContact md-dialog, #getRegister md-dialog, #getMenu md-dialog{max-width:100%;opacity:1;border-radius:0;max-width:600px;width:100%;max-height:100%;}
+#getMenu md-dialog{max-width:970px}
+@media (min-width: 768px){
+	#getMenu .modal-dialog {
+	    width: 970px;
+	    margin: 30px auto;
+	}
+}
 #getEvent md-dialog textarea, #putEvent md-dialog textarea,#makeContact md-dialog textarea{height:150px !important;}
 .modal-backdrop{background-color:rgba(33,33,33,1.0);}
 .modal-backdrop.in{opacity:.48}
-@media(max-width:600px){#getEvent md-dialog, #getAuth md-dialog, #putEvent md-dialog,#makeContact md-dialog,#getRegister md-dialog{max-height:100%;height:100%;}
+@media(max-width:600px){#getEvent md-dialog, #getMenu md-dialog, #getAuth md-dialog, #putEvent md-dialog,#makeContact md-dialog,#getRegister md-dialog{max-height:100%;height:100%;}
 }
 .modalContainer{padding:30px 12% 30px;display:block;box-sizing:content-box;}
+#getMenu .modalContainer { padding: 30px 40px; }
 .modalContainer > span{margin-top:10px;margin-bottom:35px;text-align:center;display:block;padding-left:50px;padding-right:50px;font-weight:700;font-size:13px;letter-spacing:0.5px;color:rgb(91,91,91);text-transform:uppercase;}
 .b-input .form-group{width:45%;}
 #getAuth button.btnRegister{background-color:white;margin:0;margin-bottom:15px;margin-top:15px;text-align:left;line-height:10px;color:rgb(91,91,91);letter-spacing:.5px;font-size:13px;padding:15px;}

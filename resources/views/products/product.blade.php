@@ -1,7 +1,8 @@
 @extends('body')
-@section('bgImage','background-image: url(../images/background/main-bg.jpg)')
+
 @section('productClass','products-page')
 @section('centerbox')
+
 
 <div class="layout-page instPage">
     @if($data->photos->count() > 1)
@@ -45,20 +46,24 @@
 
                 </div>
             </div>
-
-            <div class="col-lg-12 text-center">
-                <div class="galleryTitle"><h1 class="page-title rowed">{{$data->name}}</h1></div>
-            </div>
+  
+            
+              <div class="col-lg-12 text-center">
+                  <div class="galleryTitle"><h1 class="page-title rowed">{{$data->name}}</h1></div>
+              </div>
+           
 
 
 
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-xs-12  instDescription">
                 {!!$data->description!!}
             </div>
-
+  
+            @if($data->contacts != "")
             <div class="col-lg-12 text-center">
                 <div class="galleryTitle"><h2 class="page-title rowed">Контакты</h2></div>
             </div>
+            @endif
 
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 col-sm-12 col-xs-12 margin-t-25 instContactsContainer">
             @foreach($data->contacts as $contact)
@@ -73,7 +78,26 @@
                             </div>
                             <div class="col-sm-6 col-sm-offset-1">
                             <div class="row">
-                                <span class="instContactsContent md-whiteframe-1dp"> {{$contact->pivot->name}}</span>
+                                <span class="instContactsContent 
+                                  @if ($contact->id == 1) ringPhone
+                                  @elseif ($contact->id == 2) ringMail
+                                  @endif 
+                                  md-whiteframe-1dp"> 
+                                  <span class="instPhoneIcon">
+                                    
+                                      @if ($contact->id == 1) <a href="tel: {{$contact->pivot->name}}"> <i class="icon-phone"></i></a>
+                                      @elseif ($contact->id == 2) <a href="mailto: {{$contact->pivot->name}}"> <i class="icon-envelope-letter"></i></a>
+                                      @endif
+                                    
+                                  </span>
+                                  @if ($contact->id == 1) 
+                                    <a href="tel: {{$contact->pivot->name}}">{{$contact->pivot->name}}</a> 
+                                  @elseif ($contact->id == 2) 
+                                    <a href="mailto: {{$contact->pivot->name}}">{{$contact->pivot->name}}</a>
+                                  @else
+                                    {{$contact->pivot->name}}
+                                  @endif 
+                                </span>
                                 </div>
                             </div>
 
@@ -99,7 +123,7 @@
             @endif
 
 
-            <div class="col-lg-12 hidden-sm  hidden-xs instBanner">
+<!--             <div class="col-lg-12 hidden-sm  hidden-xs instBanner">
                 <div class="row">
                     <div class="col-md-6 ">
                         <div class="row">
@@ -131,7 +155,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div> 
         </div>
@@ -190,8 +214,8 @@
 <meta name="google-site-verification" content="QruLMs9kDD29q-ycCBLohXLrKZiVoczPXuTS4Goif6A" />
 <meta property="og:site_name" content="Allevents.md" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://27b6bd48.ngrok.io/{{$data->slug}}" />
-<meta property="og:image" content="http://27b6bd48.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" />
+<meta property="og:url" content="http://allevents.md/{{$data->slug}}" />
+<meta property="og:image" content="http://allevents.md/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" />
 <meta property="og:description" content="{{$data->description_short}}" />
 
 <!-- Twitter Card -->
@@ -200,7 +224,7 @@
 <meta name="twitter:creator" content="@Allevents.md" />
 <meta name="twitter:title" content="{{$data->name}}" />
 <meta name="twitter:description" content="{{$data->description_short}}" /
-<meta name="twitter:image" content="http://27b6bd48.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" / >
+<meta name="twitter:image" content="http://allevents.md/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" / >
 @stop
 
 @section('jsonProductSharing')
@@ -208,7 +232,7 @@
 {
   "@context": "http://schema.org",
   "@type": "Restaurant",
-  "image": "http://27b6bd48.ngrok.io/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}",
+  "image": "http://allevents.md/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}",
   "@id": "http://davessteakhouse.example.com",
   "name": "{{$data->name}}",
   "address": {
@@ -434,7 +458,13 @@ $('.club-main-gallery').slick({
 
 .instContactsName { font-weight: bold; letter-spacing: .5px; font-size: 11px; color: rgb(91,91,91);text-transform: uppercase;}
 
-.instContactsContent {padding: 5px 10px; letter-spacing: .5px; font-size: 13px; display: inline-block;}
+.instContactsContent { position:relative; padding: 5px 10px; letter-spacing: .5px; font-size: 13px; display: inline-block;}
+
+.instContactsContent.ringPhone:hover .instPhoneIcon,.instContactsContent.ringMail:hover .instPhoneIcon { display: block; }
+
+.instContactsContent .instPhoneIcon{ position: absolute; right: -30px; display: none;  }
+
+.instContactsContent a{ color: rgba(0,0,0,0.87); }
 
 
 .instMenuItem { position: relative; display: block;}

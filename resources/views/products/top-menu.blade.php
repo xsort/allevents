@@ -20,11 +20,12 @@
                 <a href="{{$data->slug}}" class="instMenuLogo md-whiteframe-1dp hidden-sm hidden-xs">
                         <img src="uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" alt="">
                 </a>
+             
                 <table class="instMenuRight">
                     <tr>
                         @if($data->type == 0)       {{-- menu for default object type --}}
-                            <th><md-button  ng-href="{{ route('get_plan', $data->slug) }}">{{ trans('common.plan') }}</md-button></th>
-                            <th><md-button ng-href="{{ route('get_menu', $data->slug) }}">{{ trans('common.menu') }}</md-button></th>
+                            <th><md-button @if (count($data->hallplan) == 0) class="disabled" ng-href="" @else ng-href="{{ route('get_plan', $data->slug) }}" @endif >{{ trans('common.plan') }}</md-button></th>
+                            <th><md-button @if (count($data->menu) == 0) class="disabled" ng-href="" @else  ng-href="{{ route('get_menu', $data->slug) }}" @endif>{{ trans('common.menu') }}</md-button></th>
                             <th><md-button ng-href="{{ route('get_reservation',$data->slug) }}">{{ trans('common.reservation')}}</md-button>
                         @elseif($data->type == 1)   {{-- menu for photographers --}}
                             <th><md-button ng-href="{{ route('get_menu', $data->slug) }}">{{ trans('common.prices') }}</md-button></th>
@@ -77,9 +78,9 @@
 
 .instMenuWrapper table th{ border-left: 1px solid #b9b9b9; }
 
-.instMenuWrapper table th a.disabled { text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5); background-color: rgba(252, 0, 0, 0.15); box-shadow: none; color: rgba(0, 0, 0, 0.45);}
+.instMenuWrapper table th a.disabled { text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5); background-color: rgba(0, 0, 0, 0.09); box-shadow: none; color: rgba(0, 0, 0, 0.45);}
 
-.instMenuWrapper table th a.disabled:hover { background-color: rgba(252, 0, 0, 0.15) !important; color: rgba(0,0,0,0.45); }
+.instMenuWrapper table th a.disabled:hover { background-color: rgba(0, 0, 0, 0.09) !important; color: rgba(0,0,0,0.45); }
 
 .instMenuWrapper table th:first-child { border-left: none }
  
