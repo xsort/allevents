@@ -37,7 +37,8 @@ class ProductsController extends Controller
         return $this->save($request, null);
     }
 
-    private function save(Request $request, $id){
+    private function save(Request $request, $id)
+    {
         // store
         if (!isset($id)) {
             $data = new Products();
@@ -47,7 +48,7 @@ class ProductsController extends Controller
 
 
         $data->name              = $request->name;
-        $data->top               = $request->top;
+        $data->top               = ($request->top == 1) ? 1 : 0;
         $data->created_at        = $request->date;
         $data->slug              = $request->slug;
         $data->description       = $request->description;
@@ -57,6 +58,7 @@ class ProductsController extends Controller
         $data->title             = $request->title;
         $data->video             = $request->video;
         $data->map               = $request->map;
+        $data->type              = $request->type;
         $data->save();
         
         $this->UpdatePhotos($request, $data->id);
@@ -158,6 +160,9 @@ class ProductsController extends Controller
      */
     public function destroy($id)
     {
+        $product = Products::find($id);
+        $product->contacts()->detach();
+        $product->parents()->detach();
         Products::destroy($id);
         Session::flash('message', trans('common.deleted'));
         return back();

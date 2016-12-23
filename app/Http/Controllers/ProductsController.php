@@ -15,29 +15,47 @@ class ProductsController extends Controller
 {
     public function getPhotos($slug)
     {
-        $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
+        $product = Products::where('slug', $slug)->enabled()->firstOrFail();
         return view('products.photo')->with('data', $product);
     }
 
     public function getVideos($slug)
     {
-        $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
+        $product = Products::where('slug',$slug)->enabled()->firstOrFail();
 		return view('products.video')->with('data', $product);
     }
 
     public function getPlan($slug)
     {
-        $product = Products::where('slug',$slug)->where('enabled',true)->firstOrFail();
+        $product = Products::where('slug',$slug)->enabled()->firstOrFail();
 		return view('products.plan')->with('data', $product);
     }
 
     public function getMenu($slug)
     {
         $data            = Products::where('slug', $slug)->enabled()->firstOrFail();
-        $menu_products   = $data->menu()->enabled()->top()->get();
-        $menu_categories = MenuCategories::enabled()->with('children')->where('parent_id', 0)->get();
+        $menu_products   = $data->menu()->with('photos')->enabled()->top()->get();
+        $menu_categories = $this->getMenuCategories();
 
         return view('products.menu')->with(compact('data', 'menu_products', 'menu_categories'));
+    }
+
+    public function getMenuCategories()
+    {
+        $query1 = MenuCategories::enabled()
+            ->whereHas('children', function($q){
+                $q->whereHas('menu_products', function($q2){
+                    $q2->enabled();
+                });
+            });
+
+        return MenuCategories::root()
+            ->doesntHave('children')
+            ->whereHas('menu_products', function($q){
+                $q->enabled();
+            })
+            ->union($query1)
+            ->get();
     }
 
     public function getMenuProducts($slug, $slug_menu)
@@ -45,7 +63,7 @@ class ProductsController extends Controller
         $data            = Products::where('slug', $slug)->enabled()->firstOrFail();
         $cur_cat         = MenuCategories::where('slug', $slug_menu)->firstOrFail();
         $menu_products   = $data->menu()->enabled()->where('category_id', $cur_cat->id)->get();
-        $menu_categories = MenuCategories::enabled()->with('children')->where('parent_id', 0)->get();
+        $menu_categories = $this->getMenuCategories();
         return view('products.menu')->with(compact('data', 'menu_products', 'menu_categories', 'cur_cat'));
     }
 

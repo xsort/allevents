@@ -85,7 +85,7 @@
             </div>
             
             <div class="form-group">
-                {{ Form::label('parent', 'родитель', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                {{ Form::label('parent', 'Родитель', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 
                 <div class="col-sm-9">
                     {{ Form::select('parent_id', array("0" => "Нет родителя") + $categories, (isset($data->parent_id) ? $data->parent_id : 0), ['class'=>'col-sm-11']) }}

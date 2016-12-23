@@ -51,7 +51,7 @@
                         <td align="center">
                             <div class="action-buttons">
                                 <a href="{{ route('admin.menu.edit', $d->id) }}" class="yellow"><i class="ace-icon fa fa-pencil bigger-130"></i></a>
-                                {{ Form::open([route('admin.menu.delete', $d->id), 'class' => 'pull-right']) }}
+                                {{ Form::open(['url' => route('admin.menu.delete', $d->id), 'class' => 'pull-right']) }}
                                 {{ Form::hidden('_method', 'DELETE') }}
                                 {{ Form::button('<i class="ace-icon fa fa-trash-o bigger-130"></i>', ['type' => 'submit', 'class' => 'red deletebutton']) }}
                                 {{ Form::close() }}
@@ -68,5 +68,7 @@
 @section('scripts')
 
     @include('admin.partials.datatable-init')
+
+    @include('admin.partials.visibility')
 
 @endsection

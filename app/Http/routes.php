@@ -71,6 +71,8 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::post('make-contact',    ['uses'=>'MailController@makeContact', 'as'=>'make-contact']);
 
+    Route::post('send-card',    ['uses'=>'MailController@sendCard', 'as'=>'send-card']);
+
     Route::post('inst-reservation',    ['uses'=>'MailController@reservation', 'as'=>'inst-reservation']);
 
     Route::get('{slug}', ['uses'=>'CommonController@getSlug', 'as'=>'get_slug']);
@@ -122,7 +124,7 @@ Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin', 'as' => 'ad
     Route::get('product-menu/edit/{id}',        ['uses' => 'Admin\MenuProductsController@edit',     'as' => 'menu.edit']);
     Route::post('product-menu/{id}',            ['uses' => 'Admin\MenuProductsController@store',    'as' => 'menu.store']);
     Route::put('product-menu/{id}',             ['uses' => 'Admin\MenuProductsController@update',   'as' => 'menu.update']);
-    Route::delete('product-menu/{id}',          ['uses' => 'Admin\MenuProductsController@delete',   'as' => 'menu.delete']);
+    Route::delete('product-menu/{id}',          ['uses' => 'Admin\MenuProductsController@destroy',  'as' => 'menu.delete']);
 
 
 });

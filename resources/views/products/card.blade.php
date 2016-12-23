@@ -1,6 +1,116 @@
 @extends('body')
 @section('centerbox')
 
+<style>
+    
+
+/*----------------------------- NEW CARD ----------------------------------*/
+
+
+.mainCart { width: 100%; }
+
+.mainCart tbody { box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); }
+
+.mainCart tr th {    font-size: 13px; color: rgb(91, 91, 91); text-transform: uppercase; font-weight: 600; padding: 13px 8px; }
+
+.mainCart .itemRow { border: 1px solid #a4a4a4; }
+
+.mainCart tr.itemRow{ background-color: white }
+
+.mainCart tr.itemRow:nth-child(2n-1){     background-color: #fafafa; }
+
+.mainCart .itemRow td { padding: 8px; }
+
+.mainCart .itemRow .itemRemove { width: 100px; }
+
+.mainCart .itemRow .itemName { width: 250px;     color: rgb(91,91,91); }
+
+.mainCart .itemRow .itemName table {     width: 100%; word-wrap: break-word; table-layout: fixed; }
+
+.mainCart .itemRow .itemName table tbody { box-shadow: none }
+
+.mainCart .itemRow .itemName table td { padding: 0; }
+
+.mainCart .itemRow .itemRemove button {     background-color: white; border: 1px solid #a4a4a4; border-radius: 0; color: #a0978d; height: 40px; min-height:40px; min-width:40px; width: 40px; }
+
+.mainCart .itemRow .itemRemove button.md-button .md-ripple-container { border-radius: 0 }
+
+.mainCart .itemRow .itemRemove button md-icon { color: #a0978d;     height: 20px; width: 20px; min-height: 20px; min-width: 20px; }
+
+.mainCart .itemRow .itemQty .qty {position: relative; width: 90px;    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); }
+
+.mainCart .itemRow .itemQty .qty button {    background: none; border: none; height: 100%; display: block; border-left: 1px solid #a4a4a4; line-height: 20px;  position: absolute; right: 0; height: 50%; margin: 0; }
+
+.mainCart .itemRow .itemQty .qty button:first-child{ bottom: 0; }
+
+.mainCart .itemRow .itemQty .qty button:last-child{ top:0; }
+
+.mainCart .itemRow .itemQty input {    background: white; padding-right: 22px; width: 100%; text-align: center; border: 1px solid #a4a4a4; height: 40px; }
+
+.mainCart .itemRow .itemAmount span, .mainCart .itemRow .itemTotal span { color: #e3605b; font-weight: 400; font-size: 17px; }
+
+.cartCheckout { margin-bottom: 30px; }
+
+@media( max-width: 767px) {
+    .mainCart .itemRow .itemRemove button { box-shadow:none; margin:0; border:0px; height: 20px; min-height: 10px; min-width: 10px; width: 20px; line-height: 10px; padding: 0; }
+
+    .mainCart .itemRow .itemQty .qty { width: 60px; box-shadow: none; }
+
+    .mainCart .itemRow .itemQty .qty button:last-child { line-height: 18px; }
+
+    .mainCart .itemRow .itemQty .qty button:first-child {     line-height: 10px; }
+
+    .mainCart .itemRow .itemQty input { font-size: 13px; height: 34px; }
+
+    .mainCart .itemRow .itemAmount, .mainCart .itemRow .itemTotal { text-align: center; }
+
+    .mainCart .itemRow .itemAmount span, .mainCart .itemRow .itemTotal span { font-size: 13px; width: 100%; display: block; height: 20px; overflow: hidden; }
+
+    .mainCart tr th { font-size: 10px; }
+
+    .mainCart .itemRow td {     padding: 8px 4px; }
+
+    .mainCart thead th.itemQty span {display: none;}
+
+    .mainCart .itemRow .itemName { font-size: 11px; }
+
+    .mainCart .itemRow .itemRemove { width: 30px; }
+
+    .mainCart .itemRow .itemRemove button {     background-color: transparent;}
+}
+
+
+table.shop-info { width: 100%; }
+
+table.shop-info th.product-total { text-align: right; }
+
+table.shop-info th { padding: 15px 0; font-weight: 500; color: #39342e; }
+
+table.shop-info td { padding: 15px 0; font-weight: 600; color: #39342e; text-align: right; }
+
+table.shop-info .amount { font-size: 20px;     color: rgb(91, 91, 91); font-weight: 500; }
+
+table.shop-info tr { border-bottom: 1px dashed #a4a4a4; }
+
+table.shop-info tr:last-child { border-bottom: 0px dashed #a4a4a4; }
+
+.check-accept { width: 90%; height: 40px; margin: 0 auto; background-color: #e3605b !important; margin-top: 15px;}
+
+md-toolbar:not(.md-menu-toolbar).md-warn.cartWarning{ background-color: #e3605b; }
+
+.cartAuth{ width: 86%; margin-left: 7%; margin-top: 50px; margin-bottom: 20px; box-sizing: border-box; }
+
+.cartAuth textarea{ margin-top: 10px; }
+
+@media(max-width: 767px){ .cartAuth { width: 100%; margin-left: 0; } .check-accept{ width: 100%; } }
+
+#order_review { background: white; padding: 18px; border: 1px solid #a4a4a4; padding-bottom: 0px;     box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);}
+
+h3.order_review_heading { margin-top: 0; font-size: 14px; color: #685e52; text-transform: uppercase; font-weight: 600; border: 1px dashed #a4a4a4; padding: 15px; width: 100%; border: 0; border-bottom: 1px solid #a4a4a4; padding: 0 0 15px; margin-top: 0; }
+
+/*--------------------------END NEW CARD ----------------------------------*/
+</style>
+
 <div class="layout-page">
     <div class="layout-content" >
         <div class="container-fluid">
@@ -45,8 +155,9 @@
             <h1 class="page-title  rowed">Корзина</h1>
         </div>
 
-        <form name="cartForm"  id="cart-form" role="form" method="post" action="{{route('make-event')}}">
-{!! Form::token() !!}
+        <form name="cartForm"  id="cart-form" role="form" method="post" action="{{ route('send-card') }}">
+
+        {!! Form::token() !!}
 
         <table class="mainCart">
             <thead>
@@ -88,8 +199,8 @@
                             <button  type="button" ng-click="item.setQuantity(1, true)"><i class="fa fa-angle-up"></i></button>
                         </div>
 
-                        <input type="hidden" value="@{{ item.getQuantity() | number }}" name="name">
-                        <input type="hidden" value="@{{ item.getId() | number }}" name="phone">
+                        <input type="hidden" value="@{{ item.getQuantity() | number }}" name="data[@{{ item.getId() | number }}]">
+
                     </td>
 
                     <td class="itemAmount">
@@ -128,7 +239,7 @@
                             </div>
 
                         </div>
-                        <md-button type="submit" class="check-accept visible-md visible-lg md-raised md-warn md-block">Отправить</md-button>
+                        <md-button type="submit"  class="check-accept visible-md visible-lg md-raised md-warn md-block">Отправить</md-button>
                     </div>
                         
                     <div class="col-md-6 col-md-pull-6">
@@ -162,7 +273,7 @@
                                     <div class="form-group">
                                         <md-input-container class="md-block">
                                             <label>Телефон</label>
-                                            <input class="form-control" ng-pattern="/^[0-9]+$/"  ng-minlength="4" required name="cartPhone" ng-model="project.cartPhone">
+                                            <input class="form-control" ng-pattern="/^[0-9 ]+$/"  ng-minlength="4" required name="cartPhone" ng-model="project.cartPhone">
                                             <div ng-messages="cartForm.cartPhone.$error" role="alert" multiple>
                                                 <div ng-message="required">Это поле обязательное</div>
                                                 <div ng-message="minlength">Телефон должен содержать не менее 4 символов</div>
@@ -193,8 +304,7 @@
                                 </div>
                             </div>
 
-                            <md-button type="submit" class="check-accept visible-sm visible-xs md-raised md-warn md-block">Отправить</md-button>
-
+                            <md-button type="submit"  class="check-accept visible-sm visible-xs md-raised md-warn md-block">Отправить</md-button>
                         </div>
                     </div>
                        
@@ -202,7 +312,7 @@
         </form>
 
 <script>
-    
+
 $('#cart-form')
                 .formValidation({
                     fields: {
@@ -239,8 +349,9 @@ $('#cart-form')
                                  stringLength: {
                                  min: 4,
                                 },
-                                numeric: {
-                                },
+                                regexp: { 
+                                    regexp: '[0-9 ]+',
+                                } 
                              }
                          },
                          cartAdress: {
@@ -288,12 +399,13 @@ $('#cart-form')
                             type: 'POST',
                             success: function(result) {
                                 swal("Поздравляем", "Ваше сообщение отправлено", "success");
+
                             }   
                         });
 
                 });
-</script>
 
 </script>
+
         
 @stop

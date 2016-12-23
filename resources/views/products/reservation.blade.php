@@ -2,6 +2,7 @@
 @section('bgImage','background-image: url(../images/background/main-bg.jpg)')
 @section('productClass','products-page')
 @section('centerbox')
+
 <div class="layout-page ">
     @include('products.top-menu')
 
@@ -70,4 +71,33 @@
     </div>         
 </div>
 
+@stop
+
+@section('styleProductReservPage')
+<style>
+    
+/*-----------------------------NEW RESERV PAGE-----------------------------*/
+
+.reservTitle { margin-top: 20px; text-align: center; display: block; color: rgb(91,91,91); text-transform: uppercase; font-size: 18px; margin-bottom: 50px; }
+
+#instReservation .modalContainer { padding: 30px 10% 30px }
+
+#instReservation .modalContainer > span { color: rgb(148, 148, 148) }
+
+.reservLabel {     display: block; text-align: center; }
+
+.reservLabel img {     width: 100%; max-width: 250px; margin: 95px auto 30px; }
+
+@media ( max-width: 991px){
+    .reservLabel img {     width: 100%; max-width: 250px; margin: 35px auto 30px; }
+}
+
+@media ( min-width: 992px) and ( max-width: 1199px){
+    .reservLabel img {     max-width: 200px; margin: 120px auto 30px; }
+}
+
+/*-----------------------------END RESERV PAGE-----------------------------*/
+
+
+</style>
 @stop

@@ -1,6 +1,8 @@
 @extends('body')
 
 @section('centerbox')
+
+
 <div class="layout-page ">
 
     <div class="layout-breadcrumbs " itemscope itemtype="http://schema.org/ItemList">
@@ -133,4 +135,52 @@ past year spanning the continent for the most grueling trails. Check out the ent
 ranked list, and learn about our methodology..." />
 <meta itemprop="image" content="http://i.sportyfitness.com/media/tough-trail-lrg.jpg" /> -->
 
+@stop
+
+
+@section('styleNewsshowPage')
+
+<style>
+    
+/*----------------------------DETAIL NEWS----------------------------------*/
+
+.blogPost { color: rgb(91, 91, 91); }
+
+.blogPost .blogImg { width: 100%; text-align: center;}
+
+.blogPost .blogImg img{ max-width: 100%; }
+
+.blogPost .blogContent { margin-top: 30px; margin-bottom: 30px; }
+
+.blogPost .blogContent .blogTitle { text-transform: uppercase; color: #3e3e3e; font-size: 22px; margin:0px; margin-bottom: 10px; letter-spacing: 0.7px; line-height: 1.5; }
+
+.blogPost .blogContent .blogDate { float: left; width: 100%; margin-top: 5px; margin-bottom: 15px; }
+
+.blogPost .blogContent .blogText { letter-spacing: 0.5px; line-height: 24px; width: 100%;}
+
+.blogPost .blogContent .blogText img{ max-width: 100%; height: auto !important; margin-bottom: 10px; margin-top: 10px; }
+
+.blogPost .blogContent .blogText p{ word-wrap: break-word; }
+
+.blogPost .blogShare { display: block; float: left; width: 100%;}
+
+.blogComment { float: left; width: 100%; margin-bottom: 20px; margin-top: 30px; }
+
+.blogTags .blogTagsTitle, .blogShare .blogShareTitle { margin-bottom: 20px; font-size: 15px; text-transform: uppercase; letter-spacing: 1px; display: block; width: 100%; float: left; color: #3e3e3e;}
+
+.blogTags ul{ padding: 0; margin:0; float: left}
+
+.blogTags ul li { float: left;list-style-type: none; margin-bottom: 10px; margin-right: 10px;}
+
+.blogTags ul li a { border: 1px solid #e9e9e9; padding: 5px 15px; font-size: 12px; line-height: 2.8; font-weight: normal; -webkit-transition: all 0.4s ease-in-out; -moz-transition: all 0.4s ease-in-out; -o-transition: all 0.4s ease-in-out; transition: all 0.4s ease-in-out; -webkit-transition: all 0.3s ease;     color: #3e3e3e; }
+
+.blogTags ul li a:hover { background-color: #3e3e3e; color: #ececec; }
+
+@media(max-width: 767px){
+    .blogPost .blogShare{ margin-bottom: 20px; }
+    .blogPost .blogContent .blogTitle{ font-size: 20px; }
+}
+/*------------------------------END DETAIL NEWS----------------------------*/
+
+</style>
 @stop

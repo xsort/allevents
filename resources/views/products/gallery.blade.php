@@ -3,6 +3,7 @@
 @section('productClass', 'products-page')
 
 @section('centerbox')
+
 <div class="layout-page ">
     @include('products.top-menu')
     <div class="layout-breadcrumbs">
@@ -97,3 +98,158 @@
 
 @stop
 
+@section('styleProductGalleryPage')
+
+<style>
+    
+
+
+/*----------------------------NEW GALLERY PAGE-----------------------------*/
+
+
+.galleryContainer { margin-bottom: 30px; }
+
+.galleryContainer > span { margin-bottom: 25px; display: inline-block; margin-top: 20px; font-size: 19px; letter-spacing: 0.5px; line-height: 24px; color: #777;}
+
+.galleryTitle { display: block; margin-bottom: 25px;}
+
+.galleryTitle * {     display: inline-block; line-height: 1.3; font-weight: 500; color: #777; font-size: 30px; margin:0; position: relative; max-width: 50%; }
+
+.galleryPhotoWrapper { float: left; display: flex; width: 100%; margin-bottom: 60px; }
+
+.galleryPhotoWrapper .galleryPhoto {position: relative; display: block; }
+
+.galleryPhotoWrapper .galleryPhoto:before { content: ''; display: block; padding-top: 100%;}
+
+.galleryPhotoWrapper .galleryPhoto a { transition: all 200ms linear; position: absolute; left: 15px; right: 15px; top: 15px; bottom: 15px; }
+
+/*.galleryPhotoWrapper .galleryPhoto a:hover {     box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 5px 8px 0 rgba(0,0,0,.14),0 1px 14px 0 rgba(0,0,0,.12); }*/
+
+.galleryDescription * {     padding: 0; font-size: 14px; letter-spacing: 0.5px; line-height: 25px; color: #777; }
+
+.galleryPhoto a:hover:before { opacity: 1; }
+
+.galleryPhoto a:before { opacity: 0; height: 100%; width: 100%; display: block; content: ""; position: absolute; top: 0px; left: 0px; transition: all 200ms linear; background-color: rgba(19, 21, 26, .3); background-image: url(../images/news-img-hover.png);    background-position: center; background-repeat: no-repeat; }
+
+.otherCategoryWrapper { margin-top: 30px;   }
+
+.otherCategoryWrapper .otherCategoryItem { position: relative; margin-left: 15px; margin-right: 15px;}
+
+.otherCategoryWrapper .otherCategoryItem:before { display: block; padding-top: 75%; content: ''; }
+
+.otherCategoryWrapper .otherCategoryItem > div { transition: all 200ms linear; -webkit-transition: all 200ms linear; position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; box-shadow: rgba(255, 255, 255, 0.498039) 0px 0px 0px 15px inset; }
+
+.otherCategoryWrapper .otherCategoryItem > div:before { position: absolute; top: 15px; bottom: 15px; left: 15px; right: 15px; content: ''; border: 2px solid white; }
+
+.otherCategoryWrapper .otherCategoryItem > div > span {     line-height: 37px; text-transform: uppercase; color: white; text-align: center; font-size: 27px; letter-spacing: 0.4px; text-shadow: 1px 1px 1px rgb(91,91,91),0 0 1px rgb(91, 91, 91); }
+
+.other-category{ margin-bottom: 0; }
+
+.other-category:before{ content: ''; position: absolute; right: -1px; top:0; height: 100%; width: 15px; background-color: white; z-index: 2 }
+
+.other-category:after{ content: ''; position: absolute; left: 0; top:0; height: 100%; width: 15px; background-color: white; z-index: 2 }
+
+.other-next, .other-prev { background-size:40%; background-position: center; width: 45px; position: absolute; top: 50%; transform: translate3d(0,-50%,0); background-color: rgba(255, 255, 255, 0.9); }
+
+.other-next { left: 15px; }
+
+.other-prev { right: 15px; } 
+
+.other-category .otherCategoryItem:hover > div { background: #fa6059 !important }
+
+
+
+@media ( min-width: 992px ) and ( max-width: 1199px ){
+    .otherCategoryWrapper .otherCategoryItem > div { box-shadow: rgba(255, 255, 255, 0.498039) 0px 0px 0px 10px inset; }
+    .otherCategoryWrapper .otherCategoryItem > div:before { left: 10px; right: 10px; top: 10px; bottom: 10px; }
+    .otherCategoryWrapper .otherCategoryItem > div > span { font-size: 21px; }
+    .galleryTitle * { max-width: 40%; font-size: 26px; }
+    .galleryPhotoWrapper .flex-20, .layout-row>.flex-20 { max-width: 25%;  flex: 1 1 25%; }
+}
+
+@media ( min-width: 768px ) and ( max-width: 991px) { 
+    .galleryPhotoWrapper .flex-20, .layout-row>.flex-20 { max-width: 33%;  flex: 1 1 33%; }
+    .galleryTitle *{ max-width: 80% }
+}
+
+@media ( max-width: 767px ) { 
+    .galleryPhotoWrapper .flex-20, .layout-row>.flex-20 { max-width: 50%;  flex: 1 1 50%; }
+    .galleryTitle * { max-width: 100%; }
+}
+
+@media( max-width: 991px){
+    .galleryContainer > span { font-size: 17px;margin-bottom: 20px;  }
+    .otherCategoryWrapper .otherCategoryItem > div { box-shadow: rgba(255, 255, 255, 0.498039) 0px 0px 0px 10px inset; }
+    .otherCategoryWrapper .otherCategoryItem > div:before { left: 10px; right: 10px; top: 10px; bottom: 10px; }
+    .galleryTitle * { font-size: 27px; }
+    .galleryTitle { margin-bottom: 20px; }
+    .galleryContainer{ margin-bottom: 25px; }
+    .galleryPhotoWrapper { margin-bottom: 40px; }
+    .otherCategoryWrapper { margin-top: 25px; }
+}
+
+@media ( max-width: 430px) { 
+    .galleryPhotoWrapper .flex-20, .layout-row>.flex-20 { max-width: 100%;  flex: 1 1 100%; }
+}
+/*----------------------------END GALLERY PAGE-----------------------------*/
+
+
+
+</style>
+@stop
+
+@section('linkStyleProductGalleryPage')
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/slick-theme.css">
+    <link rel="stylesheet" href="css/lightbox.min.css">
+@stop
+
+@section('scriptProductGalleryPage')
+  <script src="js/lightbox.min.js"></script>
+ <script src="js/slick.min.js"></script>
+
+  <script>
+      $(document).ready(function(){
+$('.other-category').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+
+    dots: false,
+    centerMode: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    nextArrow: '.other-next',
+    prevArrow: '.other-prev',
+    responsive: [{
+        breakpoint: 1199,
+        settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true,
+
+        }
+    },  {
+        breakpoint: 992,
+        settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+        }
+    }, {
+        breakpoint: 767,
+        settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+        }
+    }, {
+        breakpoint: 550,
+        settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+        }
+    }]
+});
+});
+  </script>
+}
+@stop

@@ -2,6 +2,8 @@
 @section('bgImage','background-image: url(../images/background/main-bg.jpg)')
 @section('productClass','products-page')
 @section('centerbox')
+
+
 <div class="layout-page ">
     @include('products.top-menu')
     @include('partials.breadcrumbs', ['breadcrumbs' => [['title' => trans('common.promo')]]])
@@ -71,4 +73,72 @@
         </div>
     </div>         
 </div>
+@stop
+
+
+@section('styleProductPromoPage')
+
+<style>
+    /*-----------------------------NEW NEWS LIST-------------------------------*/
+
+.newsListTitle { margin-top: 15px; margin-bottom: 50px; }
+
+.newsWrapper { margin-bottom: 40px }
+
+.newsWrapper .newsImage { min-height: 60px; }
+
+.newsWrapper .newsImage img{ width: 100%; transition: all 300ms linear; -webkit-transition: all 300ms linear; max-width: 100%; height: auto; margin: 0 auto; }
+
+.newsWrapper > a{ position:relative; transition: all 300ms linear; -webkit-transition: all 300ms linear; overflow: hidden; letter-spacing: 1px; line-height: 1.5; font-weight: 500; color: #3e3e3e; margin-top: 10px; margin-bottom: 12px; font-size: 20px; }
+
+.newsWrapper > a > div.date{ box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.52); color: #616060; position: absolute; top: 15px; background: white; right: 15px; text-align: center; font-size: 13px; padding: 7px 10px; }
+
+.newsWrapper > a > div span { width: 100%; display: block; }
+
+.newsWrapper > a:hover { color:#E3605B; }
+
+.newsWrapper > p{ padding: 0; font-size: 13px; font-weight: normal; letter-spacing: 0.5px; line-height: 24px; color: #777; margin-bottom: 20px; }
+
+.newsWrapper > a.newsReadMore{ margin:0; height:40px; width: 150px; background-color: #3e3e3e; color: #ffffff; font-size: 11px; letter-spacing: 2px; border-radius: 0; line-height: 40px; }
+
+.newsWrapper > a.newsReadMore:hover{ background-color: #3e3e3e }
+
+.newsWrapper > a.newsReadMore.md-button .md-ripple-container{ border-radius:0; }
+
+.newsWrapper > a.newsReadMore:hover {     box-shadow: 0 4px 5px -2px rgba(0,0,0,.2),0 7px 10px 1px rgba(0,0,0,.14),0 2px 16px 1px rgba(0,0,0,.12); }
+
+.newsWrapper:hover .newsImage img { -moz-transform: scale(1.1); -ms-transform: scale(1.1); -o-transform: scale(1.1); transform: scale(1.1); -webkit-transform: scale(1.1); opacity: 0.9; }
+
+.newsWrapper:hover a { color:#E3605B; }
+
+.newsWrapper:hover a.newsReadMore{ background-color: #E3605B; color: white;     box-shadow: 0 4px 5px -2px rgba(0,0,0,.2),0 7px 10px 1px rgba(0,0,0,.14),0 2px 16px 1px rgba(0,0,0,.12);}
+
+@media screen and (max-width:767px) {
+    .masonry[data-columns]::before { content: '1 .col-xs-12'; }
+
+    .newsWrapper:hover .newsImage img{ opacity: 1; -moz-transform: scale(1); -ms-transform: scale(1); -o-transform: scale(1); transform: scale(1); -webkit-transform: scale(1); }
+
+    .newsWrapper > a { font-size: 17px; }
+
+    .newsWrapper > p { font-size: 12px; }
+}
+
+@media screen and (min-width:768px) and (max-width:991px) {
+    .masonry[data-columns]::before { content: '2 .col-xs-6'; }
+}
+
+@media screen and (min-width:992px) and (max-width:1199px) {
+    .masonry[data-columns]::before { content: '2 .col-xs-6'; }
+}
+
+@media screen and (min-width:1200px) {
+    .masonry[data-columns]::before { content: '2 .col-xs-6'; }
+}
+
+
+/*-------------------------END NEW NEWS LIST-------------------------------*/
+
+
+</style>
+
 @stop
