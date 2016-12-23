@@ -2,9 +2,6 @@
 @section('centerbox')
 
 <div class="layout-page ">
-
-
-
 <div class="layout-content" >
 
 <div class="container-fluid">

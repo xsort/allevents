@@ -1,5 +1,7 @@
 @extends('body')
-@section('bgImage','background-image: url(../images/background/main-bg.jpg)')
+@if (isset($data->background))
+    @section('bgImage', 'uploaded/' . $data->background->source)
+@endif
 @section('productClass','products-page')
 @section('centerbox')
 
@@ -11,11 +13,9 @@
             <div class="club-main-gallery" >
                 @foreach ($data->photos as $key => $photo)
                 @if ($key == 0) @continue; @endif
-                <a href="/uploaded/{{$photo->source}}" data-lightbox="instTopImage" class="instHeadPhoto" layout-align="center center"> 
-
-                  <img src="/uploaded/{{$photo->source}}" alt="">
-
-                </a>
+                    <a href="/uploaded/{{$photo->source}}" data-lightbox="instTopImage" class="instHeadPhoto" layout-align="center center">
+                      <img src="/uploaded/{{$photo->source}}" alt="">
+                    </a>
                 @endforeach
             </div>
             <div class="button club-main-next control-slider next-arrow md-whiteframe-1dp"></div>
@@ -25,7 +25,7 @@
 
     @include('products.top-menu')
 
-    <div class="layout-content" >
+    <div class="layout-content">
 
         <div class="container-fluid">
 

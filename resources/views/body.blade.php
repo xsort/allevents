@@ -25,13 +25,11 @@
 
     @yield('metaNewsSharing')
     @yield('metaProductSharing')
-  <style>
+    <style>
         .products-page header .headerWrapper {
-            background-image: url('../images/background/main-bg.jpg') ;
+            background-image: url('@yield('bgImage', '../images/background/main-bg.jpg')') ;
         }
     </style>
-
-   
 </head>
 
 <body ng-app="BlankApp"  ng-controller="bodyCtrl" layout="column" class="remove-bg @yield('productClass') bgFilter bgFilter3" style="background-image: url('../images/background/main-bg.jpg');">
