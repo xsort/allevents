@@ -24,10 +24,17 @@
             <div class="col-sm-2">
                 <button id="submit_button1" type="submit" class="btn  btn-yellow btn-block btn-responsive" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить и закрыть</button>
             </div>-->
+<<<<<<< HEAD
             <div class="col-sm-2 showTip L7">
                 <label >
                     {{ Form::checkbox('top',  1, (isset($data) && $data->top == 1 ? true : false), ['class' => 'ace ']) }}
                     <span class="lbl showTip L7"> На главную </span>
+=======
+            <div class="col-sm-2 ">
+                <label>
+                    {{ Form::checkbox('top',  1, (isset($data) && $data->top == 1 ? true : false), ['class' => 'ace']) }}
+                    <span class="lbl"> На главную </span>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                 </label>
             </div>
             <div class="col-sm-4">
@@ -36,11 +43,14 @@
                         @if (isset($data))
                             <span class="label label-success">ID: {{ $data->id }}</span>
                             <span class="label label-success"><i class="ace-icon fa fa-calendar bigger-120 white"></i> Изменен: {{ $data->updated_at }}</span>
+<<<<<<< HEAD
                             @if(isset($manager_edited))
                         @if($manager_edited->pivot->edited == 1)
                             <span class="label label-warning"><i class="ace-icon fa fa-pencil bigger-120 white"></i>Изменен менеджером <br/> Требует проверки модератором</span>
                         @endif
                         @endif
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                             <a class="label label-info" href="/{{ $data->slug }}" target="_blank">Посмотреть на сайте</a>
                         @endif
                     </div>
@@ -48,7 +58,11 @@
             </div>
         </div><!-- /.row -->
     </div><!-- /.form-actions -->
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
@@ -69,20 +83,37 @@
                     {{ Form::text('name[en]', (isset($data->name_en) ? $data->name_en : old('name_en')), array('class' => 'col-sm-11 col-xs-12')) }}
                 </div>
             </div>
+<<<<<<< HEAD
             <div class="form-group hide">
                 {{ Form::label('type', 'Тип', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-9">
                     {{ Form::select('type', config('allevents.types'), ((isset($data->type)) ? $data->type : 0), ['class' => 'col-sm-11 col-xs-12 showTip L13']) }}
                 </div>
             </div>
+=======
+            <div class="form-group">
+                {{ Form::label('type', 'Тип', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-9">
+                    {{ Form::select('type', config('allevents.types'), ((isset($data->type)) ? $data->type : 0), ['class' => 'col-sm-11 col-xs-12']) }}
+                </div>
+            </div>
+
+            
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
         </div><!-- /.col-sm-6 -->
 
         <div class="col-sm-6">
         
             <div class="form-group">
+<<<<<<< HEAD
                     {{ Form::label('slug', 'URL', ['class'=>'col-sm-3  control-label no-padding-right']) }}
                     <div class="col-sm-9">
                         {{ Form::text('slug', (isset($data->slug) ? $data->slug : old('slug')), array('class' => 'col-sm-11 col-xs-12 showTip L1')) }}
+=======
+                    {{ Form::label('slug', 'URL', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                    <div class="col-sm-9">
+                        {{ Form::text('slug', (isset($data->slug) ? $data->slug : old('slug')), array('class' => 'col-sm-11 col-xs-12')) }}
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                     </div>
             </div>
 
@@ -100,11 +131,17 @@
                 </div>
             </div>
 
+<<<<<<< HEAD
             
 
             <div class="form-group">
                     {{ Form::label('map', 'Координаты:', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                     <div class="col-sm-9 showTip L5" >
+=======
+            <div class="form-group">
+                    {{ Form::label('map', 'Координаты:', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                    <div class="col-sm-9">
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                         {{ Form::text('map[X]', ((isset($data->map) && $data->map != '') ? $data->map->X : old('map[X]')), array('class' => 'col-sm-5', 'placeholder' => 'X', 'id' => 'mapX')) }}
                         {{ Form::text('map[Y]', ((isset($data->map) && $data->map != '') ? $data->map->Y : old('map[Y]')), array('class' => 'col-sm-5 col-sm-offset-1', 'placeholder' => 'Y', 'id' => 'mapY')) }}
                     </div>
@@ -112,7 +149,11 @@
             <div class="form-group">
                 <div class="col-sm-9 col-sm-offset-3 text-center">
                     <div class="row">
+<<<<<<< HEAD
                         <button type="button" data-toggle="modal" data-target="#add-map-modal" class="btn btn-sm btn-primary showTip L5">Открыть карту</button> 
+=======
+                        <a href="javascript:AddMap();" class="btn btn-sm btn-primary">Открыть карту</a>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                     </div>
                 </div>
             </div>
@@ -124,10 +165,17 @@
 
    <div class="row">
         <div class="col-sm-6">
+<<<<<<< HEAD
             <div class="form-group showTip L6">
                 {{ Form::label('parent', 'Категории', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 
                 <div class="col-sm-9 ">
+=======
+            <div class="form-group">
+                {{ Form::label('parent', 'Категории', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                
+                <div class="col-sm-9">
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                     @if(isset($categories))
                     @if(isset($parents))
                     
@@ -143,10 +191,16 @@
 
         <div class="col-sm-6">
             <div class="form-group">
+<<<<<<< HEAD
 
                 {{ Form::label('video', 'Видео', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-9">
                      {{ Form::text('video', (isset($data->video) ? $data->video : old('video')), array('class' => 'col-sm-11 col-xs-12 showTip L3')) }}
+=======
+                {{ Form::label('video', 'Видео ID', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-9">
+                     {{ Form::text('video', (isset($data->video) ? $data->video : old('video')), array('class' => 'col-sm-11 col-xs-12')) }}
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                 </div>
             </div>
         </div><!-- /.col-sm-6 -->
@@ -158,7 +212,11 @@
         <div class="col-sm-6">
             <div class="form-group">
                 <div class="col-xs-12">
+<<<<<<< HEAD
                     <div class="tabbable showTip L2" >
+=======
+                    <div class="tabbable">
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                         <ul id="myTab1" class="nav nav-tabs padding-12 tab-color-blue background-blue">
                             <li class="active">
                                 <a href="#photos"  data-toggle="tab">Лого</a>
@@ -181,6 +239,7 @@
         </div>
 
         <div class="col-sm-6">
+<<<<<<< HEAD
             <div class="form-group ">
                 <div class="col-xs-12 ">
                     <div class="tabbable ">
@@ -220,6 +279,39 @@
                             </md-tabs>
                           </md-content>
                         </div>
+=======
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <div class="tabbable">
+                        <ul id="myTab1" class="nav nav-tabs padding-12 tab-color-blue background-blue">
+                            <li class="active">
+                                <a href="#short_ru" data-toggle="tab" aria-expanded="true">Русс. яз.</a>
+                            </li>
+                    
+                            <li class="">
+                                <a href="#short_ro" data-toggle="tab" aria-expanded="false">Рум. яз.</a>
+                            </li>
+
+                            <li class="">
+                                <a href="#short_en" data-toggle="tab" aria-expanded="false">Англ. яз.</a>
+                            </li>
+
+                            <div class="center"> <span class="label label-xlg label-purple">Краткое описание</span></div>
+                        </ul>
+                    
+                        <div class="tab-content">
+                            <div class="tab-pane in active" id="short_ru">
+                             {{ Form::textarea('description_short[ru]', (isset($data->description_short) ? $data->description_short : old('description_short')), array('style'=>'width:100%', 'rows'=>'3')) }}
+                           </div>
+                           <div class="tab-pane" id="short_ro">
+                             {{ Form::textarea('description_short[ro]', (isset($data->description_short_ro) ? $data->description_short_ro : old('description_short_ro')), array('style'=>'width:100%', 'rows'=>'3')) }}
+                           </div>
+                           <div class="tab-pane" id="short_en">
+                             {{ Form::textarea('description_short[en]', (isset($data->description_short_en) ? $data->description_short_en : old('description_short_en')), array('style'=>'width:100%', 'rows'=>'3')) }}
+                           </div>
+                        </div>
+
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                     </div>
                 </div>
             </div>
@@ -229,7 +321,10 @@
 <hr>
     <div class="space"></div>
     <div class="tabbable">
+<<<<<<< HEAD
 
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
         <ul id="myTab4" class="nav nav-tabs padding-12 tab-color-blue background-blue">
             <li class="active">
                 <a href="#ru" data-toggle="tab">Описание</a>
@@ -260,6 +355,7 @@
 
             @if (isset($data))
                 <li>
+<<<<<<< HEAD
                     <a href="{{ route('admin.menu', $data->id) }}" target="_blank">Продукция</a>
                 </li>
 
@@ -268,6 +364,13 @@
                 </li>
             @endif
 
+=======
+                    <a href="{{ route('admin.menu', $data->id) }}" target="_blank">Меню</a>
+                </li>
+            @endif
+
+
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
             <li>
                 <a href="#meta" data-toggle="tab">META</a>
             </li>
@@ -279,6 +382,7 @@
 
         <div class="tab-content">
             <div class="tab-pane active" id="ru">
+<<<<<<< HEAD
                 <div ng-cloak >
                           <md-content >
                             <md-tabs md-dynamic-height md-border-bottom class="adminTabDescr" >
@@ -302,6 +406,10 @@
                         </div>
 
    <!--              <div class="tabbable  tabs-left">
+=======
+
+                <div class="tabbable  tabs-left">
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
                  <ul id="myTab" class="nav nav-tabs">
                    <li class="active">
@@ -328,7 +436,11 @@
 
                  </div>
 
+<<<<<<< HEAD
                 </div> -->
+=======
+                </div>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
              </div>
 
             <div class="tab-pane" id="photo-galleries">
@@ -422,9 +534,15 @@
 
             </div>
 
+<<<<<<< HEAD
             @include('admin.partials.photos', ['table' => 'hall_plan', 'div_id' => 'plan', 'class' => 'showTip L8', 'table_id' => isset($data->id) ? $data->id : 0] )
 
             @include('admin.partials.photos', ['table' => 'background', 'div_id' => 'background', 'class' => 'showTip L9', 'width'=> 10000, 'height'=> 10000, 'table_id' => isset($data->id) ? $data->id : 0] )
+=======
+            @include('admin.partials.photos', ['table' => 'hall_plan', 'div_id' => 'plan', 'table_id' => isset($data->id) ? $data->id : 0] )
+
+            @include('admin.partials.photos', ['table' => 'background', 'div_id' => 'background', 'width'=> 10000, 'height'=> 10000, 'table_id' => isset($data->id) ? $data->id : 0] )
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
             <div class="tab-pane" id="videor">
                 <div class="row">
@@ -525,7 +643,11 @@
     </div>
     {{ Form::close() }}
 
+<<<<<<< HEAD
     <div aria-hidden="true" aria-labelledby="mySmallModalLabel" role="dialog"   data-backdrop="true" data-keyboard="true" class="modal fade" id="add-map-modal" >
+=======
+    <div aria-hidden="true" aria-labelledby="mySmallModalLabel" role="dialog" tabindex="-1" data-show="true" data-backdrop="true" data-keyboard="true" class="modal fade" id="add-map-modal" >
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
         <div class="modal-dialog modal-md">
          <div class="close-modal" data-dismiss="modal"><i class="fa fa-close"></i></div>
@@ -539,6 +661,7 @@
 
 @endsection
 
+<<<<<<< HEAD
 @section('styles')
     <style>
         .label{
@@ -625,6 +748,10 @@ dw_Tooltip.content_vars = {
 
     </style>
 
+=======
+@section('scripts')
+
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     @include('admin.partials.ckeditor')
 
     @include('admin.partials.datepicker')

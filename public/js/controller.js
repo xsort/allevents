@@ -1,12 +1,21 @@
+<<<<<<< HEAD
     angular
 
 .module('BlankApp', ['ngMaterial','ngMessages','ngCart','ngSanitize'])
 
 .controller('bodyCtrl', function($scope,$mdDialog, $mdSidenav, $timeout) {
+=======
+angular
+
+.module('BlankApp', ['ngMaterial','ngMessages','ngCart','wu.masonry'])
+
+.controller('bodyCtrl', function($scope,$mdDialog) {
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     $scope.isActive = false;
     $scope.activeButton = function() {
     $scope.isActive = !$scope.isActive;
   } 
+<<<<<<< HEAD
 
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');
@@ -31,10 +40,16 @@
 })
 
 .controller('headerCtrl', function($scope, $mdDialog, $mdSidenav, $timeout) {
+=======
+})
+
+.controller('headerCtrl', function($scope, $mdDialog) {
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
   $scope.isActive = false;
     $scope.searchButton = function() {
     $scope.isActive = !$scope.isActive;
   };
+<<<<<<< HEAD
 
     $scope.toggleLeft = buildToggler('left');
     $scope.toggleRight = buildToggler('right');
@@ -44,6 +59,8 @@
         $mdSidenav(componentId).toggle();
       }
     }
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 })
 
 
@@ -51,6 +68,7 @@
 
 })
 
+<<<<<<< HEAD
 .controller('menuCtrl', function($scope) {
 
  // $scope.menu_price = 0;
@@ -58,6 +76,10 @@
 
  //    $scope.menu_price = {{ $product->price }};
  //  }
+=======
+.controller('menuCtrl', function($scope, $mdToast) {
+ 
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 })
 
 

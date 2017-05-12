@@ -11,8 +11,12 @@ class MenuCategories extends BaseModel
         return $this->hasMany('App\Models\MenuCategories', 'parent_id');
     }
 
+<<<<<<< HEAD
     public function menu_products()
     {
+=======
+    public function menu_products(){
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
         return $this->hasMany('App\Models\MenuProducts', 'category_id');
     }
 
@@ -20,5 +24,8 @@ class MenuCategories extends BaseModel
     {
         return $query->where('parent_id', 0);
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 }

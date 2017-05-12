@@ -31,9 +31,13 @@ class JsonController extends Controller
     }
     
     public function getAddtag(Request $request){
+<<<<<<< HEAD
         $value  = $request->value;
 
         $value_langs = array("ru" => $request->value, "ro" => $request->value, "en" => $request->value);
+=======
+       $value  = $request->value;
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
         $existed = Tags::where('name', $value)->count();
         if ($existed != 0){
@@ -42,10 +46,14 @@ class JsonController extends Controller
         }
 
         $tag        = new Tags();
+<<<<<<< HEAD
         $tag->name  = $value_langs;
 
         $tag->slug  = $value;
 
+=======
+        $tag->name  = $value;
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
         $tag->save();
         return $this->json_response(null, $tag->id);
     }

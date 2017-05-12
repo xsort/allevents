@@ -57,7 +57,11 @@ return [
 
     'from' => ['address' => env('MAIL_USERNAME'), 'name' => 'Xsort Web Studio'],
 
+<<<<<<< HEAD
     'to'   => ['address' => 'support@xsort.md',  'name' => 'Allevents'],
+=======
+    'to'   => ['address' => 'alexzc@mail.ru',  'name' => 'Allevents'],
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
     /*
     |--------------------------------------------------------------------------

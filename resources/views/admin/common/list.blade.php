@@ -69,7 +69,10 @@
                         <td align="center">
                             <div class="action-buttons">
                                 <a href="{{ URL::to('admin/'.$model.'/'.$d->id.'/edit') }}" class="yellow @if(isset($modalbox) && $modalbox) modalbox @endif"><i class="ace-icon fa fa-pencil bigger-130"></i></a>
+<<<<<<< HEAD
                                 @if(!isset($no_delete))
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                                 {{ Form::open(array('url' => 'admin/' . $model . '/' . $d->id, 'class' => 'pull-right')) }}
                                 {{ Form::hidden('_method', 'DELETE') }}
                                 {{ Form::button('<i class="ace-icon fa fa-trash-o bigger-130"></i>', ['type' => 'submit', 'class' => 'red deletebutton']) }}

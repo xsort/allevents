@@ -30,16 +30,28 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-9">
+<<<<<<< HEAD
                     <div class="row" ng-cloak>
                         <div class="text-center newsListTitle">
                             <h1 class="page-title rowed">{{ $type->name }}</h1>
                         </div>
+=======
+                    <div class="row">
+                        <div class="text-center newsListTitle">
+                            <h1 class="page-title rowed">{{ $type->name }}</h1>
+                        </div>
+
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                         <div class="masonry" data-columns>
                             @foreach ($data as $news)
                                 <div class="newsWrapper" layout="column" layout-align="stretch" itemscope itemtype="http://schema.org/Article">
                                     <meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="https://google.com/article"/>
 
+<<<<<<< HEAD
                                     <a class="newsImage md-whiteframe-1dp" href="{{ route('get-news', $news->slug) }}" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+=======
+                                    <a class="newsImage md-whiteframe-1dp" href="news/{{$news->slug}}" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                                         <img src="uploaded/{{isset($news->photos{0}) ? $news->photos{0}->source : 'nophoto.png'}}" alt="{{$news->name}}">
                                         <div class="date">
                                             <span>{{ ucfirst(Date::parse($news->created_at)->format('M')) }}</span>
@@ -58,7 +70,11 @@
 
                                     <p>{{ str_limit($news->description_short, $limit = 150, $end = '...') }}</p>
 
+<<<<<<< HEAD
                                     <md-button class="newsReadMore" ng-href="{{ route('get-news', $news->slug) }}">{{$trans->news_object_button}}</md-button>
+=======
+                                    <md-button class="newsReadMore" ng-href="news/{{$news->slug}}">Читать далее</md-button>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
                                     <meta itemprop="dateModified" content="{{$news->created_at}}">
                                     <meta itemprop="datePublished" content="{{$news->created_at}}">

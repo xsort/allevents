@@ -36,6 +36,7 @@
             @endif
 
             <div class="col-lg-12 instMenu md-whiteframe-2dp">
+<<<<<<< HEAD
             
                 <div class="row">
                     @foreach($links['type3'] as $key=>$link)
@@ -61,6 +62,23 @@
                   <div class="galleryTitle"><h1 class="page-title rowed">{{$data->name}}</h1></div>
               </div>
               @endif
+=======
+                <div class="row">
+
+                    @if($data->type == 0)       {{-- menu for default object type --}}
+                        @include('products.tiles.default')
+                    @elseif($data->type == 1)   {{-- menu for photographers --}}
+                        @include('products.tiles.photographers')
+                    @endif
+
+                </div>
+            </div>
+  
+            
+              <div class="col-lg-12 text-center">
+                  <div class="galleryTitle"><h1 class="page-title rowed">{{$data->name}}</h1></div>
+              </div>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
            
 
 
@@ -71,7 +89,11 @@
   
             @if($data->contacts != "")
             <div class="col-lg-12 text-center">
+<<<<<<< HEAD
                 <div class="galleryTitle"><h2 class="page-title rowed">{{$trans->product_contact_title}}</h2></div>
+=======
+                <div class="galleryTitle"><h2 class="page-title rowed">Контакты</h2></div>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
             </div>
             @endif
 
@@ -127,8 +149,12 @@
             @if(isset($data->map) && ($data->map!='') && (($data->map->X != 0) || ($data->map->Y != 0)) )
                 <div class="col-lg-12 instMap md-whiteframe-2dp">
                     <div class="row">
+<<<<<<< HEAD
                         <!-- <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox={{$data->map->Y}}%2C{{$data->map->X}}%2C{{$data->map->Y}}%2C{{$data->map->X}}&amp;layer=mapnik&amp;marker={{$data->map->X}}%2C{{$data->map->Y}}"></iframe> -->
                         <div id="map" style="width:100%;height:500px;"></div>
+=======
+                        <iframe width="100%" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox={{$data->map->Y}}%2C{{$data->map->X}}%2C{{$data->map->Y}}%2C{{$data->map->X}}&amp;layer=mapnik&amp;marker={{$data->map->X}}%2C{{$data->map->Y}}"></iframe>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                     </div>
                 </div>
             @endif
@@ -177,6 +203,7 @@
 
 @if ($data->video != '')
 <script>
+<<<<<<< HEAD
   function YouTubeGetID(url){
     
   var ID = '';
@@ -194,6 +221,8 @@
 </script>
 
 <script>
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
       var tag = document.createElement('script');
       tag.src = "https://www.youtube.com/player_api";
       var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -207,7 +236,11 @@
           playerVars : {
                 autoplay : 0
             },
+<<<<<<< HEAD
           videoId: YouTubeGetID("{{$data->video}}")
+=======
+          videoId: '{{$data->video}}'
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
         });
       }
 </script>
@@ -242,11 +275,16 @@
 <meta name="google-site-verification" content="QruLMs9kDD29q-ycCBLohXLrKZiVoczPXuTS4Goif6A" />
 <meta property="og:site_name" content="Allevents.md" />
 <meta property="og:type" content="article" />
+<<<<<<< HEAD
 <meta property="og:url" content="{{ URL::to('/') }}/{{$data->slug}}" />
 <meta property="og:image" content="/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" />
 <meta property="og:image:width" content="450"/>
 
 <meta property="og:image:height" content="298"/>
+=======
+<meta property="og:url" content="http://allevents.md/{{$data->slug}}" />
+<meta property="og:image" content="http://allevents.md/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" />
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 <meta property="og:description" content="{{$data->description_short}}" />
 
 <!-- Twitter Card -->
@@ -255,7 +293,11 @@
 <meta name="twitter:creator" content="@Allevents.md" />
 <meta name="twitter:title" content="{{$data->name}}" />
 <meta name="twitter:description" content="{{$data->description_short}}" /
+<<<<<<< HEAD
 <meta name="twitter:image" content="/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" / >
+=======
+<meta name="twitter:image" content="http://allevents.md/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}" / >
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 @stop
 
 @section('jsonProductSharing')
@@ -264,7 +306,11 @@
   "@context": "http://schema.org",
   "@type": "Restaurant",
   "image": "http://allevents.md/uploaded/{{isset($data->photos{0}) ? $data->photos{0}->source : 'nophoto.png'}}",
+<<<<<<< HEAD
   "@id": "http://allevents.md/",
+=======
+  "@id": "http://davessteakhouse.example.com",
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
   "name": "{{$data->name}}",
   "address": {
     "@type": "PostalAddress",
@@ -279,10 +325,15 @@
     "latitude": 40.761293,
     "longitude": -73.982294
   },
+<<<<<<< HEAD
   "url": "/{{$data->slug}}",
   "telephone": "+12122459600",
   "priceRange": "$1,000 and up",
   "servesCuisine": "dsds",
+=======
+  "url": "http://www.example.com/restaurant-locations/manhattan",
+  "telephone": "+12122459600",
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
@@ -322,7 +373,11 @@
     "@type": "ReserveAction",
     "target": {
       "@type": "EntryPoint",
+<<<<<<< HEAD
       "urlTemplate": "http://allevents.md/{{$data->slug}}/reservation",
+=======
+      "urlTemplate": "https://www.example.com/reserve?merchantId=20373",
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
       "inLanguage": "en-US",
       "actionPlatform": [
         "http://schema.org/DesktopWebPlatform",
@@ -336,7 +391,11 @@
     }
   },
 
+<<<<<<< HEAD
   "menu": "http://allevents.md/{{$data->slug}}/menu",
+=======
+  "menu": "http://www.example.com/menu",
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
   "acceptsReservations": "True"
 }
 </script>
@@ -353,6 +412,7 @@
 @section('scriptProductPage')
   <script src="js/lightbox.min.js"></script>
   <script src="js/slick.min.js"></script>
+<<<<<<< HEAD
   <script src="https://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"> </script>
 
 <style>
@@ -384,6 +444,8 @@
         myMap.controls.add('zoomControl');
     }
 </script>
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
   <script>
     $(document).ready(function(){
@@ -494,17 +556,29 @@ $('.club-main-gallery').slick({
 
 .instHeadImageContainer:hover .club-main-prev, .instHeadImageContainer:hover .club-main-next{ opacity: 1 }
 
+<<<<<<< HEAD
 .instHeadImageContainer {     padding-bottom: 25px; position: relative;}
+=======
+.instHeadImageContainer { margin-bottom: 25px; margin-top: 10px; position: relative;}
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
 .instHeadImageContainer .club-main-gallery .instHeadPhoto { position: relative; }
 
 .instHeadImageContainer .club-main-gallery .instHeadPhoto:before { padding-top: 36%; display: block; content: ''; }
 
+<<<<<<< HEAD
 .instHeadImageContainer .club-main-gallery .instHeadPhoto img {  width: 100%; height: 100%;   max-width: 100%;max-height: 100%;margin: auto;position: absolute;top: 0;left: 0; bottom: 0;right: 0;}
 
 .instVideoContainer { position: relative;     margin-top: -40px; z-index: 2;}
 
 .instVideoContainer:before { display: block; content: ''; padding-top: 56.25%; }
+=======
+.instHeadImageContainer .club-main-gallery .instHeadPhoto img { max-width:100%; max-height:100%; position: absolute; top: 50%; left: 50%; transform: translate3d(-50%,-50%,0); }
+
+.instVideoContainer { position: relative;     margin-top: -40px; z-index: 2;}
+
+.instVideoContainer:before { display: block; content: ''; padding-top: 50%; }
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
 .instVideoContainer .instVideo { position: absolute; top: 0; right: 0; bottom: 0; left: 0; }
 
@@ -576,17 +650,30 @@ $('.club-main-gallery').slick({
 @media ( max-width: 767px){
     .instMenuItem > div { padding: 14%; }
     .instMenu { box-shadow: none; }
+<<<<<<< HEAD
     .instHeadImageContainer .club-main-gallery .instHeadPhoto:before {     padding-top: 36%; }
+=======
+    .instHeadImageContainer .club-main-gallery .instHeadPhoto:before {     padding-top: 100%; }
+    .instVideoContainer:before{ padding-top: 100%; }
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 }
 
 @media ( max-width: 991px ){
     .instVideoContainer { margin-top:0px;}
+<<<<<<< HEAD
     .instHeadImageContainer { padding-bottom: 20px; }
+=======
+    .instHeadImageContainer { margin-bottom: 20px; margin-top: 10px; }
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     .club-main-prev, .club-main-next { display: none !important }
 }
 
 @media( max-width: 767px ) {
+<<<<<<< HEAD
     .instHeadImageContainer {  }
+=======
+    .instHeadImageContainer { margin-top: 20px; }
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     .instMenuItem { margin-bottom: 30px;     box-shadow: 0 1px 8px 0 rgba(0,0,0,.2),0 3px 4px 0 rgba(0,0,0,.14),0 3px 3px -2px rgba(0,0,0,.12); }
 }
 

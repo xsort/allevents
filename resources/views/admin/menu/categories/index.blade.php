@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('admin.body')
 @section('title', 'Категории продуции')
 @section('centerbox')
@@ -50,3 +51,14 @@
     @include('admin.partials.visibility')
 
 @append
+=======
+@extends('admin.common.list',
+    [
+        'title'       =>  'Категории меню',
+        'desc'        =>  'список категорий меню',
+        'model'       =>  'menucategories',
+        'fields'      =>  ['name' => 'Наименование'],
+        'data'        =>  $data
+    ]
+)
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c

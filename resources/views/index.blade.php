@@ -6,19 +6,34 @@
 <div class="layout-page indexPage">
     <div class="layout-content" >
         <div class="container-fluid mainMenu" >
+<<<<<<< HEAD
             <div class="row" layout="row" layout-align="space-between stretch" >
                 <div class="col-md-9 col-sm-12 col-xs-12">
+=======
+            <div class="row" layout="row" layout-align="space-between stretch">
+                <div class="col-md-9 col-sm-12 col-xs-12">
+                    
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                 	@foreach ($categories as $key=>$category)
                 	
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="row">
 
+<<<<<<< HEAD
                             <a href="{{ route('get_slug', $category->slug) }}" class="mainMenuItem filterBlock-{{$key}} c-bg-center" style="background-image: url('uploaded/{{isset($category->photos{0}) ? $category->photos{0}->source : 'nophoto.png'}}');" ng-cloak>
 
                                 <div class="c-bg-center" layout="column" layout-align="space-between stretch">
                                     <h3 class="mainMenuTitle" layout="column" layout-align="end center" >{{$category->name}}</h3>
                                     <span class="mainMenuDescrShort" layout="row" layout-align="center center">{!!$category->description!!}</span>
                                     <md-button>{{$trans->index_menu_category_button}}</md-button>
+=======
+                            <a href="{{$category->slug}}" class="mainMenuItem filterBlock-{{$key}} c-bg-center" style="background-image: url('uploaded/{{isset($category->photos{0}) ? $category->photos{0}->source : 'nophoto.png'}}');">
+
+                                <div class="c-bg-center" layout="column" layout-align="space-between stretch">
+                                    <h3 class="mainMenuTitle" layout="column" layout-align="end center" >{{$category->name}}</h3>
+                                    <span class="mainMenuDescrShort">{!!$category->description!!}</span>
+                                    <md-button>Посмотреть все</md-button>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                                 </div>
                             </a>
 
@@ -33,18 +48,31 @@
             </div>
         </div>
 
+<<<<<<< HEAD
         <section class="row bgBlue" >
             <div class="text-center">
                 <h2 class="whiteBlockTitle">{{$trans->index_recommend_section_title}}</h2>
             </div>
 
             <div class="container-fluid" >
+=======
+        <section class="row bgBlue" ng-cloak>
+            <div class="text-center">
+                <h2 class="whiteBlockTitle">{{ trans('common.recommended') }}</h2>
+            </div>
+
+            <div class="container-fluid" ng-cloak>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                 <div class="recommendedSlider">
                     <button type="button" class="recommended-next prev-arrow control-slider hidden-xs md-whiteframe-3dp"></button>
 
                     <div id="recommended">
         				@foreach ($products as $product)
+<<<<<<< HEAD
         	        	<a href="{{ route('get_slug', $product->slug) }}" class="instItem" layout="row" layout-align="center center" ng-cloak>
+=======
+        	        	<a href="{{$product->slug}}" class="instItem" layout-align="center center">
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                             <img src="uploaded/{{isset($product->photos{0}) ? $product->photos{0}->source : 'nophoto.png'}}" alt="">
                             <div layout="column" layout-align="space-between stretch">
                                 <h3 class="instTitle">
@@ -52,7 +80,11 @@
                                     
                                 </h3>
                                 <span class="instDescrShort">{{ str_limit($product->description_short, $limit = 120, $end = '...') }}</span>
+<<<<<<< HEAD
                                 <md-button class="md-rised" md-ink-ripple="false">{{$trans->index_recommend_section_product_button}}</md-button>
+=======
+                                <md-button class="md-rised" md-ink-ripple="false">Посмотреть</md-button>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                             </div>
                         </a>
         	            @endforeach
@@ -64,20 +96,32 @@
 
         </section>
 
+<<<<<<< HEAD
         @if(isset($reports_tags) && $reports_tags->count() > 0)
 
         <section class="sectionDivider">
             <div class="text-center">
                 <h2 class="indexSectionTitle">{{$trans->index_report_section_title}}</h2>
+=======
+        <section class="sectionDivider">
+
+            <div class="text-center">
+                <h2 class="indexSectionTitle">{{ trans('common.reports') }}</h2>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
             </div>
                     <div class="container-fluid ">
                         <div class="row">
 
+<<<<<<< HEAD
                             <div id="reportSlider" layout="row">
+=======
+                            <div id="reportSlider" layout="row" ng-cloak>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                                 <div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
                                     <button type="button" class="report-next prev-arrow control-slider hidden-xs md-whiteframe-2dp"></button>
                                 </div>
 
+<<<<<<< HEAD
                                 <div class="col-lg-10 col-md-10 col-md-offset-1 col-xs-12" id="report">
                                     @if(isset($reports_tags))
                                         @foreach($reports_tags as $tag)
@@ -89,6 +133,45 @@
                                             </a>
                                         @endforeach
                                     @endif
+=======
+                                <div class="col-lg-10 col-md-10 col-xs-12" id="report">
+
+                                    <a href="javascript:void(0)" class="reportItem c-bg-center" style="background-image: url('images/reports-notice/concert.png')">
+                                        <div layout="row" layout-align="center center">
+                                            <span>Концерты</span>
+                                        </div>
+                                    </a>
+
+                                    <a href="javascript:void(0)" class="reportItem c-bg-center" style="background-image: url('images/reports-notice/sport.png')">
+                                        <div layout="row" layout-align="center center">
+                                            <span>Спорт</span>
+                                        </div>
+                                    </a>
+
+                                    <a href="javascript:void(0)" class="reportItem c-bg-center" style="background-image: url('images/reports-notice/theatre.png')">
+                                        <div layout="row" layout-align="center center">
+                                            <span>Театры</span>
+                                        </div>
+                                    </a>
+
+                                    <a href="javascript:void(0)" class="reportItem c-bg-center" style="background-image: url('images/reports-notice/cinema.jpg')">
+                                        <div layout="row" layout-align="center center">
+                                            <span>Кинотеатры</span>
+                                        </div>
+                                    </a>
+
+                                    <a href="javascript:void(0)" class="reportItem c-bg-center" style="background-image: url('images/reports-notice/sport.png')">
+                                        <div layout="row" layout-align="center center">
+                                            <span>Развлечения</span>
+                                        </div>
+                                    </a>
+
+                                    <a href="javascript:void(0)" class="reportItem c-bg-center" style="background-image: url('images/reports-notice/festival.jpg')">
+                                        <div layout="row" layout-align="center center">
+                                            <span>Фестивали и выставки</span>
+                                        </div>
+                                    </a>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
         		                </div>
 
                                 <div class="col-lg-1 col-md-1 hidden-sm hidden-xs">
@@ -99,6 +182,7 @@
                     </div>
         </section>
 
+<<<<<<< HEAD
         @endif
 
         <section>
@@ -108,13 +192,28 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="newsSlider" >
+=======
+        <section>
+            <div class="text-center">
+                <h2 class="indexSectionTitle">{{ trans('common.news') }}</h2>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="newsSlider" ng-cloak>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                         <button type="button" class="news-next prev-arrow control-slider hidden-xs md-whiteframe-3dp"></button>
 
                         <div id="news">
                             @foreach ($newslist as $news)
+<<<<<<< HEAD
                             <div class="newsItem" layout="column" layout-align="stretch" ng-cloak>
 
                                 <a href="{{ route('get-news', $news->slug) }}" class="c-bg-center md-whiteframe-1dp" style="background-image:url('uploaded/{{isset($news->photos{0}) ? $news->photos{0}->source : 'nophoto.png'}}');">
+=======
+                            <div class="newsItem" layout="column" layout-align="stretch" >
+
+                                <a href="/news/{{$news->slug}}" class="c-bg-center md-whiteframe-1dp" style="background-image:url('uploaded/{{isset($news->photos{0}) ? $news->photos{0}->source : 'nophoto.png'}}');">
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                                 </a>
 
                                 <h2 class="newsItemTitle"><a href="/news/{{$news->slug}}" class="">{{$news->name}}</a></h2>
@@ -125,7 +224,11 @@
                                 <span>{{ str_limit($news->description_short, $limit = 100, $end = '...') }}</span>
 
                                 <div>
+<<<<<<< HEAD
                                     <md-button ng-href="{{ route('get-news', $news->slug) }}" class="newsMore md-raised">{{$trans->index_news_section_news_button}} <span class="fa fa-angle-double-right"></span></md-button>
+=======
+                                    <md-button ng-href="/news/{{$news->slug}}" class="newsMore md-raised">{{ trans('common.read-more-dot') }} <span class="fa fa-angle-double-right"></span></md-button>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                                 </div>
                             </div>
                             @endforeach
@@ -155,19 +258,44 @@
 </script>
 @stop
 
+<<<<<<< HEAD
 
 @section('styles')
+=======
+@section('loadingPage')
+<div id="loading">
+    <div id="loading-center">
+        <div id="loading-center-absolute">
+            <div class="object" id="object_four"></div>
+            <div class="object" id="object_three"></div>
+            <div class="object" id="object_two"></div>
+            <div class="object" id="object_one"></div>
+        </div>
+    </div>
+</div>
+@stop
+
+@section('linkStyleIndexPage')
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     <link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="css/slick-theme.css">
 @stop
 
 
+<<<<<<< HEAD
 @section('scripts')
+=======
+@section('scriptIndexPage')
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     <script src="js/slick.min.js"></script>
 
 
 <script>
+<<<<<<< HEAD
 
+=======
+$(document).ready(function(){
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     $('#recommended').slick({
     dots: false,
     infinite: true,
@@ -348,7 +476,11 @@ $('#report').slick({
         }
     }]
 });
+<<<<<<< HEAD
 
+=======
+});
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 </script>
 @stop
 
@@ -381,7 +513,11 @@ section.sectionDivider { background: url(../images/divider-block.png) no-repeat 
 
 .instItem { display: block; !important; width: 100%; position: relative; background-color: white; margin-right: 15px; margin-left: 15px; padding: 35px; }
 
+<<<<<<< HEAD
 .instItem img{ /*    max-width: calc(100% - 70px); max-height: calc(100% - 70px); position: absolute; top: 50%; left: 50%; transform: translate3d(-50%,-50%,0);*/     max-width: 75%; margin: auto;position: absolute;top: 0;left: 0;bottom: 0;right: 0;}
+=======
+.instItem img{     max-width: calc(100% - 70px); max-height: calc(100% - 70px); position: absolute; top: 50%; left: 50%; transform: translate3d(-50%,-50%,0);}
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
 .instItem > div {  transition: all 200ms linear; -webkit-transition: all 200ms linear; position: absolute; left: 0; top: 0; display: flex; width: 100%; height: 100%; background-color: rgba(193, 222, 151, 1); opacity: 0; padding:35px;}
 
@@ -393,7 +529,11 @@ section.sectionDivider { background: url(../images/divider-block.png) no-repeat 
 
 .instItem .instTitle { transition: all 0.25s ease;   border-bottom:2px solid white; padding-bottom: 10px; margin:0; color: white; text-align: center; margin-bottom: 10px; letter-spacing: 0.5px;text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: bold;}
 
+<<<<<<< HEAD
 .instItem button { transition: all 0.45s ease;  font-weight:bold; min-height:30px; height:30px;margin:0; color: rgba(193, 222, 151, 1); border-radius: 0; background-color: white; width: 70%; margin-left: 15%; line-height: 1px; font-size: 12px; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 1px 0 rgba(0, 0, 0, 0.02), 0 2px 1px -1px rgba(0, 0, 0, 0.11);}
+=======
+.instItem button { transition: all 0.45s ease;  font-weight:bold; min-height:30px; height:30px;margin:0; color: rgba(193, 222, 151, 1); border-radius: 0; background-color: white; width: 70%; margin-left: 15%; border-radius: 20px;line-height: 1px; font-size: 12px;}
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
 .instItem button:hover { background-color: transparent !important; color: white; border:2px solid white; }
 
@@ -426,6 +566,7 @@ section.sectionDivider { background: url(../images/divider-block.png) no-repeat 
 
 .report-prev { right: 15px; } 
 
+<<<<<<< HEAD
 #reportSlider { margin-bottom: 30px;  position: relative; margin-top: 30px; display: block;     overflow: hidden;}
 
 #reportSlider > .col-md-1 { position: absolute; height: 100%; }
@@ -433,6 +574,9 @@ section.sectionDivider { background: url(../images/divider-block.png) no-repeat 
 #reportSlider > .col-md-1:first-child{ left: 15px; }
 
 #reportSlider > .col-md-1:last-child{ right: 0; }
+=======
+#reportSlider { margin-bottom: 30px;  position: relative; margin-top: 30px;}
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
 #report { padding-left: 0px; padding-right: 0px; margin-bottom: 0; }
 
@@ -474,7 +618,11 @@ section.sectionDivider { background: url(../images/divider-block.png) no-repeat 
 
 #news .newsItem { position: relative; margin-left: 15px; margin-right: 15px; min-height: 365px; color: rgb(101, 101, 101);}
 
+<<<<<<< HEAD
 #news .newsItem > a:first-child {display: block; position: relative; transition: all 0.2s ease;}
+=======
+#news .newsItem > a:first-child { height: 150px; display: block; position: relative; transition: all 0.2s ease;}
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
 #news .newsItem .newsItemTitle { margin:10px 0;font-size: 24px; line-height: 1.2; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; -webkit-transition: all 0.2s ease; transition: all 0.2s ease; }
 
@@ -498,7 +646,11 @@ section.sectionDivider { background: url(../images/divider-block.png) no-repeat 
 
 #news .newsItem > a:first-child:hover:after { opacity: 1; }
 
+<<<<<<< HEAD
 #news .newsItem > a:first-child:before { height: 100%; width: 100%; display: block; content: ''; padding-top: 65%; transition: all 200ms linear; -webkit-transition: all 300ms linear; top: 0; left: 0; background: rgba(19, 21, 26, 0.0); }
+=======
+#news .newsItem > a:first-child:before { height: 100%; width: 100%; display: block; content: ''; position: absolute; transition: all 200ms linear; -webkit-transition: all 300ms linear; top: 0; left: 0; background: rgba(19, 21, 26, 0.0); }
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
 #news .newsItem > a:first-child:after { height: 100%; width: 100%; display: block; content: ''; position: absolute; transition: all 200ms linear; -webkit-transition: all 300ms linear; top: 0; left: 0; opacity: 0; -webkit-background-size: 20% 20%; -moz-background-size: 20% 20%; -o-background-size: 20% 20%; background-size: 20% 20%; background: url(../images/news-img-hover.png) no-repeat center; }
 
@@ -534,11 +686,19 @@ section.sectionDivider { background: url(../images/divider-block.png) no-repeat 
 
 .mainMenuItem > div .mainMenuTitle { transition: all 0.25s ease; border-bottom: 2px solid white; padding-bottom: 10px; margin: 0; text-align: center; margin-bottom: 10px; letter-spacing: 0.5px; font-weight: bold; min-height: 64px; font-size: 22px;}
 
+<<<<<<< HEAD
 .mainMenuItem > div .mainMenuDescrShort{ opacity:0; transition: all 0.35s ease; margin-bottom: 10px; font-size: 12px; font-weight: normal; letter-spacing: 0.5px; line-height: 15px; min-height: 105px;}
 
 .mainMenuItem > div .mainMenuDescrShort p { margin:0; }
 
 .mainMenuItem > div button { opacity: 0; transition: all 0.45s ease; font-weight: bold; min-height: 30px; height: 30px; margin: 0; color: rgba(193, 222, 151, 1); border-radius: 0; background-color: white; width: 70%; margin-left: 15%; line-height: 1px; font-size: 12px; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 1px 0 rgba(0, 0, 0, 0.02), 0 2px 1px -1px rgba(0, 0, 0, 0.11); }
+=======
+.mainMenuItem > div .mainMenuDescrShort{ opacity:0; transition: all 0.35s ease; margin-bottom: 10px; font-size: 12px; font-weight: normal; letter-spacing: 0.5px; line-height: 15px; }
+
+.mainMenuItem > div .mainMenuDescrShort p { margin:0; }
+
+.mainMenuItem > div button { opacity: 0; transition: all 0.45s ease; font-weight: bold; min-height: 30px; height: 30px; margin: 0; color: rgba(193, 222, 151, 1); border-radius: 0; background-color: white; width: 70%; margin-left: 15%; border-radius: 20px; line-height: 1px; font-size: 12px; }
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
 .mainMenuItem > div button:hover { background-color: transparent !important;  border: 2px solid white; }
 
@@ -595,7 +755,11 @@ section.sectionDivider { background: url(../images/divider-block.png) no-repeat 
 @media(min-width: 992px) and ( max-width: 1199px){
     .mainMenuItem > div { padding: 15px }
     .mainMenuItem > div .mainMenuTitle{ min-height: 45px; font-size: 17px}
+<<<<<<< HEAD
     .mainMenuItem > div .mainMenuDescrShort{ font-size: 11px; letter-spacing: 0.3px; min-height: 90px;}
+=======
+    .mainMenuItem > div .mainMenuDescrShort{ font-size: 11px; letter-spacing: 0.3px; }
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 }
 
 @media ( min-width: 768px) and ( max-width: 991px){
@@ -615,6 +779,7 @@ section.sectionDivider { background: url(../images/divider-block.png) no-repeat 
 
 </style>
 
+<<<<<<< HEAD
 @stop
 
 @section('loadingPage')
@@ -628,4 +793,6 @@ section.sectionDivider { background: url(../images/divider-block.png) no-repeat 
         </div>
     </div>
 </div>
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 @stop

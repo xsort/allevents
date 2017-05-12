@@ -29,6 +29,10 @@ class MenuProducts extends Migration
 			$t->boolean('enabled')->default(true);
             $t->integer('views');
             $t->integer('sort');
+<<<<<<< HEAD
+=======
+			$t->boolean('top');
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
             $t->string('slug', 200)->index('idx_slug');
 			$t->timestamps();
 		});

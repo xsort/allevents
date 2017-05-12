@@ -7,7 +7,11 @@
     height      = height of final photo (optional)
 -->
 
+<<<<<<< HEAD
 <div class="tab-pane {{isset($class) ? $class : 0}}" id="{{$div_id or 'photos'}}" >
+=======
+<div class="tab-pane {{isset($class) ? $class : 0}}" id="{{$div_id or 'photos'}}">
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
         <div id="queue"></div>
         <input class="file_upload" name="file_upload" type="file" multiple="true" id="uploadifive_{{$div_id or 'photos'}}"/>
         <ul class="ace-thumbnails clearfix photos">

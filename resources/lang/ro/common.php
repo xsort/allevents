@@ -44,7 +44,11 @@ return [
     'f-cooperation'     => 'Pentru orice întrebări, inclusiv cele privind publicitatea și cooperarea, vă rugăm să contactați:',
     'f-mailer-title'    => 'Știri, Reduceri, Eveniment Chișinău',
     'f-social'          => 'Suntem în rețelele sociale:',
+<<<<<<< HEAD
     'f-description'     => 'Allevents - este un proiect multifuncțional, care vă va spune despre cele mai importante ale evenimentului (evenimente), în țara noastră, și vă va familiariza cu cele mai bune companii din vacanță și divertisment! În cazul în care doriți să organizați vacanta lor le pe site-ul nostru puteți găsi cu ușurință tot ce ai nevoie pentru un eveniment (evenimente)! Noi va vom prezenta la cele mai bune restaurante și cluburi din țară! Puteți urmări ultimele tendințe ale modei în zona de vacanță și de divertisment!',
+=======
+
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     'all-categories'    => 'Toate categoriile',
     'watch-also'        => 'Vezi de asemenea',
 

@@ -24,6 +24,7 @@ class HomeController extends Controller
 		$products = Products::where('enabled',true)->where('top',true)->with('photos')->get();
 		//$tags = Products::where('top',true)->get();
 		$news = News::where('top', true)->with('photos')->get();
+<<<<<<< HEAD
 
 		$reports_tags = Tags::with('photos')->whereHas('news', function ($query) {
             $query->reports();
@@ -31,6 +32,9 @@ class HomeController extends Controller
 
 
 		return view('index')->with(compact('categories', 'products', 'reports_tags'))->with('newslist',$news);
+=======
+		return view('index')->with('categories', $categories)->with('products', $products)->with('newslist',$news);
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     }
 
     public function cap()

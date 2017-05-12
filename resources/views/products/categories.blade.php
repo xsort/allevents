@@ -65,12 +65,21 @@
             <div class="row">
                 <div class="col-md-9 col-sm-12">
                     <div class="text-center">
+<<<<<<< HEAD
                         <h1 class="page-title rowed categoryHeadTitle">{{$trans->categories_title}}</h1>
                     </div>
                     <div class="categoryContainer" layout="row" layout-wrap layout-align="start stretch" >
                     @foreach ($data->children as $subcat)
                         <div class="categoryWrapper" flex="20" ng-cloak>
                             <a href="{{ route('get_slug', $subcat->slug) }}" layout="column" layout-align="space-between stretch" class="md-whiteframe-1dp">
+=======
+                        <h1 class="page-title rowed categoryHeadTitle">Категории</h1>
+                    </div>
+                    <div class="categoryContainer" layout="row" layout-wrap layout-align="start stretch" >
+                    @foreach ($data->children as $subcat)
+                        <div class="categoryWrapper" flex="20">
+                            <a href="{{$subcat->slug}}" layout="column" layout-align="space-between stretch" class="md-whiteframe-1dp">
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                                 <div class="categoryImg" layout="row" layout-align="center center" >
                                     <img src="/uploaded/{{isset($subcat->photos{0}) ? $subcat->photos{0}->source : 'nophoto.png'}}" alt="">
                                 </div>

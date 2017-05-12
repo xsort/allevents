@@ -173,7 +173,11 @@ return [
         Tsawler\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
 
         /* debugbar */
+<<<<<<< HEAD
         Barryvdh\Debugbar\ServiceProvider::class,
+=======
+        //Barryvdh\Debugbar\ServiceProvider::class,
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     ],
 
     /*

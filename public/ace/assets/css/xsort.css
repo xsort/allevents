@@ -176,6 +176,7 @@ color: rgb(91,91,91);
 background-color: white; 
 border: 1px solid rgb(245, 245, 245); 
 box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.137255) 0px 1px 1px 0px, rgba(0, 0, 0, 0.117647) 0px 2px 1px -1px; 
+<<<<<<< HEAD
 }
 
 #ask_question .modal-content { padding: 30px 12% 30px; }
@@ -192,4 +193,6 @@ box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.137255) 0px 1px 
 
 @media(max-width: 767px){
     #ask_question .modal-content { padding: 20px 6% 20px; }
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 }

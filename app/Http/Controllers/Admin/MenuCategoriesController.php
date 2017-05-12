@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 
 class MenuCategoriesController extends Controller
 {
+<<<<<<< HEAD
     public function index()
     {
         $data = MenuCategories::with('children')->root()->get();
@@ -19,6 +20,14 @@ class MenuCategoriesController extends Controller
 
     public function create()
     {
+=======
+    public function index(){
+        $data = MenuCategories::all();
+        return view('admin.menu.categories.index')->with(compact('data'));
+    }
+
+    public function create(){
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
         $categories = MenuCategories::root()->lists('name','id')->toArray();
         return view('admin.menu.categories.edit')->with('categories', $categories);
     }

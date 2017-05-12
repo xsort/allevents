@@ -22,7 +22,11 @@ class MenuProductsController extends Controller
 
     public function create($id){
         $product    = Products::find($id);
+<<<<<<< HEAD
         $categories = MenuCategories::root()->with('children')->get();
+=======
+        $categories = $this->getTreeCategories();
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
         return view('admin.menu.edit')->with(compact('categories', 'product'));
     }
 
@@ -75,7 +79,11 @@ class MenuProductsController extends Controller
     public function edit($id)
     {
         $data       = MenuProducts::find($id);
+<<<<<<< HEAD
         $categories = MenuCategories::root()->with('children')->get();
+=======
+        $categories = $this->getTreeCategories();
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
         $product    = Products::find($data->product_id);
 
         return view('admin.menu.edit')->with(compact('data', 'categories', 'product'));

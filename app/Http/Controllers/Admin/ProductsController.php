@@ -2,18 +2,27 @@
 
 namespace App\Http\Controllers\Admin;
 
+<<<<<<< HEAD
 use App\Http\Controllers\MailController;
 use App\Models\Contacts;
 use App\Models\User;
+=======
+use App\Models\Contacts;
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Products;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use App\Models\Categories;
 use Illuminate\Support\Facades\Auth;
+=======
+use Illuminate\Support\Facades\Session;
+use App\Models\Categories;
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
 
 class ProductsController extends Controller
@@ -109,6 +118,7 @@ class ProductsController extends Controller
 
         // redirect
         Session::flash('message', trans('common.saved'));
+<<<<<<< HEAD
 
         if(Auth::user()->isManager()){
             $auth_user = Auth::user();
@@ -151,6 +161,9 @@ class ProductsController extends Controller
 
             return redirect('admin/products');
         }
+=======
+        return redirect('admin/products');
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     }
     /**
      * Display the specified resource.
@@ -176,6 +189,7 @@ class ProductsController extends Controller
         $parents           = $data->parents->pluck('id')->toArray();
         $contacts          = Contacts::all();
         $contacts_values   = $data->getContactsArray();
+<<<<<<< HEAD
         $manager_edited    = $data->manager()->first();
 
         if(Auth::user()->isManager()){
@@ -184,6 +198,9 @@ class ProductsController extends Controller
         else {
             return view('admin.products.edit')->with(compact('data', 'categories', 'parents', 'contacts', 'contacts_values', 'manager_edited'));
         }
+=======
+        return view('admin.products.edit')->with(compact('data','categories','parents','contacts','contacts_values'));
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     }
 
     /**
@@ -194,6 +211,7 @@ class ProductsController extends Controller
      */
     public function update(Request $request, $id)
     {
+<<<<<<< HEAD
         if(Auth::user()->isManager()) {
             $rules = array(
                 'name' => 'required'
@@ -205,6 +223,12 @@ class ProductsController extends Controller
                 'slug' => 'required|unique:products,id,{$id}'
             );
         }
+=======
+        $rules = array(
+            'name'          => 'required',
+            'slug'          => 'required|unique:products,id,{$id}'
+        );
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
         $this->validate($request, $rules);
 

@@ -4,7 +4,11 @@
 
 @section('centerbox')
     <div class="page-header">
+<<<<<<< HEAD
         <h1> <a href="{{ route('admin.menu', $product->id) }}">Меню</a> <small><i class="ace-icon fa fa-angle-double-right"></i> Редактирование продукции для {{ $product->name }}</small> </h1>
+=======
+        <h1> <a href="{{ route('admin.menu', $product->id) }}">Меню</a> <small><i class="ace-icon fa fa-angle-double-right"></i> Редактирование меню для {{ $product->name }}</small> </h1>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     </div>
 
     @include('admin.partials.errors')
@@ -92,6 +96,7 @@
                 {{ Form::label('category_id', 'Категория', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 
                 <div class="col-sm-9">
+<<<<<<< HEAD
                     <select name="category_id" class="col-sm-11 chosencat">
                         <option value="0">---нет категории---</option>
                         @foreach($categories as $cat)
@@ -112,6 +117,9 @@
                             @endif
                         @endforeach
                     </select>
+=======
+                    {{ Form::select('category_id', array("0" => "Нет родителя") + $categories, (isset($data->category_id) ? $data->category_id : 0), ['class'=>'col-sm-11']) }}
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                 </div>
             </div>
             <div class="form-group">
@@ -194,6 +202,9 @@
 
 @include('admin.partials.datepicker')
 
+<<<<<<< HEAD
 @include('admin.partials.chosen')
 
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 @endsection

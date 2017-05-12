@@ -17,10 +17,17 @@
  * FRONTEND
  *
  */
+<<<<<<< HEAD
 Route::group(['middleware' => ['web', 'shared']], function () {
 
     Route::get('logout', 'Auth\AuthController@logout');
 
+=======
+Route::group(['middleware' => ['web']], function () {
+	
+	Route::get('logout', 'Auth\AuthController@logout');
+	
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     Route::get('/', [
         'as'    => 'cap',
         'uses'  => 'HomeController@cap'
@@ -32,6 +39,7 @@ Route::group(['middleware' => ['web', 'shared']], function () {
     ]);
 
     Route::get('news/{slug}', ['uses'  => 'NewsController@getNews', 'as' => 'get-news']);
+<<<<<<< HEAD
 
     Route::get('news', ['uses' => 'NewsController@getNewsList', 'as' => 'news']);
 
@@ -76,6 +84,52 @@ Route::group(['middleware' => ['web', 'shared']], function () {
     Route::post('put-event',    ['uses'=>'MailController@putEvent', 'as'=>'put-event']);
 
     Route::post('make-contact',    ['uses'=>'MailController@makeContact', 'as'=>'make-contact']);
+=======
+    
+    Route::get('news', ['uses' => 'NewsController@getNewsList', 'as' => 'news']);
+
+    Route::get('reports', ['uses' => 'NewsController@getReportsList', 'as' => 'reports']);
+
+    Route::get('promo', ['uses' => 'NewsController@getPromoList', 'as' => 'promo']);
+
+    Route::get('categories', 'CategoriesController@getCategoriesList');
+    
+    Route::get('{slug}/photo', ['uses'=>'ProductsController@getPhotos', 'as' => 'get_galleries']);
+
+    Route::get('{slug}/photo/{name}', ['uses'=>'ProductsController@getGallery', 'as' => 'get_gallery']);
+
+    Route::get('{slug}/video', ['uses'=>'ProductsController@getVideos', 'as' => 'get_videos']);
+    
+    Route::get('{slug}/promo', ['uses'=>'ProductsController@getPromo', 'as' => 'get_promo']);
+    
+    Route::get('{slug}/menu', ['uses'=>'ProductsController@getMenu', 'as' => 'get_menu']);
+
+    Route::get('{slug}/menu/{slug_menu}', ['uses'=>'ProductsController@getMenuProducts', 'as' => 'get_menu_products']);
+
+    Route::get('{slug}/plan', ['uses'=>'ProductsController@getPlan', 'as' => 'get_plan']);
+
+    Route::get('{slug}/reservation', ['uses'=>'ProductsController@getReservation', 'as' => 'get_reservation']);
+
+    Route::get('card', 'ProductsController@getCard');
+
+    Route::get('search', ['uses'=>'CommonController@getSearch', 'as'=>'search']);
+    
+    Route::get('admin', 'Admin\AdminController@index');
+
+    Route::get('tag/{id}', 'NewsController@getNewsByTagID');
+
+    Route::post('make-event',    ['uses'=>'MailController@makeEvent', 'as'=>'make-event']);
+
+    Route::post('put-event',    ['uses'=>'MailController@putEvent', 'as'=>'put-event']);
+
+    Route::post('make-contact',    ['uses'=>'MailController@makeContact', 'as'=>'make-contact']);
+
+    Route::post('send-card',    ['uses'=>'MailController@sendCard', 'as'=>'send-card']);
+
+    Route::post('inst-reservation',    ['uses'=>'MailController@reservation', 'as'=>'inst-reservation']);
+
+    Route::get('{slug}', ['uses'=>'CommonController@getSlug', 'as'=>'get_slug']);
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
     Route::post('send-email',    ['uses'=>'MailController@sendEmail', 'as'=>'send-email']);
 
@@ -101,8 +155,13 @@ Route::group(['middleware' => ['web', 'shared']], function () {
  *  admin panel
  *
  */
+<<<<<<< HEAD
 
 
+=======
+ 
+ 
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 Route::get('admin/login', [
     'uses'          => 'Admin\AdminController@getLogin',
     'middleware'    => ['web']
@@ -117,6 +176,7 @@ Route::group(['middleware' => ['web', 'manager']], function () {
     Route::get('admin', 'Admin\AdminController@index');
 });
 
+<<<<<<< HEAD
 Route::group(['middleware' => ['web'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
 
     Route::group(['middleware' => ['admin']], function () {
@@ -159,6 +219,33 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin', 'as' => 'admin.'], f
 
 
     });
+=======
+Route::group(['middleware' => ['web', 'admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::controllers(['json' => 'Admin\JsonController']);
+
+    Route::resource('content',          'Admin\ContentController');
+
+    Route::resource('news',             'Admin\NewsController');
+    
+    Route::resource('categories',       'Admin\CategoriesController');
+    
+    Route::resource('products',         'Admin\ProductsController');
+
+    Route::resource('galleries',        'Admin\GalleriesController');
+
+    Route::resource('videos',           'Admin\VideosController');
+
+    Route::resource('menucategories',   'Admin\MenuCategoriesController');
+
+    Route::get('product-menu/{id}',             ['uses' => 'Admin\MenuProductsController@index',    'as' => 'menu']);
+    Route::get('product-menu/create/{id}',      ['uses' => 'Admin\MenuProductsController@create',   'as' => 'menu.create']);
+    Route::get('product-menu/edit/{id}',        ['uses' => 'Admin\MenuProductsController@edit',     'as' => 'menu.edit']);
+    Route::post('product-menu/{id}',            ['uses' => 'Admin\MenuProductsController@store',    'as' => 'menu.store']);
+    Route::put('product-menu/{id}',             ['uses' => 'Admin\MenuProductsController@update',   'as' => 'menu.update']);
+    Route::delete('product-menu/{id}',          ['uses' => 'Admin\MenuProductsController@destroy',  'as' => 'menu.delete']);
+
+
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 });
 
 /*
@@ -168,11 +255,19 @@ Route::group(['middleware' => ['web'], 'prefix' => 'admin', 'as' => 'admin.'], f
  */
 //////TODO middleware
 
+<<<<<<< HEAD
 // upload
 Route::any('photos/upload', 'Admin\PhotosController@upload');
 Route::get('photos/getphotos', 'Admin\PhotosController@getJSONPhotos');
 Route::get('photos/changesort', 'Admin\PhotosController@changesort');
 Route::get('photos/delete/{id}', 'Admin\PhotosController@destroy');
+=======
+    // upload
+    Route::any('photos/upload', 'Admin\PhotosController@upload');
+    Route::get('photos/getphotos', 'Admin\PhotosController@getJSONPhotos');
+    Route::get('photos/changesort', 'Admin\PhotosController@changesort');
+    Route::get('photos/delete/{id}', 'Admin\PhotosController@destroy');
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
 //URL get content
 //Route::get('{slug}', ['as' => 'getURL', 'uses' => 'ContentController@getBySlug', 'middleware'  => ['web']]);

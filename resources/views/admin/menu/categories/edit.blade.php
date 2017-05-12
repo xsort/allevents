@@ -1,5 +1,9 @@
 @extends('admin.body')
+<<<<<<< HEAD
 @section('title', 'Категория продуции')
+=======
+@section('title', 'Категория меню')
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
 
 @section('centerbox')
@@ -88,9 +92,13 @@
                 {{ Form::label('parent', 'Родитель', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 
                 <div class="col-sm-9">
+<<<<<<< HEAD
                     {{ Form::select('parent_id', array("0" => "Нет родителя") + $categories,
                         (isset($data->parent_id) ? $data->parent_id : 0),
                         ['class' => 'col-sm-11', 'id' => 'chosencat']) }}
+=======
+                    {{ Form::select('parent_id', array("0" => "Нет родителя") + $categories, (isset($data->parent_id) ? $data->parent_id : 0), ['class'=>'col-sm-11']) }}
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                 </div>
             </div>
         </div><!-- /.col-sm-6 -->
@@ -160,6 +168,9 @@
 
 @include('admin.partials.datepicker')
 
+<<<<<<< HEAD
 @include('admin.partials.chosen')
 
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 @endsection

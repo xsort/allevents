@@ -28,6 +28,7 @@ class NewsController extends Controller
         $data   = $tag->news()->with('photos')->paginate(config('site.news_per_page'));
         return view('news.newslist')->with(compact('data', 'tag', 'type'));
     }
+<<<<<<< HEAD
 
     public function getNewsByTagSlug($slug)
     {
@@ -36,6 +37,8 @@ class NewsController extends Controller
         $data   = $tag->news()->with('photos')->paginate(config('site.news_per_page'));
         return view('news.newslist')->with(compact('data', 'tag', 'type'));
     }
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     
     public function getNewsList()
     {
@@ -43,6 +46,7 @@ class NewsController extends Controller
         $data = News::with('photos')->news()->get();
 		return view('news.newslist')->with(compact('data', 'type'));
     }
+<<<<<<< HEAD
 
     public function getReportsList()
     {
@@ -100,6 +104,20 @@ class NewsController extends Controller
             $query->where('slug', $slug);
         })->get();
 
+=======
+
+    public function getReportsList()
+    {
+        $type = Types::find(2);
+        $data = News::with('photos')->reports()->get();
+        return view('news.newslist')->with(compact('data', 'type'));
+    }
+
+    public function getPromoList()
+    {
+        $type = Types::find(3);
+        $data = News::with('photos')->promo()->get();
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
         return view('news.newslist')->with(compact('data', 'type'));
     }
 }

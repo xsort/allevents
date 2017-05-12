@@ -9,7 +9,11 @@
 
     @include('products.top-menu')
 
+<<<<<<< HEAD
     @include('partials.breadcrumbs', ['breadcrumbs' => [['title' => $trans->product_plan_breadcrumbs]]])
+=======
+    @include('partials.breadcrumbs', ['breadcrumbs' => [['title' => trans('common.plan')]]])
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
     <div class="layout-content" >
         <div id="loading" class="page">
@@ -33,6 +37,7 @@
                 </div>
                 <a href="{{ route('get_menu', $data->slug) }}"><img src="images/plan-menu-img.png" alt="" ></a>
             </div>
+<<<<<<< HEAD
             <div class="row">
                 <div class="container-slider-nav " layout="row" ng-cloak>
                     <div class="col-md-1 hidden-sm hidden-xs" >
@@ -53,6 +58,27 @@
                 </div>
             </div>
         </div>
+=======
+<div class="row">
+            <div class="container-slider-nav " layout="row" ng-cloak>
+                <div class="col-md-1 hidden-sm hidden-xs" >
+                    <button type="button" class="plan-next control-slider prev-arrow md-whiteframe-1dp"></button>
+                </div>
+                <div class="col-md-10 col-xs-12">
+                    <div class="row">
+                        <div class="plan-slider-nav">
+                            @foreach($data->hallplan as $photo)
+                                <div class="sliderNavItem c-bg-center" style="background-image:url(uploaded/{{ $photo->source }});"></div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 hidden-sm hidden-xs">
+                    <button type="button" class="plan-prev control-slider next-arrow md-whiteframe-1dp"></button>
+                </div>
+            </div>
+        </div></div>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     </div>         
 </div>
 

@@ -15,6 +15,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+<<<<<<< HEAD
     /**
      * Controller constructor.
      */
@@ -23,6 +24,8 @@ class Controller extends BaseController
 
     }
 
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     public function UpdatePhotos(Request $request, $id){
         $pc = new Admin\PhotosController;
         $pc->UpdatePhotos($request, $id);

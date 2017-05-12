@@ -48,6 +48,12 @@ class NewsController extends Controller
     }
 
     private function save(Request $request, $id = null){
+<<<<<<< HEAD
+=======
+        //photos
+        //dd($request->photos);
+
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
         // store
         if (!isset($id)) {
             $data = new News();
@@ -69,12 +75,19 @@ class NewsController extends Controller
         //tags
         if ($request->chosencat) {
             $data->tags()->sync($request->chosencat);
+<<<<<<< HEAD
         }else{
             $data->tags()->detach();
         }
 
         //types
         if ($request->chosentypes) {
+=======
+        }
+
+        //types
+        if ($request->chosencat) {
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
             $data->types()->sync($request->chosentypes);
         }
 
@@ -127,6 +140,11 @@ class NewsController extends Controller
 
         $validator = Validator::make($request->all(), $rules);
 
+<<<<<<< HEAD
+=======
+        $validator = Validator::make($request->all(), $rules);
+
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
         if ($validator->fails()) {
             return response()->json([
                 'success' => false,

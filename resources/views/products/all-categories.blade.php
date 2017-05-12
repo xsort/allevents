@@ -16,6 +16,7 @@
 
 .categoryWrapper > a:hover { box-shadow: 0 2px 4px -1px rgba(0,0,0,.2),0 4px 5px 0 rgba(0,0,0,.14),0 1px 10px 0 rgba(0,0,0,.12);}
 
+<<<<<<< HEAD
 .categoryWrapper > a > div { position: relative; height: 50%; text-align: center; font-size: 12px; font-weight: normal; letter-spacing: 0.5px; line-height: 16px; color: #777;}
 
 .categoryWrapper > a > .categoryTitle{ margin-top: 2px; }
@@ -26,6 +27,13 @@
     left: 0;
     bottom: 0;
     right: 0; }
+=======
+.categoryWrapper > a > div { height: 50%; text-align: center; font-size: 12px; font-weight: normal; letter-spacing: 0.5px; line-height: 16px; color: #777;}
+
+.categoryWrapper > a > .categoryTitle{ margin-top: 2px; }
+
+.categoryWrapper > a > div > img { max-height: 95%; max-width: 80%; -webkit-filter: invert(20%); filter: invert(20%); }
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
 
 @media ( max-width: 406px) { 
@@ -70,12 +78,21 @@
             <div class="row">
                 <div class="col-md-9 col-sm-12">
                     <div class="text-center">
+<<<<<<< HEAD
                         <h1 class="page-title rowed categoryHeadTitle">{{$trans->categories_title}}</h1>
                     </div>
                     <div class="categoryContainer" layout="row" layout-wrap layout-align="start stretch" >
         			@foreach ($data as $subcat)
         			    <div class="categoryWrapper" flex="20" ng-cloak>
                             <a href="{{ route('get_slug', $subcat->slug) }}" layout="column" layout-align="space-between stretch" class="md-whiteframe-1dp">
+=======
+                        <h1 class="page-title rowed categoryHeadTitle">Категории</h1>
+                    </div>
+                    <div class="categoryContainer" layout="row" layout-wrap layout-align="start stretch" >
+        			@foreach ($data as $subcat)
+        			    <div class="categoryWrapper" flex="20">
+                            <a href="{{$subcat->slug}}" layout="column" layout-align="space-between stretch" class="md-whiteframe-1dp">
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                                 <div class="categoryImg" layout="row" layout-align="center center" >
                                     <img src="/uploaded/{{isset($subcat->photos{0}) ? $subcat->photos{0}->source : 'nophoto.png'}}" alt="">
                                 </div>

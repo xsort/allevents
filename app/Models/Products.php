@@ -26,10 +26,13 @@ class Products extends BaseModel
 		return $this->hasMany('App\Models\MenuProducts', 'product_id');
 	}
 
+<<<<<<< HEAD
 	public function links(){
 		return $this->belongsToMany('App\Models\Links', 'products_links', 'product_id', 'link_id')->withPivot('type', 'disabled');
 	}
 
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 	public function getContactsArray(){
 		$return = null;
 		foreach($this->contacts as $contact){
@@ -48,6 +51,7 @@ class Products extends BaseModel
 		$this->attributes['map'] = json_encode( $val );
 	}
 
+<<<<<<< HEAD
 	 public function background()
 	 {
 	  return $this->hasOne('App\Models\Photos', 'table_id')->where('table', 'background');
@@ -61,5 +65,11 @@ class Products extends BaseModel
 	 {
 		 return self::where('slug', $slug)->enabled()->firstOrFail();
 	 }
+=======
+	public function background()
+	{
+		return $this->hasOne('App\Models\Photos', 'table_id')->where('table', 'background');
+	}
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
 }

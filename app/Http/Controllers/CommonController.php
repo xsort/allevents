@@ -42,7 +42,12 @@ class CommonController extends Controller
 	    }
 
 	    //show product if slug exists
+<<<<<<< HEAD
 		return app('App\Http\Controllers\ProductsController')->index($slug);
+=======
+	    $product = Products::where('slug',$slug)->enabled()->firstOrFail();
+		return view('products.product')->with('data', $product);
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     }
 
     public function getSearch(Request $request)

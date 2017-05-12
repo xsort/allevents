@@ -62,11 +62,14 @@ class News extends BaseModel
     public function scopeVisible($query){
         return $query->where('enabled', true);
     }
+<<<<<<< HEAD
 
     public function scopeAfisha($query){
         return $query->whereHas('types', function($q){
             $q->where('types.id', 4); //only afisha
         });
     }
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
 }

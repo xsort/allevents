@@ -7,7 +7,11 @@
     <div class="layout-content" >
         <div class="container-fluid">
             <div class="col-md-9">
+<<<<<<< HEAD
                 <span class="s-result">{{$trans->search_title}} "{{ $searchword }}"</span>
+=======
+                <span class="s-result">Поиск по запросу "{{ $searchword }}"</span>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                 <div class="container-fluid">
 
                                     <div class="row">
@@ -16,32 +20,52 @@
 
                                                 <li class="active">
                                                     <a data-toggle="tab" href="#main_s">
+<<<<<<< HEAD
                                                         {{$trans->search_allcategories}} <span class="badge-count">{{ $num_results }}</span>
+=======
+                                                        Все результаты <span class="badge-count">{{ $num_results }}</span>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                                                     </a>
                                                 </li>
 
                                                 <li>
                                                     <a data-toggle="tab" href="#news_s">
+<<<<<<< HEAD
                                                         {{$trans->search_news}} <span class="badge-count">{{ count($data['news']) }}</span>
+=======
+                                                        Новости <span class="badge-count">{{ count($data['news']) }}</span>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                                                     </a>
                                                 </li>
 
 
                                                 <li>
                                                     <a data-toggle="tab" href="#report_s">
+<<<<<<< HEAD
                                                         {{$trans->search_reports}} <span class="badge-count">{{ count($data['reports']) }}</span>
+=======
+                                                        Отчеты <span class="badge-count">{{ count($data['reports']) }}</span>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                                                     </a> 
                                                 </li>    
 
                                                 <li>
                                                     <a data-toggle="tab" href="#board_s">
+<<<<<<< HEAD
                                                         {{$trans->search_poster}}<span class="badge-count">{{ count($data['posters']) }}</span>
+=======
+                                                        Афиша <span class="badge-count">{{ count($data['posters']) }}</span>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                                                     </a>
                                                 </li>  
 
                                                 <li>
                                                     <a data-toggle="tab" href="#inst_s">
+<<<<<<< HEAD
                                                         {{$trans->search_objects}} <span class="badge-count">{{ count($data['products']) }}</span>
+=======
+                                                        Заведения <span class="badge-count">{{ count($data['products']) }}</span>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                                                     </a>
                                                 </li>  
                                             </ul>

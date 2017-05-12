@@ -31,7 +31,11 @@
             <div class="col-sm-2 ">
                 <label>
                 	{{ Form::checkbox('top',  1, (isset($data) && $data->top == 1 ? true : false), ['class' => 'ace']) }}
+<<<<<<< HEAD
                     <span class="lbl showTip L7"> На главную </span>
+=======
+                    <span class="lbl"> На главную </span>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                 </label>
             </div>
             <div class="col-sm-4">
@@ -100,6 +104,7 @@
             <div class="form-group">
                 {{ Form::label('slug', 'URL', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-9">
+<<<<<<< HEAD
                     {{ Form::text('slug', (isset($data->slug) ? $data->slug : old('slug')), array('class' => 'col-sm-11 col-xs-12 showTip L1')) }}
                 </div>
             </div>
@@ -108,6 +113,16 @@
                 {{ Form::label('parent', 'родитель', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 
                 <div class="col-sm-9 ">
+=======
+                    {{ Form::text('slug', (isset($data->slug) ? $data->slug : old('slug')), array('class' => 'col-sm-11 col-xs-12')) }}
+                </div>
+            </div>
+            
+            <div class="form-group">
+                {{ Form::label('parent', 'родитель', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                
+                <div class="col-sm-9">
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                     @if(isset($parents))
                     {{ Form::select('parent[]', array("null" => "Нет родителя") + $categories, $parents, ['multiple'=>'multiple','id'=>'chosencat','class'=>'tag-input-style col-sm-11 control-label no-padding-right']) }}
 	                @else
@@ -166,7 +181,11 @@
              </div>
 
             @include('admin.partials.meta')
+<<<<<<< HEAD
             @include('admin.partials.photos', ['table' => 'categories', 'class' => 'showTip L8', 'table_id' => isset($data->id) ? $data->id : 0])
+=======
+            @include('admin.partials.photos', ['table' => 'categories', 'table_id' => isset($data->id) ? $data->id : 0])
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
         </div>
 
 </div>
@@ -183,6 +202,7 @@
 {!! HTML::style('ace/assets/css/chosen.css') !!}
 @endsection
 
+<<<<<<< HEAD
 
 @section('stylesTooltip')
 <style>
@@ -220,6 +240,8 @@ dw_Tooltip.content_vars = {
 </script>
 @endsection
 
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 @section('scripts')
 
 @include('admin.partials.ckeditor')

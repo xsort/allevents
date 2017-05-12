@@ -7,6 +7,7 @@
 <div class="layout-page ">
     @include('products.top-menu')
 
+<<<<<<< HEAD
     @include('partials.breadcrumbs', ['breadcrumbs' => [['title' => $trans->product_photo_breadcrumbs]]])
 
     <div class="layout-content" >
@@ -16,6 +17,17 @@
                     <div class="col-md-4 col-sm-6 col-xs-12 photoWrapper">
 
                         <a href="{{ route('get_gallery',[$data->slug, $gallery->slug]) }}" class="md-whiteframe-5dp c-bg-center photoContainer" style="background-image:url('{{isset($gallery->photos{0}) ? 'uploaded/' . $gallery->photos{0}->source : 'images/inst-menu-photo/photo.png'}}')">
+=======
+    @include('partials.breadcrumbs', ['breadcrumbs' => [['title' => trans('common.photo')]]])
+
+    <div class="layout-content" >
+        <div class="container-fluid">
+            <div class="row">
+                @foreach($data->visible_galleries as $gallery)
+                    <div class="col-md-4 col-sm-6 col-xs-12 photoWrapper">
+
+                        <a href="{{ route('get_gallery',[$data->slug, $gallery->slug]) }}" class="md-whiteframe-5dp c-bg-center photoContainer" style="background-image:url({{isset($gallery->photos{0}) ? 'uploaded/' . $gallery->photos{0}->source : 'images/inst-menu-photo/photo.png'}})">
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
                             <md-tooltip md-direction="bottom" md-delay="200" class="hidden-xs">
                                       {{ $gallery->name }}

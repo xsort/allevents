@@ -6,7 +6,11 @@
 
 <div class="layout-page ">
     @include('products.top-menu')
+<<<<<<< HEAD
     @include('partials.breadcrumbs', ['breadcrumbs' => [['title' => $trans->product_promo_breadcrumbs]]])
+=======
+    @include('partials.breadcrumbs', ['breadcrumbs' => [['title' => trans('common.promo')]]])
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
     <div class="layout-content" >
 
@@ -24,11 +28,19 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-9">
+<<<<<<< HEAD
                     <div class="row" ng-cloak>
                         <div class="text-center newsListTitle">
                             <h1 class="page-title rowed">{{$trans->product_promo_title}}</h1>
                         </div>
                             <div class="masonry" data-columns >
+=======
+                    <div class="row">
+                        <div class="text-center newsListTitle">
+                            <h1 class="page-title rowed">Акции</h1>
+                        </div>
+                            <div class="masonry" data-columns>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                                 @foreach($data->news as $d)
                                     <div class="newsWrapper" layout="column" layout-align="stretch" itemscope itemtype="http://schema.org/Article">
                                     <meta itemscope itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" itemid="https://google.com/article"/>
@@ -50,7 +62,11 @@
 
                                         <p>{{ str_limit($d->description_short, $limit = 150, $end = '...') }}</p>
 
+<<<<<<< HEAD
                                         <md-button class="newsReadMore" ng-href="{{ route('get-news', $d->slug) }}">{{$trans->product_promo_post_button}}</md-button>
+=======
+                                        <md-button class="newsReadMore" ng-href="{{ route('get-news', $d->slug) }}">Читать далее</md-button>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
                                         <meta itemprop="dateModified" content="{{$d->created_at}}">
                                         <meta itemprop="datePublished" content="{{$d->created_at}}">

@@ -41,8 +41,12 @@ return [
     'f-cooperation'     => 'For any questions, including those concerning advertising and cooperation, please contact:',
     'f-mailer-title'    => 'News, Discounts, Events Chisinau',
     'f-social'          => 'We are in social networks:',
+<<<<<<< HEAD
     'f-description'     => 'Allevents - is a multipurpose project, which will tell you about the most important of Event (events) in our country, and will acquaint you with the best companies in the holiday and entertainment! If you want to organize your holiday yourself, on our site you can easily find everything you need for your Event (events)! We will introduce you to the best restaurants and clubs of the country! You can follow the latest fashion trends in the area of holiday and entertainment!',
     
+=======
+
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     'all-categories'    => 'All categories',
     'watch-also'        => 'See also',
 ];

@@ -40,8 +40,12 @@ var ScrollToTop = function() {
 var LayoutHeader = function() {
 
     var _handleHeaderOnScroll = function() {
+<<<<<<< HEAD
         $("body>md-content").scroll(function() {
         if ($("body>md-content").scrollTop() > $(".topbar").height() + $("header").height() - 40 + $(".instHeadImageContainer").outerHeight()) {
+=======
+        if ($(window).scrollTop() > $(".topbar").height() + $("header").height() +$(".layoutInstMenu").height() + $(".instHeadImageContainer").height()) {
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
             $("body").addClass("page-on-scroll");
             $("body").removeClass("remove-bg");
             $(".top-sm-logo").css({
@@ -54,7 +58,10 @@ var LayoutHeader = function() {
                 "display": "block",
             });
         }
+<<<<<<< HEAD
     })
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     }
 
     return {

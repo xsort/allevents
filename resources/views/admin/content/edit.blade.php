@@ -132,10 +132,17 @@
                      {{ Form::textarea('description[ru]', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => 'editor')) }}
                    </div>
                    <div class="tab-pane" id="descRo">
+<<<<<<< HEAD
                      {{ Form::textarea('description[ro]', (isset($data->description_ro) ? $data->description_ro : old('description_ro')), array('class' => 'ckeditor', 'id' => 'editor_ro')) }}
                    </div>
                    <div class="tab-pane" id="descEn">
                      {{ Form::textarea('description[en]', (isset($data->description_en) ? $data->description_en : old('description_en')), array('class' => 'ckeditor', 'id' => 'editor_en')) }}
+=======
+                     {{ Form::textarea('description[ro]', (isset($data->description_ro) ? $data->description_ro : old('description_ro')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+                   </div>
+                   <div class="tab-pane" id="descEn">
+                     {{ Form::textarea('description[en]', (isset($data->description_en) ? $data->description_en : old('description_en')), array('class' => 'ckeditor', 'id' => 'editor')) }}
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                    </div>
 
                  </div>

@@ -2,7 +2,11 @@
 @section('title', $product->name)
 @section('centerbox')
     <div class="page-header">
+<<<<<<< HEAD
         <h1> Продукция для {{ $product->name }} <small><i class="ace-icon fa fa-angle-double-right"></i> Список продукции</small> </h1>
+=======
+        <h1> Меню для {{ $product->name }} <small><i class="ace-icon fa fa-angle-double-right"></i> Список блюд из меню</small> </h1>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     </div>
 
     @include('admin.partials.messages')
@@ -15,7 +19,11 @@
             </a>
 
             <div class="clearfix"><div class="pull-right tableTools-container"></div></div>
+<<<<<<< HEAD
             <div class="table-header"> Список продукции </div>
+=======
+            <div class="table-header"> Список блюд из меню </div>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
             <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable">
                 <thead>

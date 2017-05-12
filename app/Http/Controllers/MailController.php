@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Illuminate\Support\Facades\Mail;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
 class MailController extends Controller
 {
@@ -76,6 +79,7 @@ class MailController extends Controller
         });
     }
 
+<<<<<<< HEAD
     public function sendEmail(Request $request){
         Mail::send('emails.send-email', ['clientEmail' => $request->clientEmail ], function ($m) {
             $m->from($this->from_mail, $this->from_name)
@@ -84,6 +88,8 @@ class MailController extends Controller
         });
     }    
 
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     public function reservation(Request $request){
         Mail::send('emails.make-event', ['name' => $request->name, 'phone' => $request->phone, 'text'=>$request->text], function ($m) {
             $m->from($this->from_mail, $this->from_name)
@@ -91,6 +97,7 @@ class MailController extends Controller
               ->subject('Резервация заведения');
         });
     }
+<<<<<<< HEAD
 
     public function productNotification(Request $request){
         $admin_emails = $request->admin_emails;
@@ -127,4 +134,6 @@ class MailController extends Controller
                 ->subject('Вопрос от менеджера');
         });
     }
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 }

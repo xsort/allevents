@@ -52,8 +52,12 @@
             <div class="galleryPhotoWrapper" layout="row" layout-wrap layout-align="start">
                 @foreach($gallery->photos as $photo)
                 <div flex="20"  class="galleryPhoto" >
+<<<<<<< HEAD
                     <a href="uploaded/{{ $photo->source }}" class="c-bg-center md-whiteframe-2dp galleryPhotoImage"   style="background-image:url('uploaded/{{ $photo->source }}')">  
                     </a>
+=======
+                    <a href="uploaded/{{ $photo->source }}" class="c-bg-center md-whiteframe-2dp" data-lightbox="image-1"  style="background-image:url('uploaded/{{ $photo->source }}')"></a>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                 </div>
                 @endforeach
             </div>
@@ -63,7 +67,11 @@
         <div class="col-xs-12 ">
             <div class="row">
                 <div class="text-center">
+<<<<<<< HEAD
                     <div class="galleryTitle"><h2 class=" rowed">{{$trans->gallery_other_galleries}}</h2></div>
+=======
+                    <div class="galleryTitle"><h2 class=" rowed">{{ trans('common.else_photo') }}</h2></div>
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                 </div>
                 
                     <div class="row">
@@ -199,12 +207,17 @@
 </style>
 @stop
 
+<<<<<<< HEAD
 @section('styles')
+=======
+@section('linkStyleProductGalleryPage')
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
     <link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="css/slick-theme.css">
     <link rel="stylesheet" href="css/lightbox.min.css">
 @stop
 
+<<<<<<< HEAD
 @section('scripts')
     <script src="js/lightbox.min.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
@@ -260,4 +273,54 @@
     });
   </script>
 
+=======
+@section('scriptProductGalleryPage')
+  <script src="js/lightbox.min.js"></script>
+ <script src="js/slick.min.js"></script>
+
+  <script>
+      $(document).ready(function(){
+$('.other-category').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+
+    dots: false,
+    centerMode: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    nextArrow: '.other-next',
+    prevArrow: '.other-prev',
+    responsive: [{
+        breakpoint: 1199,
+        settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true,
+
+        }
+    },  {
+        breakpoint: 992,
+        settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+        }
+    }, {
+        breakpoint: 767,
+        settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+        }
+    }, {
+        breakpoint: 550,
+        settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+        }
+    }]
+});
+});
+  </script>
+}
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 @stop

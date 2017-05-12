@@ -57,7 +57,11 @@
             <div class="form-group">
                 {{ Form::label('types', 'Тип', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-9">
+<<<<<<< HEAD
                     {{ Form::select('chosentypes[]', $types, $seltypes, ['multiple'=>'multiple', 'id'=>'chosentypes', 'class'=>'chosencat col-sm-11 control-label no-padding-right', 'data-placeholder' => "Выберите тип"]) }}
+=======
+                    {{ Form::select('chosentypes[]', $types, $seltypes, ['multiple'=>'multiple','id'=>'chosentypes','class'=>'chosencat col-sm-11 control-label no-padding-right', 'data-placeholder' => "Выберите тип"]) }}
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
                 </div>
             </div>
         </div><!-- /.col-sm-6 -->
@@ -186,7 +190,11 @@
 
     @include('admin.partials.ckeditor', ['form_id' => 'news'])
 
+<<<<<<< HEAD
     @include('admin.partials.slug', ['input_name'=>'name[ru]', 'form_id' => 'news'])
+=======
+    @include('admin.partials.slug',['input_name'=>'name[ru]', 'form_id' => 'news'])
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
     @include('admin.partials.datepicker')
 

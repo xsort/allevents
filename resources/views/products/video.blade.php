@@ -7,7 +7,11 @@
 
     @include('products.top-menu')
 
+<<<<<<< HEAD
     @include('partials.breadcrumbs', ['breadcrumbs' => [['title' => $trans->product_video_breadcrumbs]]])
+=======
+    @include('partials.breadcrumbs', ['breadcrumbs' => [['title' => trans('common.video')]]])
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 
 <div class="layout-content">
 
@@ -23,8 +27,13 @@
 </div>
 
 <div class="container-fluid" >
+<<<<<<< HEAD
  
     <div class="row" ng-cloak>
+=======
+
+    <div class="row">
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
         <div class="masonry videoPage" data-columns>
             @foreach($data->visible_videos as $video)
             <div class="videoItem md-whiteframe-1dp" layout-align="stretch" layout="column" itemscope itemtype="http://schema.org/VideoObject">
@@ -52,7 +61,10 @@
             @endforeach
         </div>
     </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> c9f24a26260b8e1d0ff1cc6fe297c9d9974efb5c
 </div>
 
 
