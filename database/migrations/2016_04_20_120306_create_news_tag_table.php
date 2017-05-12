@@ -35,13 +35,12 @@ class CreateNewsTagTable extends Migration
      */
     public function down()
     {
-        Schema::table('news_tag', function(Blueprint $table) {
-            $table->dropForeign('news_tag_post_id_foreign');
+        Schema::table('news_tags', function(Blueprint $table) {
+            $table->dropForeign('news_tags_news_id_foreign');
         });
-
-        Schema::table('post_tag', function(Blueprint $table) {
-            $table->dropForeign('news_tag_tags_id_foreign');
+        Schema::table('news_tags', function(Blueprint $table) {
+            $table->dropForeign('news_tags_tags_id_foreign');
         });
-        Schema::drop('news_tag');
+        Schema::drop('news_tags');
     }
 }

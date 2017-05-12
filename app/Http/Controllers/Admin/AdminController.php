@@ -4,14 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
 
 class AdminController extends Controller
 {
     public function index(){
-        return view('admin.index');
+        $user_products = Auth::user()->products()->with('photos')->get();
+
+        if(Auth::user()->isManager()){
+            return view('admin.manager.index')->with(compact('user_products'));
+        }
+        else{
+            return view('admin.index');
+        }
     }
 
     public function getLogin(){

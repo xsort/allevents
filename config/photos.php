@@ -6,7 +6,8 @@ return [
     'height'             => 768,
 
     'thumbs'            =>  [
-                                ['path'=>'thumbs',  'width' => 150, 'height' => 150]
+                                ['path'=>'thumbs',  'width' => 150, 'height' => 150],
+                                ['path'=>'thumbs2', 'width' => 75, 'height' => 75]
                             ],
 
 

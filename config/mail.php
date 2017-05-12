@@ -55,7 +55,9 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => env('MAIL_USERNAME'), 'name' => 'Xsort Web Studio'],
+
+    'to'   => ['address' => 'support@xsort.md',  'name' => 'Allevents'],
 
     /*
     |--------------------------------------------------------------------------

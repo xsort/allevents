@@ -15,4 +15,5 @@ class Helper
     public static function parseDate($string){
         DateTime::createFromFormat('d-m-Y', $string);
     }
+
 }

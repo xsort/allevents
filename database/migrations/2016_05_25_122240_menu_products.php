@@ -23,12 +23,13 @@ class MenuProducts extends Migration
 			$t->text('description_short');
 			$t->text('description_short_ro');
 			$t->text('description_short_en');
-			$t->tinyInteger('category_id');
+			$t->tinyInteger('category_id')->index();
+			$t->integer('product_id')->index();
 			$t->float('price', 15,2);
 			$t->boolean('enabled')->default(true);
             $t->integer('views');
             $t->integer('sort');
-            $t->string('slug', 200);
+            $t->string('slug', 200)->index('idx_slug');
 			$t->timestamps();
 		});
     }

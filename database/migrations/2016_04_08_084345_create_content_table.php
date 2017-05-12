@@ -20,13 +20,14 @@ class CreateContentTable extends Migration
             $t->text('description');
             $t->text('description_en');
             $t->text('description_ro');
-            $t->boolean('enabled');
+            $t->boolean('enabled')->default(true);
             $t->integer('views');
-            $t->string('meta_description', 200);
-            $t->string('meta_keywords', 200);
-            $t->string('slug', 200);
+            $t->string('slug', 200)->index('idx_slug');
             $t->timestamps();
         });
+        
+        
+   
     }
 
     /**

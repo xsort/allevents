@@ -26,9 +26,10 @@ class CreateProducts extends Migration
 			$t->float('price', 15,2);
 			$t->text('map');
 			$t->boolean('enabled')->default(true);
+			$t->boolean('top');
             $t->integer('views');
             $t->integer('sort');
-            $t->string('slug', 200);
+            $t->string('slug', 200)->index('idx_slug');
 			$t->timestamps();
 		});
     }

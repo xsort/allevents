@@ -1,7 +1,7 @@
 
 <ul class="nav nav-list">
     <li class="">
-        <a href="{{ URL::to('/') }}">
+        <a href="{{ URL::to('/admin') }}">
             <i class="menu-icon fa fa-tachometer"></i>
             <span class="menu-text"> Главная </span>
         </a>
@@ -9,16 +9,16 @@
         <b class="arrow"></b>
     </li>
     <li class="">
-        <a href="index.php?action=admin_products&a=categories">
+        <a href="admin/categories">
             <i class="menu-icon fa fa-book"></i>
             <span class="menu-text"> Категории</span>
         </a>
         <b class="arrow"></b>
     </li>
     <li class="">
-        <a href="index.php?action=admin_products&a=products">
-            <i class="menu-icon fa fa-film"></i>
-            <span class="menu-text"> Фильмы</span>
+        <a href="admin/products">
+            <i class="menu-icon fa fa-cube"></i>
+            <span class="menu-text"> Объекты </span>
         </a>
 
         <b class="arrow"></b>
@@ -42,6 +42,44 @@
     </li>
 
     <li class="">
+        <a href="{{URL::to('admin/tags')}}">
+            <i class="menu-icon fa fa-tags"></i>
+            <span class="menu-text"> Теги </span>
+        </a>
+    </li>
+
+     <li class="">
+        <a href="#" class="dropdown-toggle">
+            <i class="menu-icon fa fa-cutlery"></i>
+            <span class="menu-text"> Продукция</span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <b class="arrow"></b>
+        <ul class="submenu">
+            <li class="">
+                <a href="{{URL::to('admin/menucategories')}}">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Категории
+                </a>
+                <b class="arrow"></b>
+            </li>
+        </ul>
+    </li>
+    <li class="">
+        <a href="{{URL::to('admin/users')}}">
+            <i class="menu-icon fa fa-users"></i>
+            Пользователи
+        </a>
+        <b class="arrow"></b>
+    </li>
+    <li class="">
+        <a href="{{URL::to('admin/translations')}}">
+            <i class="menu-icon fa fa-globe"></i>
+            <span class="menu-text"> Переводы </span>
+        </a>
+    </li>
+
+    <li class="">
         <a href="#" class="dropdown-toggle">
             <i class="menu-icon fa fa-cogs"></i>
             <span class="menu-text"> Администр.</span>
@@ -49,6 +87,15 @@
         </a>
         <b class="arrow"></b>
         <ul class="submenu">
+            <li class="">
+                <a href="{{URL::to('admin/links')}}">
+                    <i class="menu-icon fa fa-caret-right"></i>
+                    Ссылки
+                </a>
+                <b class="arrow"></b>
+            </li>
+
+            <!--
             <li class="">
                 <a href="index.php?action=admin_comments">
                     <i class="menu-icon fa fa-caret-right"></i>
@@ -70,13 +117,7 @@
                 </a>
                 <b class="arrow"></b>
             </li>
-            <li class="">
-                <a href="index.php?action=admin_urls">
-                    <i class="menu-icon fa fa-caret-right"></i>
-                    Ссылки (SEF)
-                </a>
-                <b class="arrow"></b>
-            </li>
+
 
             <li class="">
                 <a href="index.php?action=admin_changepassword">
@@ -85,6 +126,7 @@
                 </a>
                 <b class="arrow"></b>
             </li>
+            -->
         </ul>
     </li>
 </ul><!-- /.nav-list -->

@@ -67,6 +67,8 @@ return [
 
     'locale' => 'ru',
 
+    'locales' => ['en' => 'English', 'ro' => 'Română '],
+
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -170,6 +172,8 @@ return [
         /* Ckeditor Filemanager */
         Tsawler\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
 
+        /* debugbar */
+        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*

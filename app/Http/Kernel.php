@@ -14,6 +14,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
+        // \App\Http\Middleware\Language::class,
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
     ];
 
@@ -29,6 +30,11 @@ class Kernel extends HttpKernel
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
+        ],
+
+        'shared' => [
+            \App\Http\Middleware\CurLink::class,
+            \App\Http\Middleware\SharedVariables::class,
         ],
 
         'api' => [
@@ -49,5 +55,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'admin' => \App\Http\Middleware\Admin::class,
+        'manager' => \App\Http\Middleware\Manager::class,
     ];
 }

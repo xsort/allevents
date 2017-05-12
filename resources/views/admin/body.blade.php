@@ -64,9 +64,14 @@
         if('ontouchstart' in document.documentElement) document.write("<script src='{{URL::to('/')}}/ace/assets/js/jquery.mobile.custom.js'>"+"<"+"/script>");
     </script>
 
+
+@yield('stylesTooltip')
+
+@yield('scriptsTooltip')
+
 </head>
 
-<body class="no-skin">
+<body class="no-skin" ng-app="managerApp">
 <!-- #section:basics/navbar.layout -->
 <div id="navbar" class="navbar navbar-default">
     <script type="text/javascript">
@@ -117,14 +122,14 @@
                     </a>
 
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
-                        <li>
+                        {{--<li>
                             <a href="{{URL::to('admin/changepassword')}}">
                                 <i class="ace-icon fa fa-cog"></i>
                                 Настройки
                             </a>
                         </li>
 
-                        <li class="divider"></li>
+                        <li class="divider"></li>--}}
 
                         <li>
                             <a href="logout">
@@ -145,7 +150,9 @@
 
 <!-- /section:basics/navbar.layout -->
 <div class="main-container" id="main-container">
+    <div class="spinner"></div>
     <!-- #section:basics/sidebar -->
+    @if(Auth::user()->isAdmin())
     <div id="sidebar" class="sidebar responsive">
         <script type="text/javascript">
             try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
@@ -196,6 +203,7 @@
             try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
         </script>
     </div>
+    @endif
 
     <!-- /section:basics/sidebar -->
     <div class="main-content">
@@ -312,6 +320,11 @@
 
 {!! HTML::script('ace/dist/js/bootstrap.min.js') !!}
 
+
+
+
+
+
 <!-- ace scripts -->
 {!! HTML::script('ace/assets/js/ace/elements.scroller.js') !!}
 {!! HTML::script('ace/assets/js/ace/elements.typeahead.js') !!}
@@ -327,7 +340,14 @@
 {!! HTML::script('ace/assets/js/toastr.min.js') !!}
 {!! HTML::script('ace/assets/js/fancybox2/jquery.fancybox.pack.js') !!}
 
+<script type="text/javascript">
+    $(document).on({
+        ajaxStart: function() { $(".spinner").show();},
+        ajaxStop: function() { $(".spinner").hide();}
+    });
+</script>
 
 @yield('scripts')
 
+</body>
 </html>

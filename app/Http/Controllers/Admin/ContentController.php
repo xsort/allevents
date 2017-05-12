@@ -46,11 +46,13 @@ class ContentController extends Controller
         }
 
         $content->name              = $request->name;
+        $content->enabled           = $request->enabled;
         $content->created_at        = $request->date;
         $content->slug              = $request->slug;
         $content->description       = $request->description;
         $content->meta_description  = $request->meta_description;
         $content->meta_keywords     = $request->meta_keywords;
+        $content->title             = $request->title;
         $content->save();
 
         // redirect

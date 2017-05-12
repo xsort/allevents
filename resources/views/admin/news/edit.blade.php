@@ -1,46 +1,35 @@
-@extends('admin.body')
-@section('title', 'Новости')
-
-
-@section('centerbox')
-    <div class="page-header">
-        <h1> <a href="{{ URL::to('admin/news') }}">Новости</a> <small><i class="ace-icon fa fa-angle-double-right"></i> Редактирование новости </small> </h1>
-    </div>
-
-    @include('admin.partials.errors')
-
     @if(!isset($data))
-    {{ Form::open(['url' => 'admin/news', 'class' => 'form-horizontal']) }}
+        {{ Form::open(['url' => 'admin/news', 'class' => 'form-horizontal', 'id' => 'news']) }}
     @else
-    {{ Form::open(['url' => 'admin/news/' . $data->id, 'method' => 'put', 'class' => 'form-horizontal']) }}
+        {{ Form::open(['url' => 'admin/news/' . $data->id, 'method' => 'put', 'class' => 'form-horizontal', 'id' => 'news']) }}
     @endif
-            <!--<div class="form-group col-xs-12">
-        <button id="submit_button1" type="submit" class="btn  btn-success" ><i class="ace-icon fa fa-floppy-o  bigger-120"></i> Сохранить </button>
-    </div>-->
+
     <div class="row">
         <div class="col-sm-6">
             <div class="form-group">
-                {{ Form::label('name', 'Заголовок', ['class'=>'col-sm-3 control-label no-padding-right']) }}
-                <div class="col-sm-9">
-                    {{ Form::text('name', (isset($data->name) ? $data->name : old('name')), array('class' => 'col-sm-11 col-xs-12')) }}
+                <div class="col-sm-9 col-sm-offset-3 ">
+                    <label>
+                        {{ Form::checkbox('top',  1, (isset($data) && $data->top == 1 ? true : false), ['class' => 'ace']) }}
+                        <span class="lbl"> На главную </span>
+                    </label>
                 </div>
             </div>
             <div class="form-group">
-                {{ Form::label('slug', 'URL', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                {{ Form::label('name[ru]', 'Заголовок', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-9">
-                    {{ Form::text('slug', (isset($data->slug) ? $data->slug : old('slug')), array('class' => 'col-sm-11 col-xs-12')) }}
+                    {{ Form::text('name[ru]', (isset($data->name) ? $data->name : old('name')), array('class' => 'col-sm-11 col-xs-12 name_ru')) }}
                 </div>
             </div>
             <div class="form-group">
-                {{ Form::label('categories', 'Теги', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                {{ Form::label('name[ro]', 'Заголовок рум', ['class'=>'col-sm-3 control-label no-padding-right']) }}
                 <div class="col-sm-9">
-                    <select multiple data-placeholder="выберите категорию" id="chosencat" name="chosencat[]" class="tag-input-style col-xs-12">
-                        @foreach($tags as $tag)
-                        <option value="{{$tag['name']}}" @if (in_array($tag->id, $data->getTagsIdsArray())) selected="selected" @endif>
-                            {{ $tag->name }}
-                        </option>
-                        @endforeach
-                    </select>
+                    {{ Form::text('name[ro]', (isset($data->name_ro) ? $data->name_ro : old('name_ro')), array('class' => 'col-sm-11 col-xs-12')) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ Form::label('name[en]', 'Заголовок англ', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-9">
+                    {{ Form::text('name[en]', (isset($data->name_en) ? $data->name_en : old('name_en')), array('class' => 'col-sm-11 col-xs-12')) }}
                 </div>
             </div>
         </div><!-- /.col-sm-6 -->
@@ -52,77 +41,174 @@
                     <div class="input-group">
                         <input type="date" name="date" id="mydate" class="form-control date-picker"
                                data-date-format="dd-mm-yyyy"
-                               value="{{ (isset($data->created_at) ? $data->created_at : old('date', Date::now()->format('d-m-Y'))) }}" />
+                               value="{{ (isset($data->created_at) ? date('Y-m-d', strtotime($data->created_at)) : old('date', Date::now()->format('Y-m-d'))) }}" />
                         <span class="input-group-addon">
                             <i class="fa fa-calendar bigger-110"></i>
                         </span>
                     </div>
                 </div>
             </div>
-            @if (isset($data->updated_at))
-                <div class="form-group">
-                    <label class="col-sm-6 control-label no-padding-right"> Изменен: {{ $data->updated_at }}</label>
+            <div class="form-group">
+                {{ Form::label('slug', 'URL', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-9">
+                    {{ Form::text('slug', (isset($data->slug) ? $data->slug : old('slug')), array('class' => 'col-sm-11 col-xs-12')) }}
                 </div>
-            @endif
+            </div>
+            <div class="form-group">
+                {{ Form::label('types', 'Тип', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-9">
+                    {{ Form::select('chosentypes[]', $types, $seltypes, ['multiple'=>'multiple', 'id'=>'chosentypes', 'class'=>'chosencat col-sm-11 control-label no-padding-right', 'data-placeholder' => "Выберите тип"]) }}
+                </div>
+            </div>
         </div><!-- /.col-sm-6 -->
     </div><!-- /.row -->
+    <hr>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                {{ Form::label('categories', 'Теги', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-7">
+                    <select multiple data-placeholder="Выберите категорию" id="chosentags" name="chosencat[]" class="tag-input-style col-xs-12 chosencat">
+                        @foreach($tags as $tag)
+                        <option value="{{$tag->id}}" @if (in_array($tag->id, isset($data) ? $data->getTagsIdsArray() : array())) selected="selected" @endif>
+                            {{ $tag->name }}
+                        </option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                {{ Form::label('add-tag-input', 'добавить тег', ['class'=>'col-sm-3 control-label no-padding-right']) }}
+                <div class="col-sm-7">
+                    {{ Form::text('', '', ['class' => 'col-sm-11 col-xs-12', 'id' => 'add-tag-input']) }}
+                </div>
+                <div class="col-sm-1">
+                    <a href="javascript:void(0);" class="btn btn-sm" id="add-tag"><i class="ace-icon fa fa-plus-circle"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="form-group">
+                <div class="col-xs-12">
+                    <div class="tabbable">
+                        <ul id="myTab1" class="nav nav-tabs padding-12 tab-color-blue background-blue">
+                            <li class="active">
+                                <a href="#newsShort_ru" data-toggle="tab" aria-expanded="true">Русс. яз.</a>
+                            </li>
+                    
+                            <li class="">
+                                <a href="#newsShort_ro" data-toggle="tab" aria-expanded="false">Рум. яз.</a>
+                            </li>
+
+                            <li class="">
+                                <a href="#newsShort_en" data-toggle="tab" aria-expanded="false">Англ. яз.</a>
+                            </li>
+
+                            <div class="center"> <span class="label label-xlg label-purple">Краткое описание</span></div>
+                        </ul>
+                    
+                        <div class="tab-content">
+                            <div class="tab-pane in active" id="newsShort_ru">
+                             {{ Form::textarea('description_short[ru]', (isset($data->description_short) ? $data->description_short : old('description_short')), array('style'=>'width:100%', 'rows'=>'3')) }}
+                           </div>
+                           <div class="tab-pane" id="newsShort_ro">
+                             {{ Form::textarea('description_short[ro]', (isset($data->description_short_ro) ? $data->description_short_ro : old('description_short_ro')), array('style'=>'width:100%', 'rows'=>'3')) }}
+                           </div>
+                           <div class="tab-pane" id="newsShort_en">
+                             {{ Form::textarea('description_short[en]', (isset($data->description_short_en) ? $data->description_short_en : old('description_short_en')), array('style'=>'width:100%', 'rows'=>'3')) }}
+                           </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
     <div class="space"></div>
     <div class="tabbable">
         <ul id="myTab4" class="nav nav-tabs padding-12 tab-color-blue background-blue">
             <li class="active">
-                <a href="#ru" data-toggle="tab">Описание</a>
+                <a href="#newsDesc" data-toggle="tab">Описание</a>
             </li>
             <li>
-                <a href="#photos" data-toggle="tab">Фото</a>
+                <a href="#newsPhotos" data-toggle="tab">Фото</a>
             </li>
             <li>
-                <a href="#meta" data-toggle="tab">META</a>
+                <a href="#newsmeta" data-toggle="tab">META</a>
             </li>
         </ul>
 
         <div class="tab-content">
-            <div class="tab-pane active" id="ru">
-                {{ Form::textarea('description', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => 'editor')) }}
-            </div>
-            @include('admin.partials.meta')
-            @include('admin.partials.photos', ['photos' => $data->photos, 'table' => 'news'])
+            <div class="tab-pane active" id="newsDesc">
+
+                <div class="tabbable  tabs-left">
+
+                 <ul id="myTab" class="nav nav-tabs">
+                   <li class="active">
+                      <a href="#newsDescRu" data-toggle="tab">Описание на русском</a>
+                   </li>
+                   <li>
+                      <a href="#newsDescRo" data-toggle="tab">Описание на румынском</a>
+                   </li>
+                   <li>
+                      <a href="#newsDescEn" data-toggle="tab">Описание на английском</a>
+                   </li>
+                 </ul>
+
+                 <div class="tab-content">
+                   <div class="tab-pane in active" id="newsDescRu">
+                     {{ Form::textarea('description[ru]', (isset($data->description) ? $data->description : old('description')), array('class' => 'ckeditor', 'id' => uniqid('id'))) }}
+                   </div>
+                   <div class="tab-pane" id="newsDescRo">
+                     {{ Form::textarea('description[ro]', (isset($data->description_ro) ? $data->description_ro : old('description_ro')), array('class' => 'ckeditor', 'id' => uniqid('id'))) }}
+                   </div>
+                   <div class="tab-pane" id="newsDescEn">
+                     {{ Form::textarea('description[en]', (isset($data->description_en) ? $data->description_en : old('description_en')), array('class' => 'ckeditor', 'id' => uniqid('id'))) }}
+                   </div>
+
+                 </div>
+
+                </div>
+             </div>
+
+            @include('admin.partials.meta', ['form_id' => 'news'])
+
+            @include('admin.partials.photos', ['table' => 'news', 'div_id' => 'newsPhotos', 'table_id' => isset($data->id) ? $data->id : 0])
         </div>
-    </div>
 
-    <div class="form-actions">
-        {{ Form::submit('Сохранить', array('class' => 'btn btn-success')) }}
-    </div>
+</div>
 
-    {{ Form::close() }}
-@endsection
+    @include('admin.partials.chosen')
 
-@section('styles')
-    {!! HTML::style('ace/assets/css/datepicker.css') !!}
-    {!! HTML::style('ace/assets/css/chosen.css') !!}
-@endsection
+    @include('admin.partials.ckeditor', ['form_id' => 'news'])
 
-@section('scripts')
+    @include('admin.partials.slug', ['input_name'=>'name[ru]', 'form_id' => 'news'])
 
-    @include('admin.partials.ckeditor')
+    @include('admin.partials.datepicker')
 
-    @include('admin.partials.slug',['input_name'=>'name'])
-
-    {!! HTML::script('ace/assets/js/date-time/bootstrap-datepicker.js') !!}
     <script type="text/javascript">
-        jQuery(function($) {
-            var mydate = $('#mydate')[0];
-            if(mydate.type !== 'date') {//if browser doesn't support "date" input
-                $(mydate).datepicker({
-                    weekStart: 1,
-                    autoclose:true,
-                    language: 'ru'
-                })
-            }
-        })
+        $('#add-tag').click(function(e){
+            e.preventDefault();
+            var $input = $('input#add-tag-input');
+            var value  = $input.val();
+            $.get("admin/json/addtag",
+                {
+                     'value': value
+                }, function(response){
+                     if (response.success=="false"){
+                         toastr.error(response.data);
+                         return;
+                     }
+                     var id = response.data;
+                     $('#chosentags').append('<option value="' + id + '" selected="selected">' + value + '</option>');
+                     $("#chosentags").trigger("chosen:updated");
+                     toastr.success("Тег добавлен");
+                     $input.val('');
+                 }
+            ), "json";
+        });
     </script>
-
-    {!! HTML::script('ace/assets/js/chosen.jquery.min.js') !!}
-    <script>
-        $("#chosencat").chosen();
-    </script>
-@endsection

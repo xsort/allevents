@@ -16,6 +16,8 @@ class CreateTagTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('name', 50)->unique();
+            $table->boolean('top');
+            $table->string('slug', 200)->index('idx_slug');
         });
     }
     /**

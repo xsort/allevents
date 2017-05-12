@@ -17,6 +17,7 @@ class CreateTypes extends Migration
             $table->string('name', 200);
             $table->string('name_ro', 200);
             $table->string('name_en', 200);
+            $table->string('slug', 200)->index('idx_slug');
         });
     }
 
